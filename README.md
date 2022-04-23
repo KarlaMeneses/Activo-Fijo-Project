@@ -32,3 +32,24 @@ Subir sus cambios al proyecto(para subir tus cambios sigue estos pasos)
 -   git add .
 -   git commit -m "soy yo"
 -   git push origin main
+
+# Crear proyecto
+
+//Crear Proyecto Laravel
+----- Instalar Laravel -----------------
+
+-   composer global require laravel/installer
+    -------Crear Proyecto --------------
+    laravel new nuevo_proy
+
+------Instalar LOGIN de LARAVEL------------
+
+-   composer require laravel/ui
+-   php artisan ui bootstrap --auth
+-   npm install
+-   npm run dev
+
+-   php artisan adminlte:install
+
+-   alt+shif+a
+    comentar
