@@ -12,7 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <link rel="icon" href="{{ asset('assets/img/IconAIESEC.png') }}">
+    <link rel="icon" href="{{ asset('img/logo.png') }}">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -22,7 +22,6 @@
 </head>
 
 <body>
-
     <div id="app">
         <main class="py-4">
             @yield('content')
