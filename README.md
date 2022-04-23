@@ -1,8 +1,10 @@
 # Instalacion del proyecto
 
 -   ir a la ruta de xammp y ejecutar xammp
+-   Crear base de datos en phpadmin, o posgretsql
 -   abrir cmd desde donde se guardara el proyecto
--   git clone (enlace del repositorio)
+-   git clone https://github.com/KarlaMeneses/Activo-Fijo-Project.git
+-   composer update
 -   composer install
 -   duplicar el archivo .env example
 -   cambiar nombre a .env
