@@ -249,14 +249,14 @@ return [
         
         ['header' => 'OPCIONES DE USUARIO'],
         [
-            'text' => 'Perfil',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Usuarios',
+            'route'  => 'users.index',
+            'icon' => 'fas fa-solid fa-users',
         ],
         [
-            'text' => 'Cambiar Contraseña',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Roles y Permisos',
+            'route'  => 'roles.index',
+            'icon' => 'fas fa-ruler',
         ],
    [
             'text'    => 'Multiniveles',
