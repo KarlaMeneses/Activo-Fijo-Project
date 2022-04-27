@@ -4,6 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/*MIGRATIONS CreateUsersTable POR DEFECTO 
+    por convension seguir el siguiente formato...
+    PHP ARTISAN MAKE:MIGRATION create_nombres_table
+*/
+
 class CreateUsersTable extends Migration
 {
     /**
