@@ -63,6 +63,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function show($id)
     {
         $user = User::find($id);
@@ -77,6 +78,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $roles = Role::all();
         $user = User::find($id);
         $rol = DB::table('model_has_roles')->where('model_id', $user->id)->first();
         $rol_name = DB::table('roles')->where('id', $rol->role_id)->first();
