@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +29,5 @@ Route::get('/home', [App\Http\Controllers\FacturaController::class, 'index'])->n
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('roles', RoleController::class)->names('roles');
+Route::resource('users', UserController::class)->names('users');
