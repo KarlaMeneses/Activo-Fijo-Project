@@ -21,6 +21,11 @@ class DatabaseSeeder extends Seeder
     {   
         $this->call(roleSeeder::class);
         $this->call(userSeeder::class);
-        
+        $this->call(categoriaSeeder::class);
+        $this->call(departamentoSeeder::class);
+        $this->call(ubicacionSeeder::class);
+        $this->call(notaSeeder::class);
+        $this->call(facturaSeeder::class);
+        $this->call(activofijoSeeder::class);
     }
 }

@@ -246,7 +246,7 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        
+
         ['header' => 'OPCIONES DE USUARIO'],
         [
             'text' => 'Usuarios',
@@ -258,7 +258,7 @@ return [
             'route'  => 'roles.index',
             'icon' => 'fas fa-ruler',
         ],
-   [
+        [
             'text'    => 'Multiniveles',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -278,18 +278,23 @@ return [
         ],
         ['header' => 'labels'],
         [
-            'text'       => 'important',
+            'text'       => 'Activo fijo',
             'icon_color' => 'red',
             'url'        => '#',
         ],
         [
-            'text'       => 'warning',
+            'text'       => 'Factura',
             'icon_color' => 'yellow',
             'url'        => '#',
         ],
         [
-            'text'       => 'information',
+            'text'       => 'Categoria',
             'icon_color' => 'cyan',
+            'url'        => '#',
+        ],
+        [
+            'text'       => 'Ubicacion',
+            'icon_color' => 'blue',
             'url'        => '#',
         ],
     ],

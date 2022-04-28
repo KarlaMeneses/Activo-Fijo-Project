@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivofijoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
-Auth::routes();
+Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
+Route::resource('activosfijo', ActivofijoController::class)->names('activosfijo');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
