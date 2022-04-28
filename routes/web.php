@@ -30,5 +30,6 @@ Route::resource('users', UserController::class)->names('users');
 Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
 Route::resource('activosfijo', ActivofijoController::class)->names('activosfijo');
 Route::resource('notas', NotaController::class)->names('notas');
+Route::get('notasventa', [NotaController::class, 'indexVenta'])->name('notasventa.index');
 
 

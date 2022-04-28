@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{route('notas.create')}}" class="btn btn-primary btb-sm">Crear nota de compra</a>
+            <a href="{{ route('notas.create') }}" class="btn btn-primary btb-sm">Crear nota de compra</a>
         </div>
     </div>
 
@@ -21,9 +21,9 @@
                         <th scope="col">unidad</th>
                         <th scope="col">concepto</th>
                         <th scope="col">precio_uni</th>
-                        <th scope="col">importe</th>
-                        <th scope="col">condicion_pago</th>
-                     
+                        <th scope="col">nro_egreso</th>
+                        <th scope="col">almacen</th>
+                        <th scope="col">entregado_a</th>
 
                         <th scope="col">Acciones</th>
                     </tr>
@@ -32,24 +32,27 @@
                 <tbody>
                     @foreach ($notas as $nota)
                         <tr>
-                            <td>{{$nota->unidad}}</td>
-                            <td>{{$nota->concepto}}</td>
-                            <td>{{$nota->precio_uni}}</td>
-                            <td>{{$nota->importe}}</td>
-                            <td>{{$nota->condicion_pago}}</td>
-                         
+                            <td>{{ $nota->unidad }}</td>
+                            <td>{{ $nota->concepto }}</td>
+                            <td>{{ $nota->precio_uni }}</td>
+                            <td>{{ $nota->nro_egreso }}</td>
+                            <td>{{ $nota->almacen }}</td>
+                            <td>{{ $nota->entregado_a }}</td>
                             <td>
-                                <form action="{{route('notas.destroy', $nota)}}" method="post">
+                                <form action="{{ route('notas.destroy', $nota) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('notas.edit', $nota)}}" class="btn btn-primary btn-sm">Editar<a>
-                                    <a href="{{route('notas.show', $nota->id)}}" class="btn btn-success btn-sm">Ver<a>
+                                    <a href="{{ route('notas.edit', $nota) }}" class="btn btn-primary btn-sm">Editar<a>
+                                            <a href="{{ route('notas.show', $nota->id) }}"
+                                                class="btn btn-success btn-sm">Ver<a>
 
-                                        @can('editar nota')
-                                    @endcan
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" value="Borrar">Eliminar</button> 
-                                    @can('eliminar nota')
-                                    @endcan
+                                                    @can('editar nota')
+                                                    @endcan
+                                                    <button class="btn btn-danger btn-sm"
+                                                        onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')"
+                                                        value="Borrar">Eliminar</button>
+                                                    @can('eliminar nota')
+                                                    @endcan
                                 </form>
                             </td>
                         </tr>
@@ -71,7 +74,7 @@
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
-        $('#notas').DataTable();
-        } );
-    </script> 
+            $('#notas').DataTable();
+        });
+    </script>
 @stop

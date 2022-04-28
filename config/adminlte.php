@@ -268,7 +268,8 @@ return [
                 ],
                 [
                     'text'    => 'Nota de venta',
-                    'url'     => '#',
+                    'route'  => 'notasventa.index',
+                   // 'route'     => 'notasventa.indexVenta',
                 ],
             ],
         ],
@@ -278,7 +279,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Factura de compra',
-                    'route'  => '#',
+                    'url'  => '#',
                 ],
                 [
                     'text'    => 'Factura de venta',

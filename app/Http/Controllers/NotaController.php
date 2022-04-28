@@ -18,6 +18,12 @@ class NotaController extends Controller
         return view('notas.index',compact('notas'));
     }
 
+    public function indexVenta()
+    {
+        $notas = Nota::all();
+        return view('notasventa.index',compact('notas'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
