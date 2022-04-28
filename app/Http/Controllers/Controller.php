@@ -8,7 +8,6 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 /*PARA CREAR UN CONTROLLER POR CONVENSION:
-    php artisan make:controller NombreController 
     php artisan make:controller NombreController -r */
     
 class Controller extends BaseController

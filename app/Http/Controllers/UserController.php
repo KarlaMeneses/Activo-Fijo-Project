@@ -10,6 +10,12 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+
+    public function indexAPI()
+    {
+        return User::all();
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +26,7 @@ class UserController extends Controller
         $users = User::all();
         return view('users.index', compact('users'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -63,6 +70,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function show($id)
     {
         $user = User::find($id);
@@ -77,6 +85,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $roles = Role::all();
         $user = User::find($id);
         $roles = Role::all();
         $rol = DB::table('model_has_roles')->where('model_id', $user->id)->first();
