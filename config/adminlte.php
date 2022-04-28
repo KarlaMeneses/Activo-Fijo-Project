@@ -259,20 +259,30 @@ return [
             'icon' => 'fas fa-ruler',
         ],
         [
-            'text'    => 'Multiniveles',
+            'text'    => 'Nota',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => '1',
-                    'url'  => '#'
+                    'text' => 'Nota de compra',
+                    'route'  => 'notas.index',
                 ],
                 [
-                    'text'    => '2',
+                    'text'    => 'Nota de venta',
                     'url'     => '#',
                 ],
+            ],
+        ],
+        [
+            'text'    => 'Factura',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
                 [
-                    'text' => '3',
-                    'url'  => '#',
+                    'text' => 'Factura de compra',
+                    'route'  => '#',
+                ],
+                [
+                    'text'    => 'Factura de venta',
+                    'url'     => '#',
                 ],
             ],
         ],
