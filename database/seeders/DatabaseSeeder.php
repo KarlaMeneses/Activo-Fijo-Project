@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Nota;
 use Illuminate\Database\Seeder;
 
 /* 

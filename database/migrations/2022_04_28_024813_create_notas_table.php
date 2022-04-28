@@ -28,10 +28,10 @@ class CreateNotasTable extends Migration
             $table->integer('nro_egreso')->nullable();
             $table->string('almacen')->nullable();
             $table->string('entregado_a')->nullable();
+            $table->unsignedBigInteger('id_responsable')->nullable();
             $table->string('orden')->nullable();
-
-            $table->unsignedBigInteger('id_responsable');
             $table->foreign('id_responsable')->on('users')->references('id')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
