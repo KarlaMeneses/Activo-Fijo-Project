@@ -15,13 +15,13 @@ class NotaController extends Controller
     public function index()
     {
         $notas = Nota::all();
-        return view('notas.index',compact('notas'));
+        return view('notas.index', compact('notas'));
     }
 
     public function indexVenta()
     {
         $notas = Nota::all();
-        return view('notasventa.index',compact('notas'));
+        return view('notasventa.index', compact('notas'));
     }
 
     /**
@@ -31,7 +31,8 @@ class NotaController extends Controller
      */
     public function create()
     {
-        //
+        $notas = Nota::all();
+        return view('notas.create', compact('notas'));
     }
 
     /**
@@ -42,7 +43,17 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nota = new Nota();
+        $nota->unidad = $request->unidad;
+        $nota->concepto = $request->concepto;
+        $nota->precio_uni = $request->precio_uni;
+        $nota->importe = $request->importe;
+        $nota->condicion_pago = $request->condicion_pago;
+        $nota->fecha_envio = $request->fecha_envio;
+        $nota->fecha_entrega = $request->fecha_entrega;
+        $nota->lugar_entrega = $request->lugar_entrega;
+        $nota->save();
+        return redirect()->route('notas.index');
     }
 
     /**
@@ -64,7 +75,8 @@ class NotaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $nota = nota::findOrFail($id);
+        return view('notas.edit', compact('nota'));
     }
 
     /**
@@ -74,9 +86,19 @@ class NotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $nota)
     {
-        //
+        $nota = Nota::findOrFail($nota->id);
+        $nota->unidad = $request->unidad;
+        $nota->concepto = $request->concepto;
+        $nota->precio_uni = $request->precio_uni;
+        $nota->importe = $request->importe;
+        $nota->condicion_pago = $request->condicion_pago;
+        $nota->fecha_envio = $request->fecha_envio;
+        $nota->fecha_entrega = $request->fecha_entrega;
+        $nota->lugar_entrega = $request->lugar_entrega;
+        $nota->save();
+        return redirect()->route('notas.index');
     }
 
     /**

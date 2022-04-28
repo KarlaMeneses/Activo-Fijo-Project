@@ -278,8 +278,13 @@ return [
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'Factura de compra',
-                    'url'  => '#',
+                    'text' => 'Crear Factura de compra',
+                    'url'  => 'factura/facturacompra/create',
+                ],
+                [
+                    'text' => 'Lista de Facturas',
+                    'url'  => 'factura/facturacompra/index',
+                   
                 ],
                 [
                     'text'    => 'Factura de venta',
