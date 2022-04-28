@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivofijoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
 Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
+
+///Categoria de activo fijos
+Route::resource('categorias', CategoriaController::class)->names('categorias');
 Route::resource('activosfijo', ActivofijoController::class)->names('activosfijo');
-
-
