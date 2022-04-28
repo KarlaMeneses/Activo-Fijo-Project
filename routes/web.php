@@ -29,4 +29,7 @@ Route::resource('users', UserController::class)->names('users');
 Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
 Route::resource('activosfijo', ActivofijoController::class)->names('activosfijo');
 
-
+Route::get('factura/facturacompra/index', [App\Http\Controllers\FacturaController::class, 'indexcompra'])->name('factura.facturacompra.index');
+Route::post('factura/facturacompra/store', [App\Http\Controllers\FacturaController::class, 'storecompra'])->name('factura.facturacompra.store');
+Route::get('factura/facturacompra/create', [App\Http\Controllers\FacturaController::class, 'createcompra'])->name('factura.facturacompra.create');
+Route::get('factura/facturaventa/create', [App\Http\Controllers\FacturaController::class, 'createventa'])->name('factura.facturaventa.create');

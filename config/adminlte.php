@@ -271,8 +271,12 @@ return [
                     'url'     => '#',
                 ],
                 [
-                    'text' => '3',
-                    'url'  => '#',
+                    'text' => 'Crear Factura de compra',
+                    'url'  => 'factura/facturacompra/create',
+                ],
+                [
+                    'text' => 'Lista de Facturas',
+                    'url'  => 'factura/facturacompra/index',
                 ],
             ],
         ],
