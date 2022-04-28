@@ -17,11 +17,17 @@
             @enderror
             <form action="{{ route('notas.store') }}" method="post">
                 @csrf
-                <label for="name">Ingrese el nombre de usuario</label>
-                <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                <label for="unidad">Unidad</label>
+                <input type="text" name="unidad" class="form-control" value="{{ old('unidad') }}" required>
+
+                <label for="concepto">Concepto</label>
+                <input type="text" name="concepto" class="form-control" value="{{ old('concepto') }}" required>
+
+                <label for="precio_uni">Precio unitario</label>
+                <input type="text" name="precio_uni" class="form-control" value="{{ old('precio_uni') }}" required>
 
     
-                <button class="btn btn-danger btn-sm" type="submit">Crear Usuario</button>
+                <button class="btn btn-danger btn-sm" type="submit">Crear Nota</button>
                 <a class="btn btn-primary btn-sm" href="{{ route('notas.index') }}">Volver</a>
             </form>
 
