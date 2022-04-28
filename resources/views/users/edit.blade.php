@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'PROSALUD+')
+@section('title', 'SI-ActivoFijo')
 
 @section('content_header')
     <h1>Editar Usuario</h1>
@@ -36,16 +36,50 @@
                     </div>
                 </div>
 
+                <label for="email">Ingrese el correo electronico</label>
+                <input type="text" name="email" class="form-control" value="{{$user->email}}" required>
+                @error('email')
+                    <small>*{{$message}}</small>
+                    <br><br>
+                @enderror
+
+                <label for="foto">Ingrese la foto</label>
+                <input type="text" name="foto" class="form-control" value="{{$user->foto}}" required>
+
+                <label for="edad">Ingrese la edad</label>
+                <input type="number" name="edad" class="form-control" value="{{$user->edad}}" required>
+
+                <div>
+                    <label for="sexo">Seleccione un sexo</label>
+                    <select name="sexo" id="select-roles" class="form-control" onchange="habilitar()" >
+                            
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                            
+                    </select>
+                    <br>
+                </div>
+
+                <label for="cargo">Ingrese el cargo</label>
+                <input type="text" name="cargo" class="form-control" value="{{$user->cargo}}" required>
+
+                <label for="direccion">Ingrese la direccion</label>
+                <input type="text" name="direccion" class="form-control" value="{{$user->direccion}}" required>
+
+                <label for="telefono">Ingrese el telefono</label>
+                <input type="number" name="telefono" class="form-control" value="{{$user->telefono}}" required>
 
                 <div>
                     <p>Seleccione un rol</p>
                     <select name="roles" id="select-roles" class="form-control" onchange="habilitar()" >
                         <option value="{{old('roles' ,$rol->role_id)}}">{{$rol_name->name}}</option>
-                            @foreach ($roles as $rol)
-                                <option value="{{ $rol->id }}">{{ $rol->name }}</option>
+                            @foreach ($roles as $role)
+                                @if(!($role->id == $rol->role_id ))
+                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endif
                             @endforeach
                     </select>
-                    @error('roles')
+                    @error('roles') 
                         <small>*{{$message}}</small>
                         <br><br>
                     @enderror
