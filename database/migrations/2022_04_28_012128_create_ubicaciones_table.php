@@ -15,9 +15,12 @@ class CreateUbicacionesTable extends Migration
     {
         Schema::create('ubicaciones', function (Blueprint $table) {
             $table->id();
+            $table->string('edificio');
+            $table->string('ciudad');
+            $table->string('pais');
             $table->unsignedBigInteger('id_departamento');
             $table->foreign('id_departamento')->on('departamentos')->references('id')->onDelete('cascade');
-           
+        
             $table->timestamps();
         });
     }
