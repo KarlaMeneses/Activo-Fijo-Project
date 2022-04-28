@@ -38,7 +38,11 @@
                                     @csrf
                                     @method('delete')
                                     <a href="{{route('users.edit', $user)}}" class="btn btn-primary btn-sm">Editar<a>
-                                    @can('editar usuario')
+                                    <a href="{{route('users.show', $user->id)}}" class="btn btn-success btn-sm">Ver<a>
+
+                                    
+
+                                        @can('editar usuario')
                                     @endcan
                                     <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" value="Borrar">Eliminar</button> 
                                     @can('eliminar usuario')
