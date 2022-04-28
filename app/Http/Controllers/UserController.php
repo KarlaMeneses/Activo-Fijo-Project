@@ -10,6 +10,12 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+
+    public function indexAPI()
+    {
+        return User::all();
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +26,7 @@ class UserController extends Controller
         $users = User::all();
         return view('users.index', compact('users'));
     }
+
 
     /**
      * Show the form for creating a new resource.
