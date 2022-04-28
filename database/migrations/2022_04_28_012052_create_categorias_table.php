@@ -15,6 +15,15 @@ class CreateCategoriasTable extends Migration
     {
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('descripcion');
+            //$table->string('vida_util');
+            //$table->string('id_depreciacion');
+            //$table->string('valor_residual');
+            $table->string('tipo_activo');
+            $table->unsignedBigInteger('id_categoria');
+            $table->foreign('id_categoria')->on('activosfijo')->references('id')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
