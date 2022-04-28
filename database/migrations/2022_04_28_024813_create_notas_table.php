@@ -23,7 +23,7 @@ class CreateNotasTable extends Migration
             $table->string('condicion_pago')->nullable();
             $table->date('fecha_envio')->nullable();
             $table->date('fecha_entrega')->nullable();
-            $table->String('lugar_entrega')->nullable();
+            $table->string('lugar_entrega')->nullable();
             //nota venta
             $table->integer('nro_egreso')->nullable();
             $table->string('almacen')->nullable();
