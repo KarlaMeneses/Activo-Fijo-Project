@@ -26,7 +26,6 @@ class CreateActivosfijoTable extends Migration
             $table->foreign('id_categoria')->on('categorias')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('id_ubicacion');
             $table->foreign('id_ubicacion')->on('ubicaciones')->references('id')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

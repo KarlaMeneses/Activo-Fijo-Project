@@ -13,6 +13,6 @@ class activofijoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
     }
 }
