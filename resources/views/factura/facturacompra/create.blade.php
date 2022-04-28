@@ -50,7 +50,19 @@
                             <div class="row">
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <input type="text" name="name" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Nombre Completo"  />
+                                    <select name="iduser" id="select-room" class="form-control" onchange="habilitar()" >
+                                        <option value="nulo">Usuarios</option>
+                
+                                        @foreach ($users as $user)
+                
+                                            <option value="{{$user->id}}">
+                
+                                               <spam>{{$user->name}}</spam>
+                
+                                            </option>
+                
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -61,7 +73,7 @@
                     
                     <div class="row mb-6">
                         <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label required fw-bold fs-6">Celular:</label>
+                        <label class="col-lg-4 col-form-label required fw-bold fs-6">NIT:</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8">
@@ -69,7 +81,7 @@
                             <div class="row">
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <input type="text" name="celular" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Numero de Celular"  />
+                                    <input type="text" name="nit" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Numero de Celular"  />
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -81,7 +93,7 @@
                      
                         <div class="row mb-6">
                             <!--begin::Label-->
-                            <label class="col-lg-4 col-form-label required fw-bold fs-6">Orden:</label>
+                            <label class="col-lg-4 col-form-label required fw-bold fs-6">Dirección:</label>
                             <!--end::Label-->
                             <!--begin::Col-->
                             <div class="col-lg-8">
@@ -89,7 +101,7 @@
                                 <div class="row">
                                     <!--begin::Col-->
                                     <div class="col-lg-8 fv-row">
-                                        <input type="text" name="orden" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Orden"  />
+                                        <input type="text" name="direccion" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Orden"  />
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -97,6 +109,24 @@
                                 <br>
                             </div>
                         </div>      
+                            <div class="row mb-6">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Telefono:</label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8">
+                                    <!--begin::Row-->
+                                    <div class="row">
+                                        <!--begin::Col-->
+                                        <div class="col-lg-8 fv-row">
+                                            <input type="text" name="telefono" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <!--end::Row-->
+                                    <br>
+                                </div>
+                            </div>   
                             <div class="row mb-6">
                                 <!--begin::Label-->
                                 <label class="col-lg-4 col-form-label required fw-bold fs-6">Email:</label>
@@ -115,6 +145,60 @@
                                     <br>
                                 </div>
                             </div>   
+                            <div class="row mb-6">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Forma de Pago:</label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8">
+                                    <!--begin::Row-->
+                                    <div class="row">
+                                        <!--begin::Col-->
+                                        <div class="col-lg-8 fv-row">
+                                            <input type="text" name="formapago" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <!--end::Row-->
+                                    <br>
+                                </div>
+                            </div>   
+                            <div class="row mb-6">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Cantidad:</label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8">
+                                    <!--begin::Row-->
+                                    <div class="row">
+                                        <!--begin::Col-->
+                                        <div class="col-lg-8 fv-row">
+                                            <input type="text" name="cantidad" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <!--end::Row-->
+                                    <br>
+                                </div>
+                            </div>  
+                            <div class="row mb-6">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Telefono:</label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-8">
+                                    <!--begin::Row-->
+                                    <div class="row">
+                                        <!--begin::Col-->
+                                        <div class="col-lg-8 fv-row">
+                                            <input type="text" name="telefono" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <!--end::Row-->
+                                    <br>
+                                </div>
+                            </div>    
                                 <div class="row mb-6">
                                     <!--begin::Label-->
                                     <label class="col-lg-4 col-form-label required fw-bold fs-6">Password:</label>

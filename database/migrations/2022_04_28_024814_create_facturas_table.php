@@ -31,7 +31,7 @@ class CreateFacturasTable extends Migration
             $table->string('referencia')->nullable();
             $table->string('articulo');
             $table->string('comprador')->nullable();
-           
+            $table->string('descripcion');
             $table->unsignedBigInteger('idnota')->nullable();
             $table->foreign('idnota')->on('notas')->references('id')->onDelete('cascade');
             $table->string('valorpagar')->nullable();
