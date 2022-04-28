@@ -4,6 +4,7 @@ use App\Http\Controllers\ActivofijoController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,5 @@ Route::resource('notas', NotaController::class)->names('notas');
 Route::get('notasventa', [NotaController::class, 'indexVenta'])->name('notasventa.index');
 
 
+///Categoria de activo fijos
+Route::resource('categorias', CategoriaController::class)->names('categorias');

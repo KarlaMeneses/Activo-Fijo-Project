@@ -38,7 +38,7 @@
                       <tbody>
 
                         <tr>
-                            <th style="text-align: center; ">Foto de Perfil</th>
+                            <th style="text-align: center">Foto de Perfil</th>
                             <td> <img src="{{ asset('img/leodc.jpg') }}" style="width: 200px" alt=""></td>
                           </tr>
 

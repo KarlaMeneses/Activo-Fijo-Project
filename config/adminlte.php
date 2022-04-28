@@ -301,13 +301,14 @@ return [
         [
             'text'       => 'Categoria',
             'icon_color' => 'cyan',
-            'url'        => '#',
+            'route'        => 'categorias.index',
         ],
         [
             'text'       => 'Ubicacion',
             'icon_color' => 'blue',
             'url'        => '#',
         ],
+
     ],
 
     /*
