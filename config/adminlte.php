@@ -259,17 +259,24 @@ return [
             'icon' => 'fas fa-ruler',
         ],
         [
-            'text'    => 'Multiniveles',
+            'text'    => 'Nota',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => '1',
-                    'url'  => '#'
+                    'text' => 'Nota de compra',
+                    'route'  => 'notas.index',
                 ],
                 [
-                    'text'    => '2',
-                    'url'     => '#',
+                    'text'    => 'Nota de venta',
+                    'route'  => 'notasventa.index',
+                   // 'route'     => 'notasventa.indexVenta',
                 ],
+            ],
+        ],
+        [
+            'text'    => 'Factura',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
                 [
                     'text' => 'Crear Factura de compra',
                     'url'  => 'factura/facturacompra/create',
@@ -277,6 +284,11 @@ return [
                 [
                     'text' => 'Lista de Facturas',
                     'url'  => 'factura/facturacompra/index',
+                   
+                ],
+                [
+                    'text'    => 'Factura de venta',
+                    'url'     => '#',
                 ],
             ],
         ],
@@ -294,13 +306,14 @@ return [
         [
             'text'       => 'Categoria',
             'icon_color' => 'cyan',
-            'url'        => '#',
+            'route'        => 'categorias.index',
         ],
         [
             'text'       => 'Ubicacion',
             'icon_color' => 'blue',
             'url'        => '#',
         ],
+
     ],
 
     /*

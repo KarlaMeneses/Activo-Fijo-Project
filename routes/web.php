@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\ActivofijoController;
+use App\Http\Controllers\NotaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,8 +30,13 @@ Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
 Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
 Route::resource('activosfijo', ActivofijoController::class)->names('activosfijo');
+Route::resource('notas', NotaController::class)->names('notas');
+Route::get('notasventa', [NotaController::class, 'indexVenta'])->name('notasventa.index');
 
 Route::get('factura/facturacompra/index', [App\Http\Controllers\FacturaController::class, 'indexcompra'])->name('factura.facturacompra.index');
 Route::post('factura/facturacompra/store', [App\Http\Controllers\FacturaController::class, 'storecompra'])->name('factura.facturacompra.store');
 Route::get('factura/facturacompra/create', [App\Http\Controllers\FacturaController::class, 'createcompra'])->name('factura.facturacompra.create');
 Route::get('factura/facturaventa/create', [App\Http\Controllers\FacturaController::class, 'createventa'])->name('factura.facturaventa.create');
+
+///Categoria de activo fijos
+Route::resource('categorias', CategoriaController::class)->names('categorias');

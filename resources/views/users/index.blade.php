@@ -1,8 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'PROSALUD+')
+@section('title', 'SI-ActivoFijo')
 
 @section('content_header')
+
     <h1>Usuarios</h1>
 @stop
 
@@ -21,6 +22,12 @@
                         <th scope="col">ID</th>
                         <th scope="col">Nombre de usuario</th>
                         <th scope="col">Correo electronico</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Sexo</th>
+                        <th scope="col">Cargo</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Foto</th>                        
                         <th scope="col">Rol</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -32,6 +39,12 @@
                             <td>{{$user->id}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
+                            <td>{{$user->edad}}</td>
+                            <td>{{$user->sexo}}</td>
+                            <td>{{$user->cargo}}</td>
+                            <td>{{$user->direccion}}</td>
+                            <td>{{$user->telefono}}</td>
+                            <td>{{$user->foto}}</td>
                             <td>{{$user->getRoleNames()[0]}}</td>
                             <td>
                                 <form action="{{route('users.destroy', $user)}}" method="post">
@@ -44,7 +57,7 @@
 
                                         @can('editar usuario')
                                     @endcan
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" value="Borrar">Eliminar</button> 
+                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" style="margin-top: 5px" value="Borrar">Eliminar</button> 
                                     @can('eliminar usuario')
                                     @endcan
                                 </form>

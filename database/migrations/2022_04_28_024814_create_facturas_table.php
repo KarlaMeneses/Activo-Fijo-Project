@@ -15,8 +15,6 @@ class CreateFacturasTable extends Migration
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('iduser');
-            $table->foreign('iduser')->on('users')->references('id')->onDelete('cascade');
             $table->string('nit');
             $table->string('ciudad');
             $table->string('direccion');

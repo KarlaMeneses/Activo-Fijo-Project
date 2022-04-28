@@ -22,13 +22,13 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
 
-            $table->string('foto')->nullable();
-            $table->string('sexo')->nullable();
-            $table->string('edad')->nullable();
-            $table->string('cargo')->nullable();
-            $table->string('direccion')->nullable();
-            $table->string('telefono')->nullable();
-            $table->string('rol')->nullable();
+            $table->string('foto')->default('');
+            $table->string('sexo');
+            $table->integer('edad');
+            $table->string('cargo');
+            $table->string('direccion');
+            $table->integer('telefono');
+           // $table->string('rol')->nullable(); // por borrar
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'SI-ActivoFijo')
+@section('title', 'SI2+')
 
 @section('content_header')
-    <h1>Ver Usuario</h1>
+    <h1>ver usuario</h1>
 @stop
 
 @section('content')
@@ -13,8 +13,8 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <div class="card-title">Vista detallada del usuario {{ $user->name }}</div>
-           
+            <div class="card-title">Usuarios</div>
+            <p class="card-category">Vista detallada del usuario {{ $user->name }}</p>
           </div>
           <!--body-->
           <div class="card-body">
@@ -38,39 +38,9 @@
                       <tbody>
 
                         <tr>
-                            <th style="text-align: center">Foto de Perfil</th>
-                            <td> <img src="{{ asset('img/leodc.jpg') }}" style="width: 200px" alt=""></td>
-                          </tr>
-
-                        <tr>
                           <th>Nombre de usuario</th>
                           <td>{{ $user->name }}</td>
                         </tr>
-
-                        <tr>
-                            <th>Sexo</th>
-                            <td>{{ $user->sexo }}</td>
-                          </tr>
-
-                          <tr>
-                            <th>Edad</th>
-                            <td>{{ $user->edad }}</td>
-                          </tr>
-
-                          <tr>
-                            <th>Cargo</th>
-                            <td>{{ $user->cargo }}</td>
-                          </tr>
-
-                          <tr>
-                            <th>Dirección </th>
-                            <td>{{ $user->direccion }}</td>
-                          </tr>
-
-                          <tr>
-                            <th>Teléfono </th>
-                            <td>{{ $user->telefono }}</td>
-                          </tr>
 
                         <tr>
                           <th>Email</th>
