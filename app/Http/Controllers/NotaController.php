@@ -64,7 +64,8 @@ class NotaController extends Controller
      */
     public function show($id)
     {
-        //
+        $nota = Nota::find($id);
+        return view('notas.show', compact('nota'));
     }
 
     /**
