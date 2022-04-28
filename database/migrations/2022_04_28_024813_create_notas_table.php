@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUbicacionesTable extends Migration
+class CreateNotasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateUbicacionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ubicaciones', function (Blueprint $table) {
+        Schema::create('notas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_departamento');
-            $table->foreign('id_departamento')->on('departamentos')->references('id')->onDelete('cascade');
-           
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateUbicacionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ubicaciones');
+        Schema::dropIfExists('notas');
     }
 }

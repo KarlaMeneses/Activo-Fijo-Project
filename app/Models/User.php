@@ -11,7 +11,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 
 /*PARA CREAR UN MODELO:
-PHP ARTISAN MAKE:MODEL NOMBRECLASS */
+PHP ARTISAN MAKE:MODEL Nombreclase */
 
 class User extends Authenticatable 
 {
