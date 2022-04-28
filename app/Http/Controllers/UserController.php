@@ -58,6 +58,17 @@ class UserController extends Controller
         $usuario = new User();
         $usuario->name = $request->name;
         $usuario->email = $request->email;
+
+        $usuario->foto = $request->foto;
+        $usuario->edad = $request->edad;
+        $usuario->sexo = $request->sexo;
+        $usuario->cargo = $request->cargo;
+        $usuario->direccion = $request->direccion;
+        $usuario->telefono = $request->telefono;
+      
+
+
+
         $usuario->password = bcrypt(($request->password));
         $usuario->save();
         $usuario->roles()->sync($request->roles);
@@ -91,8 +102,6 @@ class UserController extends Controller
         $rol = DB::table('model_has_roles')->where('model_id', $user->id)->first();
         $rol_name = DB::table('roles')->where('id', $rol->role_id)->first();
         return view('users.edit', compact('user', 'roles', 'rol', 'rol_name'));
-        return view('users.edit', compact('user', 'empleados', 'roles', 'rol', 'rol_name', 'empleado', 'e'));
-        return view('users.edit', compact('user'));
     }
 
     /**
@@ -117,6 +126,16 @@ class UserController extends Controller
         if($request->password <> ''){
             $usuario->password = bcrypt(($request->password));
         }
+
+        $usuario->email = $request->email;
+        $usuario->foto = $request->foto;
+        $usuario->edad = $request->edad;
+        $usuario->sexo = $request->sexo;
+        $usuario->cargo = $request->cargo;
+        $usuario->direccion = $request->direccion;
+        $usuario->telefono = $request->telefono;
+      
+
         $usuario->save();
         $usuario->roles()->sync($request->roles);
 

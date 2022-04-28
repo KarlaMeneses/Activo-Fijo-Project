@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'PROSALUD+')
+@section('title', 'SI-ActivoFijo')
 
 @section('content_header')
     <h1>Registrar Usuario</h1>
@@ -9,6 +9,7 @@
 @section('content')
 <div class="card">
     <div class="card-body">
+        
         @error('name')
         <div class="alert alert-danger">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -19,18 +20,47 @@
             <form action="{{route('users.store')}}" method="post" >
                 @csrf
                 <label for="name">Ingrese el nombre de usuario</label>
-                <input type="text" name="name" class="form-control" value="{{old('name')}}" required>
+                <input type="text" name="name" class="form-control" value="" required>
                 
                 <br>
                 <label for="email">Ingrese el correo electronico</label>
-                <input type="text" name="email" class="form-control" value="{{old('email')}}" required>
+                <input type="text" name="email" class="form-control" value="" required>
                 @error('email')
                     <small>*{{$message}}</small>
                     <br><br>
                 @enderror
+
+                <label for="foto">Ingrese la foto</label>
+                <input type="text" name="foto" class="form-control" value="" required>
+
+                <label for="edad">Ingrese la edad</label>
+                <input type="text" name="edad" class="form-control" value="" required>
+
+                <div>
+                    <label for="sexo">Seleccione un sexo</label>
+                    <select name="sexo" id="select-roles" class="form-control" onchange="habilitar()" >
+                            
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                            
+                    </select>
+                    <br>
+                </div>
+
+                <label for="cargo">Ingrese el cargo</label>
+                <input type="text" name="cargo" class="form-control" value="" required>
+
+                <label for="direccion">Ingrese la direccion</label>
+                <input type="text" name="direccion" class="form-control" value="" required>
+
+                <label for="telefono">Ingrese el telefono</label>
+                <input type="number" name="telefono" class="form-control" value="" required>
+
+               
+
                 <br>
                 <label for="password">Ingrese la contraseña</label>
-                <input type="password" name="password" class="form-control" value="{{old('password')}}" required>
+                <input type="password" name="password" class="form-control" value="" required>
                 @error('password')
                     <small>*{{$message}}</small>
                     <br><br>
