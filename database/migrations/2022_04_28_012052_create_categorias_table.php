@@ -21,9 +21,6 @@ class CreateCategoriasTable extends Migration
             //$table->string('id_depreciacion');
             //$table->string('valor_residual');
             $table->string('tipo_activo');
-            $table->unsignedBigInteger('id_categoria');
-            $table->foreign('id_categoria')->on('activosfijo')->references('id')->onDelete('cascade');
-
             $table->timestamps();
         });
     }

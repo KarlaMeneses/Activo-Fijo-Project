@@ -16,7 +16,7 @@ class CreateFacturasTable extends Migration
         Schema::create('facturas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('iduser');
-            $table->foreign('iduser')->on('facturas')->references('id')->onDelete('cascade');
+            $table->foreign('iduser')->on('users')->references('id')->onDelete('cascade');
             $table->string('nit');
             $table->string('ciudad');
             $table->string('direccion');
@@ -31,8 +31,9 @@ class CreateFacturasTable extends Migration
             $table->string('referencia')->nullable();
             $table->string('articulo');
             $table->string('comprador')->nullable();
-            $table->unsignedBigInteger('idactivo')->nullable();
-            $table->foreign('idactivo')->on('activosfijo')->references('id')->onDelete('cascade');
+           
+            $table->unsignedBigInteger('idnota')->nullable();
+            $table->foreign('idnota')->on('notas')->references('id')->onDelete('cascade');
             $table->string('valorpagar')->nullable();
             $table->timestamps();
         });
