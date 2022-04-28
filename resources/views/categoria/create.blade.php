@@ -19,8 +19,12 @@
             <form method="post" action="{{ route('categorias.store') }}">
                 @csrf
 
-                <h5>Nombre:</h5>
+                <h5>Grupo:</h5>
                 <input type="text" name="nombre" class="focus border-primary  form-control" required>
+                <h5>Descripcion:</h5>
+                <input type="text" name="descripcion" class="focus border-primary  form-control" required>
+                <h5>Tipo Activo:</h5>
+                <input type="text" name="tipo_activo" class="focus border-primary  form-control" required>
 
 
 
