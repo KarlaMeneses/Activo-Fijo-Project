@@ -3,6 +3,7 @@
 @section('title', 'SI-ActivoFijo')
 
 @section('content_header')
+
     <h1>Usuarios</h1>
 @stop
 
@@ -56,7 +57,7 @@
 
                                         @can('editar usuario')
                                     @endcan
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" value="Borrar">Eliminar</button> 
+                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" style="margin-top: 5px" value="Borrar">Eliminar</button> 
                                     @can('eliminar usuario')
                                     @endcan
                                 </form>
