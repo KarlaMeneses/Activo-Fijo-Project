@@ -20,8 +20,6 @@ class CreateUbicacionesTable extends Migration
             $table->string('pais');
             $table->unsignedBigInteger('id_departamento');
             $table->foreign('id_departamento')->on('departamentos')->references('id')->onDelete('cascade');
-        
-            $table->timestamps();
         });
     }
 

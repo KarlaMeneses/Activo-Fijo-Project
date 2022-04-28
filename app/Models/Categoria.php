@@ -9,5 +9,5 @@ class Categoria extends Model
 {
     use HasFactory;
     protected $table = 'categorias'; //usa el nombre de la base de datos 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'descripcion', 'tipo_activo', 'created_at', 'updated_at'];
 }

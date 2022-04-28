@@ -16,10 +16,10 @@ class CategoriaController extends Controller
      */
     public function index() // categorias.index, te lista de la base de datos, las categorias que hay
     {
-        $categoria = categoria::all();
-        //dd(json_decode(json_encode($categoria)));//
+        $categorias = categoria::all();
+        //dd(json_decode(json_encode($categorias))); //
         // llama al model "categoria" y te trae todas las categorias de la base de datos
-        return view('categorias.index', compact('categoria')); // te muestra la vista "categorias.index", pero antes de eso
+        return view('categoria.index', compact('categorias')); // te muestra la vista "categorias.index", pero antes de eso
     }                                                         // manda la variable categoria que contiene la inf de todas las categorias
 
 

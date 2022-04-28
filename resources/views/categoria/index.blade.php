@@ -22,25 +22,28 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombres</th>
-
+                        <th>Grupos</th>
+                        <th>Descripcion</th>
+                        <th>Tipo de Activo</th>
                         <th>Acciones</th>
 
 
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categoria as $categorias)
+                    @foreach ($categorias as $categoria)
                         <tr>
-                            <td>{{ $categorias->id }}</td>
-                            <td>{{ $categorias->nombre }}</td>
+                            <td>{{ $categoria->id }}</td>
+                            <td>{{ $categoria->nombre }}</td>
+                            <td>{{ $categoria->descripcion }}</td>
+                            <td>{{ $categoria->tipo_activo }}</td>
                             <td>
 
                                 <a class="btn btn-primary btn-sm"
-                                    href="{{ route('categorias.edit', $categorias) }}">Editar</a>
+                                    href="{{ route('categorias.edit', $categoria) }}">Editar</a>
 
 
-                                <form action="{{ route('categorias.destroy', $categorias) }}" method="POST">
+                                <form action="{{ route('categorias.destroy', $categoria) }}" method="POST">
                                     @csrf
                                     @method('delete')
 

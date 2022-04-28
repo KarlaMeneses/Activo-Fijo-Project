@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActivofijoController;
+use App\Http\Controllers\NotaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoriaController;
@@ -28,7 +29,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
 Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
+Route::resource('activosfijo', ActivofijoController::class)->names('activosfijo');
+Route::resource('notas', NotaController::class)->names('notas');
+Route::get('notasventa', [NotaController::class, 'indexVenta'])->name('notasventa.index');
+
 
 ///Categoria de activo fijos
 Route::resource('categorias', CategoriaController::class)->names('categorias');
-Route::resource('activosfijo', ActivofijoController::class)->names('activosfijo');
