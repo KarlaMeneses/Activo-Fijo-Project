@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'SI2+')
+@section('title', 'Activo Fijo')
 
 @section('content_header')
     <h1>ver nota compra</h1>
@@ -24,73 +24,59 @@
                                 </div>
                             @endif
                             <div class="row">
-                                <div class="col-md-4">
 
-                                </div>
                                 <!--end card nota-->
 
                                 <!--end card nota 2-->
 
                                 <!--Start third-->
-                                <div class="col-md-4">
-                                    <div class="card card-nota">
-                                        <div class="card-body">
-                                            <table class="table table-bordered table-striped">
-                                                <tbody>
+                                <div class="card card-nota">
+                                    <div class="card-body">
+                                        <table class="table table-responsive table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Cantidad</th>
+                                                    <th scope="col">Detalle</th>
+                                                    <th scope="col">Precio unitario</th>
+                                                    <th scope="col">Total</th>
+                                                </tr>
+                                            </thead>
 
-                                                    <tr>
-                                                        <th scope="col">unidad</th>
-                                                        <td>{{ $nota->unidad }}</td>
-                                                    </tr>
+                                            <tbody>
 
-                                                    <tr>
-                                                        <th scope="col">concepto</th>
-                                                        <td>{{ $nota->concepto }}</td>
-                                                    </tr>
+                                                @foreach ($detallenotas as $detalle)
+                                                    @if ($detalle->id_notas == $nota->id)
+                                                        <tr>
+                                                            <td>{{ $detalle->cantidad }}</td>
+                                                            <td>{{ $detalle->detalle }}</td>
+                                                            <td>{{ $detalle->precio_uni }}</td>
+                                                            <td>{{ $detalle->total }}</td>
 
-                                                    <tr>
-                                                        <th scope="col">precio_uni</th>
-                                                        <td>{{ $nota->precio_uni }}</td>
-                                                    </tr>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
+                                            </tbody>
+                                            <tr>
+                                                <th scope="col">Totales</th>
+                                                <th scope="col">{{ $nota->totales }}</th>
+                                            </tr>
 
-                                                    <tr>
-                                                        <th scope="col">importe</th>
-                                                        <td>{{ $nota->importe }}</td>
-                                                    </tr>
+                                        </table>
+                                        <h5>Comprobante - Nota de compra fisica</h5>
+                                        <h4>FOTO</h4>
 
-                                                    <tr>
-                                                        <th scope="col">condicion_pago</th>
-                                                        <td>{{ $nota->condicion_pago }}</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th scope="col">fecha_envio</th>
-                                                        <td>{{ $nota->fecha_envio }}</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th scope="col">fecha_entrega</th>
-                                                        <td>{{ $nota->fecha_entrega }}</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th scope="col">lugar_entrega</th>
-                                                        <td>{{ $nota->lugar_entrega }}</td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="button-container">
-                                                <a href="{{ route('notas.index') }}" class="btn btn-sm btn-success mr-3">
-                                                    Volver </a>
-                                                <a href="{{ route('notas.edit', $nota->id) }}"
-                                                    class="btn btn-sm btn-primary"> Editar </a>
-                                            </div>
+                                        <img src="{{ asset($nota->foto) }}" width="150" height="90" />
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="button-container">
+                                            <a href="{{ route('notas.index') }}" class="btn btn-sm btn-success mr-3">
+                                                Volver </a>
+                                            <a href="{{ route('notas.edit', $nota->id) }}" class="btn btn-sm btn-primary">
+                                                Editar </a>
                                         </div>
                                     </div>
                                 </div>
+
                                 <!--end third-->
 
                             </div>

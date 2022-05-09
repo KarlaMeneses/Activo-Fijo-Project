@@ -21,3 +21,5 @@ class roleSeeder extends Seeder
         permission::create(['name'=>'Gestionar Perfil'])->syncRoles([$role1]) ;
     }
 }
+
+
