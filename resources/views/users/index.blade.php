@@ -51,7 +51,7 @@
                                     @csrf
                                     @method('delete')
                                     <a href="{{route('users.edit', $user)}}" class="btn btn-primary btn-sm">Editar<a>
-                                    <a href="{{route('users.show', $user->id)}}" class="btn btn-success btn-sm">Ver<a>
+                                    <a href="{{route('users.show', $user->id)}}" style="margin-top: 5px" class="btn btn-success btn-sm">Ver<a>
 
                                     
 
