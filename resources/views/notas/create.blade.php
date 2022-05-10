@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'PROSALUD+')
+@section('title', 'Activo Fijo')
 
 @section('content_header')
     <h1>Registrar nota de compra</h1>

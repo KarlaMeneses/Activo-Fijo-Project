@@ -16,15 +16,14 @@ class notaSeeder extends Seeder
     {
         DB::table('notas')->insert([
             [
-                'unidad' => 1,
-                'concepto' => 'Santa Cruz de la Sierra',
                 //nota compra
-                'precio_uni' => 1,
-                'importe' => 1,
-                'condicion_pago' => 'Santa Cruz de la Sierra',
-                'fecha_envio' => '2000-02-20',
-                'fecha_entrega' => '2000-02-20',
-                'lugar_entrega' => 'Santa Cruz de la Sierra',
+                'proveedor' => 'Mundo de las computadoras',
+                'direccion' => 'Comercial chiriguano p/4 caseta # 123',
+                'telefono' => 62350093, 
+                'totales' => 6000,
+                'fecha_entrega' => '2022-02-20',
+                'foto' => 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/notas%2Fcompras%2F3.jpeg?alt=media&token=b6440cf8-f26a-4e9e-af88-8e7224dfe52e',
+
                 //nota venta
                 'nro_egreso' => 1,
                 'almacen' => 'Santa Cruz de la Sierra',

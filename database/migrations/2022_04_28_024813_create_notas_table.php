@@ -16,14 +16,22 @@ class CreateNotasTable extends Migration
         Schema::create('notas', function (Blueprint $table) {
             $table->id();
             //nota compra
-            $table->integer('unidad');
-            $table->string('concepto');
-            $table->integer('precio_uni')->nullable();
-            $table->integer('importe')->nullable();
+            $table->string('proveedor')->nullable();
+            $table->string('direccion')->nullable();
+            $table->integer('telefono')->nullable();
+            $table->integer('totales')->nullable();
+            $table->date('fecha_entrega')->nullable();
+            $table->string('foto')->nullable();
+
+            //detalles de la compra.   (foto de la nota compra)
+/*         
+
+            //DETALLES EXTRAS QUIZAS NECESARIO
             $table->string('condicion_pago')->nullable();
             $table->date('fecha_envio')->nullable();
-            $table->date('fecha_entrega')->nullable();
             $table->string('lugar_entrega')->nullable();
+*/
+
             //nota venta
             $table->integer('nro_egreso')->nullable();
             $table->string('almacen')->nullable();
