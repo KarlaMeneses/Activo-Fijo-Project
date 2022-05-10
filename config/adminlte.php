@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Activo Fijo',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -269,7 +269,7 @@ return [
                 [
                     'text'    => 'Nota de venta',
                     'route'  => 'notasventa.index',
-                   // 'route'     => 'notasventa.indexVenta',
+                    // 'route'     => 'notasventa.indexVenta',
                 ],
             ],
         ],
@@ -284,7 +284,7 @@ return [
                 [
                     'text' => 'Lista de Facturas',
                     'url'  => 'factura/facturacompra/index',
-                   
+
                 ],
                 [
                     'text'    => 'Factura de venta',

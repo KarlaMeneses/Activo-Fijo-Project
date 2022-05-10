@@ -30,8 +30,11 @@ class notaSeeder extends Seeder
                 'almacen' => 'Santa Cruz de la Sierra',
                 'entregado_a' => 'Santa Cruz de la Sierra',
                 'orden' => 'Santa Cruz de la Sierra',
-                'id_responsable' => 1,
-            ] 
+                'id_responsable' => 2,
+            ]
+
+
+
         ]);
     }
 }
