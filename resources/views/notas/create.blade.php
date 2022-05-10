@@ -17,25 +17,28 @@
             @enderror
             <form action="{{ route('notas.store') }}" method="post">
                 @csrf
-                <label for="unidad">Unidad</label>
-                <input type="text" name="unidad" class="form-control" value="{{ old('unidad') }}" required>
+                <label for="proveedor">proveedor</label>
+                <input type="text" name="proveedor" class="form-control"  required>
 
-                <label for="concepto">Concepto</label>
-                <input type="text" name="concepto" class="form-control" value="{{ old('concepto') }}" required>
+                <label for="direccion">direccion</label>
+                <input type="text" name="direccion" class="form-control"  required>
 
-                <label for="precio_uni">Precio unitario</label>
-                <input type="text" name="precio_uni" class="form-control" value="{{ old('precio_uni') }}" required>
+                <label for="telefono">telefono</label>
+                <input type="tel" name="telefono" class="form-control"  required>
 
-    
+                <label for="fecha_entrega">fecha_entrega</label>
+                <input type="date" name="fecha_entrega" class="form-control"  required>
+
+                <label for="totales">totales</label>
+                <input type="text" name="totales" class="form-control"  required>
+
+                <h5>DETALLE DE LA COMPRA</h5>
                 <button class="btn btn-danger btn-sm" type="submit">Crear Nota</button>
                 <a class="btn btn-primary btn-sm" href="{{ route('notas.index') }}">Volver</a>
             </form>
-
         </div>
     </div>
-
     <script>
-
     </script>
 @stop
 
