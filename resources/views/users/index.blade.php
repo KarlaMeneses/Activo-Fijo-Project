@@ -75,7 +75,7 @@
                                         href="{{ route('users.show', $user->id) }}">
                                         <i class="fas fa-eye"></i> Ver </a>
                                     <a href="{{ route('users.edit', $user) }}" class="btn btn-primary btn-sm">
-                                        <i class="fas fa-user-edit"></i> Editar<a>
+                                        <i class="fas fa-edit"></i> Editar<a>
                                             @csrf
                                             @method('delete')
                                             @can('editar usuario')

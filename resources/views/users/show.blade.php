@@ -3,111 +3,122 @@
 @section('title', 'SI-ActivoFijo')
 
 @section('content_header')
-    <h1>Ver Usuario</h1>
+
 @stop
 
 @section('content')
-    <div class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header card-header-primary">
-                            <div class="card-title">Vista detallada del usuario {{ $user->name }}</div>
 
-                        </div>
-                        <!--body-->
-                        <div class="card-body">
-                            @if (session('success'))
-                                <div class="alert alert-success" role="success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-                            <div class="row">
-                                <div class="col-md-4">
-
-                                </div>
-                                <!--end card user-->
-
-                                <!--end card user 2-->
-
-                                <!--Start third-->
-                                <div class="col-md-4">
-                                    <div class="card card-user">
-                                        <div class="card-body">
-                                            <table class="table table-bordered table-striped">
-                                                <tbody>
-
-                                                    <tr>
-                                                        <th style="text-align: center">Foto de Perfil</th>
-                                                        <!--<td> <img src="{{ asset('img/leodc.jpg') }}" style="width: 200px" alt=""></td>-->
-                                                        <td> <img src="{{ asset($user->foto) }}" width="200"
-                                                                height="200" />
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th>Nombre de usuario</th>
-                                                        <td>{{ $user->name }}</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th>Sexo</th>
-                                                        <td>{{ $user->sexo }}</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th>Edad</th>
-                                                        <td>{{ $user->edad }}</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th>Cargo</th>
-                                                        <td>{{ $user->cargo }}</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th>Dirección </th>
-                                                        <td>{{ $user->direccion }}</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th>Teléfono </th>
-                                                        <td>{{ $user->telefono }}</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th>Email</th>
-                                                        <td>{{ $user->email }}</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th>Rol</th>
-                                                        <td>
-                                                            {{ $user->getRoleNames()[0] }}
-                                                        </td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="button-container">
-                                                <a href="{{ route('users.index') }}" class="btn btn-sm btn-success mr-3">
-                                                    Volver </a>
-                                                <a href="{{ route('users.edit', $user->id) }}"
-                                                    class="btn btn-sm btn-primary"> Editar </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--end third-->
-
-                            </div>
-                        </div>
-                    </div>
+    <div class="card">
+        <div class="card-body">
+            @if (session('success'))
+                <div class="alert alert-success" role="success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            {{-- datos --}}
+            <div class="card">
+                <div class="card-header">
+                    <center>
+                        <h2 class="font-weight-bold px-2">Información del Usuario</h2>
+                    </center>
                 </div>
             </div>
+
+
+            <div>
+                <center>
+                    <img src="{{ asset($user->foto) }}" width="200" height="200" class="img-circle" />
+                    <br>
+                    <label for="name">Vista detallada de {{ $user->name }} </label>
+
+                </center>
+            </div>
+
+            <div class="row">
+
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <div class="form-group">
+                        <label for="name">Nombre de usuario: </label>
+                        <input type="text" name="name" class="form-control" value="{{ $user->name }}" disabled>
+                    </div>
+                </div>
+
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <div class="form-group">
+                        <label for="name">Sexo: </label>
+                        <input type="text" name="name" class="form-control" value="{{ $user->sexo }}" disabled>
+                    </div>
+                </div>
+
+
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <div class="form-group">
+                        <label for="name">Edad: </label>
+                        <input type="text" name="name" class="form-control" value="{{ $user->edad }}" disabled>
+                    </div>
+                </div>
+
+
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <div class="form-group">
+                        <label for="name">Cargo: </label>
+                        <input type="text" name="name" class="form-control" value="{{ $user->cargo }}" disabled>
+                    </div>
+                </div>
+
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <div class="form-group">
+                        <label for="name">Direccion: </label>
+                        <input type="text" name="name" class="form-control" value="{{ $user->direccion }}" disabled>
+                    </div>
+                </div>
+
+
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <div class="form-group">
+                        <label for="name">Teléfono : </label>
+                        <input type="text" name="name" class="form-control" value="{{ $user->telefono }}" disabled>
+                    </div>
+                </div>
+
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <div class="form-group">
+                        <label for="name">Correo: </label>
+                        <input type="text" name="name" class="form-control" value="{{ $user->email }}" disabled>
+                    </div>
+                </div>
+
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <div class="form-group">
+                        <label for="name">Rol : </label>
+                        <input type="text" name="name" class="form-control" value="{{ $user->getRoleNames()[0] }}"
+                            disabled>
+                    </div>
+                </div>
+
+                <br>
+            </div>
+            <center>
+                <a class="btn btn-warning btb-sm text-light" href="{{ route('users.index') }}">Volver</a>
+                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btb-sm text-light"> Editar </a>
+            </center>
+
         </div>
     </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
+@stop
+
+@section('js')
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#empresas').DataTable();
+        });
+    </script>
+@stop
