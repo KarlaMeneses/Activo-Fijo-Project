@@ -10,7 +10,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{route('users.create')}}" class="btn btn-primary btb-sm">Crear Usuario</a>
+            <a href="{{ route('users.create') }}" class="btn btn-primary btb-sm">Crear Usuario</a>
         </div>
     </div>
 
@@ -27,7 +27,7 @@
                         <th scope="col">Cargo</th>
                         <th scope="col">Direccion</th>
                         <th scope="col">Telefono</th>
-                        <th scope="col">Foto</th>                        
+                        <th scope="col">Foto</th>
                         <th scope="col">Rol</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -36,30 +36,28 @@
                 <tbody>
                     @foreach ($users as $user)
                         <tr>
-                            <td>{{$user->id}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->edad}}</td>
-                            <td>{{$user->sexo}}</td>
-                            <td>{{$user->cargo}}</td>
-                            <td>{{$user->direccion}}</td>
-                            <td>{{$user->telefono}}</td>
-                            <td>{{$user->foto}}</td>
-                            <td>{{$user->getRoleNames()[0]}}</td>
+                            <td>{{ $user->id }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->edad }}</td>
+                            <td>{{ $user->sexo }}</td>
+                            <td>{{ $user->cargo }}</td>
+                            <td>{{ $user->direccion }}</td>
+                            <td>{{ $user->telefono }}</td>
+                            <td>{{ $user->foto }}</td>
+                            <td>{{ $user->getRoleNames()[0] }}</td>
                             <td>
-                                <form action="{{route('users.destroy', $user)}}" method="post">
+                                <form action="{{ route('users.destroy', $user) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('users.edit', $user)}}" class="btn btn-primary btn-sm">Editar<a>
-                                    <a href="{{route('users.show', $user->id)}}" class="btn btn-success btn-sm">Ver<a>
+                                    <a href="{{ route('users.edit', $user) }}" class="btn btn-primary btn-sm">Editar<a>
+                                            <a href="{{ route('users.show', $user->id) }}"
+                                                class="btn btn-success btn-sm">Ver<a>
 
-                                    
+                                                    <button class="btn btn-danger btn-sm"
+                                                        onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')"
+                                                        style="margin-top: 5px" value="Borrar"><i class="fas fa-solid fa-trash"></i> Eliminar</button>
 
-                                        @can('editar usuario')
-                                    @endcan
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" style="margin-top: 5px" value="Borrar">Eliminar</button> 
-                                    @can('eliminar usuario')
-                                    @endcan
                                 </form>
                             </td>
                         </tr>
@@ -81,7 +79,7 @@
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
-        $('#usuarios').DataTable();
-        } );
-    </script> 
+            $('#usuarios').DataTable();
+        });
+    </script>
 @stop
