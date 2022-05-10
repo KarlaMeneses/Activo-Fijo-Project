@@ -44,8 +44,7 @@
                             <td>{{ $user->cargo }}</td>
                             <td>{{ $user->direccion }}</td>
                             <td>{{ $user->telefono }}</td>
-                            <!--<td>{{ $user->foto }}</td>-->
-                            <td><img src="{{ asset($user->foto) }}" width="50" height="50" /></td>
+                            <td>{{ $user->foto }}</td>
                             <td>{{ $user->getRoleNames()[0] }}</td>
                             <td>
                                 <form action="{{ route('users.destroy', $user) }}" method="post">
@@ -55,15 +54,11 @@
                                             <a href="{{ route('users.show', $user->id) }}"
                                                 class="btn btn-success btn-sm">Ver<a>
 
-
-
-                                                    @can('editar usuario')
-                                                    @endcan
                                                     <button class="btn btn-danger btn-sm"
                                                         onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')"
-                                                        style="margin-top: 5px" value="Borrar">Eliminar</button>
-                                                    @can('eliminar usuario')
-                                                    @endcan
+                                                        style="margin-top: 5px" value="Borrar"><i
+                                                            class="fas fa-solid fa-trash"></i> Eliminar</button>
+
                                 </form>
                             </td>
                         </tr>

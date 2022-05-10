@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'PROSALUD+')
+@section('title', 'Activo Fijo')
 
 @section('content_header')
-    <h1>Editar Nota de venta</h1>
+    <h1>Editar Nota de compra</h1>
 @stop
 
 @section('content')

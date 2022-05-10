@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Detallenota;
 use App\Models\Nota;
 use Illuminate\Http\Request;
 
@@ -64,7 +65,9 @@ class NotaController extends Controller
      */
     public function show($id)
     {
-        //
+        $nota = Nota::find($id);
+        $detallenotas = Detallenota::all();
+        return view('notas.show', compact('nota','detallenotas'));
     }
 
     /**
