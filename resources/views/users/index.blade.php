@@ -21,23 +21,7 @@
     <div class="card">
         <!--<div class="card-body">-->
         <div class="card-body " style="overflow-x: scroll">
-            <div class="container">
-                <div class="img-factura row ">
-                    <div class="col">
-                        <figure>
-                            <img src={{ asset('img/logo.png') }} class="figure-img img-fluid rounded"
-                                alt="logo activo fijo." width="120" height="120" />
-                        </figure>
-                    </div>
-                    <div class="col">
-                        <figcaption class="figure-caption ">
-                            <h5><i class="fa fa-building-o pr-1" aria-hidden="true"></i> Nombre del software</h5>
-                            <h5><i class="fa fa-phone pr-1" aria-hidden="true"></i> (+591) 7xxxxxxx</h5>
-                            <h5><i class="fa fa-envelope-o pr-1" aria-hidden="true"></i> activofijo@gmail.com</h5>
-                        </figcaption>
-                    </div>
-                </div>
-            </div>
+
             <!-- <table class="table table-striped" id="usuarios" style="width:100%">-->
             <table class="table table-striped table-bordered shadow-lg mt-4 " id="usuarios" style="width:100%">
                 <thead class="bg-dark">
