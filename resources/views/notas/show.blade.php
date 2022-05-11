@@ -3,7 +3,9 @@
 @section('title', 'Activo Fijo')
 
 @section('content_header')
-    <h1>ver nota compra</h1>
+    <div class="card-header text-center">
+        <h3><b>Ver Nota De Compra</b></h3>
+    </div>
 @stop
 
 @section('content')
@@ -13,13 +15,57 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <div class="card-title">Nota </div>
-                            <p class="card-category"> Vista detallada de nota compra</p>
                             <a href="{{ route('notas.index') }}" class="btn btn-sm btn-success mr-3">
                                 Volver </a>
                         </div>
                         <!--body-->
+
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="form-group">
+                                        <label>Proveedor: </label>
+                                        <input class="form-control" value="{{ $nota->proveedor }}" disabled>
+                                    </div>
+                                </div>
+                
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="form-group">
+                                        <label>Direccion: </label>
+                                        <input class="form-control" value="  {{ $nota->direccion }}" disabled>
+                                    </div>
+                                </div>
+                
+                
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="form-group">
+                                        <label>Telefono: </label>
+                                        <input class="form-control" value="{{ $nota->telefono }}" disabled>
+                                    </div>
+                                </div>
+                
+                
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="form-group">
+                                        <label>Fecha entrega: </label>
+                                        <input class="form-control" value="{{ $nota->fecha_entrega }}" disabled>
+                                    </div>
+                                </div>
+                
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="form-group">
+                                        <label>Totales: </label>
+                                        <input class="form-control" value="{{ $nota->totales }}" disabled>
+                                    </div>
+                                </div>
+            
+                                <br>
+                            </div>
+                        </div>
+                        
                         <div class="card-body">
+
                             @if (session('success'))
                                 <div class="alert alert-success" role="success">
                                     {{ session('success') }}
@@ -67,7 +113,7 @@
 
                                     </table>
                                     <h5>Comprobante - Nota de compra fisica</h5>
-                                    <img src="{{ asset($nota->foto) }}" width="350" height="500" />
+                                    <img src="{{ asset($nota->foto) }}" width="250" height="300" />
 
                                 </div>
                                 <!--end third-->

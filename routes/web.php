@@ -53,4 +53,6 @@ Route::post('notas/detalle_update/{id}', [DetallenotaController::class, 'detalle
 
 Route::delete('notas/detalle_destroy/{id}', [DetallenotaController::class, 'detalle_destroy']);
 
-Route::post('notas/total_update/{id}', [NotaController::class, 'total_update']);
+//Route::post('notas/total_update/{id}', [NotaController::class, 'total_update']);
+
+Route::get('notas/detalle_create',[NotaController::class,'detalle_create']);

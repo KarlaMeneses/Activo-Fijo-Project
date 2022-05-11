@@ -104,7 +104,8 @@ class DetallenotaController extends Controller
         $detallenota->id_notas = $id;
         $detallenota->save();
 
-        $total = $request->nota_totales + $request->total;
+        $total = $request->nota_totales + $detallenota->total;
+        //return $total;
         DB::table('notas')->where('id', $id)->update(['totales' => $total]);
         return back();
     }

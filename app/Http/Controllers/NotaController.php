@@ -33,8 +33,10 @@ class NotaController extends Controller
      */
     public function create()
     {
-        $notas = Nota::all();
-        return view('notas.create', compact('notas'));
+        $nota = nota::findOrFail(1);
+
+        $detallenotas = Detallenota::all();
+        return view('notas.create', compact('nota', 'detallenotas'));
     }
 
     /**
@@ -52,8 +54,19 @@ class NotaController extends Controller
         $nota->fecha_entrega = $request->fecha_entrega;
         $nota->totales = $request->totales;
         $nota->save();
-        return redirect()->route('notas.index');
+        //habilitar el detalle
+        $nota_obj = Nota::latest('id')->first();
+        //$nota_id = $nota_obj->id;
+        $auxi = true;
+        return redirect()->route('home')->with(compact('auxi'));
+        //return redirect()->back()->with(compact('nota_id'));
+        //  return redirect()->back();
     }
+
+    /*   public function detalle_create(Request $request){
+        return $request->id_nota;
+    }*/
+
 
     /**
      * Display the specified resource.
@@ -65,7 +78,7 @@ class NotaController extends Controller
     {
         $nota = Nota::find($id);
         $detallenotas = Detallenota::all();
-        return view('notas.show', compact('nota','detallenotas'));
+        return view('notas.show', compact('nota', 'detallenotas'));
     }
 
     /**
@@ -78,7 +91,7 @@ class NotaController extends Controller
     {
         $nota = nota::findOrFail($id);
         $detallenotas = Detallenota::all();
-        return view('notas.edit', compact('nota','detallenotas'));
+        return view('notas.edit', compact('nota', 'detallenotas'));
     }
 
     /**
@@ -88,7 +101,7 @@ class NotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Nota $nota)
+    public function update(Request $request, Nota $nota)
     {
         $nota = Nota::findOrFail($nota->id);
         $nota->proveedor = $request->input('proveedor');
@@ -110,10 +123,10 @@ class NotaController extends Controller
     {
         //
     }
-
+    /*
     public function total_update(Request $request, $id)
     {
         DB::table('notas')->where('id', $id)->update(['totales' => $request->totales]);
         return back();
-    }
+    }*/
 }

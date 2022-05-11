@@ -8,7 +8,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
 
     <div class="card-header  text-center">
-        <h3><b>Registrar nota de compra</b></h3>
+        <h3><b>Registrar Nota De Compra</b></h3>
     </div>
 @stop
 
@@ -19,63 +19,199 @@
 
 @section('content')
     <div class="card">
-        <div class="card-body">
+        <div class="card-body table-responsive">
             @error('name')
                 <div class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>¡Error!</strong> Este usuario ya está registrado.
                 </div>
             @enderror
+            @php
+                $sw = 1;
+                $anterior = 0;
+            @endphp
             <form action="{{ route('notas.store') }}" method="post">
                 @csrf
 
+                <button class="btn btn-danger " type="submit">Crear Nota</button>
+                <a class="btn btn-primary " href="{{ route('notas.index') }}">Volver</a>
 
-                <label for="proveedor">proveedor</label>
-                <input type="text" name="proveedor" class="form-control" required>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
 
-                <label for="direccion">direccion</label>
-                <input type="text" name="direccion" class="form-control" required>
+                        <label for="proveedor">Proveedor</label>
+                        <input type="text" name="proveedor" class="form-control" required>
 
-                <label for="telefono">telefono</label>
-                <input type="tel" name="telefono" class="form-control" required>
+                        <label for="direccion">Direccion</label>
+                        <input type="text" name="direccion" class="form-control" required>
 
-                <label for="fecha_entrega">fecha_entrega</label>
-                <input type="date" name="fecha_entrega" class="form-control" required>
+                        <label for="telefono">Telefono</label>
+                        <input type="tel" name="telefono" class="form-control" required>
 
-                <label for="totales">totales</label>
-                <input type="text" name="totales" class="form-control" required>
+                        <label for="fecha_entrega">Fecha compra</label>
+                        <input type="date" name="fecha_entrega" class="form-control" required>
 
-                <!---karla todo esto es subir imagenes --->
-            @section('js')
-                <script src="{{ asset('js/notascompras.js') }}"></script>
-            @endsection
-            <center>
+                        <label for="totales">Totales</label>
+                        <input type="text" name="totales" class="form-control" required>
 
-                {{-- separador --}}
-                <div class="form-group col-md-3">
-                    <label for="totales">Subir foto de Comprobante - Nota de compra fisica</label>
-
-                    <img width="300" height="400" id="foto">
-                    <div class="custom-input-file">
-                        <input type="file" id="file" accept="image/*" class="input-file" value="" required>
-                        <i class="fas fa-file-upload"></i> Subir Foto...
                     </div>
-                    <div class="col-12" id="app" style="text-align:center;">
-                        <progress id="progress_bar" value="0" max="100"></progress>
-                        <input type="hidden" value="" name="foto" id="fotov" title="foto"
-                            placeholder="https://example.com" list="defaultURLs" class="focus border-dark  form-control"
-                            required oninvalid="this.setCustomValidity('Please match the requested format')">
-                    </div>
-                    @error('foto')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <div class="form-group col-md-6">
+                        <!---karla todo esto es subir imagenes --->
+                    @section('js')
+                        <script src="{{ asset('js/notascompras.js') }}"></script>
+                    @endsection
+                    <center>
+                        <label>Subir foto de Comprobante - Nota de compra fisica</label>
+                        <img width="300" height="400" id="foto">
+                        <div class="custom-input-file">
+                            <input type="file" id="file" accept="image/*" class="input-file" value="" required>
+                            <i class="fas fa-file-upload"></i> Subir Foto...
+                        </div>
+                        <div class="col-12" id="app" style="text-align:center;">
+                            <progress id="progress_bar" value="0" max="100"></progress>
+                            <input type="hidden" value="" name="foto" id="fotov" title="foto"
+                                placeholder="https://example.com" list="defaultURLs"
+                                class="focus border-dark  form-control" required
+                                oninvalid="this.setCustomValidity('Please match the requested format')">
+                        </div>
+                        @error('foto')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+
+                    </center>
+                    <!---karla todo esto es subir imagenes --->
+
                 </div>
-            </center>
-            <!---karla todo esto es subir imagenes --->
-
+                <?php
+                $nota_aux = DB::table('notas')
+                    ->latest('id')
+                    ->first();
+                
+                $nota_id = $nota_aux->id;
+                ?>
+            
+            @if (auxi == true)
+            <h1>dinoooooo</h1>
+                
+            @endif
+            </div>
             <h5>DETALLE DE LA COMPRA</h5>
-            <button class="btn btn-danger btn-sm" type="submit">Crear Nota</button>
-            <a class="btn btn-primary btn-sm" href="{{ route('notas.index') }}">Volver</a>
+       
+            <button disabled>hola</button>
+
+
+            {{-- <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Detalle</th>
+                            <th scope="col">Precio unitario</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @php
+                            $suma_total = 0;
+                        @endphp
+                        @foreach ($detallenotas as $detalle)
+                            @if ($detalle->id_notas == $nota->id)
+                                <tr>
+                                    <td>{{ $detalle->id }}</td>
+                                    <td>{{ $detalle->cantidad }}</td>
+                                    <td>{{ $detalle->detalle }}</td>
+                                    <td>{{ $detalle->precio_uni }}</td>
+                                    <td>{{ $detalle->total }}</td>
+                                    @php
+                                        $suma_total = $suma_total + $detalle->total;
+                                    @endphp
+                                    <td>
+                                        <form action="{{ url('notas/detalle_destroy', $detalle->id) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+
+                                            <input type="hidden" name="id_nota" value="{{ $nota->id }}">
+                                            <input type="hidden" name="nota_totales" value="{{ $nota->totales }}">
+
+                                            <button class="btn btn-danger btn-sm"
+                                                onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" style="margin-top: 5px"
+                                                value="Borrar">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th scope="col">Totales</th>
+                        <th scope="col">{{ $nota->totales }}</th>
+                        @if ($suma_total != $nota->totales)
+                            <h1>VERIFIQUE LA SUMA TOTAL</h1>
+                        @endif
+                    </tr>
+                </table>
+
+            </div>
+
+            <body>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    Agregar detalles de la compra
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel"> Agregar activo </h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                            </div>
+
+                            <form action="{{ url('notas/detalle_update', $nota->id) }}" method="POST">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="cantidad">Cantidad</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="cantidad" class="form-control" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="detalle">Detalle</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="detalle" class="form-control" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="precio_uni">Precio unitario</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="precio_uni" class="form-control" required>
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" name="nota_totales" value="{{ $nota->totales }}">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Agregar detalle</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </body> --}}
         </form>
     </div>
 </div>
@@ -87,5 +223,7 @@
 @stop
 
 @section('js')
+<script>
 
+</script>
 @stop

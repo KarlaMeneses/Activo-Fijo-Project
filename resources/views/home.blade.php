@@ -20,7 +20,6 @@
    <div class="card-body">
        <p>El Software de Administración de Activo Fijo (SAAF) es un software que ofrece de manera junta un ambiente amigable y funcional en el cual encontrarás eficiencia al momento de subir y llevar el control de los activos que hay en tu empresa o múltiples empresas.</p>
    </div>
-
 </div>
 
 <div style="width: 6rem; position:relative;width:100%" >

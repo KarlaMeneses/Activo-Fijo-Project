@@ -3,7 +3,9 @@
 @section('title', 'Activo Fijo')
 
 @section('content_header')
-    <h1>Editar Nota de compra</h1>
+    <div class="card-header text-center">
+        <h3><b>Editar Nota De Compra</b></h3>
+    </div>
 @stop
 
 @section('content')
@@ -16,27 +18,34 @@
                 </div>
             @enderror
             <form action="{{ route('notas.update', $nota) }}" method="post" novalidate>
+
                 @csrf
                 @method('put')
                 <button class="btn btn-primary" type="submit">Actualizar Nota</button>
                 <a class="btn btn-danger" href="{{ route('notas.index') }}">Volver</a>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="proveedor">proveedor</label>
+                        <label for="proveedor">Proveedor</label>
                         <input type="text" name="proveedor" class="form-control" value="{{ $nota->proveedor }}" required>
 
-                        <label for="direccion">direccion</label>
+                        <label for="direccion">Direccion</label>
                         <input type="text" name="direccion" class="form-control" value="{{ $nota->direccion }}" required>
 
-                        <label for="telefono">telefono</label>
+                        <label for="telefono">Telefono</label>
                         <input type="tel" name="telefono" class="form-control" value="{{ $nota->telefono }}" required>
 
-                        <label for="fecha_entrega">fecha_entrega</label>
+                        <label for="fecha_entrega">Fecha entrega</label>
                         <input type="date" name="fecha_entrega" class="form-control" value="{{ $nota->fecha_entrega }}"
                             required>
 
-                        <label for="totales">totales</label>
+                        <label for="totales">Totales</label>
                         <input type="text" name="totales" class="form-control" value="{{ $nota->totales }}" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <h5>Comprobante - Nota de compra fisica</h5>
+                  
+                            <img src="{{ asset($nota->foto) }}" width="250" height="300" />
+                      
                     </div>
                 </div>
 
@@ -99,16 +108,12 @@
                         @endif
                     </tr>
                 </table>
-                <br>
-                <h5>Comprobante - Nota de compra fisica</h5>
-                <center>
-                    <img src="{{ asset($nota->foto) }}" width="350" height="500" />
-                </center>
+
             </div>
 
             <body>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                     Agregar detalles de la compra
                 </button>
                 <!-- Modal -->
@@ -116,7 +121,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                              <h4 class="modal-title" id="myModalLabel"> Agregar activo </h4>
+                                <h4 class="modal-title" id="myModalLabel"> Agregar activo </h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
                             </div>
@@ -145,12 +150,6 @@
                                         </div>
                                     </div>
 
-                                {{--}}    <div class="form-group">
-                                        <label for="total">Total</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="total" class="form-control" required>
-                                        </div>
-                                    </div>--}}
                                     <input type="hidden" name="nota_totales" value="{{ $nota->totales }}">
 
                                 </div>
