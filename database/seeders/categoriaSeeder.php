@@ -26,7 +26,7 @@ class categoriaSeeder extends Seeder
             [
                 'nombre' => 'vehículos industriales',
                 'descripcion' => 'vehículos para el transporte de mercancías o el transporte colectivo de personas',
-                'tipo_activo' => 'vehículos',
+                'tipo_activo' => 'vehículos industriales',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]   
