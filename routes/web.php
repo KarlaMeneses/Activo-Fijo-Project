@@ -5,6 +5,9 @@ use App\Http\Controllers\NotaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\DetalledetallenotaController;
+use App\Http\Controllers\DetallenotaController;
+use App\Models\Nota;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +43,14 @@ Route::get('factura/facturaventa/create', [App\Http\Controllers\FacturaControlle
 
 ///Categoria de activo fijos
 Route::resource('categorias', CategoriaController::class)->names('categorias');
+//nota compra
+
+//Route::post('notas/edit',[DetallenotaController::class,'store'])->name('detallenota.store');
+//DetallenotaController@store
+
+//Route::get('notas/detalle/{id}', [medicoController::class, 'detalle']);
+Route::post('notas/detalle_update/{id}', [DetallenotaController::class, 'detalle_update']);
+
+Route::delete('notas/detalle_destroy/{id}', [DetallenotaController::class, 'detalle_destroy']);
+
+Route::post('notas/total_update/{id}', [NotaController::class, 'total_update']);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Detallenota;
 use App\Models\Nota;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NotaController extends Controller
 {
@@ -45,14 +46,11 @@ class NotaController extends Controller
     public function store(Request $request)
     {
         $nota = new Nota();
-        $nota->unidad = $request->unidad;
-        $nota->concepto = $request->concepto;
-        $nota->precio_uni = $request->precio_uni;
-        $nota->importe = $request->importe;
-        $nota->condicion_pago = $request->condicion_pago;
-        $nota->fecha_envio = $request->fecha_envio;
+        $nota->proveedor = $request->proveedor;
+        $nota->direccion = $request->direccion;
+        $nota->telefono = $request->telefono;
         $nota->fecha_entrega = $request->fecha_entrega;
-        $nota->lugar_entrega = $request->lugar_entrega;
+        $nota->totales = $request->totales;
         $nota->save();
         return redirect()->route('notas.index');
     }
@@ -79,7 +77,8 @@ class NotaController extends Controller
     public function edit($id)
     {
         $nota = nota::findOrFail($id);
-        return view('notas.edit', compact('nota'));
+        $detallenotas = Detallenota::all();
+        return view('notas.edit', compact('nota','detallenotas'));
     }
 
     /**
@@ -89,17 +88,14 @@ class NotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $nota)
+    public function update(Request $request,Nota $nota)
     {
         $nota = Nota::findOrFail($nota->id);
-        $nota->unidad = $request->unidad;
-        $nota->concepto = $request->concepto;
-        $nota->precio_uni = $request->precio_uni;
-        $nota->importe = $request->importe;
-        $nota->condicion_pago = $request->condicion_pago;
-        $nota->fecha_envio = $request->fecha_envio;
-        $nota->fecha_entrega = $request->fecha_entrega;
-        $nota->lugar_entrega = $request->lugar_entrega;
+        $nota->proveedor = $request->input('proveedor');
+        $nota->direccion = $request->input('direccion');
+        $nota->telefono = $request->input('telefono');
+        $nota->fecha_entrega = $request->input('fecha_entrega');
+        $nota->totales = $request->input('totales');
         $nota->save();
         return redirect()->route('notas.index');
     }
@@ -113,5 +109,11 @@ class NotaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function total_update(Request $request, $id)
+    {
+        DB::table('notas')->where('id', $id)->update(['totales' => $request->totales]);
+        return back();
     }
 }

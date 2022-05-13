@@ -62,16 +62,24 @@ class UserController extends Controller
         $usuario->foto = $request->foto;
         $usuario->edad = $request->edad;
         $usuario->sexo = $request->sexo;
-        $usuario->cargo = $request->cargo;
+       
         $usuario->direccion = $request->direccion;
         $usuario->telefono = $request->telefono;
-      
+        
+
+        $roles = Role::all();
+        foreach( $roles as $rol){
+            if ($rol->id == $request->roles) {
+                $usuario->cargo = $rol->name;
+            }
+        }
 
 
 
         $usuario->password = bcrypt(($request->password));
         $usuario->save();
         $usuario->roles()->sync($request->roles);
+        
         return redirect()->route('users.index');
     }
 
@@ -96,7 +104,6 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $roles = Role::all();
         $user = User::find($id);
         $roles = Role::all();
         $rol = DB::table('model_has_roles')->where('model_id', $user->id)->first();
@@ -131,13 +138,21 @@ class UserController extends Controller
         $usuario->foto = $request->foto;
         $usuario->edad = $request->edad;
         $usuario->sexo = $request->sexo;
-        $usuario->cargo = $request->cargo;
+        
         $usuario->direccion = $request->direccion;
         $usuario->telefono = $request->telefono;
-      
 
-        $usuario->save();
+        $roles = Role::all();
+        foreach( $roles as $rol){
+            if ($rol->id == $request->roles) {
+                $usuario->cargo = $rol->name;
+            }
+        }
         $usuario->roles()->sync($request->roles);
+
+      
+        $usuario->save();
+        
 
         return redirect()->route('users.index');
     }

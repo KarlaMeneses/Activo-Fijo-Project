@@ -3,56 +3,60 @@
 @section('title', 'SI-ActivoFijo')
 
 @section('content_header')
-    <h1>Roles</h1>
+    <div class="card-header text-center">
+        <h3><b>Roles</b></h3>
+    </div>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{route('roles.create')}}" class="btn btn-secondary btb-sm">Crear Rol</a>
+            <a href="{{ route('roles.create') }}" class="btn btn-primary btb-sm">
+                <i class="fas fa-address-book"></i> Crear Rol</a>
         </div>
     </div>
     <div class="card">
-        <div class="card-body">
-            <table class="table table-striped" id="roles" style="width:100%">
-                <thead>
+        <div class="card-body " style="overflow-x: scroll">
+
+            <table class="table table-striped shadow-lg mt-4" id="roles" style="width:100%">
+                <thead class="bg-dark">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nombre de Rol</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
-    
+
                 <tbody>
                     @foreach ($roles as $rol)
                         <tr>
-                            <td>{{$rol->id}}</td>
-                            <td>{{$rol->name}}</td>                            
-                            <td >
-                            
-                                <form action="{{url('/roles/'.$rol->id)}}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    
-                                    <a href="{{route('roles.edit', $rol)}}"  class="btn btn-primary btn-sm">Editar</a>
-                                    
-                                    @can('Editar rol')
-                                    @endcan
-                                    <div style="padding-top: 0.50rem"></div>
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" value="Borrar">Eliminar</button>                                    
-                                    @can('Eliminar rol')
-                                    @endcan
+                            <td>{{ $rol->id }}</td>
+                            <td>{{ $rol->name }}</td>
+
+
+                            <td>
+                                <form action="{{ url('/roles/' . $rol->id) }}" method="post">
+                                    <!--<a class="btn btn-warning btn-sm text-light" href="#">
+                                                    <i class="fas fa-eye"></i> Ver </a>-->
+                                    <a href="{{ route('roles.edit', $rol) }}" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-edit"></i> Editar<a>
+                                            @csrf
+                                            @method('delete')
+                                            
+                                            <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
+                                                value="Borrar" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash-alt" style="margin-right: 5px"></i>Eliminar</button>
+                                            
                                 </form>
-                            
                             </td>
-                            
+
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-    
+
 @stop
 
 @section('css')
@@ -66,7 +70,7 @@
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
-         $('#roles').DataTable();
-        } );
-    </script> 
+            $('#roles').DataTable();
+        });
+    </script>
 @stop

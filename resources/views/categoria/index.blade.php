@@ -3,12 +3,12 @@
 @section('title', 'Activo Fijo')
 
 @section('content_header')
-    <h1>Lista Categorias</h1>
+
+    <div class="card-header  text-center">
+        <h3><b>Lista Categorias</b></h3>
+    </div>
+
 @stop
-@section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
-@endsection
 
 @section('content')
     <div class="card">
@@ -17,17 +17,19 @@
             <a class="btn btn-primary" href="{{ route('categorias.create') }}">Registrar Categoria</a>
 
         </div>
-        <div class="card-body">
-            <table class="table table-striped table-bordered shadow-lg mt-4" id="categorias">
-                <thead>
+    </div>
+    <div class="card">
+        <!--<div class="card-body">-->
+        <div class="card-body " style="overflow-x: scroll">
+            <!-- <table class="table table-striped" id="usuarios" style="width:100%">-->
+            <table class="table table-striped shadow-lg mt-4" id="categoria" style="width:100%">
+                <thead class="bg-dark">
                     <tr>
                         <th>Id</th>
-                        <th>Grupos</th>
-                        <th>Descripcion</th>
-                        <th>Tipo de Activo</th>
+                        <th>Bienes</th>
+                        <th>Años de vida Útil</th>
+                        <th>% Coeficiente</th>
                         <th>Acciones</th>
-
-
                     </tr>
                 </thead>
                 <tbody>
@@ -37,62 +39,44 @@
                             <td>{{ $categoria->nombre }}</td>
                             <td>{{ $categoria->descripcion }}</td>
                             <td>{{ $categoria->tipo_activo }}</td>
+
+
                             <td>
-
-                                <a class="btn btn-primary btn-sm"
-                                    href="{{ route('categorias.edit', $categoria) }}">Editar</a>
-
-
-                                <form action="{{ route('categorias.destroy', $categoria) }}" method="POST">
-                                    @csrf
-                                    @method('delete')
-
-                                    <button class="btn btn-danger btn-sm" style="margin-top: 0.35rem"
-                                        onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" value="Borrar">Eliminar</button>
-
-
+                                <form action="{{ route('categorias.destroy', $categoria) }}" method="post">
+                                    <!--<a class="btn btn-warning btn-sm text-light" href="#">
+                                                                        <i class="fas fa-eye"></i> Ver </a>-->
+                                    <a href="{{ route('categorias.edit', $categoria) }}" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-edit"></i> Editar<a>
+                                            @csrf
+                                            @method('delete')
+                                            @can('editar categoria')
+                                            @endcan
+                                            <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
+                                                value="Borrar" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash-alt" style="margin-right: 5px">Eliminar</i></button>
+                                            @can('eliminar categoria')
+                                            @endcan
                                 </form>
                             </td>
+
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            {{-- <div class="row row-cols-1 row-cols-md-3 g-4">
-                @foreach ($categoria as $categorias)
-                    <div class="col">
-                        <div class="card h-100">
-                            <img href="img/SmarHome.jpeg" class="card-img-top" width="200" height="300" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"> {{ $categorias->id }}</h5>
-                                <p class="card-text">{{ $categorias->nombre }}</p>
-                            </div>
-                            <div class="card-footer">
-                                @can('gestionar usuario')
-                                    <a class="btn btn-primary btn-sm"
-                                        href="{{ route('categorias.edit', $categorias) }}">Editar</a>
-                                @endcan
-
-                                <form action="{{ route('categorias.destroy', $categorias) }}" method="POST">
-                                    @csrf
-                                    @method('delete')
-                                    @can('gestionar usuario')
-                                        <button class="btn btn-danger btn-sm" style="margin-top: 0.35rem"
-                                            onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" value="Borrar">Eliminar</button>
-                                    @endcan
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div> --}}
         </div>
     </div>
+
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
 @stop
 
 @section('js')
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $('#categorias').DataTable({
             autoWidth: false
