@@ -31,11 +31,6 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Correo</th>
                         <th scope="col">Rol</th>
-                        <th scope="col">Edad</th>
-                        <th scope="col">Sexo</th>
-                        <th scope="col">Cargo</th>
-                        <th scope="col">Direccion</th>
-                        <th scope="col">Telefono</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -48,11 +43,6 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->getRoleNames()[0] }}</td>
-                            <td>{{ $user->edad }} años</td>
-                            <td>{{ $user->sexo }}</td>
-                            <td>{{ $user->cargo }}</td>
-                            <td>{{ $user->direccion }}</td>
-                            <td>{{ $user->telefono }}</td>
                             <td>
                                 <form action="{{ route('users.destroy', $user) }}" method="post">
                                     <a class="btn btn-warning btn-sm text-light"
@@ -62,13 +52,11 @@
                                         <i class="fas fa-edit"></i> Editar<a>
                                             @csrf
                                             @method('delete')
-                                            @can('editar usuario')
-                                            @endcan
+                                            
                                             <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
                                                 value="Borrar" class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash-alt" style="margin-right: 5px">Eliminar</i></button>
-                                            @can('eliminar usuario')
-                                            @endcan
+                                                <i class="fas fa-trash-alt" style="margin-right: 5px"></i>Eliminar</button>
+                                            
                                 </form>
                             </td>
                         </tr>

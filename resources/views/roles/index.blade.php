@@ -42,13 +42,11 @@
                                         <i class="fas fa-edit"></i> Editar<a>
                                             @csrf
                                             @method('delete')
-                                            @can('editar rol')
-                                            @endcan
+                                            
                                             <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
                                                 value="Borrar" class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash-alt" style="margin-right: 5px">Eliminar</i></button>
-                                            @can('eliminar rol')
-                                            @endcan
+                                                <i class="fas fa-trash-alt" style="margin-right: 5px"></i>Eliminar</button>
+                                            
                                 </form>
                             </td>
 
