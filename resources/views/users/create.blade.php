@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="sexo">Seleccione un sexo</label>
-                    <select name="sexo" id="select-roles" class="form-control" onchange="habilitar()" required>
+                    <select name="sexo" id="sexo" class="form-control" onchange="habilitar()" required>
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
                     </select>

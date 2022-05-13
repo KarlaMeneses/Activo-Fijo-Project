@@ -26,25 +26,30 @@
                 <thead class="bg-dark">
                     <tr>
                         <th>Id</th>
-                        <th>Bienes</th>
-                        <th>Años de vida Útil</th>
-                        <th>% Coeficiente</th>
+                        <th>Cuenta contable Bienes</th>
+                        <th>Descripcion</th>
+                        <th>Tipo</th>
+                        <th>Cacateristica</th>
+                        <th>vida util</th>
+                        <th>valor residual(%)</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
+
                     @foreach ($categorias as $categoria)
                         <tr>
                             <td>{{ $categoria->id }}</td>
                             <td>{{ $categoria->nombre }}</td>
                             <td>{{ $categoria->descripcion }}</td>
                             <td>{{ $categoria->tipo_activo }}</td>
-
-
+                            <td>{{ $categoria->cacateristica }}</td>
+                            <td>{{ $categoria->vida_util }} años</td>
+                            <td>{{ $categoria->valor_residual }} %</td>
                             <td>
                                 <form action="{{ route('categorias.destroy', $categoria) }}" method="post">
                                     <!--<a class="btn btn-warning btn-sm text-light" href="#">
-                                                                        <i class="fas fa-eye"></i> Ver </a>-->
+                                                                                                    <i class="fas fa-eye"></i> Ver </a>-->
                                     <a href="{{ route('categorias.edit', $categoria) }}" class="btn btn-primary btn-sm">
                                         <i class="fas fa-edit"></i> Editar<a>
                                             @csrf
