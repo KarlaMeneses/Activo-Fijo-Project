@@ -29,7 +29,7 @@
         <img style="margin:auto;display:block; padding-top: 6rem" width="400rem"
             src="https://anepsa.com.mx/wp-content/uploads/2021/05/SAAF-logo-con-tipografi%CC%81a.png" alt="">
     </div>
-
+<!--
     <div class="container">
         <nav>
             <ul class="mcd-menu">
@@ -99,7 +99,7 @@
         </nav>
     </div>
 
-
+-->
 
 
 
