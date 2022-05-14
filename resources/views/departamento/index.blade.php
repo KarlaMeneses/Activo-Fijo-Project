@@ -33,22 +33,21 @@
                         <tr>
                             <td>{{ $depa->id }}</td>
                             <td>{{ $depa->nombre }}</td>
-                            <td>{{ $depa->descripcion}}</td>
+                            <td>{{ $depa->descripcion }}</td>
 
                             <td>
-                                <form action="{{ route('departamentos.index') }}" method="post">
-                                    <!--<a class="btn btn-warning btn-sm text-light" href="#">
-                                                    <i class="fas fa-eye"></i> Ver </a>-->
-                                    <a href="{{ route('departamentos.index') }}" class="btn btn-primary btn-sm">
-                                        <i class="fas fa-edit"></i> Editar<a>
+                                <a href="{{ route('departamentos.edit', $depa->id) }}" class="btn btn-primary btn-sm"
+                                    style="margin-bottom: 0.35rem"> <i class="fas fa-edit"></i> Editar<a>
+
+                                        <form action="{{ route('departamentos.destroy', $depa->id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            
+
                                             <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
-                                                value="Borrar" class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash-alt" style="margin-right: 5px"></i>Eliminar</button>
-                                            
-                                </form>
+                                                value="Borrar" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt">
+                                                </i>Eliminar</button>
+
+                                        </form>
                             </td>
 
                         </tr>

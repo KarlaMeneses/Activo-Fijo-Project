@@ -31,32 +31,31 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($ubi as $ubi)
+                    @foreach ($ubis as $ubi)
                         <tr>
                             <td>{{ $ubi->id }}</td>
-                            <td>{{ $ubi->edificio}}</td>
-                            <td>{{ $ubi->ciudad}}</td>
-                            <td>{{ $ubi->pais}}</td>
-                          
-                          @foreach ($depa as $depa)
-@if ( $ubi->id_departamento==$depa->id)
-<td>{{ $depa->nombre}}</td> 
-@endif
+                            <td>{{ $ubi->edificio }}</td>
+                            <td>{{ $ubi->ciudad }}</td>
+                            <td>{{ $ubi->pais }}</td>
 
-@endforeach
+                            @foreach ($depas as $depa)
+                                @if ($ubi->id_departamento == $depa->id)
+                                    <td>{{ $depa->nombre }}</td>
+                                @endif
+                            @endforeach
                             <td>
-                                <form action="" method="post">
-                                    <!--<a class="btn btn-warning btn-sm text-light" href="#">
-                                                    <i class="fas fa-eye"></i> Ver </a>-->
-                                    <a href="" class="btn btn-primary btn-sm">
-                                        <i class="fas fa-edit"></i> Editar<a>
+                                <a href="{{ route('ubicaciones.edit', $ubi->id) }}" style="margin-bottom: 0.35rem" class="btn btn-primary btn-sm"> <i class="fas fa-edit"></i> Editar<a>
+                                <form action="{{ route('ubicaciones.destroy', $ubi->id) }}" method="post">
+                                    {{-- <a class="btn btn-warning btn-sm text-light" href="">
+                                        <i class="fas fa-eye"></i> Ver </a> --}}
+                                    
                                             @csrf
                                             @method('delete')
-                                            
+
                                             <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
                                                 value="Borrar" class="btn btn-danger btn-sm">
                                                 <i class="fas fa-trash-alt" style="margin-right: 5px"></i>Eliminar</button>
-                                            
+
                                 </form>
                             </td>
 

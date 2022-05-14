@@ -25,8 +25,7 @@ class DepartamentoController extends Controller
      */
     public function create()
     {
-        $depas = Departamento::all();
-        return view('departamento.create', compact('depas'));
+        return view('departamento.create');
     }
 
     /**
@@ -43,7 +42,7 @@ class DepartamentoController extends Controller
             'descripcion' => 'required|unique:departamentos'
         ]);
         $depas= Departamento::create($request->all()); // se crea una categoria con una funcion directa de laravel usando al model de referencia para solicitar los datos
-        return redirect()->route('departamentos.index', $depas); // Se redirige a la vista categoria.index
+        return redirect()->route('departamentos.index'); // Se redirige a la vista categoria.index
     }
 
     /**
@@ -65,7 +64,8 @@ class DepartamentoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $depa = Departamento::find($id);
+        return view('departamento.edit', compact('depa'));
     }
 
     /**
@@ -77,7 +77,11 @@ class DepartamentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-     //
+        $depa = Departamento::find($id);
+        $depa->nombre = $request->nombre;
+        $depa->descripcion = $request->descripcion;
+        $depa->save();
+        return redirect()->route('departamentos.index'); 
     }
 
     /**
@@ -88,6 +92,8 @@ class DepartamentoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $depa = Departamento::find($id);
+        $depa->delete();
+        return redirect()->back();
     }
 }

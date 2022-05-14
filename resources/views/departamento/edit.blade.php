@@ -3,29 +3,31 @@
 @section('title', 'SI-ActivoFijo')
 
 @section('content_header')
-    <h1>Crear Departamento</h1>
+    <h1>Editar Departamento</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('departamentos.store') }}" method="post" novalidate>
+            <form action="{{ route('departamentos.update', $depa->id) }}" method="post" novalidate>
                 @csrf
+                @method('put')
+
                 <label for="nombre">Ingrese el nombre del Departamento</label>
-                <input type="text" name="nombre" class="form-control"> <br>
+                <input type="text" name="nombre" class="form-control" value="{{ $depa->nombre }}"> <br>
                 @error('nombre')
                     <small class="text-danger">*{{ $message }}</small>
                     <br><br>
                 @enderror
 
                 <label for="descripcion">Ingresar Descripción</label>
-                <input type="text" name="descripcion" class="form-control"> <br>
+                <input type="text" name="descripcion" class="form-control" value="{{ $depa->descripcion }}"> <br>
                 @error('descripcion')
                     <small class="text-danger">*{{ $message }}</small>
                     <br><br>
                 @enderror
 
-                <button class="btn btn-danger btn-sm" type="submit">Crear Departamento</button>
+                <button class="btn btn-danger btn-sm" type="submit">Actualizar Departamento</button>
                 <a class="btn btn-primary btn-sm" href="{{ route('departamentos.index') }}">Volver</a>
             </form>
 
