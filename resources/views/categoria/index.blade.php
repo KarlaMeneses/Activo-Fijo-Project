@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Activo Fijo')
+@section('title', 'SI-ActivoFijo')
 
 @section('content_header')
 
@@ -9,20 +9,25 @@
     </div>
 
 @stop
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+@stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-
-            <a class="btn btn-primary" href="{{ route('categorias.create') }}">Registrar Categoria</a>
-
+            <a class="btn btn-primary" href="{{ route('categorias.create') }}">
+                <i class="fas fa-bookmark"></i> Registrar
+                Categoria</a>
         </div>
     </div>
+
     <div class="card">
         <!--<div class="card-body">-->
         <div class="card-body " style="overflow-x: scroll">
+
             <!-- <table class="table table-striped" id="usuarios" style="width:100%">-->
-            <table class="table table-striped shadow-lg mt-4" id="categoria" style="width:100%">
+            <table class="table table-striped table-bordered shadow-lg mt-4 " id="usuarios" style="width:100%">
                 <thead class="bg-dark">
                     <tr>
                         <th>Id</th>
@@ -48,17 +53,21 @@
                             <td>{{ $categoria->valor_residual }} %</td>
                             <td>
                                 <form action="{{ route('categorias.destroy', $categoria) }}" method="post">
-                                    <!--<a class="btn btn-warning btn-sm text-light" href="#">
-                                                                                                    <i class="fas fa-eye"></i> Ver </a>-->
-                                    <a href="{{ route('categorias.edit', $categoria) }}" class="btn btn-primary btn-sm">
-                                        <i class="fas fa-edit"></i> Editar<a>
+                                    <!--<a class="btn btn-warning btn-sm text-light" href="#">-->
+                                    <a class="btn btn-warning btn-sm text-light rounded-pill"
+                                        href="{{ route('categorias.show', $categoria->id) }}">
+                                        <i class="fas fa-eye"></i></a>
+
+                                    <a href="{{ route('categorias.edit', $categoria) }}"
+                                        class="btn btn-primary btn-sm text-light rounded-pill">
+                                        <i class="fas fa-edit"></i><a>
                                             @csrf
                                             @method('delete')
                                             @can('editar categoria')
                                             @endcan
                                             <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
-                                                value="Borrar" class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash-alt" style="margin-right: 5px">Eliminar</i></button>
+                                                value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
+                                                <i class="fas fa-trash-alt"></i></button>
                                             @can('eliminar categoria')
                                             @endcan
                                 </form>

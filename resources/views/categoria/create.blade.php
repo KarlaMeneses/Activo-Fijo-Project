@@ -48,29 +48,29 @@
                     </div>
 
                     <!--
-                                <div class="col-md-3">
-                                    <label for="tipo_activo">Seleccione el tipo activo</label>
-                                    <select name="tipo_activo" value="{{ old('tipo_activo') }}" class="form-control" required>
-                                        <option value="Null">Null</option>
-                                        <option value="Tangible">Tangible</option>
-                                        <option value="Intangible">Intangible</option>
-                                        <option value="Invesión">Invesión</option>
-                                    </select>
-                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="tipo_activo">Seleccione el tipo activo</label>
+                                                    <select name="tipo_activo" value="{{ old('tipo_activo') }}" class="form-control" required>
+                                                        <option value="Null">Null</option>
+                                                        <option value="Tangible">Tangible</option>
+                                                        <option value="Intangible">Intangible</option>
+                                                        <option value="Invesión">Invesión</option>
+                                                    </select>
+                                                </div>
 
-                                <div class="col-md-3">
-                                    <label for="cacateristica">Seleccione un cacateristica</label>
-                                    <select name="cacateristica" value="{{ old('cacateristica') }}" class="form-control" required>
-                                        <option value="Null">Null</option>
-                                        <option value="No depreciables">No depreciables</option>
-                                        <option value="Depreciable">Depreciable</option>
-                                        <option value="Agotable">Agotable</option>
-                                        <option value="Amortización">Amortización</option>
-                                        <option value="No Amortizable">No Amortizable</option>
-                                    </select>
-                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="cacateristica">Seleccione un cacateristica</label>
+                                                    <select name="cacateristica" value="{{ old('cacateristica') }}" class="form-control" required>
+                                                        <option value="Null">Null</option>
+                                                        <option value="No depreciables">No depreciables</option>
+                                                        <option value="Depreciable">Depreciable</option>
+                                                        <option value="Agotable">Agotable</option>
+                                                        <option value="Amortización">Amortización</option>
+                                                        <option value="No Amortizable">No Amortizable</option>
+                                                    </select>
+                                                </div>
 
-                            -->
+                                            -->
                 </div>
 
 
@@ -101,8 +101,4 @@
 @stop
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-
 @stop

@@ -6,18 +6,21 @@
 -   git clone https://github.com/KarlaMeneses/Activo-Fijo-Project.git
 -   composer update
 -   composer install
+-   npm install
+-   npm run dev
 -   duplicar el archivo .env example
 -   cambiar nombre a .env
 -   php artisan key:generate
 -   php artisan migrate:fresh --seed
--   php artisan ui bootstrap --auth
--   composer require maatwebsite/excel
--   php artisan storage:link
--   npm install
--   npm run dev
 -   php artisan serve
+    http://127.0.0.1:8000
 
-http://127.0.0.1:8000
+# laravel ejemplos
+
+-   php artisan make:migration create_Users_table
+-   php artisan make:model User
+-   php artisan make:controller UserController
+-   php artisan make:seeder UsersSeeder
 
 # git
 
@@ -35,21 +38,21 @@ Subir sus cambios al proyecto(para subir tus cambios sigue estos pasos)
 
 # Crear proyecto
 
-//Crear Proyecto Laravel
------ Instalar Laravel -----------------
-
+-   Crear Proyecto Laravel de cero
+    ----- Instalar Laravel -----------------
 -   composer global require laravel/installer
     -------Crear Proyecto --------------
-    laravel new nuevo_proy
-
-------Instalar LOGIN de LARAVEL------------
-
+-   laravel new nuevo_proy
+    ------Instalar LOGIN de LARAVEL------------
 -   composer require laravel/ui
 -   php artisan ui bootstrap --auth
 -   npm install
 -   npm run dev
-
 -   php artisan adminlte:install
+
+-   php artisan ui bootstrap --auth
+-   composer require maatwebsite/excel
+-   php artisan storage:link
 
 -   alt+shif+a
     comentar

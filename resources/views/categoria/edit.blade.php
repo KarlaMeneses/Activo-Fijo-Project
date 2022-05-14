@@ -45,7 +45,7 @@
 
                     <div class="col-md-3">
                         <label for="tipo_activo">Seleccione el tipo activo</label>
-                        <select name="tipo_activo" id="select-roles" class="form-control" onchange="habilitar()" required>
+                        <select name="tipo_activo" id="tipo_activo" class="form-select" onchange="habilitar()" required>
                             <option value="{{ $categoria->tipo_activo }}">{{ $categoria->tipo_activo }}</option>
                             <option value="Tangible">Tangible</option>
                             <option value="Intangible">Intangible</option>
@@ -53,9 +53,10 @@
                         </select>
                     </div>
 
+
                     <div class="col-md-3">
                         <label for="cacateristica">Seleccione un cacateristica</label>
-                        <select name="cacateristica" id="select-roles" class="form-control" onchange="habilitar()"
+                        <select name="cacateristica" id="cacateristica" class="form-select" onchange="habilitar()"
                             required>
                             <option value="{{ $categoria->cacateristica }}">{{ $categoria->cacateristica }}</option>
                             <option value="No depreciables">No depreciables</option>
@@ -66,18 +67,16 @@
                         </select>
                     </div>
 
-                </div>
 
-                <div class="row">
 
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label for="vida_util">Ingrese la vida util (años)</label>
                         <input name="vida_util" type="tel" size="1" maxlength="2" pattern="[0-9-+()]{1,3}" placeholder=""
                             required class="form-control" value="{{ $categoria->vida_util }}" required>
 
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label for="valor_residual">Ingrese el valor residual %</label>
                         <input type="tel" name="valor_residual" size="1" maxlength="3" pattern="[0-9-+()]{1,3}"
                             placeholder="" required class="form-control" value="{{ $categoria->vida_util }}" required>

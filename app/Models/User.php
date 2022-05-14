@@ -13,7 +13,7 @@ use Spatie\Permission\Traits\HasRoles;
 /*PARA CREAR UN MODELO:
 PHP ARTISAN MAKE:MODEL Nombreclase */
 
-class User extends Authenticatable 
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
@@ -55,7 +55,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function contrato(){
-        return $this->hasMany(Factura::class,'iduser');
+    public function contrato()
+    {
+        return $this->hasMany(Factura::class, 'iduser');
+    }
+    public function adminlte_image()
+    {
+        return auth()->user()->foto;
     }
 }
