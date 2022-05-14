@@ -15,7 +15,7 @@ class CreateActivosfijoTable extends Migration
     {
         Schema::create('activosfijo', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo');
+           /* $table->string('codigo');
             $table->string('nombre');
             $table->string('detalle');
             $table->date('fecha');
@@ -25,7 +25,7 @@ class CreateActivosfijoTable extends Migration
             $table->unsignedBigInteger('id_categoria');
             $table->foreign('id_categoria')->on('categorias')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('id_ubicacion');
-            $table->foreign('id_ubicacion')->on('ubicaciones')->references('id')->onDelete('cascade');
+            $table->foreign('id_ubicacion')->on('ubicaciones')->references('id')->onDelete('cascade');*/
         });
     }
 

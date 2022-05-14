@@ -46,7 +46,7 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <input type="hidden" value="" name="foto" id="fotov" title="foto" placeholder="https://example.com"
+                    <input type="hidden" value="{{ $user->foto }}" name="foto" id="fotov" title="foto" placeholder="https://example.com"
                         list="defaultURLs" class="focus border-dark  form-control" required
                         oninvalid="this.setCustomValidity('Please match the requested format')">
 
