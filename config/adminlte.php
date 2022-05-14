@@ -259,6 +259,16 @@ return [
             'icon' => 'fas fa-ruler',
         ],
         [
+            'text' => 'departamentos',
+            'route'  => 'departamentos.index',
+            'icon' => 'fas fa-ruler',
+        ],
+        [
+            'text' => 'Ubicación',
+            'route'  => 'ubicaciones.index',
+            'icon' => 'fas fa-ruler',
+        ],
+        [
             'text'    => 'Nota',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
