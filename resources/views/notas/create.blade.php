@@ -86,19 +86,24 @@
                 $nota_aux = DB::table('notas')
                     ->latest('id')
                     ->first();
-                
                 $nota_id = $nota_aux->id;
                 ?>
-            
-            @if (auxi == true)
-            <h1>dinoooooo</h1>
-                
-            @endif
+
+
             </div>
             <h5>DETALLE DE LA COMPRA</h5>
-       
-            <button disabled>hola</button>
 
+            <div class="form-group col-md-6">
+                <label for="activar-contraseña">Nueva contraseña</label>
+
+                <input type="checkbox" name="activar-contraseña" id="check_password" onclick="get_nota_id_last()">
+                <input type="password" name="password" class="form-control" value="{{ old('password') }}"
+                    id="passwordInput" placeholder="Escriba la nueva contraseña">
+            </div>
+
+            <a id="option1" data-id="10" data-option="21" href="#" onclick="goDoSomething(?,?);">
+                Click to do something
+            </a>
 
             {{-- <div class="card-body">
                 <table class="table table-bordered table-striped">
@@ -223,7 +228,61 @@
 @stop
 
 @section('js')
-<script>
 
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', cargar, false);
+    let checkP = document.getElementById('check_password');
+    let contra = document.getElementById('passwordInput');
+
+    var rol = document.getElementById('select-roles');
+    var empleados = document.getElementById('select-empleados');
+
+    function get_nota_id_last() {
+        $nota_aux = DB::table('notas') -
+            >
+            latest('id') -
+            >
+            first();
+        $nota_id = $nota_aux - > id;
+        return $nota_id;
+    }
+
+    /*****************************/
+    $(document).ready(function() {
+        $('#bt_add').click(function() {
+            agregar();
+        });
+    });
+
+    var cont = 0;
+    total = 0;
+    subtotal = [];
+    $("#guardar").hide();
+
+
+    function limpiar() {
+        $("#pcantidad").val("");
+        $("#pprecio_compra").val("");
+        $("#pprecio_venta").val("");
+    }
+
+    function evaluar() {
+        if (total > 0) {
+            $("#guardar").show();
+        } else {
+            $("#guardar").hide();
+        }
+    }
+
+    function eliminar(index) {
+        total = total - subtotal[index];
+        $("#total").html("S/. " + total);
+        $("#fila" + index).remove();
+        evaluar();
+
+    }
 </script>
+
 @stop
