@@ -5,8 +5,10 @@ use App\Http\Controllers\NotaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\DetalledetallenotaController;
 use App\Http\Controllers\DetallenotaController;
+use App\Http\Controllers\UbicacionController;
 use App\Models\Nota;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -54,3 +56,5 @@ Route::post('notas/detalle_update/{id}', [DetallenotaController::class, 'detalle
 Route::delete('notas/detalle_destroy/{id}', [DetallenotaController::class, 'detalle_destroy']);
 
 Route::post('notas/total_update/{id}', [NotaController::class, 'total_update']);
+Route::resource('departamentos', DepartamentoController::class)->names('departamentos');
+Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones');

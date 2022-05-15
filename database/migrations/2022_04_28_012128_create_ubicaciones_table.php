@@ -13,13 +13,14 @@ class CreateUbicacionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ubicaciones', function (Blueprint $table) {
+        Schema::create('ubicacion', function (Blueprint $table) {
             $table->id();
             $table->string('edificio');
             $table->string('ciudad');
             $table->string('pais');
             $table->unsignedBigInteger('id_departamento');
             $table->foreign('id_departamento')->on('departamentos')->references('id')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

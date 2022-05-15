@@ -55,8 +55,13 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-    public function contrato(){
-        return $this->hasMany(Factura::class,'iduser');
+    public function contrato()
+    {
+        return $this->hasMany(Factura::class, 'iduser');
+    }
+    public function adminlte_image()
+    {
+        return auth()->user()->foto;
     }
 
     public function getJWTIdentifier()

@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
 
-            $table->string('foto')->default('');
+            $table->string('foto')->nullable();
             $table->string('sexo');
             $table->integer('edad');
             $table->string('cargo');

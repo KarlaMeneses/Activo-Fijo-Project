@@ -4,15 +4,15 @@
 
 @section('content_header')
     <div class="card-header text-center">
-        <h3><b>Roles</b></h3>
+        <h3><b>Departamentos</b></h3>
     </div>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('roles.create') }}" class="btn btn-primary btb-sm">
-                <i class="fas fa-address-book"></i> Crear Rol</a>
+            <a href="{{ route('departamentos.create') }}" class="btn btn-primary btb-sm">
+                <i class="fas fa-address-book"></i> Crear Departamento</a>
         </div>
     </div>
     <div class="card">
@@ -22,32 +22,32 @@
                 <thead class="bg-dark">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Nombre de Rol</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @foreach ($roles as $rol)
+                    @foreach ($depas as $depa)
                         <tr>
-                            <td>{{ $rol->id }}</td>
-                            <td>{{ $rol->name }}</td>
-
+                            <td>{{ $depa->id }}</td>
+                            <td>{{ $depa->nombre }}</td>
+                            <td>{{ $depa->descripcion }}</td>
 
                             <td>
-                                <form action="{{ url('/roles/' . $rol->id) }}" method="post">
-                                    <!--<a class="btn btn-warning btn-sm text-light" href="#">
-                                                    <i class="fas fa-eye"></i> Ver </a>-->
-                                    <a href="{{ route('roles.edit', $rol) }}" class="btn btn-primary btn-sm">
-                                        <i class="fas fa-edit"></i> Editar<a>
+                                <a href="{{ route('departamentos.edit', $depa->id) }}" class="btn btn-primary btn-sm"
+                                    style="margin-bottom: 0.35rem"> <i class="fas fa-edit"></i> Editar<a>
+
+                                        <form action="{{ route('departamentos.destroy', $depa->id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            
+
                                             <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
-                                                value="Borrar" class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash-alt" style="margin-right: 5px"></i>Eliminar</button>
-                                            
-                                </form>
+                                                value="Borrar" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt">
+                                                </i>Eliminar</button>
+
+                                        </form>
                             </td>
 
                         </tr>
