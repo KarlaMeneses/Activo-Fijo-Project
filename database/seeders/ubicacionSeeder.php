@@ -14,19 +14,19 @@ class ubicacionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('ubicaciones')->insert([
+        DB::table('ubicacion')->insert([
             [
                 'edificio' => 'Principal',
                 'ciudad' => 'Santa Cruz de la Sierra',
                 'pais' => 'Bolivia',
                 'id_departamento' => 1,
             ],
-            [
+           /* [
                 'edificio' => 'Principal',
                 'ciudad' => 'Santa Cruz de la Sierra',
                 'pais' => 'Bolivia',
                 'id_departamento' => 2,
-            ]   
+            ]   */
         ]);
     }
 }

@@ -27,8 +27,10 @@ class CategoriaController extends Controller
         return view('categoria.create'); //la vista create es usada antes de registrar una categoria
     }
 
-    public function show(Categoria $categoria)
+    public function show($id)
     {
+
+        $categorias = Categoria::find($id);
         return view('categoria.show', compact('categorias'));
     }
 
@@ -40,7 +42,10 @@ class CategoriaController extends Controller
         $request->validate([
             'nombre' => 'required|unique:categorias', //Se valida el nombre en categoria para que no se repitan antes de registrar una nueva
             'descripcion' => 'required|unique:categorias',
-            'tipo_activo' => 'required|unique:categorias'
+            'tipo_activo' => 'required|unique:categorias',
+            'cacateristica' => 'required|unique:categorias',
+            'vida_util' => 'required|unique:categorias',
+            'valor_residual' => 'required|unique:categorias',
         ]);
         $categoria = Categoria::create($request->all()); // se crea una categoria con una funcion directa de laravel usando al model de referencia para solicitar los datos
         return redirect()->route('categorias.index', $categoria); // Se redirige a la vista categoria.index
@@ -54,6 +59,9 @@ class CategoriaController extends Controller
             'nombre' => 'required',
             'descripcion' => 'required',
             'tipo_activo' => 'required',
+            'cacateristica' => 'required',
+            'vida_util' => 'required',
+            'valor_residual' => 'required',
             //se valida que no haya mas con el mismo nombre
         ]);
         $categoria->update($request->all());           // se usa una funcion de laravel para actualizar directo mediante paramestros del model

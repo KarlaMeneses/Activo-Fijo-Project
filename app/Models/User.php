@@ -8,12 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /*PARA CREAR UN MODELO:
 PHP ARTISAN MAKE:MODEL Nombreclase */
 
-class User extends Authenticatable 
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
@@ -55,7 +55,27 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function contrato(){
-        return $this->hasMany(Factura::class,'iduser');
+    public function contrato()
+    {
+        return $this->hasMany(Factura::class, 'iduser');
+    }
+    public function adminlte_image()
+    {
+        return auth()->user()->foto;
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
