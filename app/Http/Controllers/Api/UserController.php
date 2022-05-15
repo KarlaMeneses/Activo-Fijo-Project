@@ -15,7 +15,7 @@ class UserController extends Controller
             }
             $usuario = auth('api')->user();
 
-            if($usuario->getRoleNames()[0] != 'Analista'){
+            if($usuario->getRoleNames()[0] != 'Administrador'){
                 return response()->json(['mensaje' => 'Rol sin acceso'], 401);
             }
 
@@ -31,12 +31,12 @@ class UserController extends Controller
         
     }
 
-    protected function respondWithToken($token, $paciente)
+    protected function respondWithToken($token, $usuario)
     {
         return response()->json([
             'mensaje' => 'Token generado exitosamente',
             'token' => $token,
-            'data' => $paciente
+            'data' => $usuario
             // 'expires_in' => auth()->factory()->getTTL() * 60
         ], 200);
     }
