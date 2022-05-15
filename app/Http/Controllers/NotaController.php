@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Detallenota;
 use App\Models\Nota;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NotaController extends Controller
 {
@@ -15,13 +17,13 @@ class NotaController extends Controller
     public function index()
     {
         $notas = Nota::all();
-        return view('notas.index',compact('notas'));
+        return view('notas.index', compact('notas'));
     }
 
     public function indexVenta()
     {
         $notas = Nota::all();
-        return view('notasventa.index',compact('notas'));
+        return view('notasventa.index', compact('notas'));
     }
 
     /**
@@ -31,7 +33,8 @@ class NotaController extends Controller
      */
     public function create()
     {
-        //
+        $notas = Nota::all();
+        return view('notas.create', compact('notas'));
     }
 
     /**
@@ -42,7 +45,14 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nota = new Nota();
+        $nota->proveedor = $request->proveedor;
+        $nota->direccion = $request->direccion;
+        $nota->telefono = $request->telefono;
+        $nota->fecha_entrega = $request->fecha_entrega;
+        $nota->totales = $request->totales;
+        $nota->save();
+        return redirect()->route('notas.index');
     }
 
     /**
@@ -53,7 +63,9 @@ class NotaController extends Controller
      */
     public function show($id)
     {
-        //
+        $nota = Nota::find($id);
+        $detallenotas = Detallenota::all();
+        return view('notas.show', compact('nota','detallenotas'));
     }
 
     /**
@@ -64,7 +76,9 @@ class NotaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $nota = nota::findOrFail($id);
+        $detallenotas = Detallenota::all();
+        return view('notas.edit', compact('nota','detallenotas'));
     }
 
     /**
@@ -74,9 +88,16 @@ class NotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Nota $nota)
     {
-        //
+        $nota = Nota::findOrFail($nota->id);
+        $nota->proveedor = $request->input('proveedor');
+        $nota->direccion = $request->input('direccion');
+        $nota->telefono = $request->input('telefono');
+        $nota->fecha_entrega = $request->input('fecha_entrega');
+        $nota->totales = $request->input('totales');
+        $nota->save();
+        return redirect()->route('notas.index');
     }
 
     /**
@@ -88,5 +109,11 @@ class NotaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function total_update(Request $request, $id)
+    {
+        DB::table('notas')->where('id', $id)->update(['totales' => $request->totales]);
+        return back();
     }
 }

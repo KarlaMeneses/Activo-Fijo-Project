@@ -17,19 +17,40 @@ class categoriaSeeder extends Seeder
     {
         DB::table('categorias')->insert([
             [
-                'nombre' => 'equipos de oficina',
-                'descripcion' => 'máquinas y dispositivos propias de una oficina',
-                'tipo_activo' => 'electrónico',
+                'nombre' => 'Edificaciones',
+                'descripcion' => '40 años',
+                'tipo_activo' => '2.5%',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'nombre' => 'vehículos industriales',
-                'descripcion' => 'vehículos para el transporte de mercancías o el transporte colectivo de personas',
-                'tipo_activo' => 'vehículos industriales',
+                'nombre' => 'Muebles y enseres de oficina',
+                'descripcion' => '10 años',
+                'tipo_activo' => '10.0%',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ]   
+            ],
+            [
+                'nombre' => 'Maquinaria en general',
+                'descripcion' => '8 años',
+                'tipo_activo' => '12.5%',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nombre' => 'Equipos e instalaciones',
+                'descripcion' => '8 años',
+                'tipo_activo' => '12.5%',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'nombre' => 'Vehículos automotores',
+                'descripcion' => '8 años',
+                'tipo_activo' => '12.5%',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]
         ]);
     }
 }

@@ -28,5 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(notaSeeder::class);
         $this->call(facturaSeeder::class);
         $this->call(activofijoSeeder::class);
+        $this->call(DetallenotaSeeder::class);
+
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -23,6 +24,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        // dd(Auth::user()->getRoleNames()[0]);
         $users = User::all();
         return view('users.index', compact('users'));
     }
@@ -58,9 +60,28 @@ class UserController extends Controller
         $usuario = new User();
         $usuario->name = $request->name;
         $usuario->email = $request->email;
+
+        $usuario->foto = $request->foto;
+        $usuario->edad = $request->edad;
+        $usuario->sexo = $request->sexo;
+       
+        $usuario->direccion = $request->direccion;
+        $usuario->telefono = $request->telefono;
+        
+
+        $roles = Role::all();
+        foreach( $roles as $rol){
+            if ($rol->id == $request->roles) {
+                $usuario->cargo = $rol->name;
+            }
+        }
+
+
+
         $usuario->password = bcrypt(($request->password));
         $usuario->save();
         $usuario->roles()->sync($request->roles);
+        
         return redirect()->route('users.index');
     }
 
@@ -85,14 +106,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $roles = Role::all();
         $user = User::find($id);
         $roles = Role::all();
         $rol = DB::table('model_has_roles')->where('model_id', $user->id)->first();
         $rol_name = DB::table('roles')->where('id', $rol->role_id)->first();
         return view('users.edit', compact('user', 'roles', 'rol', 'rol_name'));
-        return view('users.edit', compact('user', 'empleados', 'roles', 'rol', 'rol_name', 'empleado', 'e'));
-        return view('users.edit', compact('user'));
     }
 
     /**
@@ -117,8 +135,26 @@ class UserController extends Controller
         if($request->password <> ''){
             $usuario->password = bcrypt(($request->password));
         }
-        $usuario->save();
+
+        $usuario->email = $request->email;
+        $usuario->foto = $request->foto;
+        $usuario->edad = $request->edad;
+        $usuario->sexo = $request->sexo;
+        
+        $usuario->direccion = $request->direccion;
+        $usuario->telefono = $request->telefono;
+
+        $roles = Role::all();
+        foreach( $roles as $rol){
+            if ($rol->id == $request->roles) {
+                $usuario->cargo = $rol->name;
+            }
+        }
         $usuario->roles()->sync($request->roles);
+
+      
+        $usuario->save();
+        
 
         return redirect()->route('users.index');
     }

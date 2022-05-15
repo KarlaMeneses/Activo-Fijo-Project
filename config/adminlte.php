@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Activo Fijo',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -269,7 +269,7 @@ return [
                 [
                     'text'    => 'Nota de venta',
                     'route'  => 'notasventa.index',
-                   // 'route'     => 'notasventa.indexVenta',
+                    // 'route'     => 'notasventa.indexVenta',
                 ],
             ],
         ],
@@ -278,8 +278,13 @@ return [
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'Factura de compra',
-                    'url'  => '#',
+                    'text' => 'Crear Factura de compra',
+                    'url'  => 'factura/facturacompra/create',
+                ],
+                [
+                    'text' => 'Lista de Facturas',
+                    'url'  => 'factura/facturacompra/index',
+
                 ],
                 [
                     'text'    => 'Factura de venta',
@@ -301,13 +306,14 @@ return [
         [
             'text'       => 'Categoria',
             'icon_color' => 'cyan',
-            'url'        => '#',
+            'route'        => 'categorias.index',
         ],
         [
             'text'       => 'Ubicacion',
             'icon_color' => 'blue',
             'url'        => '#',
         ],
+
     ],
 
     /*
