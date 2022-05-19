@@ -16,7 +16,7 @@
     <div class="card">
         <div class="card-body">
             <table class="table table-striped" id="usuarios" style="width:100%">
-                <thead>
+                <thead  class="bg-dark">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nombre de usuario</th>

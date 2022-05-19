@@ -19,7 +19,7 @@ class CreateNotasTable extends Migration
             $table->string('proveedor')->nullable();
             $table->string('direccion')->nullable();
             $table->integer('telefono')->nullable();
-            $table->integer('totales')->nullable();
+            $table->decimal('totales')->nullable();
             $table->date('fecha_entrega')->nullable();
             $table->string('foto')->nullable();
 

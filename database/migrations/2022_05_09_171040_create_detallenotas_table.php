@@ -17,8 +17,8 @@ class CreateDetallenotasTable extends Migration
             $table->id();
             $table->integer('cantidad');
             $table->string('detalle');
-            $table->integer('precio_uni')->nullable();
-            $table->integer('total')->nullable();
+            $table->decimal('precio_uni')->nullable();
+            $table->decimal('total')->nullable();
             $table->unsignedBigInteger('id_notas');
             $table->foreign('id_notas')->on('notas')->references('id')->onDelete('cascade');
             $table->timestamps();
