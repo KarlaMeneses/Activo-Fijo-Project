@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\DetalledetallenotaController;
 use App\Http\Controllers\DetallenotaController;
+use App\Http\Controllers\NotaventaController;
 use App\Http\Controllers\UbicacionController;
 use App\Models\Nota;
 use Illuminate\Support\Facades\Auth;
@@ -35,8 +36,6 @@ Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
 Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
 Route::resource('activosfijo', ActivofijoController::class)->names('activosfijo');
-Route::resource('notas', NotaController::class)->names('notas');
-Route::get('notasventa', [NotaController::class, 'indexVenta'])->name('notasventa.index');
 
 Route::get('factura/facturacompra/index', [App\Http\Controllers\FacturaController::class, 'indexcompra'])->name('factura.facturacompra.index');
 Route::post('factura/facturacompra/store', [App\Http\Controllers\FacturaController::class, 'storecompra'])->name('factura.facturacompra.store');
@@ -45,12 +44,23 @@ Route::get('factura/facturaventa/create', [App\Http\Controllers\FacturaControlle
 
 ///Categoria de activo fijos
 Route::resource('categorias', CategoriaController::class)->names('categorias');
-//Nota Compra
+
+//Notas
+Route::resource('notas', NotaController::class)->names('notas');
+Route::resource('notasventa', NotaventaController::class)->names('notasventa');
+//Route::get('notasventa', [NotaController::class, 'indexVenta'])->name('notasventa.index');
 
 Route::post('notas/detalle_update/{id}', [DetallenotaController::class, 'detalle_update']);
+Route::post('notasventa/detalle_update/{id}', [DetallenotaController::class, 'detalle_update']);
+
 Route::delete('notas/detalle_destroy/{id}', [DetallenotaController::class, 'detalle_destroy']);
-Route::post('notas/total_update/{id}', [NotaController::class, 'total_update']);
-Route::get('notas/detalle_create',[NotaController::class,'detalle_create']);
+Route::delete('notasventa/detalle_destroy/{id}', [DetallenotaController::class, 'detalle_destroy']);
+
+/*Route::resource('notas/store/{id}', DetallenotaController::class);
+Route::resource('notasventa/store/{id}', DetallenotaController::class);*/
+
+
+
 
 Route::resource('departamentos', DepartamentoController::class)->names('departamentos');
 Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones');

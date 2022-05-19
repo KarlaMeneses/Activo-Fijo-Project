@@ -17,6 +17,9 @@
                         <div class="card-header card-header-primary">
                             <a href="{{ route('notas.index') }}" class="btn btn-sm btn-success mr-3">
                                 Volver </a>
+
+                                <a href="{{ route('notas.edit', $nota) }}" class="btn btn-sm btn-success mr-3">
+                                    Editar </a>
                         </div>
                         <!--body-->
 

@@ -1,124 +1,205 @@
 @extends('adminlte::page')
 
-@section('title', 'PROSALUD+')
+@section('title', 'Activo Fijo')
 
 @section('content_header')
     <h1>Editar Usuario</h1>
 @stop
-
 @section('content')
-<div class="card">
-    <div class="card-body">
-        @error('name')
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>¡Error!</strong> Este usuario ya está registrado.
-      </div>
-         
-        @enderror 
-            <form action="{{route('users.update', $user)}}" method="post" novalidate >
+    <div class="card">
+        <div class="card-body table-responsive">
+            @error('name')
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>¡Error!</strong> Esta nota ya está registrada.
+                </div>
+            @enderror
+            <form action="{{ route('notasventa.update', $nota) }}" method="post" novalidate>
+
                 @csrf
                 @method('put')
+                <button class="btn btn-primary" type="submit">Actualizar Nota</button>
+                <a class="btn btn-danger" href="{{ route('notasventa.index') }}">Volver</a>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="name">Ingrese el nombre de usuario</label>
-                        <input type="text" name="name" class="form-control" value="{{old('name', $user->name)}}" id="name">
-                        
+                        <label for="adquirente">Adquirente</label>
+                        <input type="text" name="adquirente" class="form-control" value="{{ $nota->adquirente }}"
+                            required>
+
+                        <label for="telefono">Telefono</label>
+                        <input type="tel" name="telefono" class="form-control" value="{{ $nota->telefono }}" required>
+
+                        <label for="fecha_venta">Fecha venta</label>
+                        <input type="date" name="fecha_venta" class="form-control" value="{{ $nota->fecha_venta }}"
+                            required>
+
+                        <label for="encargado">Encargado</label>
+                        <input type="text" name="encargado" class="form-control" value="{{ $nota->encargado }}"
+                            required>
+
+                        <label for="cargo">Cargo</label>
+                        <input type="text" name="cargo" class="form-control" value="{{ $nota->cargo }}" required>
+
+                        <label for="totales">Totales</label>
+                        <input type="text" name="totales" class="form-control" value="{{ $nota->totales }}" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="activar-contraseña">Nueva contraseña</label>
-                        <input type="checkbox" name="activar-contraseña" id="check_password" onclick="cambiarEstado()" >
-                        <input type="password" name="password" class="form-control" value="{{old('password')}}" id="passwordInput" placeholder="Escriba la nueva contraseña">
-                        @error('password')
-                            <small>*{{$message}}</small>
-                            <br><br>
-                        @enderror
+                        <h5>Comprobante - Nota de compra fisica</h5>
+
+                        <img src="{{ asset($nota->foto) }}" width="250" height="300" />
+
                     </div>
                 </div>
 
-
-                <div>
-                    <p>Seleccione un rol</p>
-                    <select name="roles" id="select-roles" class="form-control" onchange="habilitar()" >
-                        <option value="{{old('roles' ,$rol->role_id)}}">{{$rol_name->name}}</option>
-                            @foreach ($roles as $rol)
-                                <option value="{{ $rol->id }}">{{ $rol->name }}</option>
-                            @endforeach
-                    </select>
-                    @error('roles')
-                        <small>*{{$message}}</small>
-                        <br><br>
-                    @enderror
-                </div>
-
-                <div>
-                    {{-- <label for="empleados">Seleccione un empleado</label>
-                    <select name="empleados" class="form-control" id="select-empleados" disabled="" onchange="elegirE()" >
-                        @if ($e > 0)
-                            <option value="{{old('empleados' ,$empleado->id)}}">{{$empleado->nombre}}</option>                            
-                        @else
-                            <option value=0>Seleccione al empleado</option>                            
-                        @endif
-                            @foreach ($empleados as $empleado)
-                                <option value="{{ $empleado->id }}">{{ $empleado->nombre}}</option>
-                            @endforeach
-                    </select>
-                    @error('empleados')
-                        <small>*{{$message}}</small>
-                        <br><br>
-                    @enderror --}}
-                </div>
-                <br>
-                
-                <button  class="btn btn-primary" type="submit">Actualizar Usuario</button>
-                <a class="btn btn-danger" href="{{route('users.index')}}">Volver</a>
             </form>
 
-    </div>
-</div>
+            <h5>DETALLES DE NOTA</h5>
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
 
-<script>
-    document.addEventListener('DOMContentLoaded', cargar, false);
-    let checkP = document.getElementById('check_password');
-    let contra = document.getElementById('passwordInput');
-    function cambiarEstado(){
-        if(contra.disabled == true){
-            contra.disabled = false
-        }else{
-        if(contra.disabled == false){
-            contra.disabled = true
-            contra.value = ''
-        }
-        }
-    }
-    var rol = document.getElementById('select-roles');
-    var empleados = document.getElementById('select-empleados');
-    
-    function cargar(){
-        contra.disabled = true
-        contra.value = ''
-        empleados.disabled  = false
-    }
-    function habilitar(){
-        if(rol.value > 0){
-            empleados.disabled = false
-        }else{
-            empleados.disabled = true
-            empleados.value = 0
-        }
-    }
-    /* function elegirE(){
-        if(odontologos.value > 0){
-            odontologos.disabled = false
-        }
-    } */
-</script>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Detalle</th>
+                            <th scope="col">Precio unitario</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                            $suma_total = 0;
+                        @endphp
+                        @foreach ($detallenotas as $detalle)
+                            @if ($detalle->id_notas == $nota->id)
+                                <tr>
+                                    <td>{{ $detalle->id }}</td>
+                                    <td>{{ $detalle->cantidad }}</td>
+                                    <td>{{ $detalle->detalle }}</td>
+                                    <td>{{ $detalle->precio_uni }}</td>
+                                    <td>{{ $detalle->total }}</td>
+                                    @php
+                                        $suma_total = $suma_total + $detalle->total;
+                                    @endphp
+                                    <td>
+                                        <form action="{{ url('notasventa/detalle_destroy', $detalle->id) }}"
+                                            method="post">
+                                            @csrf
+                                            @method('delete')
+
+                                            <input type="hidden" name="id_nota" value="{{ $nota->id }}">
+                                            <input type="hidden" name="nota_totales" value="{{ $nota->totales }}">
+
+                                            <button class="btn btn-danger btn-sm"
+                                                onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" style="margin-top: 5px"
+                                                value="Borrar">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th scope="col">Totales</th>
+                        <th scope="col">{{ $nota->totales }}</th>
+                        @if ($suma_total != $nota->totales)
+                            <h1>VERIFIQUE LA SUMA TOTAL</h1>
+                        @endif
+                    </tr>
+                </table>
+
+            </div>
+
+            <body>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    Agregar detalles de la compra
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel"> Agregar activo </h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                            </div>
+
+                            <form action="{{ url('notasventa/detalle_update', $nota->id) }}" method="POST">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="cantidad">Cantidad</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="cantidad" class="form-control" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="detalle">Detalle</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="detalle" class="form-control" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="precio_uni">Precio unitario</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="precio_uni" class="form-control" required>
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" name="nota_totales" value="{{ $nota->totales }}">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Agregar detalle</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </body>
+
+        </div>
+    </div>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <style>
+        <link rel="stylesheet"href="/css/admin_custom.css">img.zoom {
+            width: 350px;
+            height: 200px;
+            -webkit-transition: all .2s ease-in-out;
+            -moz-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            -ms-transition: all .2s ease-in-out;
+        }
+
+        .transition {
+            -webkit-transform: scale(1.8);
+            -moz-transform: scale(1.8);
+            -o-transform: scale(1.8);
+            transform: scale(1.8);
+        }
+
+    </style>
 @stop
 
 @section('js')
-    
+    <script>
+        $(document).ready(function() {
+            $('.zoom').hover(function() {
+                $(this).addClass('transition');
+            }, function() {
+                $(this).removeClass('transition');
+            });
+        });
+    </script>
 @stop

@@ -1,93 +1,90 @@
 @extends('adminlte::page')
 
-@section('title', 'PROSALUD+')
+@section('title', 'Activo Fijo')
 
 @section('content_header')
-    <h1>Registrar Usuario</h1>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+
+    <div class="card-header  text-center">
+        <h3><b>Registrar Nota De Venta</b></h3>
+    </div>
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/subir.css') }}">
 @stop
 
 @section('content')
-<div class="card">
-    <div class="card-body">
-        @error('name')
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>¡Error!</strong> Este usuario ya está registrado.
-      </div>
-         
-        @enderror 
-            <form action="{{route('users.store')}}" method="post" >
-                @csrf
-                <label for="name">Ingrese el nombre de usuario</label>
-                <input type="text" name="name" class="form-control" value="{{old('name')}}" required>
-                
-                <br>
-                <label for="email">Ingrese el correo electronico</label>
-                <input type="text" name="email" class="form-control" value="{{old('email')}}" required>
-                @error('email')
-                    <small>*{{$message}}</small>
-                    <br><br>
-                @enderror
-                <br>
-                <label for="password">Ingrese la contraseña</label>
-                <input type="password" name="password" class="form-control" value="{{old('password')}}" required>
-                @error('password')
-                    <small>*{{$message}}</small>
-                    <br><br>
-                @enderror
-                <br>
-
-
-                <div>
-                    <label for="roles">Seleccione un rol</label>
-                    <select name="roles" id="select-roles" class="form-control" onchange="habilitar()" >
-                            @foreach ($roles as $rol)
-                                <option value="{{ $rol->id }}">{{ $rol->name }}</option>
-                            @endforeach
-                    </select>
-                    @error('roles')
-                        <small>*{{$message}}</small>
-                        <br><br>
-                    @enderror
-                    <br>
+    <div class="card">
+        <div class="card-body table-responsive">
+            @error('name')
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>¡Error!</strong> Este usuario ya está registrado.
                 </div>
+            @enderror
+            @php
+                $sw = 1;
+                $anterior = 0;
+            @endphp
+            <form action="{{ route('notasventa.store') }}" method="post">
+                @csrf
+                <button class="btn btn-danger " type="submit">Crear Nota</button>
+                <a class="btn btn-primary " href="{{ route('notasventa.index') }}">Volver</a>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="adquirente">adquirente</label>
+                        <input type="text" name="adquirente" class="form-control" required>
+                        
+                        <label for="telefono">Telefono</label>
+                        <input type="tel" name="telefono" class="form-control" required>
 
+                        <label for="fecha_venta">Fecha venta</label>
+                        <input type="date" name="fecha_venta" class="form-control" required>
 
-                <br>
+                        <label for="encargado">encargado</label>
+                        <input type="text" name="encargado" class="form-control" required>
 
-                <button  class="btn btn-danger btn-sm" type="submit">Crear Usuario</button>
-                <a class="btn btn-primary btn-sm" href="{{route('users.index')}}">Volver</a>
+                        <label for="cargo">cargo</label>
+                        <input type="text" name="cargo" class="form-control" required>
+
+                        
+                    </div>
+                    <div class="form-group col-md-6">
+                        <!---karla todo esto es subir imagenes --->
+                    @section('js')
+                        <script src="{{ asset('js/notascompras.js') }}"></script>
+                    @endsection
+                    <center>
+                        <label>Subir foto de Comprobante - Nota de compra fisica</label>
+                        <img width="300" height="400" id="foto">
+                        <div class="custom-input-file">
+                            <input type="file" id="file" accept="image/*" class="input-file" value="" required>
+                            <i class="fas fa-file-upload"></i> Subir Foto...
+                        </div>
+                        <div class="col-12" id="app" style="text-align:center;">
+                            <progress id="progress_bar" value="0" max="100"></progress>
+                            <input type="hidden" value="" name="foto" id="fotov" title="foto"
+                                placeholder="https://example.com" list="defaultURLs"
+                                class="focus border-dark  form-control" required
+                                oninvalid="this.setCustomValidity('Please match the requested format')">
+                        </div>
+                        @error('foto')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+
+                    </center>
+                    <!---karla todo esto es subir imagenes ---> 
+                    </div>
+
+                </div>
             </form>
-
+          
+        </div>
     </div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', cargar, false);
-    var rol = document.getElementById('select-roles');
-    var empleados = document.getElementById('select-empleados');
-    function habilitar(){
-        if(rol.value > 0){
-            empleados.disabled = false
-        }else{
-            empleados.disabled = true
-            empleados.value = 0
-        }
-    }
-    function cargar(){
-        if(rol.value > 0){
-            empleados.disabled = false
-        }else{
-            empleados.disabled = true
-            empleados.value = 0
-        }
-    }
-    /* function elegirE(){
-        if(odontologos.value > 0){
-            odontologos.disabled = false
-        }
-    } */
-</script>
+    <script></script>
 @stop
 
 @section('css')
@@ -95,5 +92,61 @@
 @stop
 
 @section('js')
-    
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', cargar, false);
+        let checkP = document.getElementById('check_password');
+        let contra = document.getElementById('passwordInput');
+
+        var rol = document.getElementById('select-roles');
+        var empleados = document.getElementById('select-empleados');
+
+        function get_nota_id_last() {
+            $nota_aux = DB::table('notas') -
+                >
+                latest('id') -
+                >
+                first();
+            $nota_id = $nota_aux - > id;
+            return $nota_id;
+        }
+
+        /*****************************/
+        $(document).ready(function() {
+            $('#bt_add').click(function() {
+                agregar();
+            });
+        });
+
+        var cont = 0;
+        total = 0;
+        subtotal = [];
+        $("#guardar").hide();
+
+
+        function limpiar() {
+            $("#pcantidad").val("");
+            $("#pprecio_compra").val("");
+            $("#pprecio_venta").val("");
+        }
+
+        function evaluar() {
+            if (total > 0) {
+                $("#guardar").show();
+            } else {
+                $("#guardar").hide();
+            }
+        }
+
+        function eliminar(index) {
+            total = total - subtotal[index];
+            $("#total").html("S/. " + total);
+            $("#fila" + index).remove();
+            evaluar();
+
+        }
+    </script>
+
 @stop

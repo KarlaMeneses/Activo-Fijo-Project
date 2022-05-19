@@ -37,16 +37,16 @@ class DetallenotaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-
         $detallenota = new Detallenota();
         $detallenota->cantidad = $request->cantidad;
         $detallenota->detalle = $request->detalle;
         $detallenota->precio_uni = $request->precio_uni;
         $detallenota->total = $request->total;
+        $detallenota->id_notas = $id;
         $detallenota->save();
-        return view('nota.create');
+        return back();
     }
 
     /**
@@ -107,6 +107,7 @@ class DetallenotaController extends Controller
         $total = $request->nota_totales + $detallenota->total;
         //return $total;
         DB::table('notas')->where('id', $id)->update(['totales' => $total]);
+       
         return back();
     }
 
@@ -114,6 +115,9 @@ class DetallenotaController extends Controller
     {
         $detalle = Detallenota::find($id);
         $total = $request->nota_totales -  $detalle->total;
+        if ($total < 0) {
+            $total = 0; 
+        }
         Detallenota::destroy($id);
         DB::table('notas')->where('id', $request->id_nota)->update(['totales' => $total]);
         return back();

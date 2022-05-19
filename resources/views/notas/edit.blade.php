@@ -4,7 +4,7 @@
 
 @section('content_header')
     <div class="card-header text-center">
-        <h3><b>Editar Nota De Compra</b></h3>
+        <h3><b>Nota De Compra</b></h3>
     </div>
 @stop
 
