@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('notasventa.create') }}" class="btn btn-primary btb-sm">Crear nota de compra</a>
+            <a href="{{ route('notasventa.create') }}" class="btn btn-primary btb-sm"><i class="fas fa-bookmark"> </i>Crear nota de compra</a>
         </div>
     </div>
 
@@ -41,18 +41,18 @@
                                 <td>
                                     <form action="{{ route('notasventa.destroy', $nota) }}" method="post">
                                         
-                                            <a class="btn btn-warning btn-sm text-light"
+                                            <a class="btn btn-warning btn-sm text-light rounded-pill"
                                                 href="{{ route('notasventa.show', $nota->id) }}">
-                                                <i class="fas fa-eye"></i> Ver </a>
-                                            <a href="{{ route('notasventa.edit', $nota->id) }}" class="btn btn-primary btn-sm">
-                                                <i class="fas fa-edit"></i> Editar<a>
+                                                <i class="fas fa-eye"></i> </a>
+                                            <a href="{{ route('notasventa.edit', $nota->id) }}" class="btn btn-primary btn-sm text-light rounded-pill">
+                                                <i class="fas fa-edit"></i><a>
                                                     @csrf
                                                     @method('delete')
                                                         @can('editar nota')
                                                         @endcan
-                                                        <button class="btn btn-danger btn-sm"
+                                                        <button class="btn btn-danger btn-sm text-light rounded-pill"
                                                             onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')"
-                                                            value="Borrar">Eliminar</button>
+                                                            value="Borrar">    <i class="fas fa-trash-alt"></i></button>
                                                         @can('eliminar nota')
                                                         @endcan
                                     </form>
