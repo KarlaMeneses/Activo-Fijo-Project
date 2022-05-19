@@ -46,6 +46,7 @@
 
                                     <td>
                                         <form action="{{ route('notas.destroy', $nota) }}" method="post">
+                                            
                                             <a class="btn btn-warning btn-sm text-light"
                                                 href="{{ route('notas.show', $nota->id) }}">
                                                 <i class="fas fa-eye"></i> Ver </a>

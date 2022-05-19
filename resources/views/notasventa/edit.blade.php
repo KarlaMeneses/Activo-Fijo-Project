@@ -3,55 +3,68 @@
 @section('title', 'Activo Fijo')
 
 @section('content_header')
-    <h1>Editar Usuario</h1>
+    <h1>Nota De Venta</h1>  
 @stop
 @section('content')
     <div class="card">
         <div class="card-body table-responsive">
+            <?php
+            $notas = DB::table('notas')
+                ->select('notas.*')
+                ->where('id', $id)
+                ->get();
+            ?>
+
             @error('name')
                 <div class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>¡Error!</strong> Esta nota ya está registrada.
                 </div>
             @enderror
-            <form action="{{ route('notasventa.update', $nota) }}" method="post" novalidate>
 
-                @csrf
-                @method('put')
-                <button class="btn btn-primary" type="submit">Actualizar Nota</button>
-                <a class="btn btn-danger" href="{{ route('notasventa.index') }}">Volver</a>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="adquirente">Adquirente</label>
-                        <input type="text" name="adquirente" class="form-control" value="{{ $nota->adquirente }}"
-                            required>
+            @foreach ($notas as $notaventa)
+                <form action="{{ route('notasventa.reedit') }}" method="post" novalidate>
+                    @csrf
+                 
+                    <input type="hidden" name="id" value="{{ $notaventa->id }}">
+                    <button class="btn btn-primary" type="submit">Actualizar Nota</button>
+                    <a class="btn btn-danger" href="{{ route('notasventa.index') }}">Volver</a>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="adquirente">Adquirente</label>
+                            <input type="text" name="adquirente" class="form-control"
+                                value="{{ $notaventa->adquirente }}" required>
 
-                        <label for="telefono">Telefono</label>
-                        <input type="tel" name="telefono" class="form-control" value="{{ $nota->telefono }}" required>
+                            <label for="telefono">Telefono</label>
+                            <input type="tel" name="telefono" class="form-control" value="{{ $notaventa->telefono }}"
+                                required>
 
-                        <label for="fecha_venta">Fecha venta</label>
-                        <input type="date" name="fecha_venta" class="form-control" value="{{ $nota->fecha_venta }}"
-                            required>
+                            <label for="fecha_venta">Fecha venta</label>
+                            <input type="date" name="fecha_venta" class="form-control"
+                                value="{{ $notaventa->fecha_venta }}" required>
 
-                        <label for="encargado">Encargado</label>
-                        <input type="text" name="encargado" class="form-control" value="{{ $nota->encargado }}"
-                            required>
+                            <label for="encargado">Encargado</label>
+                            <input type="text" name="encargado" class="form-control" value="{{ $notaventa->encargado }}"
+                                required>
 
-                        <label for="cargo">Cargo</label>
-                        <input type="text" name="cargo" class="form-control" value="{{ $nota->cargo }}" required>
+                            <label for="cargo">Cargo</label>
+                            <input type="text" name="cargo" class="form-control" value="{{ $notaventa->cargo }}"
+                                required>
 
-                        <label for="totales">Totales</label>
-                        <input type="text" name="totales" class="form-control" value="{{ $nota->totales }}" required>
+                            <label for="totales">Totales</label>
+                            <input type="text" name="totales" class="form-control" value="{{ $notaventa->totales }}"
+                                required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <h5>Comprobante - Nota de compra fisica</h5>
+
+                            <img src="{{ asset($notaventa->foto) }}" width="250" height="300" />
+
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <h5>Comprobante - Nota de compra fisica</h5>
 
-                        <img src="{{ asset($nota->foto) }}" width="250" height="300" />
-
-                    </div>
-                </div>
-
-            </form>
+                </form>
+            @endforeach
 
             <h5>DETALLES DE NOTA</h5>
             <div class="card-body">
@@ -72,7 +85,7 @@
                             $suma_total = 0;
                         @endphp
                         @foreach ($detallenotas as $detalle)
-                            @if ($detalle->id_notas == $nota->id)
+                            @if ($detalle->id_notas == $notaventa->id)
                                 <tr>
                                     <td>{{ $detalle->id }}</td>
                                     <td>{{ $detalle->cantidad }}</td>
@@ -88,8 +101,8 @@
                                             @csrf
                                             @method('delete')
 
-                                            <input type="hidden" name="id_nota" value="{{ $nota->id }}">
-                                            <input type="hidden" name="nota_totales" value="{{ $nota->totales }}">
+                                            <input type="hidden" name="id_nota" value="{{ $notaventa->id }}">
+                                            <input type="hidden" name="nota_totales" value="{{ $notaventa->totales }}">
 
                                             <button class="btn btn-danger btn-sm"
                                                 onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" style="margin-top: 5px"
@@ -105,8 +118,8 @@
                         <th></th>
                         <th></th>
                         <th scope="col">Totales</th>
-                        <th scope="col">{{ $nota->totales }}</th>
-                        @if ($suma_total != $nota->totales)
+                        <th scope="col">{{ $notaventa->totales }}</th>
+                        @if ($suma_total != $notaventa->totales)
                             <h1>VERIFIQUE LA SUMA TOTAL</h1>
                         @endif
                     </tr>
@@ -129,7 +142,7 @@
                                         aria-hidden="true">&times;</span></button>
                             </div>
 
-                            <form action="{{ url('notasventa/detalle_update', $nota->id) }}" method="POST">
+                            <form action="{{ url('notasventa/detalle_update', $notaventa->id) }}" method="POST">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="form-group">
@@ -153,7 +166,7 @@
                                         </div>
                                     </div>
 
-                                    <input type="hidden" name="nota_totales" value="{{ $nota->totales }}">
+                                    <input type="hidden" name="nota_totales" value="{{ $notaventa->totales }}">
 
                                 </div>
                                 <div class="modal-footer">

@@ -18,7 +18,8 @@
                 </div>
             @enderror
             <form action="{{ route('notas.update', $nota) }}" method="post" novalidate>
-
+               
+               
                 @csrf
                 @method('put')
                 <button class="btn btn-primary" type="submit">Actualizar Nota</button>

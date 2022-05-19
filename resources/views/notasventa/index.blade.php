@@ -3,7 +3,7 @@
 @section('title', 'Activo Fijo')
 
 @section('content_header')
-    <h1>Nota de compra</h1>
+    <h1>Nota De Venta</h1>
 @stop
 
 @section('content')
@@ -40,12 +40,14 @@
                                 <td>{{ $nota->totales }}</td>
                                 <td>
                                     <form action="{{ route('notasventa.destroy', $nota) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <a href="{{ route('notasventa.edit', $nota) }}" class="btn btn-primary btn-sm">Editar<a>
-                                                <a href="{{ route('notasventa.show', $nota->id) }}"
-                                                    class="btn btn-success btn-sm">Ver<a>
-
+                                        
+                                            <a class="btn btn-warning btn-sm text-light"
+                                                href="{{ route('notasventa.show', $nota->id) }}">
+                                                <i class="fas fa-eye"></i> Ver </a>
+                                            <a href="{{ route('notasventa.edit', $nota->id) }}" class="btn btn-primary btn-sm">
+                                                <i class="fas fa-edit"></i> Editar<a>
+                                                    @csrf
+                                                    @method('delete')
                                                         @can('editar nota')
                                                         @endcan
                                                         <button class="btn btn-danger btn-sm"

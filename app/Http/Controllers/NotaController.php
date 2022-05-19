@@ -20,12 +20,6 @@ class NotaController extends Controller
         return view('notas.index', compact('notas'));
     }
 
-  /*  public function indexVenta()
-    {
-        $notas = Nota::all();
-        return view('notasventa.index', compact('notas'));
-    }*/
-
     /**
      * Show the form for creating a new resource.
      *
@@ -52,6 +46,7 @@ class NotaController extends Controller
         $nota->direccion = $request->direccion;
         $nota->telefono = $request->telefono;
         $nota->fecha_entrega = $request->fecha_entrega;
+        $nota->tipo = 'compra';
         $nota->save();
         $nota = Nota::latest('id')->first();
         $detallenotas = Detallenota::all();
@@ -112,7 +107,9 @@ class NotaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $nota = Nota::find($id);
+        $nota->delete();
+        return redirect()->back();
     }
   
 }

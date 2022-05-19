@@ -40,16 +40,20 @@ class NotaventaController extends Controller
      */
     public function store(Request $request)
     {
+        
         $nota = new Nota();
+        
         $nota->adquirente = $request->adquirente;
         $nota->telefono = $request->telefono;
         $nota->fecha_venta = $request->fecha_venta;
         $nota->encargado = $request->encargado;
         $nota->cargo = $request->cargo;
+        $nota->tipo = 'venta';
         $nota->save();
         $nota = Nota::latest('id')->first();
+        $id = $nota->id;
         $detallenotas = Detallenota::all();
-        return redirect()->route('notasventa.edit', compact('nota', 'detallenotas'));
+        return redirect()->route('notasventa.edit', $nota->id);
     }
 
     /**
@@ -73,9 +77,9 @@ class NotaventaController extends Controller
      */
     public function edit($id)
     {
-        $nota = nota::findOrFail($id);
+        $notaventa = nota::findOrFail($id);
         $detallenotas = Detallenota::all();
-        return view('notasventa.edit', compact('nota', 'detallenotas'));
+        return view('notasventa.edit', compact('id','detallenotas'));
     }
 
     /**
@@ -85,9 +89,14 @@ class NotaventaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Nota $nota)
+    public function update(Request $request, $id)
     {
-        $nota = Nota::findOrFail($nota->id);
+        //
+    }
+
+    public function reedit(Request $request)
+    {
+        $nota = Nota::findOrFail($request->input('id'));
         $nota->adquirente = $request->input('adquirente');
         $nota->telefono = $request->input('telefono');
         $nota->fecha_venta = $request->input('fecha_venta');
@@ -106,6 +115,8 @@ class NotaventaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $nota = Nota::find($id);
+        $nota->delete();
+        return redirect()->back();
     }
 }

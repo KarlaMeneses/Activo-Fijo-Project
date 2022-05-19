@@ -35,19 +35,19 @@
                 <a class="btn btn-primary " href="{{ route('notasventa.index') }}">Volver</a>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="adquirente">adquirente</label>
+                        <label for="adquirente">Adquirente</label>
                         <input type="text" name="adquirente" class="form-control" required>
-                        
+                       
                         <label for="telefono">Telefono</label>
                         <input type="tel" name="telefono" class="form-control" required>
 
                         <label for="fecha_venta">Fecha venta</label>
                         <input type="date" name="fecha_venta" class="form-control" required>
 
-                        <label for="encargado">encargado</label>
+                        <label for="encargado">Encargado</label>
                         <input type="text" name="encargado" class="form-control" required>
 
-                        <label for="cargo">cargo</label>
+                        <label for="cargo">Cargo</label>
                         <input type="text" name="cargo" class="form-control" required>
 
                         
@@ -77,6 +77,7 @@
 
                     </center>
                     <!---karla todo esto es subir imagenes ---> 
+
                     </div>
 
                 </div>
