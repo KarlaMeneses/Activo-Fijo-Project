@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Detallenota;
 use App\Models\Nota;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class NotaController extends Controller
+class NotaventaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,7 @@ class NotaController extends Controller
     public function index()
     {
         $notas = Nota::all();
-        return view('notas.index', compact('notas'));
+        return view('notasventa.index', compact('notas'));
     }
 
     /**
@@ -27,10 +26,10 @@ class NotaController extends Controller
      */
     public function create()
     {
-        $nota = nota::findOrFail(1);
+        $nota = Nota::findOrFail(1);
 
         $detallenotas = Detallenota::all();
-        return view('notas.create', compact('nota', 'detallenotas'));
+        return view('notasventa.create', compact('nota', 'detallenotas'));
     }
 
     /**
@@ -41,18 +40,21 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
+        
         $nota = new Nota();
-        $nota->proveedor = $request->proveedor;
-        $nota->direccion = $request->direccion;
+        
+        $nota->adquirente = $request->adquirente;
         $nota->telefono = $request->telefono;
-        $nota->fecha_entrega = $request->fecha_entrega;
-        $nota->tipo = 'compra';
+        $nota->fecha_venta = $request->fecha_venta;
+        $nota->encargado = $request->encargado;
+        $nota->cargo = $request->cargo;
+        $nota->tipo = 'venta';
         $nota->save();
         $nota = Nota::latest('id')->first();
+        $id = $nota->id;
         $detallenotas = Detallenota::all();
-        return redirect()->route('notas.edit', compact('nota', 'detallenotas'));
+        return redirect()->route('notasventa.edit', $nota->id);
     }
-
 
     /**
      * Display the specified resource.
@@ -64,7 +66,7 @@ class NotaController extends Controller
     {
         $nota = Nota::find($id);
         $detallenotas = Detallenota::all();
-        return view('notas.show', compact('nota', 'detallenotas'));
+        return view('notasventa.show', compact('nota', 'detallenotas'));
     }
 
     /**
@@ -75,9 +77,9 @@ class NotaController extends Controller
      */
     public function edit($id)
     {
-        $nota = nota::findOrFail($id);
+        $notaventa = nota::findOrFail($id);
         $detallenotas = Detallenota::all();
-        return view('notas.edit', compact('nota', 'detallenotas'));
+        return view('notasventa.edit', compact('id','detallenotas'));
     }
 
     /**
@@ -87,16 +89,22 @@ class NotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Nota $nota)
+    public function update(Request $request, $id)
     {
-        $nota = Nota::findOrFail($nota->id);
-        $nota->proveedor = $request->input('proveedor');
-        $nota->direccion = $request->input('direccion');
+        //
+    }
+
+    public function reedit(Request $request)
+    {
+        $nota = Nota::findOrFail($request->input('id'));
+        $nota->adquirente = $request->input('adquirente');
         $nota->telefono = $request->input('telefono');
-        $nota->fecha_entrega = $request->input('fecha_entrega');
+        $nota->fecha_venta = $request->input('fecha_venta');
+        $nota->encargado = $request->input('encargado');
+        $nota->cargo = $request->input('cargo');
         $nota->totales = $request->input('totales');
         $nota->save();
-        return redirect()->route('notas.index');
+        return redirect()->route('notasventa.index');
     }
 
     /**
@@ -111,5 +119,4 @@ class NotaController extends Controller
         $nota->delete();
         return redirect()->back();
     }
-  
 }

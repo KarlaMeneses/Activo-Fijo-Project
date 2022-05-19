@@ -21,7 +21,6 @@
                 amigable y funcional en el cual encontrarás eficiencia al momento de subir y llevar el control de los
                 activos que hay en tu empresa o múltiples empresas.</p>
         </div>
-
     </div>
 
 
