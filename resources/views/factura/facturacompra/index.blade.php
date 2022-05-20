@@ -19,18 +19,11 @@
                 <thead  class="bg-dark">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Nombre de usuario</th>
+                        <th scope="col">Vendedor</th>
                         <th scope="col">Telefono</th>
                         <th scope="col">Email</th>
                         <th scope="col">Direccion</th>
                         <th scope="col">Ciudad</th>
-                        <th scope="col">Articulo</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Ciudad</th>
-                        <th scope="col">Vendedor</th>
-                        <th scope="col">Valor Unitario</th>
-                        <th scope="col">Valor Total</th>
-                        <th scope="col">Descripcion</th>
                         <th scope="col">Forma de Pago</th>
                         <th scope="col">Referencia</th>
                     </tr>
@@ -41,18 +34,11 @@
                         <tr>
                             @if ($factura->tipo == 'compra')
                             <td>{{$factura->id}}</td>
-                            <td>{{$factura->user->name}}</td>
+                            <td>{{$factura->vendedoru->name}}</td>
                             <td>{{$factura->telefono}}</td>
-                            <td>{{$factura->email}}</td>
+                            <td>{{$factura->email}}</td> 
                             <td>{{$factura->direccion}}</td>
                             <td>{{$factura->ciudad}}</td>
-                            <td>{{$factura->articulo}}</td>
-                            <td>{{$factura->cantidad}}</td>
-                            <td>{{$factura->ciudad}}</td>
-                            <td>{{$factura->vendedor}}</td>
-                            <td>{{$factura->vunitario}}</td>
-                            <td>{{$factura->vtotal}}</td>
-                            <td>{{$factura->descripcion}}</td>
                             <td>{{$factura->formapago}}</td>
                             <td>{{$factura->referencia}}</td>
                          
