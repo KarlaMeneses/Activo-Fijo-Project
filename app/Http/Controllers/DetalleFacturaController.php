@@ -41,25 +41,17 @@ class DetalleFacturaController extends Controller
             return back();
     }
 
-    public function update(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
-        $detalle = new DetalleFactura();
-        $detalle->codigo = $request->codigo;
-        $detalle->cantidad = $request->cantidad;
-        $detalle->articulo = $request->articulo;
-        $detalle->valor_unitario = $request->valor_unitario;  
-        $detalle->descuento =  ($request->cantidad * $request->valor_unitario) * ( $request->descuento / 100);
-        $detalle->valor_total = ($request->cantidad * $request->valor_unitario) - $detalle->descuento;
-        $detalle->idfactura = $id;
-        $detalle->save();
-      
-
-        $total = $request->totalneto + $detalle->valor_total;
-        $iva = $request->totalneto * 0.13;
+        $detalle = DetalleFactura::find($id);
+        $total = $request->totalneto -  $detalle->valor_total;
+        $iva = $total * (13/100);
         $totaliva = $total + $iva;
-        //return $total;
-        DB::table('facturas')->where('id', $id)->update(['totalneto' => $total, 'iva' => $iva, 'totaliva' => $totaliva]);
-       
+        if ($total < 0) {
+            $total = 0; 
+        }
+        DetalleFactura::destroy($id);
+        DB::table('facturas')->where('id', $request->idfactura)->update(['totalneto' => $total,'iva' => $iva, 'totaliva' => $totaliva]);
         return back();
     }
 }

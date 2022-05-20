@@ -26,6 +26,7 @@
                         <th scope="col">Ciudad</th>
                         <th scope="col">Forma de Pago</th>
                         <th scope="col">Referencia</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
 
@@ -34,7 +35,7 @@
                         <tr>
                             @if ($factura->tipo == 'compra')
                             <td>{{$factura->id}}</td>
-                            <td>{{$factura->vendedoru->name}}</td>
+                            <td>{{$factura->compradoru->name}}</td>
                             <td>{{$factura->telefono}}</td>
                             <td>{{$factura->email}}</td> 
                             <td>{{$factura->direccion}}</td>
@@ -43,7 +44,24 @@
                             <td>{{$factura->referencia}}</td>
                          
                             <td>
-                               
+                                <form action="{{ route('factura.facturacompra.delete', $factura->id) }}" method="post">
+
+                                    <a class="btn btn-warning btn-sm text-light rounded-pill"
+                                        href="{{ route('notas.show', $factura->id) }}">
+                                        <i class="fas fa-eye"></i> </a>
+                                    <a href="{{ route('factura.facturacompra.edit', $factura) }}"
+                                        class="btn btn-primary btn-sm text-light rounded-pill">
+                                        <i class="fas fa-edit"></i> <a>
+                                            @csrf
+                                            
+                                            @can('editar factura')
+                                            @endcan
+                                            <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
+                                                value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
+                                                <i class="fas fa-trash-alt"></i></button>
+                                            @can('eliminar factura')
+                                            @endcan
+                                </form>
                             </td>
                             @endif
                            

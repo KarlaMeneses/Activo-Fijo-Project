@@ -109,7 +109,18 @@
                                         $suma_total = $suma_total + $detalle->valor_total;
                                     @endphp
                                     <td>
-                                    
+                                        @csrf
+                                        <form action="{{ route('detallefactura.destroy', $detalle->id ) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+
+                                            <input type="hidden" name="idfactura" value="{{ $factura->id }}">
+                                            <input type="hidden" name="totalneto" value="{{ $factura->totalneto }}">
+
+                                            <button class="btn btn-danger btn-sm"
+                                                onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" style="margin-top: 5px"
+                                                value="Borrar">Eliminar</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endif

@@ -84,4 +84,10 @@ class FacturaController extends Controller
         $factura->save();
         return redirect()->route('notas.index');
     }
+    public function destroycompra($id)
+    {
+        $factura = Factura::find($id);
+        $factura->delete();
+        return redirect()->back();
+    }
 }

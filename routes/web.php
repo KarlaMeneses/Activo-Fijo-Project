@@ -44,8 +44,10 @@ Route::get('factura/facturacompra/create', [App\Http\Controllers\FacturaControll
 Route::get('factura/facturacompra/edit/{id}', [App\Http\Controllers\FacturaController::class, 'editcompra'])->name('factura.facturacompra.edit');
 Route::post('factura/facturacompra/update/{id}', [App\Http\Controllers\FacturaController::class, 'updatecompra'])->name('factura.facturacompra.update');
 Route::post('factura/facturacompra/{id}', [App\Http\Controllers\FacturaController::class, 'destroycompra'])->name('factura.facturacompra.delete');
+
+// Detalle Factura
 Route::post('factura/detallefactura/store', [App\Http\Controllers\DetalleFacturaController::class, 'store'])->name('detallefactura.store');
-Route::post('factura/detallefactura/update/{id}', [App\Http\Controllers\DetalleFacturaController::class, 'update'])->name('detallefactura.update');
+Route::delete('factura/detallefactura/destroy/{id}', [App\Http\Controllers\DetalleFacturaController::class, 'destroy'])->name('detallefactura.destroy');
 // Factura Venta
 Route::get('factura/facturaventa/create', [App\Http\Controllers\FacturaController::class, 'createventa'])->name('factura.facturaventa.create');
 //Route::get('factura/facturaventa/edit/{id}', [App\Http\Controllers\UserController::class, 'editDoctor'])->name('users.doctor.edit');
