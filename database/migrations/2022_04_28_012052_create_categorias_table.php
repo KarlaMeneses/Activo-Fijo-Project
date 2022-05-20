@@ -20,7 +20,7 @@ class CreateCategoriasTable extends Migration
             $table->string('tipo_activo')->nullable();; //tipo de activo tangible,inttangible y inversion
             $table->string('cacateristica')->nullable();; //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
             $table->integer('vida_util')->nullable(); //años de vida de un activo 
-            $table->integer('valor_residual')->nullable(); //% de vida del activo fijo
+            $table->decimal('valor_residual')->nullable(); //% de vida del activo fijo
             //$table->string('id_depreciacion');
             //$table->string('valor_residual');
             $table->timestamps();

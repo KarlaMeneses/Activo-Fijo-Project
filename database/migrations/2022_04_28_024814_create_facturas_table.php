@@ -21,19 +21,25 @@ class CreateFacturasTable extends Migration
             $table->string('telefono');
             $table->string('email');
             $table->string('formapago');
-            $table->string('cantidad');
-            $table->string('vunitario');
-            $table->string('vtotal');
-            $table->string('tipo');
-            $table->string('vendedor')->nullable();
-            $table->string('referencia')->nullable();
-            $table->string('articulo');
-            $table->string('comprador')->nullable();
-            $table->string('descripcion');
-            $table->unsignedBigInteger('idnota')->nullable();
-            $table->foreign('idnota')->on('notas')->references('id')->onDelete('cascade');
-            $table->string('valorpagar')->nullable();
+            $table->date('fechaemitida')->nullable();
+            $table->decimal('totaliva')->nullable();
+            $table->decimal('iva')->nullable();
+            $table->decimal('totalneto')->nullable();
             $table->string('foto')->nullable();
+            $table->string('referencia')->nullable();
+           
+            $table->string('tipo');
+            //venta
+            $table->unsignedBigInteger('idvendedor')->nullable();
+            $table->foreign('idvendedor')->on('users')->references('id')->onDelete('cascade');
+            $table->string('comprador')->nullable();
+
+            //compra
+            $table->unsignedBigInteger('idcomprador')->nullable();
+            $table->foreign('idcomprador')->on('users')->references('id')->onDelete('cascade');
+            $table->string('vendedor')->nullable();
+         
+           
             $table->timestamps();
         });
     }

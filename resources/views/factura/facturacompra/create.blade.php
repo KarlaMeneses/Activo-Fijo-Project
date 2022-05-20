@@ -2,173 +2,123 @@
 
 @section('title', 'Activo Fijo')
 
+
 @section('content_header')
-    <h1>Registrar Factura de Compra</h1>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+
+    <div class="card-header  text-center">
+        <h3><b>Registrar Factura de Compra</b></h3>
+    </div>
 @stop
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/subir.css') }}">
+@stop
+
 @section('content')
-<style>
-            #imagen{
-        display: none;
-        }
-
-        .circle{
-            border-radius: 10%;
-            width: 100px;
-            height: 50px;
-            background-color: #939fce;
-            border-style: solid;
-            border-color: #939fbe; 
-            text-align: center;
-            text-size-adjust: auto;
-        }
-</style>
-
     <div class="card">
-        <div class="card-body">
-               
-                @error('name')
+        <div class="card-body table-responsive">
+            @error('name')
                 <div class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <strong>¡Error!</strong> Este usuario ya está registrado.
-              </div>
-                 
-                @enderror 
-                <form method="POST" action="{{route('factura.facturacompra.store')}}" enctype="multipart/form-data">
-                    @csrf
-                   
-                        <!--begin::Label-->
-                        <label >Nombre Completo:</label>
-                        <!--end::Label-->
-                     
-                                    <select name="iduser" id="select-room" class="form-control" onchange="habilitar()" >
-                                        <option value="nulo">Usuarios</option>
-                
-                                        @foreach ($users as $user)
-                
-                                            <option value="{{$user->id}}">
-                
-                                               <spam>{{$user->name}}</spam>
-                
-                                            </option>
-                
-                                        @endforeach
-                                    </select>
-                             
-                    
-                     <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label required fw-bold fs-6">NIT:</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                                 <input type="text" name="nit" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Numero de Celular"  />
-                            
-                     <label class="col-lg-4 col-form-label required fw-bold fs-6">Ciudad:</label>
-                        <!--end::Label-->
-                                   <input type="text" name="ciudad" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Ciudad"  />
-                             
-                            <label class="col-lg-4 col-form-label required fw-bold fs-6">Dirección:</label>
-                                       <input type="text" name="direccion" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Direccion"  />
-                                        
-                          
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Telefono:</label>
-                            
-                                            <input type="number" name="telefono" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
-                                        
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Email:</label>
-                              
-                                            <input type="email" name="email" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
-                                        
+                </div>
+            @enderror
+            @php
+                $sw = 1;
+                $anterior = 0;
+            @endphp
+            <form action="{{ route('factura.facturacompra.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <button class="btn btn-danger " type="submit">Crear Factura</button>
+                <a class="btn btn-primary " href="{{ route('factura.facturacompra.index') }}">Volver</a>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="vendedor">Vendedor</label>
+                        <input type="text" name="vendedor" class="form-control" required>
+                        <label for="nit">NIT</label>
+                        <input type="text" name="nit" class="form-control" required>
+                        <label for="comprador">Responsable de la compra</label>
+                        <select name="idcomprador" id="select-room" class="form-control" onchange="habilitar()" >
+                            <option value="nulo">Usuarios</option>
+    
+                            @foreach ($users as $user)
+    
+                                <option value="{{$user->id}}">
+    
+                                   <spam>{{$user->name}}</spam>
+    
+                                </option>
+    
+                            @endforeach
+                        </select>
 
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Vendedor:</label>
-                               
-                                            <input type="text" name="vendedor" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
-                                     
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Artículo:</label>
-                             
-                                            <input type="text" name="articulo" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
-                                       
-                           
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Descripción:</label>
-                               
-                                            <input type="text" name="descripcion" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
-                                     
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Forma de Pago:</label>
-                              
-                                            <input type="text" name="formapago" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
-                                       
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Cantidad:</label>
-                               
-                                            <input type="number" name="cantidad" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
-                                    
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Valor unitario:</label>
-                               
-                                            <input type="number" name="vunitario" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
-                                            <label class="col-lg-4 col-form-label required fw-bold fs-6">Valor total:</label>
-                               
-                                            <input type="number" name="vtotal" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
-                                       
-                           
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Referencia:</label>
-                              
-                                            <input type="text" name="referencia" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Email"  />
-                                    
-                                    
-                                
-                                     <br> 
-                    
-                    <input type="hidden" name="tipo" value="compra">
-                    
-                    
-                    <div class="row mb-6">
-                        <!--begin::Label-->
+                        <label for="direccion">Ciudad</label>
+                        <input type="text" name="ciudad" class="form-control" required>
+
+                        <label for="direccion">Direccion</label>
+                        <input type="text" name="direccion" class="form-control" required>
+
+                        <label for="telefono">Telefono</label>
+                        <input type="tel" name="telefono" class="form-control" required>
+
+                        <label for="fechaemitida">Fecha de Emisión</label>
+                        <input type="date" name="fechaemitida" class="form-control" required>
                         
-                        <!--begin::Col-->
-                        <div class="col-lg-8">
-                            <!--begin::Row-->
-                            <div class="row">
-                                <!--begin::Col-->
-                                <button type="submit"  class="btn btn-lg btn-primary w-100 mb-5">
-                                    Guardar
-                                </button>
-            
-                           
-                                <!--end::Col-->
-                            </div>
-                            <!--end::Row-->
-                            <br>
-                        </div>
-                    </div>    
-                
-                   
-                </form>
-            </div> 
-</div>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" required>
 
-<script>
-    document.addEventListener('DOMContentLoaded', cargar, false);
-    var rol = document.getElementById('select-roles');
-    var empleados = document.getElementById('select-empleados');
-    function habilitar(){
-        if(rol.value > 0){
-            empleados.disabled = false
-        }else{
-            empleados.disabled = true
-            empleados.value = 0
-        }
-    }
-    function cargar(){
-        if(rol.value > 0){
-            empleados.disabled = false
-        }else{
-            empleados.disabled = true
-            empleados.value = 0
-        }
-    }
-    /* function elegirE(){
-        if(odontologos.value > 0){
-            odontologos.disabled = false
-        }
-    } */
-</script>
+                        <label for="formapago">Forma de Pago:</label>
+                              
+                        <input type="text" name="formapago" class="form-control " placeholder=""  />
+                   
+          
+            <label for="referencia">Referencia:</label>
+          
+                        <input type="text" name="referencia" class="form-control" placeholder=""  />
+                        <input type="hidden" name="tipo" value="compra"/>
+                
+                
+
+                    </div>
+                    <div class="form-group col-md-6">
+                       
+                    @section('js')
+                        <script src="{{ asset('js/factura.js') }}"></script>
+                    @endsection
+                    <center>
+                        <label>Subir foto de Comprobante - Nota de compra fisica</label>
+                        <br>
+                        <img width="300" height="400" id="foto">
+                        <br> <br>
+                        <div class="custom-input-file">
+                            
+                            <input type="file" id="file" accept="image/*" class="input-file" value="" required>
+                            <i class="fas fa-file-upload"></i> Subir Foto...
+                        </div>
+                        <div class="col-12" id="app" style="text-align:center;">
+                            <progress id="progress_bar" value="0" max="100"></progress>
+                            <input type="hidden" value="" name="foto" id="fotov" title="foto"
+                                placeholder="https://example.com" list="defaultURLs"
+                                class="focus border-dark  form-control" required
+                                oninvalid="this.setCustomValidity('Please match the requested format')">
+                        </div>
+                        @error('foto')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+
+                    </center>
+                    <!---karla todo esto es subir imagenes ---> 
+                    </div>
+
+                </div>
+            </form>
+          
+        </div>
+    </div>
+    <script></script>
 @stop
 
 @section('css')
@@ -176,5 +126,61 @@
 @stop
 
 @section('js')
-    
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', cargar, false);
+        let checkP = document.getElementById('check_password');
+        let contra = document.getElementById('passwordInput');
+
+        var rol = document.getElementById('select-roles');
+        var empleados = document.getElementById('select-empleados');
+
+        function get_nota_id_last() {
+            $facturaaux = DB::table('facturas') -
+                >
+                latest('id') -
+                >
+                first();
+            $facturaid = $facturaaux - > id;
+            return $facturaid;
+        }
+
+        /*****************************/
+        $(document).ready(function() {
+            $('#bt_add').click(function() {
+                agregar();
+            });
+        });
+
+        var cont = 0;
+        total = 0;
+        subtotal = [];
+        $("#guardar").hide();
+
+
+        function limpiar() {
+            $("#pcantidad").val("");
+            $("#pprecio_compra").val("");
+            $("#pprecio_venta").val("");
+        }
+
+        function evaluar() {
+            if (total > 0) {
+                $("#guardar").show();
+            } else {
+                $("#guardar").hide();
+            }
+        }
+
+        function eliminar(index) {
+            total = total - subtotal[index];
+            $("#total").html("S/. " + total);
+            $("#fila" + index).remove();
+            evaluar();
+
+        }
+    </script>
+
 @stop
