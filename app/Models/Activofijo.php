@@ -9,6 +9,6 @@ class Activofijo extends Model
 {
     use HasFactory;
     protected $table = 'activosfijo';
-    protected $fillable = ['codigo','nombre','detalle','fecha','estado','id_factura',
-    'id_categoria','id_ubicacion'];
+    /* protected $fillable = ['codigo','nombre','detalle','fecha','estado','id_factura',
+    'id_categoria','id_ubicacion'];*/
 }

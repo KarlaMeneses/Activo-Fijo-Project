@@ -17,12 +17,9 @@ class CreateCategoriasTable extends Migration
             $table->id();
             $table->string('nombre')->nullable();; //bienes de cuenta contable nombre de la cuenta (contabilidad)
             $table->string('descripcion')->nullable();; ////descripción de la cuenta terreno,edificio etc
-            $table->string('tipo_activo')->nullable();; //tipo de activo tangible,inttangible y inversion
-            $table->string('cacateristica')->nullable();; //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-            $table->integer('vida_util')->nullable(); //años de vida de un activo 
-            $table->decimal('valor_residual')->nullable(); //% de vida del activo fijo
-            //$table->string('id_depreciacion');
-            //$table->string('valor_residual');
+            $table->string('estado')->nullable(); //% de vida del activo fijo
+            $table->unsignedBigInteger('id_depreciacion');
+            $table->foreign('id_depreciacion')->on('depreciaciones')->references('id')->onDelete('cascade');
             $table->timestamps();
         });
     }

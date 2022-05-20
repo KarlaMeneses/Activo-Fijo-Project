@@ -9,7 +9,7 @@ use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\DetallenotaController;
 use App\Http\Controllers\NotaventaController;
 use App\Http\Controllers\UbicacionController;
-
+use App\Http\Controllers\DepreciacionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Contracts\Role;
@@ -56,6 +56,7 @@ Route::get('factura/facturaventa/create', [App\Http\Controllers\FacturaControlle
 
 ///Categoria de activo fijos
 Route::resource('categorias', CategoriaController::class)->names('categorias');
+Route::resource('depreciaciones', DepreciacionController::class)->names('depreciaciones');
 
 //NOTAS
 Route::resource('notas', NotaController::class)->names('notas');

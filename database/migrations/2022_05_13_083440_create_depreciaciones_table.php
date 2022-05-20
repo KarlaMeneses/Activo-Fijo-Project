@@ -15,14 +15,13 @@ class CreateDepreciacionesTable extends Migration
     {
         Schema::create('depreciaciones', function (Blueprint $table) {
             $table->id();
-            //$table->string('nombre')->nullable();; //bienes de cuenta contable nombre de la cuenta (contabilidad)
-            //$table->string('descripcion')->nullable();; ////descripción de la cuenta terreno,edificio etc
-            //$table->string('id_categoria')->nullable();; //tipo de activo tangible,inttangible y inversion
-            //$table->string('id_vida_util')->nullable();; //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-            //$table->integer('id_tipo_activo')->nullable(); //años de vida de un activo 
-            //$table->integer('procesar')->nullable(); //% de vida del activo fijo
-            //$table->string('id_depreciacion');
-            //$table->string('valor_residual');
+            $table->string('nombre')->nullable();; //bienes de cuenta contable nombre de la cuenta (contabilidad)
+            $table->string('descripcion')->nullable();; ////descripción de la cuenta terreno,edificio etc
+            $table->string('tipo_activo')->nullable();; //tipo de activo tangible,inttangible y inversion
+            $table->string('cacateristica')->nullable();; //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
+            $table->integer('vida_util')->nullable(); //años de vida de un activo 
+            $table->decimal('valor_residual')->nullable(); //% de vida del activo fijo
+           
             $table->timestamps();
             /*
 ¿Qué me dice el Decreto Supremo DS 24051 en su artículo 22?

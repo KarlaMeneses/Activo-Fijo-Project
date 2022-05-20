@@ -310,6 +310,11 @@ return [
             'url'        => '#',
         ],
         [
+            'text'       => 'Depreciacion',
+            'icon_color' => 'cyan',
+            'route'        => 'depreciaciones.index',
+        ],
+        [
             'text'       => 'Categoria',
             'icon_color' => 'cyan',
             'route'        => 'categorias.index',
