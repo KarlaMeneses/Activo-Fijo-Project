@@ -60,11 +60,9 @@ class UserController extends Controller
         $usuario = new User();
         $usuario->name = $request->name;
         $usuario->email = $request->email;
-
         $usuario->foto = $request->foto;
         $usuario->edad = $request->edad;
         $usuario->sexo = $request->sexo;
-       
         $usuario->direccion = $request->direccion;
         $usuario->telefono = $request->telefono;
         
@@ -75,13 +73,9 @@ class UserController extends Controller
                 $usuario->cargo = $rol->name;
             }
         }
-
-
-
         $usuario->password = bcrypt(($request->password));
         $usuario->save();
         $usuario->roles()->sync($request->roles);
-        
         return redirect()->route('users.index');
     }
 
@@ -140,7 +134,6 @@ class UserController extends Controller
         $usuario->foto = $request->foto;
         $usuario->edad = $request->edad;
         $usuario->sexo = $request->sexo;
-        
         $usuario->direccion = $request->direccion;
         $usuario->telefono = $request->telefono;
 
