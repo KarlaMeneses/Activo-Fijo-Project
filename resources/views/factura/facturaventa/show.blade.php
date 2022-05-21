@@ -15,10 +15,10 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <a href="{{ route('factura.facturacompra.index') }}" class="btn btn-sm btn-success mr-3">
+                            <a href="{{ route('factura.facturaventa.index') }}" class="btn btn-sm btn-success mr-3">
                                 Volver </a>
 
-                                <a href="{{ route('factura.facturacompra.edit', $factura->id) }}" class="btn btn-sm btn-success mr-3">
+                                <a href="{{ route('factura.facturaventa.edit', $factura->id) }}" class="btn btn-sm btn-success mr-3">
                                     Editar </a>
                         </div>
                         <!--body-->

@@ -21,7 +21,7 @@
                
                
                 @csrf
-                @method('put')
+                
                 <button class="btn btn-primary" type="submit">Actualizar Factura</button>
                 <a class="btn btn-danger" href="{{ route('factura.facturaventa.index') }}">Volver</a>
                 <div class="form-row">
@@ -56,14 +56,14 @@
                             <input type="text" name="formapago" class="form-control" value="{{ $factura->formapago }}"
                                 required>
 
-                        <label for="totales">Total Neto</label>
-                        <input type="text" name="totales" class="form-control" value="{{ $factura->totalneto }}" required>
+                        <label for="totalneto">Total Neto</label>
+                        <input type="text" name="totalneto" class="form-control" value="{{ $factura->totalneto }}" required>
 
-                        <label for="totales">IVA 13%</label>
-                        <input type="text" name="totales" class="form-control" value="{{ $factura->iva }}" required>
+                        <label for="iva">IVA 13%</label>
+                        <input type="text" name="iva" class="form-control" value="{{ $factura->iva }}" required>
 
-                        <label for="totales">Total a Pagar</label>
-                        <input type="text" name="totales" class="form-control" value="{{ $factura->totaliva }}" required> 
+                        <label for="totaliva">Total a Pagar</label>
+                        <input type="text" name="totaliva" class="form-control" value="{{ $factura->totaliva }}" required> 
 
                     </div>
                     <div class="form-group col-md-6">
