@@ -20,7 +20,7 @@ class CreateDetallefacturaTable extends Migration
             $table->decimal('valor_unitario')->nullable();
             $table->decimal('valor_total')->nullable();
             $table->decimal('descuento')->nullable();
-            $table->decimal('codigo')->nullable();
+            $table->string('codigo')->nullable();
             $table->unsignedBigInteger('idfactura');
             $table->foreign('idfactura')->on('facturas')->references('id')->onDelete('cascade');
             $table->timestamps();

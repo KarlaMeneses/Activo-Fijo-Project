@@ -294,7 +294,7 @@ return [
                 ],
                 [
                     'text'    => 'Factura de venta',
-                    'url'     => '#',
+                    'url'     => 'factura/facturaventa/index',
                 ],
             ],
         ],

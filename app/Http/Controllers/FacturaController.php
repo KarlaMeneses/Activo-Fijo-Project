@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 class FacturaController extends Controller
 {
-    //
+    // COMPRAAA
     public function indexcompra()
     {
         $facturas = Factura::all();
@@ -20,11 +20,7 @@ class FacturaController extends Controller
        $users = User::all();
         return view('factura.facturacompra.create', compact('users'));
     }
-    public function createventa()
-    {
-       $users = User::all();
-        return view('factura.facturaventa.create', compact('users'));
-    }
+   
     public function storecompra(Request $request) // almacena los datos que son pasados por el form
     {
         $credentials =   Request()->validate([ //validar los datos
@@ -90,4 +86,53 @@ class FacturaController extends Controller
         $factura->delete();
         return redirect()->back();
     }
+    // VENTAAA
+    public function indexventa()
+    {
+        $facturas = Factura::all();
+        return view('factura.facturaventa.index', compact('facturas'));
+    }
+    public function createventa()
+    {
+       $users = User::all();
+        return view('factura.facturaventa.create', compact('users'));
+    }
+
+    public function storeventa(Request $request) // almacena los datos que son pasados por el form
+    {
+        $credentials =   Request()->validate([ //validar los datos
+            'idvendedor' => ['required'],
+            'comprador' => ['required'],
+            'nit' => ['required'],
+            'ciudad' => ['required'],
+            'direccion' => ['required'],
+            'telefono' => ['required'], 
+            'email' => ['required'],
+            'formapago' => ['required'],
+            'fechaemitida' => ['required'],
+            'tipo' => ['required'],
+            
+        ]);
+       
+            $factura= Factura::create([
+                'comprador'=>request('comprador'),
+                'idvendedor'=>request('idvendedor'),
+                'nit'=>request('nit'),
+                'telefono'=>request('telefono'),
+                'ciudad'=>request('ciudad'),
+                'direccion'=> request('direccion'),
+                'email'=>request('email'),
+                'formapago'=>request('formapago'),
+                'fechaemitida'=>request('fechaemitida'),
+                'tipo'=>request('tipo'),
+                
+            ]); 
+            $factura = Factura::latest('id')->first();
+            $id = $factura->id;
+            
+           $detalles = DetalleFactura::all();
+     
+        return redirect()->route('factura.facturaventa.edit', compact('id','factura','detalles'));
+    }
+
 }
