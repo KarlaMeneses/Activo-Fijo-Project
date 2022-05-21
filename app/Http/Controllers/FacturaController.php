@@ -76,9 +76,9 @@ class FacturaController extends Controller
         $factura->email = $request->input('email');
         $factura->fechaemitida = $request->input('fechaemitida');
         $factura->totaliva = $request->input('totaliva');
-        $factura->iva = $request->input('totaliva');
+        $factura->iva = $request->input('iva');
         $factura->save();
-        return redirect()->route('notas.index');
+        return redirect()->route('factura.facturacompta.index');
     }
     public function destroycompra($id)
     {
@@ -98,16 +98,14 @@ class FacturaController extends Controller
         return view('factura.facturaventa.create', compact('users'));
     }
 
-    public function storeventa(Request $request) // almacena los datos que son pasados por el form
+    public function storeventa(Request $request) 
     {
-        $credentials =   Request()->validate([ //validar los datos
+        $credentials =   Request()->validate([
             'idvendedor' => ['required'],
             'comprador' => ['required'],
             'nit' => ['required'],
             'ciudad' => ['required'],
-            'direccion' => ['required'],
             'telefono' => ['required'], 
-            'email' => ['required'],
             'formapago' => ['required'],
             'fechaemitida' => ['required'],
             'tipo' => ['required'],
@@ -119,9 +117,7 @@ class FacturaController extends Controller
                 'idvendedor'=>request('idvendedor'),
                 'nit'=>request('nit'),
                 'telefono'=>request('telefono'),
-                'ciudad'=>request('ciudad'),
-                'direccion'=> request('direccion'),
-                'email'=>request('email'),
+                'ciudad'=>request('ciudad'), 
                 'formapago'=>request('formapago'),
                 'fechaemitida'=>request('fechaemitida'),
                 'tipo'=>request('tipo'),
@@ -133,6 +129,32 @@ class FacturaController extends Controller
            $detalles = DetalleFactura::all();
      
         return redirect()->route('factura.facturaventa.edit', compact('id','factura','detalles'));
+    }
+    public function editventa($id)
+    {
+        $users = User::all();
+        $factura = Factura::findOrFail($id);
+        $detalles = DetalleFactura::all();
+        return view('factura.facturaventa.edit', compact('factura', 'detalles','users'));
+    }
+
+    public function updateventa(Request $request, $id)
+    {
+        $factura = Factura::findOrFail($id);
+        $factura->idvendedor = $request->input('idvendedor');
+        $factura->comprador = $request->input('comprador');
+        $factura->telefono = $request->input('telefono');
+        $factura->fechaemitida = $request->input('fechaemitida');
+        $factura->totaliva = $request->input('totaliva');
+        $factura->iva = $request->input('iva');
+        $factura->save();
+        return redirect()->route('factura.facturaventa.index');
+    }
+    public function destroyventa($id)
+    {
+        $factura = Factura::find($id);
+        $factura->delete();
+        return redirect()->back();
     }
 
 }

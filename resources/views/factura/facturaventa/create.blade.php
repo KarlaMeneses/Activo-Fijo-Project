@@ -58,18 +58,14 @@
                         <label for="direccion">Ciudad</label>
                         <input type="text" name="ciudad" class="form-control" required>
 
-                        <label for="direccion">Direccion</label>
-                        <input type="text" name="direccion" class="form-control" required>
+           
 
                         <label for="telefono">Telefono</label>
                         <input type="tel" name="telefono" class="form-control" required>
 
                         <label for="fechaemitida">Fecha de Emisión</label>
                         <input type="date" name="fechaemitida" class="form-control" required>
-                        
-                        <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" required>
-
+                     
                         <label for="formapago">Forma de Pago:</label>
                               
                         <input type="text" name="formapago" class="form-control " placeholder=""  />

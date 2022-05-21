@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{route('factura.facturacompra.create')}}" class="btn btn-primary btb-sm">Crear Factura</a>
+            <a href="{{route('factura.facturaventa.create')}}" class="btn btn-primary btb-sm">Crear Factura</a>
         </div>
     </div>
 
