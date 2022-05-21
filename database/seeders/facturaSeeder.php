@@ -113,7 +113,7 @@ class facturaSeeder extends Seeder
             ]
         );
 
-       /* DB::table('facturas')->insert(
+        DB::table('facturas')->insert(
             [   //Factura venta
                 [
                     'tipo' => 'venta',
@@ -195,6 +195,6 @@ class facturaSeeder extends Seeder
 
                 ],
             ]
-        );*/
+        );
     }
 }
