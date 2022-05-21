@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\DetallenotaController;
 use App\Http\Controllers\NotaventaController;
+use App\Http\Controllers\RevalorizacionController;
 use App\Http\Controllers\UbicacionController;
 use App\Http\Controllers\DepreciacionController;
 use Illuminate\Support\Facades\Auth;
@@ -74,3 +75,5 @@ Route::delete('notasventa/detalle_destroy/{id}', [DetallenotaController::class, 
 
 Route::resource('departamentos', DepartamentoController::class)->names('departamentos');
 Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones');
+
+Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');

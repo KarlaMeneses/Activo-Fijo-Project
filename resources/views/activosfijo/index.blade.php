@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{route('users.create')}}" class="btn btn-primary btb-sm">Crear Usuario</a>
+            <a href="{{route('activosfijo.create')}}" class="btn btn-primary btb-sm">Crear Usuario</a>
         </div>
     </div>
 
@@ -19,26 +19,31 @@
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Nombre de usuario</th>
-                        <th scope="col">Correo electronico</th>
-                        <th scope="col">Rol</th>
+                        <th scope="col">codigo</th>
+                        <th scope="col">nombre</th>
+                        <th scope="col">detalle</th>
+                        <th scope="col">fecha</th>
+                        <th scope="col">estado</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @foreach ($users as $user)
+                    @foreach ($activosfijo as $activo)
                         <tr>
-                            <td>{{$user->id}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->getRoleNames()[0]}}</td>
+                            <td>{{$activo->id}}</td>
+                            <td>{{$activo->codigo}}</td>
+                            <td>{{$activo->nombre}}</td>
+                            <td>{{$activo->detalle}}</td>
+                            <td>{{$activo->fecha}}</td>
+                            <td>{{$activo->estado}}</td>
+                        
                             <td>
-                                <form action="{{route('users.destroy', $user)}}" method="post">
+                                <form action="{{route('activosfijo.destroy', $activo)}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('users.edit', $user)}}" class="btn btn-primary btn-sm">Editar<a>
-                                    <a href="{{route('users.show', $user->id)}}" class="btn btn-success btn-sm">Ver<a>
+                                    <a href="{{route('activosfijo.edit', $activo)}}" class="btn btn-primary btn-sm">Editar<a>
+                                    <a href="{{route('activosfijo.show', $activo->id)}}" class="btn btn-success btn-sm">Ver<a>
 
                                     
 
