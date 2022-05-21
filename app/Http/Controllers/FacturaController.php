@@ -78,7 +78,7 @@ class FacturaController extends Controller
         $factura->totaliva = $request->input('totaliva');
         $factura->iva = $request->input('iva');
         $factura->save();
-        return redirect()->route('factura.facturacompta.index');
+        return redirect()->route('factura.facturacompra.index');
     }
     public function destroycompra($id)
     {
