@@ -16,7 +16,12 @@ class CategoriaController extends Controller
         $depres = Depreciacion::all();
         return view('categoria.index', compact('cates', 'depres'));
     }
-
+    public function show($id)
+    {
+        $cates = Categoria::all();
+        $depres = Depreciacion::all();
+        return view('categoria.show', compact('cates', 'depres'));
+    }
     public function create()
     {
         $depres = Depreciacion::all();
@@ -52,7 +57,7 @@ class CategoriaController extends Controller
         $cate->id_departamento = $request->id_departamento;
         $cate->save();
 
-        return redirect()->route('categorias.index');
+        return redirect()->route('categoria.index');
     }
 
     public function destroy($id)
