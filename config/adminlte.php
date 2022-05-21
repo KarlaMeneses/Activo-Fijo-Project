@@ -308,12 +308,18 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
         [
             'text' => 'Revalorizacion',
             'route'  => 'revalorizacion.index',
-            'icon' => 'fas fa-ruler',
+            'icon' => 'fas fa-arrow-up',
         ],
+        /* [
+            'text' => 'Mantenimiento',
+            'route'  => 'mantenimientos.index',
+            'icon' => 'fas fa-tools',
+        ],
+        ['header' => 'labels'], */
+        
         [
             'text'       => 'Activo fijo',
             'icon_color' => 'red',

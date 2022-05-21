@@ -35,7 +35,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
-Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
+/* Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show'); */
+/*El apartado de arriba ya se incluye en el resource */
 Route::resource('activosfijo', ActivofijoController::class)->names('activosfijo');
 
 // Factura Compra
@@ -84,6 +85,14 @@ Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones')
 Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');
 Route::post('activosfijo/index',[RevalorizacionController::class,'idactivo'])->name('activosfijo.idactivo');
 
+//MANTENIMIENTO
+Route::get('mantenimientos/index', [App\Http\Controllers\MantenimientoController::class, 'index'])->name('mantenimientos.index');
+Route::get('mantenimientos/create', [App\Http\Controllers\MantenimientoController::class, 'create'])->name('mantenimientos.create');
+Route::post('mantenimientos/store', [App\Http\Controllers\MantenimientoController::class, 'store'])->name('mantenimientos.store');
+Route::get('mantenimientos/edit/{id}', [App\Http\Controllers\MantenimientoController::class, 'edit'])->name('mantenimientos.edit');
+Route::put('mantenimientos/update/{id}', [App\Http\Controllers\MantenimientoController::class, 'update'])->name('mantenimientos.update');
+Route::get('mantenimientos/show/{id}', [App\Http\Controllers\MantenimientoController::class, 'show'])->name('mantenimientos.show');
+Route::delete('mantenimientos/{id}', [App\Http\Controllers\MantenimientoController::class, 'destroy'])->name('mantenimientos.destroy');
 
 
 
