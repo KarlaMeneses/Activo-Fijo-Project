@@ -21,13 +21,12 @@
                
                
                 @csrf
-                @method('put')
                 <button class="btn btn-primary" type="submit">Actualizar Factura</button>
                 <a class="btn btn-danger" href="{{ route('factura.facturacompra.index') }}">Volver</a>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="proveedor">Proveedor</label>
-                        <input type="text" name="proveedor" class="form-control" value="{{ $factura->vendedor }}" required>
+                        <label for="vendedor">Vendedor</label>
+                        <input type="text" name="vendedor" class="form-control" value="{{ $factura->vendedor }}" required>
 
                         <label for="comprador">Responsable de la compra</label>
                         <select name="idcomprador" id="select-room" class="form-control" onchange="habilitar()" >
@@ -46,6 +45,9 @@
                         
                         <label for="direccion">Direccion</label>
                         <input type="text" name="direccion" class="form-control" value="{{ $factura->direccion }}" required>
+
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" value="{{ $factura->email }}" required>
 
                         <label for="telefono">Telefono</label>
                         <input type="tel" name="telefono" class="form-control" value="{{ $factura->telefono }}" required>

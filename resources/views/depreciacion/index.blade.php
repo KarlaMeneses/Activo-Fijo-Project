@@ -4,7 +4,7 @@
 @section('content_header')
 
     <div class="card-header  text-center">
-        <h3><b>Depreciación</b></h3>
+        <h3><b>DS 24051 Reglamento del IUE Depreciación</b></h3>
     </div>
 
 @stop
@@ -18,10 +18,20 @@
             <a class="btn btn-primary" href="{{ route('depreciaciones.create') }}">
                 <i class="fas fa-bookmark"></i> Registrar
                 Depreciación</a>
+
+
         </div>
     </div>
 
     <div class="card">
+        <span class="text-primary">
+DECRETO SUPREMO Nº 24051
+REGLAMENTO AL IMPUESTO A LAS UTILIDADE,
+dispone que los bienes del activo fijo 
+comenzarán a depreciarse impositivamente 
+desde el momento en que se inicie su utilización y uso, para lo cual se entiende ya
+debieron estar previamente registrados o activados”.
+        </span>
         <!--<div class="card-body">-->
         <div class="card-body " style="overflow-x: scroll">
 
