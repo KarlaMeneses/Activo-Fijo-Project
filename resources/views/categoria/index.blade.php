@@ -22,9 +22,9 @@
     </div>
 
     <div class="card">
-       
+
         <div class="card-body " style="overflow-x: scroll">
-           
+
             <table class="table table-striped table-bordered shadow-lg mt-4 " id="usuarios" style="width:100%">
                 <thead class="bg-dark">
                     <tr>
@@ -38,23 +38,25 @@
                 </thead>
                 <tbody>
 
-                   
+
                     @foreach ($cates as $cate)
                         <tr>
                             <td>{{ $cate->id }}</td>
-                            
+                            <td>{{ $cate->nombre }}</td>
+                            <td>{{ $cate->descripcion }}</td>
+                            <td>{{ $cate->estado }}</td>
 
                             @foreach ($depres as $depre)
                                 @if ($cate->id_depreciacion == $depre->id)
                                     <td>{{ $depre->nombre }}</td>
-                                    <td>{{ $depre->descripcion }}</td>
-                                    <td>{{ $depre->cacateristica }}</td>
+                                    {{-- <td>{{ $depre->descripcion }}</td> --}}
+                                    <td class="badge rounded-pill bg-success">{{ $depre->cacateristica }}</td>
                                     <td>{{ $depre->tipo_activo }}</td>
                                 @endif
                             @endforeach
                             <td>
                                 <form action="{{ route('categorias.destroy', $cate) }}" method="post">
-                                    
+
                                     <a class="btn btn-warning btn-sm text-light rounded-pill"
                                         href="{{ route('categorias.show', $cate->id) }}">
                                         <i class="fas fa-eye"></i></a>
