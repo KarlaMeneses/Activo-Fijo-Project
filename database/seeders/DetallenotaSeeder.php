@@ -75,6 +75,8 @@ class DetallenotaSeeder extends Seeder
                 'total' => 130.80,
                 'id_notas' => 4, //id de la nota 
             ],
+
+            //------
         ]);
     }
 }
