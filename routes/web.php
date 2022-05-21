@@ -74,11 +74,16 @@ Route::post('notasventa/detalle_update/{id}', [DetallenotaController::class, 'de
 Route::delete('notas/detalle_destroy/{id}', [DetallenotaController::class, 'detalle_destroy']);
 Route::delete('notasventa/detalle_destroy/{id}', [DetallenotaController::class, 'detalle_destroy']);
 
+//DEPARTAMENTOS
 Route::resource('departamentos', DepartamentoController::class)->names('departamentos');
+
+//UBICACIONES
 Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones');
 
+//REVALORIZACION
 Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');
-
 Route::post('activosfijo/index',[RevalorizacionController::class,'idactivo'])->name('activosfijo.idactivo');
+
+
 
 
