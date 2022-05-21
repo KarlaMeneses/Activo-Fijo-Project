@@ -107,7 +107,25 @@ class DetallenotaController extends Controller
         $total = $request->nota_totales + $detallenota->total;
         //return $total;
         DB::table('notas')->where('id', $id)->update(['totales' => $total]);
-       
+
+        //AQUI SE TIENE QUE INSERTAR LOS ACTIVOS A LA TABLA DE ACTIVOS
+        $date = date('Y-m-d', time());
+        $nota = Nota::find($id);
+        if ($nota->tipo == 'compra') {
+            for ($i = 0; $i < $request->cantidad; $i++) {
+                DB::table('activosfijo')->insert(
+                    [   //nota compra
+                        [
+                            'detalle' => $request->detalle,
+                            'fecha' => $date,
+                            'estado' => 'espera',
+                        ],
+                    ]
+                );
+            }
+        }
+
+
         return back();
     }
 
@@ -116,10 +134,19 @@ class DetallenotaController extends Controller
         $detalle = Detallenota::find($id);
         $total = $request->nota_totales -  $detalle->total;
         if ($total < 0) {
-            $total = 0; 
+            $total = 0;
         }
         Detallenota::destroy($id);
         DB::table('notas')->where('id', $request->id_nota)->update(['totales' => $total]);
+
+        //ELIMINAR DE LOS ACTIVOS FIJOS
+        //$tipo_nota = DB::table('activosfijo')->where('tipo', 'compra')->get();
+        //if ($tipo_nota == 'compra') {
+            for ($i = 0; $i < $detalle->cantidad; $i++) {
+                DB::table('activosfijo')->where('detalle', $detalle->detalle)->delete();
+            }
+        //}
+
         return back();
     }
 }

@@ -4,7 +4,7 @@
 
 @section('content_header')
     <div class="card-header text-center">
-        <h3><b>Factura De Compra</b></h3>
+        <h3><b>Factura De Venta</b></h3>
     </div>
 @stop
 
@@ -17,20 +17,21 @@
                     <strong>¡Error!</strong> Esta factura ya está registrada.
                 </div>
             @enderror
-            <form action="{{ route('factura.facturacompra.update', $factura->id ) }}" method="post" novalidate>
+            <form action="{{ route('factura.facturaventa.update', $factura->id ) }}" method="post" novalidate>
                
                
                 @csrf
+                @method('put')
                 <button class="btn btn-primary" type="submit">Actualizar Factura</button>
-                <a class="btn btn-danger" href="{{ route('factura.facturacompra.index') }}">Volver</a>
+                <a class="btn btn-danger" href="{{ route('factura.facturaventa.index') }}">Volver</a>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="vendedor">Vendedor</label>
-                        <input type="text" name="vendedor" class="form-control" value="{{ $factura->vendedor }}" required>
+                        <label for="comprador">Comprador</label>
+                        <input type="text" name="comprador" class="form-control" value="{{ $factura->comprador }}" required>
 
-                        <label for="comprador">Responsable de la compra</label>
-                        <select name="idcomprador" id="select-room" class="form-control" onchange="habilitar()" >
-                            <option value="{{$factura->idcomprador}}">{{$factura->compradoru->name}}</option>
+                        <label for="comprador">Responsable de la Venta</label>
+                        <select name="idvendedor" id="select-room" class="form-control" onchange="habilitar()" >
+                            <option value="{{$factura->idvendedor}}">{{$factura->vendedoru->name}}</option>
     
                             @foreach ($users as $user)
     
@@ -43,12 +44,7 @@
                             @endforeach
                         </select>
                         
-                        <label for="direccion">Direccion</label>
-                        <input type="text" name="direccion" class="form-control" value="{{ $factura->direccion }}" required>
-
-                        <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" value="{{ $factura->email }}" required>
-
+                       
                         <label for="telefono">Telefono</label>
                         <input type="tel" name="telefono" class="form-control" value="{{ $factura->telefono }}" required>
 

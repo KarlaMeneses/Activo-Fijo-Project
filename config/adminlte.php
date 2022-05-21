@@ -294,15 +294,20 @@ return [
                 ],
                 [
                     'text'    => 'Factura de venta',
-                    'url'     => '#',
+                    'url'     => 'factura/facturaventa/index',
                 ],
             ],
         ],
         ['header' => 'labels'],
         [
+            'text' => 'Revalorizacion',
+            'route'  => 'revalorizacion.index',
+            'icon' => 'fas fa-ruler',
+        ],
+        [
             'text'       => 'Activo fijo',
             'icon_color' => 'red',
-            'url'        => '#',
+            'route'        => 'activosfijo.index',
         ],
         [
             'text'       => 'Factura',
@@ -319,11 +324,8 @@ return [
             'icon_color' => 'cyan',
             'route'        => 'categorias.index',
         ],
-        [
-            'text'       => 'Ubicacion',
-            'icon_color' => 'blue',
-            'url'        => '#',
-        ],
+      
+       
 
     ],
 
