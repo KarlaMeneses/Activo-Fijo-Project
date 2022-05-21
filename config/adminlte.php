@@ -288,11 +288,7 @@ return [
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'Crear Factura de compra',
-                    'url'  => 'factura/facturacompra/create',
-                ],
-                [
-                    'text' => 'Lista de Facturas',
+                    'text' => 'Facturas de compra',
                     'url'  => 'factura/facturacompra/index',
 
                 ],
@@ -317,6 +313,11 @@ return [
             'text'       => 'Factura',
             'icon_color' => 'yellow',
             'url'        => '#',
+        ],
+        [
+            'text'       => 'Depreciacion',
+            'icon_color' => 'cyan',
+            'route'        => 'depreciaciones.index',
         ],
         [
             'text'       => 'Categoria',

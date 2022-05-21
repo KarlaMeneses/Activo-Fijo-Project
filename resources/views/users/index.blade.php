@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'SI-ActivoFijo')
+@section('title', 'ActivoFijo')
 
 @section('content_header')
 
@@ -45,18 +45,23 @@
                             <td>{{ $user->getRoleNames()[0] }}</td>
                             <td>
                                 <form action="{{ route('users.destroy', $user) }}" method="post">
-                                    <a class="btn btn-warning btn-sm text-light"
+                                    <!--<a class="btn btn-warning btn-sm text-light" href="#">-->
+                                    <a class="btn btn-warning btn-sm text-light rounded-pill"
                                         href="{{ route('users.show', $user->id) }}">
-                                        <i class="fas fa-eye"></i> Ver </a>
-                                    <a href="{{ route('users.edit', $user) }}" class="btn btn-primary btn-sm">
-                                        <i class="fas fa-edit"></i> Editar<a>
+                                        <i class="fas fa-eye"></i></a>
+
+                                    <a href="{{ route('users.edit', $user) }}"
+                                        class="btn btn-primary btn-sm text-light rounded-pill">
+                                        <i class="fas fa-edit"></i><a>
                                             @csrf
                                             @method('delete')
-                                            
+                                            @can('editar users')
+                                            @endcan
                                             <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
-                                                value="Borrar" class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash-alt" style="margin-right: 5px"></i>Eliminar</button>
-                                            
+                                                value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
+                                                <i class="fas fa-trash-alt"></i></button>
+                                            @can('eliminar users')
+                                            @endcan
                                 </form>
                             </td>
                         </tr>

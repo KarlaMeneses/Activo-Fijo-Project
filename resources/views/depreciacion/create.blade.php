@@ -4,7 +4,7 @@
 
 @section('content_header')
     <div class="card-header  text-center">
-        <h3><b>Registrar Categoria</b></h3>
+        <h3><b>Registrar Depreciación</b></h3>
     </div>
 @stop
 
@@ -19,12 +19,12 @@
             @error('nombre')
                 <div class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>¡Error!</strong> Esta categoria ya está registrada.
+                    <strong>¡Error!</strong> Esta Depreciación ya está registrada.
                 </div>
             @enderror
 
 
-            <form method="post" action="{{ route('categorias.store') }}">
+            <form method="post" action="{{ route('depreciaciones.store') }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
@@ -37,35 +37,15 @@
                         <input type="text" name="descripcion" class="form-control" value="" required>
                     </div>
 
-    
-                    <div class="col-md-6">
-                        <label for="estado">Ingrese la descripción del activo</label>
-                        <input type="text" name="estado" class="form-control" value="" required>
-                    </div>
-
-
-<!--
-                <div class="row">
                     <div class="col-md-3">
-                        <label for="estado">Seleccione el Departamento</label>
-                        <select name="estado" class="focus border-dark  form-control" value="{{ old('estado') }}">
-                           <option value="Null">Null</option>
-                           <option value="Disponible">Disponible</option>
-                            <option value="No Disponible">No Disponible</option>
-                       </select><br>
+                        <label for="tipo_activo">Ingrese el tipo activo</label>
+                        <input type="text" name="tipo_activo" class="form-control" value="" required>
                     </div>
-                -->
-                    
-                    <div class="col-md-3">
-                        <label for="id_depreciacion">Seleccione el Departamento</label>
-                        <select name="id_depreciacion" class="focus border-dark  form-control">
-                            @foreach ($depres as $depre)
-                                <option value={{ $depre->id }}>{{ $depre->nombre }}</option>
-                            @endforeach
-                        </select><br>
-                    </div>
-                </div>
 
+                    <div class="col-md-3">
+                        <label for="cacateristica">Ingrese el tipo activo</label>
+                        <input type="text" name="cacateristica" class="form-control" value="" required>
+                    </div>
 
                     <!--
                                                 <div class="col-md-3">
@@ -94,10 +74,24 @@
                 </div>
 
 
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="vida_util">Ingrese la vida util (años)</label>
+                        <input name="vida_util" type="tel" size="0" maxlength="3" pattern="[0-9-+()]{0,2}" placeholder=""
+                            required class="form-control" value="">
+
+                    </div>
+                    <div class="col-md-3">
+                        <label for="valor_residual">Ingrese el valor residual %</label>
+                        <input type="tel" name="valor_residual" size="0" maxlength="3" pattern="[0-9-+()]{0,2}"
+                            placeholder="" required class="form-control" value="">
+
+                    </div>
+                </div>
                 <br>
                 <center>
                     <button class="btn btn-primary btb-sm text-light" type="submit">Registrar</button>
-                    <a class="btn btn-warning btb-sm text-light" href="{{ route('categorias.index') }}">Volver</a>
+                    <a class="btn btn-warning btb-sm text-light" href="{{ route('depreciaciones.index') }}">Volver</a>
                 </center>
             </form>
 
