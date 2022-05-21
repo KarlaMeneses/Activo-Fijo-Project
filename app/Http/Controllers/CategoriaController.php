@@ -7,12 +7,11 @@ use App\Models\Depreciacion;
 use Illuminate\Http\Request;
 
 
-
 class CategoriaController extends Controller
 {
     public function index()
     {
-        $cates = Categoria::all();
+        $cates  = Categoria::all();
         $depres = Depreciacion::all();
         return view('categoria.index', compact('cates', 'depres'));
     }
