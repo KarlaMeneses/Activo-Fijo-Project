@@ -20,12 +20,13 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Vendedor</th>
+                        <th scope="col">Comprador</th>
+                        <th scope="col">NIT</th>
                         <th scope="col">Telefono</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Direccion</th>
+                      
                         <th scope="col">Ciudad</th>
                         <th scope="col">Forma de Pago</th>
-                        <th scope="col">Referencia</th>
+                        
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -36,18 +37,19 @@
                             @if ($factura->tipo == 'venta')
                             <td>{{$factura->id}}</td>
                             <td>{{$factura->vendedoru->name}}</td>
+                            <td>{{$factura->comprador}}</td>
+                            <td>{{$factura->nit}}</td>
                             <td>{{$factura->telefono}}</td>
-                            <td>{{$factura->email}}</td> 
-                            <td>{{$factura->direccion}}</td>
+                            
                             <td>{{$factura->ciudad}}</td>
                             <td>{{$factura->formapago}}</td>
-                            <td>{{$factura->referencia}}</td>
+                           
                          
                             <td>
                                 <form action="{{ route('factura.facturaventa.delete', $factura->id) }}" method="post">
 
                                     <a class="btn btn-warning btn-sm text-light rounded-pill"
-                                        href="{{ route('notas.show', $factura->id) }}">
+                                        href="{{ route('factura.facturaventa.show', $factura->id) }}">
                                         <i class="fas fa-eye"></i> </a>
                                     <a href="{{ route('factura.facturaventa.edit', $factura) }}"
                                         class="btn btn-primary btn-sm text-light rounded-pill">
