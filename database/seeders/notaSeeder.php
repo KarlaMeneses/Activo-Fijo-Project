@@ -77,16 +77,83 @@ class notaSeeder extends Seeder
         DB::table('notas')->insert(
             [   //  nota venta
                 [
+
+                    'tipo' => 'venta',
+                    'adquirente' => 'Carla Lara',
+                    'telefono' => 3376548,
+                    'fecha_venta' => '2020-03-18',
+                    'encargado' => 'Lucia Cabrera',
+                    'cargo' => 'auxiliar de ventas',
+                    'totales' => 450,
+                ],
+                //nota de venta 2
+                [
+
+                    'tipo' => 'venta',
+                    'adquirente' => 'Corporativo MKT',
+                    'telefono' => 68200798,
+                    'fecha_venta' => '2019-05-15',
+                    'encargado' => 'Esteban Flores',
+                    'cargo' => 'auxiliar de ventas',
+                    'totales' => 1500,
+                ],
+                //nota de venta 3
+                [
+
                     'tipo' => 'venta',
                     'adquirente' => 'Juan Perez',
                     'telefono' => 76320594,
                     'fecha_venta' => '2022-02-20',
                     'encargado' => 'Esteban Flores',
                     'cargo' => 'auxiliar de ventas',
-                    'totales' => 450,
+                    'totales' => 2600,
                 ],
+                //nota de venta 4
+                [
 
+                    'tipo' => 'venta',
+                    'adquirente' => 'Jeans Edulfo Días S.C.',
+                    'telefono' => 3454872,
+                    'fecha_venta' => '2021-06-04',
+                    'encargado' => 'Lucia Cabrera',
+                    'cargo' => 'auxiliar de ventas',
+                    'totales' => 7000,
+                ],
+                //nota de venta 5
+                [
+
+                    'tipo' => 'venta',
+                    'adquirente' => 'Cospal S.A',
+                    'telefono' => 3486761,
+                    'fecha_venta' => '2021-06-13',
+                    'encargado' => 'Karla Meneses',
+                    'cargo' => 'auxiliar de ventas',
+                    'totales' => 1700,
+                ],
+                //nota de venta 6
+                [
+
+                    'tipo' => 'venta',
+                    'adquirente' => 'Iptabol',
+                    'telefono' => 77874539,
+                    'fecha_venta' => '2021-07-25',
+                    'encargado' => 'Esteban Flores',
+                    'cargo' => 'auxiliar de ventas',
+                    'totales' => 200,
+                ],
+                //nota de venta 7
+                [
+
+                    'tipo' => 'venta',
+                    'adquirente' => 'Fashon Nova S.A.',
+                    'telefono' => 3346764,
+                    'fecha_venta' => '2022-02-18',
+                    'encargado' => 'Karla Meneses',
+                    'cargo' => 'auxiliar de ventas',
+                    'totales' => 5000,
+                ],
             ]
         );
+        
     }
 }

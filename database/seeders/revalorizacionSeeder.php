@@ -15,6 +15,7 @@ class revalorizacionSeeder extends Seeder
     public function run()
     {
         DB::table('revalorizacion')->insert([
+            /*
             [
                 'tiempo_vida' => '5 años',
                 'valor' => 150,
@@ -40,6 +41,7 @@ class revalorizacionSeeder extends Seeder
                 'valor' => 800,
                 'id_activo' => 5,
             ],
+            */
         ]);
 
     }
