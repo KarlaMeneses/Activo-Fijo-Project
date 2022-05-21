@@ -86,6 +86,14 @@ class FacturaController extends Controller
         $factura->delete();
         return redirect()->back();
     }
+
+    public function showcompra($id)
+    {
+        $factura = Factura::find($id);
+        $detalles = DetalleFactura::all();
+        return view('factura.facturacompra.show', compact('factura', 'detalles'));
+    }
+
     // VENTAAA
     public function indexventa()
     {
@@ -156,5 +164,10 @@ class FacturaController extends Controller
         $factura->delete();
         return redirect()->back();
     }
-
+    public function showventa($id)
+    {
+        $factura = Factura::find($id);
+        $detalles = DetalleFactura::all();
+        return view('factura.facturaventa.show', compact('factura', 'detalles'));
+    }
 }

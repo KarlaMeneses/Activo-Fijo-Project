@@ -19,6 +19,7 @@
                 <thead  class="bg-dark">
                     <tr>
                         <th scope="col">ID</th>
+                        <th scope="col">Responsable</th>
                         <th scope="col">Vendedor</th>
                         <th scope="col">Telefono</th>
                         <th scope="col">Email</th>
@@ -36,6 +37,7 @@
                             @if ($factura->tipo == 'compra')
                             <td>{{$factura->id}}</td>
                             <td>{{$factura->compradoru->name}}</td>
+                            <td>{{$factura->vendedor}}</td>
                             <td>{{$factura->telefono}}</td>
                             <td>{{$factura->email}}</td> 
                             <td>{{$factura->direccion}}</td>
@@ -47,7 +49,7 @@
                                 <form action="{{ route('factura.facturacompra.delete', $factura->id) }}" method="post">
 
                                     <a class="btn btn-warning btn-sm text-light rounded-pill"
-                                        href="{{ route('notas.show', $factura->id) }}">
+                                        href="{{ route('factura.facturacompra.show', $factura->id) }}">
                                         <i class="fas fa-eye"></i> </a>
                                     <a href="{{ route('factura.facturacompra.edit', $factura) }}"
                                         class="btn btn-primary btn-sm text-light rounded-pill">
