@@ -1,4 +1,5 @@
 @extends('adminlte::page')
+
 @section('title', 'Activo Fijo')
 
 @section('content_header')
@@ -30,9 +31,10 @@
                 <thead class="bg-dark">
                     <tr>
                         <th>Id</th>
-                        <th>Tiempo de vida</th>
-                        <th>Valor</th>
                         <th>Activo fijo</th>
+                        <th>Valor</th>
+                        <th>Tiempo de vida</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -40,15 +42,15 @@
                     @foreach ($revalorizacion as $revalorizacion)
                         <tr>
                             <td>{{ $revalorizacion->id }}</td>
-                            <td>{{ $revalorizacion->tiempo_vida }}</td>
-                            <td>{{ $revalorizacion->valor }}</td>
-                            
                             @foreach ($activosfijo as $activo)
                                 @if ($activo->id == $revalorizacion->id_activo)
-                                <td>{{ $activo->nombre }}</td> 
+                                    <td>{{ $activo->detalle }}</td>
+                                    <td>{{ $activo->costo }}</td>
                                 @endif
                             @endforeach
+                            <td>{{ $revalorizacion->tiempo_vida }}</td>
                             
+                            <td>{{ $revalorizacion->estado }}</td>
                             <td>
                                 <form action="{{ route('revalorizacion.destroy', $revalorizacion) }}" method="post">
                                     <!--<a class="btn btn-warning btn-sm text-light" href="#">-->

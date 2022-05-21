@@ -15,8 +15,9 @@ class CreateRevalorizacionTable extends Migration
     {
         Schema::create('revalorizacion', function (Blueprint $table) {
             $table->id();
-            $table->string('tiempo_vida');
-            $table->integer('valor');
+            $table->string('tiempo_vida')->nullable();
+            $table->integer('valor')->nullable();
+            $table->string('estado')->nullable();
             $table->unsignedBigInteger('id_activo');
             $table->foreign('id_activo')->on('activosfijo')->references('id')->onDelete('cascade');
             $table->timestamps();

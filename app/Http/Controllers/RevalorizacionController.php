@@ -27,7 +27,7 @@ class RevalorizacionController extends Controller
      */
     public function create()
     {
-        //
+        return view('revalorizacion.create');
     }
 
     /**
@@ -38,7 +38,21 @@ class RevalorizacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $revalorizacion = new Revalorizacion();
+        $revalorizacion->tiempo_vida=$request->tiempo_vida;
+        $revalorizacion->valor=$request->valor;
+        $revalorizacion->id_activo=$request->id_activo;
+        $revalorizacion->save();
+        return redirect()->route('revalorizacion.index');
+    }
+
+    
+    public function idactivo(Request $request)
+    {
+        $revalorizacion = new Revalorizacion();
+        $revalorizacion->id_activo=$request->id_activo;
+        $revalorizacion->save();
+        return redirect()->route('activosfijo.index');
     }
 
     /**
@@ -60,7 +74,9 @@ class RevalorizacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $revalorizacion = Revalorizacion::findOrFail($id);
+        $activosfijo = Activofijo::all();
+        return view('revalorizacion.edit', compact('revalorizacion', 'activosfijo'));
     }
 
     /**
@@ -70,9 +86,13 @@ class RevalorizacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Revalorizacion $revalorizacion)
     {
-        //
+        $revalorizacion = Revalorizacion::findOrFail($revalorizacion->id);
+        $revalorizacion->estado = $request->input('estado');
+        $revalorizacion->tiempo_vida = $request->input('tiempo_vida');
+        $revalorizacion->save();
+        return redirect()->route('revalorizacion.index');
     }
 
     /**

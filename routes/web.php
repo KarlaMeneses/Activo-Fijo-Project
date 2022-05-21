@@ -78,3 +78,7 @@ Route::resource('departamentos', DepartamentoController::class)->names('departam
 Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones');
 
 Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');
+
+Route::post('activosfijo/index',[RevalorizacionController::class,'idactivo'])->name('activosfijo.idactivo');
+
+

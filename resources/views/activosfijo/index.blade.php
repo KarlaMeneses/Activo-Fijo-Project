@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'PROSALUD+')
+@section('title', 'Activo Fijo')
 
 @section('content_header')
     <h1>Usuarios</h1>
@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{route('activosfijo.create')}}" class="btn btn-primary btb-sm">Crear Usuario</a>
+            <a href="#" class="btn btn-primary btb-sm">Crear Activo fijo</a>
         </div>
     </div>
 
@@ -18,11 +18,12 @@
             <table class="table table-striped" id="usuarios" style="width:100%">
                 <thead>
                     <tr>
+
                         <th scope="col">ID</th>
-                        <th scope="col">codigo</th>
-                        <th scope="col">nombre</th>
                         <th scope="col">detalle</th>
-                        <th scope="col">fecha</th>
+                        <th scope="col">costo</th>
+                        <th scope="col">fecha_ingreso</th>
+                        <th scope="col">proveedor</th>
                         <th scope="col">estado</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -31,27 +32,35 @@
                 <tbody>
                     @foreach ($activosfijo as $activo)
                         <tr>
-                            <td>{{$activo->id}}</td>
-                            <td>{{$activo->codigo}}</td>
-                            <td>{{$activo->nombre}}</td>
-                            <td>{{$activo->detalle}}</td>
-                            <td>{{$activo->fecha}}</td>
-                            <td>{{$activo->estado}}</td>
-                        
+                            <td>{{ $activo->id }}</td>
+                            <td>{{ $activo->detalle }}</td>
+                            <td>{{ $activo->costo }}</td>
+                            <td>{{ $activo->fecha_ingreso }}</td>
+                            <td>{{ $activo->proveedor }}</td>
+                            <td>{{ $activo->estado }}</td>
                             <td>
-                                <form action="{{route('activosfijo.destroy', $activo)}}" method="post">
+                                <form action="{{ route('activosfijo.destroy', $activo) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('activosfijo.edit', $activo)}}" class="btn btn-primary btn-sm">Editar<a>
-                                    <a href="{{route('activosfijo.show', $activo->id)}}" class="btn btn-success btn-sm">Ver<a>
+                                    <a href="{{ route('activosfijo.edit', $activo) }}"
+                                        class="btn btn-primary btn-sm">Editar<a>
+                                            <a href="{{ route('activosfijo.show', $activo->id) }}"
+                                                class="btn btn-success btn-sm">Ver<a>
 
-                                    
 
-                                        @can('editar usuario')
-                                    @endcan
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" value="Borrar">Eliminar</button> 
-                                    @can('eliminar usuario')
-                                    @endcan
+                                                    @can('editar usuario')
+                                                    @endcan
+                                                    <button class="btn btn-danger btn-sm"
+                                                        onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')"
+                                                        value="Borrar">Eliminar</button>
+                                                    @can('eliminar usuario')
+                                                    @endcan
+                                </form>
+
+                                <form action="{{ route('activosfijo.idactivo') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id_activo" class="form-control" value="{{ $activo->id }}"> <br>
+                                    <button class="btn btn-danger btn-sm" type="submit">Revalorizacion</button>
                                 </form>
                             </td>
                         </tr>
@@ -73,7 +82,7 @@
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
-        $('#usuarios').DataTable();
-        } );
-    </script> 
+            $('#usuarios').DataTable();
+        });
+    </script>
 @stop
