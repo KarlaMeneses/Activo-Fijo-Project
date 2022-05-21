@@ -15,11 +15,14 @@ class CreateActivosfijoTable extends Migration
     {
         Schema::create('activosfijo', function (Blueprint $table) {
             $table->id();
-           /* $table->string('codigo');
-            $table->string('nombre');
-            $table->string('detalle');
-            $table->date('fecha');
-            $table->string('estado');
+            $table->string('codigo')->nullable();
+            $table->string('detalle')->nullable();
+          //  $table->string('costo')->nullable();
+            $table->date('fecha')->nullable();
+            $table->string('estado')->nullable();
+          /*  $table->unsignedBigInteger('id_ubicacion');
+            $table->foreign('id_ubicacion')->on('ubicaciones')->references('id')->onDelete('cascade');
+            
             $table->unsignedBigInteger('id_factura');
             $table->foreign('id_factura')->on('facturas')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('id_categoria');
