@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\DetallenotaController;
 use App\Http\Controllers\NotaventaController;
+use App\Http\Controllers\RevalorizacionController;
 use App\Http\Controllers\UbicacionController;
 use App\Http\Controllers\DepreciacionController;
 use Illuminate\Support\Facades\Auth;
@@ -44,15 +45,19 @@ Route::get('factura/facturacompra/create', [App\Http\Controllers\FacturaControll
 Route::get('factura/facturacompra/edit/{id}', [App\Http\Controllers\FacturaController::class, 'editcompra'])->name('factura.facturacompra.edit');
 Route::post('factura/facturacompra/update/{id}', [App\Http\Controllers\FacturaController::class, 'updatecompra'])->name('factura.facturacompra.update');
 Route::post('factura/facturacompra/{id}', [App\Http\Controllers\FacturaController::class, 'destroycompra'])->name('factura.facturacompra.delete');
+Route::get('factura/facturacompra/show/{id}', [App\Http\Controllers\FacturaController::class, 'showcompra'])->name('factura.facturacompra.show');
 
 // Detalle Factura
 Route::post('factura/detallefactura/store', [App\Http\Controllers\DetalleFacturaController::class, 'store'])->name('detallefactura.store');
 Route::delete('factura/detallefactura/destroy/{id}', [App\Http\Controllers\DetalleFacturaController::class, 'destroy'])->name('detallefactura.destroy');
 // Factura Venta
 Route::get('factura/facturaventa/create', [App\Http\Controllers\FacturaController::class, 'createventa'])->name('factura.facturaventa.create');
-//Route::get('factura/facturaventa/edit/{id}', [App\Http\Controllers\UserController::class, 'editDoctor'])->name('users.doctor.edit');
-//Route::post('factura/facturaventa/update/{id}', [App\Http\Controllers\UserController::class, 'updateDoctor'])->name('users.doctor.update');
-//Route::post('facuta/facturaventa/{id}', [App\Http\Controllers\UserController::class, 'destroyDoctor'])->name('users.doctor.delete');
+Route::get('factura/facturaventa/index', [App\Http\Controllers\FacturaController::class, 'indexventa'])->name('factura.facturaventa.index');
+Route::post('factura/facturaventa/store', [App\Http\Controllers\FacturaController::class, 'storeventa'])->name('factura.facturaventa.store');
+Route::get('factura/facturaventa/edit/{id}', [App\Http\Controllers\FacturaController::class, 'editventa'])->name('factura.facturaventa.edit');
+Route::post('factura/facturaventa/update/{id}', [App\Http\Controllers\FacturaController::class, 'updateventa'])->name('factura.facturaventa.update');
+Route::post('facuta/facturaventa/{id}', [App\Http\Controllers\FacturaController::class, 'destroyventa'])->name('factura.facturaventa.delete');
+Route::get('factura/facturaventa/show/{id}', [App\Http\Controllers\FacturaController::class, 'showventa'])->name('factura.facturaventa.show');
 
 ///Categoria de activo fijos
 Route::resource('categorias', CategoriaController::class)->names('categorias');
@@ -71,3 +76,9 @@ Route::delete('notasventa/detalle_destroy/{id}', [DetallenotaController::class, 
 
 Route::resource('departamentos', DepartamentoController::class)->names('departamentos');
 Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones');
+
+Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');
+
+Route::post('activosfijo/index',[RevalorizacionController::class,'idactivo'])->name('activosfijo.idactivo');
+
+

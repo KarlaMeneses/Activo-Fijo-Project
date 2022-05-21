@@ -17,9 +17,9 @@ class CreateFacturasTable extends Migration
             $table->id();
             $table->string('nit');
             $table->string('ciudad');
-            $table->string('direccion');
+            $table->string('direccion')->nullable();
             $table->string('telefono');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('formapago');
             $table->date('fechaemitida')->nullable();
             $table->decimal('totaliva')->nullable();

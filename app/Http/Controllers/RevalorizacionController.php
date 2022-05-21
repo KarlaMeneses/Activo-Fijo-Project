@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activofijo;
-use App\Models\Departamento;
-use App\Models\Factura;
-use App\Models\Ubicacion;
+use App\Models\Revalorizacion;
 use Illuminate\Http\Request;
 
-class ActivofijoController extends Controller
+class RevalorizacionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,9 @@ class ActivofijoController extends Controller
      */
     public function index()
     {
+        $revalorizacion = Revalorizacion::all();
         $activosfijo = Activofijo::all();
-        return view('activosfijo.index',compact('activosfijo'));
+        return view('revalorizacion.index', compact('revalorizacion', 'activosfijo'));
     }
 
     /**
@@ -28,7 +27,7 @@ class ActivofijoController extends Controller
      */
     public function create()
     {
-        //
+        return view('revalorizacion.create');
     }
 
     /**
@@ -39,7 +38,21 @@ class ActivofijoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $revalorizacion = new Revalorizacion();
+        $revalorizacion->tiempo_vida=$request->tiempo_vida;
+        $revalorizacion->valor=$request->valor;
+        $revalorizacion->id_activo=$request->id_activo;
+        $revalorizacion->save();
+        return redirect()->route('revalorizacion.index');
+    }
+
+    
+    public function idactivo(Request $request)
+    {
+        $revalorizacion = new Revalorizacion();
+        $revalorizacion->id_activo=$request->id_activo;
+        $revalorizacion->save();
+        return redirect()->route('activosfijo.index');
     }
 
     /**
@@ -50,11 +63,7 @@ class ActivofijoController extends Controller
      */
     public function show($id)
     {
-        $activofijo = Activofijo::find($id);
-        $ubicaciones = Ubicacion::all();
-        $facturas = Factura::all();
-        $departamentos = Departamento::all();
-        return view('activosfijo.show', compact('activofijo','facturas','ubicaciones','departamentos'));
+        //
     }
 
     /**
@@ -65,7 +74,9 @@ class ActivofijoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $revalorizacion = Revalorizacion::findOrFail($id);
+        $activosfijo = Activofijo::all();
+        return view('revalorizacion.edit', compact('revalorizacion', 'activosfijo'));
     }
 
     /**
@@ -75,9 +86,13 @@ class ActivofijoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Revalorizacion $revalorizacion)
     {
-        //
+        $revalorizacion = Revalorizacion::findOrFail($revalorizacion->id);
+        $revalorizacion->estado = $request->input('estado');
+        $revalorizacion->tiempo_vida = $request->input('tiempo_vida');
+        $revalorizacion->save();
+        return redirect()->route('revalorizacion.index');
     }
 
     /**

@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-header">
                     <center>
-                        <h2 class="font-weight-bold px-2">Información de la Categoria</h2>
+                        <h2 class="font-weight-bold px-2">Información de la Depreciación</h2>
                     </center>
                 </div>
             </div>
@@ -27,19 +27,19 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="nombre">Ingrese el nombre de cuenta contable</label>
-                        <input type="text" name="name" class="form-control" value="{{ $cates->nombre }}" disabled>
+                        <input type="text" name="name" class="form-control" value="{{ $depres->nombre }}" disabled>
 
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="descripcion">Ingrese la descripción del activo</label>
                         <input type="text" name="descripcion" class="form-control"
-                            value="{{ $cates->descripcion }}" disabled>
+                            value="{{ $depres->descripcion }}" disabled>
                     </div>
 
                     <div class="col-md-3">
                         <label for="tipo_activo">Seleccione el tipo activo</label>
-                        <input name="tipo_activo" type="tel" class="form-control" value="{{ $cates->estado }}"
+                        <input name="tipo_activo" type="tel" class="form-control" value="{{ $depres->tipo_activo }}"
                             disabled>
 
                     </div>
@@ -48,12 +48,12 @@
                     <div class="col-md-3">
                         <label for="cacateristica">Seleccione un cacateristica</label>
                         <input name="cacateristica" type="tel" class="form-control"
-                            value="{{ $cates->cacateristica }}" disabled>
+                            value="{{ $depres->cacateristica }}" disabled>
                     </div>
 
                     <div class="col-md-3">
                         <label for="vida_util">Ingrese la vida util (años)</label>
-                        <input name="vida_util" type="tel" class="form-control" value="{{ $cates->vida_util }}"
+                        <input name="vida_util" type="tel" class="form-control" value="{{ $depres->vida_util }}"
                             disabled>
 
                     </div>
@@ -61,7 +61,7 @@
                     <div class="col-md-3">
                         <label for="valor_residual">Ingrese el valor residual %</label>
                         <input type="tel" name="valor_residual" class="form-control"
-                            value="{{ $cates->vida_util }}" disabled>
+                            value="{{ $depres->vida_util }}" disabled>
 
                     </div>
 
@@ -80,8 +80,8 @@
 
 
             <center>
-                <a class="btn btn-warning btb-sm text-light" href="{{ route('categorias.index') }}">Volver</a>
-                <a href="{{ route('categorias.edit', $cates->id) }}" class="btn btn-primary btb-sm text-light">
+                <a class="btn btn-warning btb-sm text-light" href="{{ route('depreciaciones.index') }}">Volver</a>
+                <a href="{{ route('depreciaciones.edit', $depres->id) }}" class="btn btn-primary btb-sm text-light">
                     Editar </a>
             </center>
 
