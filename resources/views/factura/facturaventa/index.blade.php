@@ -44,12 +44,12 @@
                             <td>{{$factura->referencia}}</td>
                          
                             <td>
-                                <form action="{{ route('factura.facturacompra.delete', $factura->id) }}" method="post">
+                                <form action="{{ route('factura.facturaventa.delete', $factura->id) }}" method="post">
 
                                     <a class="btn btn-warning btn-sm text-light rounded-pill"
                                         href="{{ route('notas.show', $factura->id) }}">
                                         <i class="fas fa-eye"></i> </a>
-                                    <a href="{{ route('factura.facturacompra.edit', $factura) }}"
+                                    <a href="{{ route('factura.facturaventa.edit', $factura) }}"
                                         class="btn btn-primary btn-sm text-light rounded-pill">
                                         <i class="fas fa-edit"></i> <a>
                                             @csrf
