@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="col-md-3">
-                        <label for="cacateristica">Ingrese el tipo activo</label>
+                        <label for="cacateristica">Ingrese la cacateristica activo</label>
                         <input type="text" name="cacateristica" class="form-control" value="" required>
                     </div>
 

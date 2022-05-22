@@ -17,7 +17,7 @@ class CategoriaController extends Controller
     }
     public function show($id)
     {
-        $cates = Categoria::all();
+        $cates = Categoria::find($id);
         $depres = Depreciacion::all();
         return view('categoria.show', compact('cates', 'depres'));
     }
@@ -36,7 +36,7 @@ class CategoriaController extends Controller
         $cate->estado = $request->estado;
         $cate->id_depreciacion = $request->id_depreciacion;
         $cate->save();
-        return redirect()->route('categoria.index'); // Se redirige a la vista ubicaiones.index
+        return redirect()->route('categorias.index'); // Se redirige a la vista ubicaiones.index
     }
 
     public function edit($id)
@@ -50,13 +50,13 @@ class CategoriaController extends Controller
     {
 
         $cate = Categoria::find($id);
-        $cate->edificio = $request->edificio;
-        $cate->ciudad = $request->ciudad;
-        $cate->pais = $request->pais;
-        $cate->id_departamento = $request->id_departamento;
+        $cate->nombre = $request->nombre;
+        $cate->descripcion = $request->descripcion;
+        $cate->estado = $request->estado;
+        $cate->id_depreciacion = $request->id_depreciacion;
         $cate->save();
 
-        return redirect()->route('categoria.index');
+        return redirect()->route('categorias.index');
     }
 
     public function destroy($id)

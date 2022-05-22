@@ -37,7 +37,7 @@
                         <input type="text" name="descripcion" class="form-control" value="" required>
                     </div>
 
-    
+
                     <div class="col-md-6">
                         <label for="estado">Ingrese la descripción del activo</label>
                         <input type="text" name="estado" class="form-control" value="" required>
@@ -55,7 +55,7 @@
                        </select><br>
                     </div>
                 -->
-                    
+
                     <div class="col-md-3">
                         <label for="id_depreciacion">Seleccione el Departamento</label>
                         <select name="id_depreciacion" class="focus border-dark  form-control">
