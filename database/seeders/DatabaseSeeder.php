@@ -35,5 +35,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DetalleFacturaSeeder::class);
         $this->call(activofijoSeeder::class);
         $this->call(revalorizacionSeeder::class);
+        $this->call(mantenimientoSeeder::class);
     }
 }
