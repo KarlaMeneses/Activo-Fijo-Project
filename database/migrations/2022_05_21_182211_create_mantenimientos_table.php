@@ -17,10 +17,12 @@ class CreateMantenimientosTable extends Migration
             $table->id();
             $table->string('problema');
             $table->float('costo');
-            $table->string('duracion');
             $table->date('fecha_ini');
             $table->date('fecha_fin');
             $table->string('solucion');
+            $table->string('estado');
+            $table->unsignedBigInteger('id_activo');
+            $table->foreign('id_activo')->on('activosfijo')->references('id')->onDelete('cascade');          
             $table->timestamps();
         });
     }

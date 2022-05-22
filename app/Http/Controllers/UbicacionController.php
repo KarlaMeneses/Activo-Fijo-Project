@@ -16,8 +16,8 @@ class UbicacionController extends Controller
 
     public function create()
     {
-        $depa= Departamento::all();
-        return view('ubicacion.create', compact('depa'));  
+        $depas = Departamento::all();
+        return view('ubicacion.create', compact('depas'));  
     }
     public function store(Request $request)
     {
