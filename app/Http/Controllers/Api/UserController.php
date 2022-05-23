@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -33,11 +34,23 @@ class UserController extends Controller
 
     protected function respondWithToken($token, $usuario)
     {
+        $usuario->rol_name = $usuario->roles[0]->name;
         return response()->json([
             'mensaje' => 'Token generado exitosamente',
             'token' => $token,
             'data' => $usuario
             // 'expires_in' => auth()->factory()->getTTL() * 60
         ], 200);
+    }
+
+    public function obtenerUser()
+    {
+        try {
+            $user = auth('api')->user();
+            $user->rol_name = $user->roles[0]->name;
+            return response()->json(['mensaje' => 'Consulta exitosa', 'data' => $user], 200);
+        } catch (\Exception $e) {
+            return response()->json(['mensaje' => $e->getMessage()], 500);
+        }
     }
 }

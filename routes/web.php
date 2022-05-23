@@ -8,6 +8,8 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\DetalledetallenotaController;
 use App\Http\Controllers\DetallenotaController;
+use App\Http\Controllers\FacturaController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UbicacionController;
 use App\Models\Nota;
 use Illuminate\Support\Facades\Auth;
@@ -30,18 +32,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
-Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
+Route::get('users/show/{id}', [UserController::class, 'show'])->name('users.show');
 Route::resource('activosfijo', ActivofijoController::class)->names('activosfijo');
 Route::resource('notas', NotaController::class)->names('notas');
 Route::get('notasventa', [NotaController::class, 'indexVenta'])->name('notasventa.index');
 
-Route::get('factura/facturacompra/index', [App\Http\Controllers\FacturaController::class, 'indexcompra'])->name('factura.facturacompra.index');
-Route::post('factura/facturacompra/store', [App\Http\Controllers\FacturaController::class, 'storecompra'])->name('factura.facturacompra.store');
-Route::get('factura/facturacompra/create', [App\Http\Controllers\FacturaController::class, 'createcompra'])->name('factura.facturacompra.create');
-Route::get('factura/facturaventa/create', [App\Http\Controllers\FacturaController::class, 'createventa'])->name('factura.facturaventa.create');
+Route::get('factura/facturacompra/index', [FacturaController::class, 'indexcompra'])->name('factura.facturacompra.index');
+Route::post('factura/facturacompra/store', [FacturaController::class, 'storecompra'])->name('factura.facturacompra.store');
+Route::get('factura/facturacompra/create', [FacturaController::class, 'createcompra'])->name('factura.facturacompra.create');
+Route::get('factura/facturaventa/create', [FacturaController::class, 'createventa'])->name('factura.facturaventa.create');
 
 ///Categoria de activo fijos
 Route::resource('categorias', CategoriaController::class)->names('categorias');
