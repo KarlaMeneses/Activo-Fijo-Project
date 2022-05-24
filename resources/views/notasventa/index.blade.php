@@ -1,15 +1,16 @@
 @extends('adminlte::page')
 
-@section('title', 'PROSALUD+')
+@section('title', 'Activo Fijo')
 
 @section('content_header')
-    <h1>Nota de compra</h1>
+    <h1>Nota De Venta</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('notas.create') }}" class="btn btn-primary btb-sm">Crear nota de compra</a>
+            <a href="{{ route('notasventa.create') }}" class="btn btn-primary btb-sm"><i class="fas fa-bookmark"> </i>Crear
+                nota de compra</a>
         </div>
     </div>
 
@@ -18,44 +19,49 @@
             <table class="table table-striped" id="notas" style="width:100%">
                 <thead>
                     <tr>
-                        <th scope="col">unidad</th>
-                        <th scope="col">concepto</th>
-                        <th scope="col">precio_uni</th>
-                        <th scope="col">nro_egreso</th>
-                        <th scope="col">almacen</th>
-                        <th scope="col">entregado_a</th>
-
+                        <th scope="col">Adquirente</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Fecha de venta</th>
+                        <th scope="col">Encargado</th>
+                        <th scope="col">Cargo</th>
+                        <th scope="col">Totales</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     @foreach ($notas as $nota)
-                        <tr>
-                            <td>{{ $nota->unidad }}</td>
-                            <td>{{ $nota->concepto }}</td>
-                            <td>{{ $nota->precio_uni }}</td>
-                            <td>{{ $nota->nro_egreso }}</td>
-                            <td>{{ $nota->almacen }}</td>
-                            <td>{{ $nota->entregado_a }}</td>
-                            <td>
-                                <form action="{{ route('notas.destroy', $nota) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <a href="{{ route('notas.edit', $nota) }}" class="btn btn-primary btn-sm">Editar<a>
-                                            <a href="{{ route('notas.show', $nota->id) }}"
-                                                class="btn btn-success btn-sm">Ver<a>
+                        @if ($nota->tipo == 'venta')
+                            <tr>
+                                <td>{{ $nota->adquirente }}</td>
+                                <td>{{ $nota->telefono }}</td>
+                                <td>{{ $nota->fecha_venta }}</td>
+                                <td>{{ $nota->encargado }}</td>
+                                <td>{{ $nota->cargo }}</td>
+                                <td>{{ $nota->totales }}</td>
+                                <td>
+                                    <form action="{{ route('notasventa.destroy', $nota) }}" method="post">
+                                        <a class="btn btn-warning btn-sm text-light rounded-pill"
+                                            href="{{ route('notasventa.show', $nota->id) }}">
+                                            <i class="fas fa-eye"></i></a>
 
-                                                    @can('editar nota')
-                                                    @endcan
-                                                    <button class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')"
-                                                        value="Borrar">Eliminar</button>
-                                                    @can('eliminar nota')
-                                                    @endcan
-                                </form>
-                            </td>
-                        </tr>
+                                        <a href="{{ route('notasventa.edit', $nota) }}"
+                                            class="btn btn-primary btn-sm text-light rounded-pill">
+                                            <i class="fas fa-edit"></i><a>
+                                                @csrf
+                                                @method('delete')
+                                                @can('editar notasventa')
+                                                @endcan
+                                                <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
+                                                    value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
+                                                    <i class="fas fa-trash-alt"></i></button>
+                                                @can('eliminar notasventa')
+                                                @endcan
+                                    </form>
+
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>

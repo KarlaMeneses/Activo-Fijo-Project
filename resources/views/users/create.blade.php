@@ -37,14 +37,14 @@
                 <div class="form-group col-md-3">
                     <img width="200" height="200" class="img-circle" id="foto">
                     <div class="custom-input-file">
-                        <input type="file" id="file" accept="image/*" class="input-file" value="" required>
+                        <input type="file" id="file" accept="image/*" class="input-file" value="">
                         <i class="fas fa-file-upload"></i> Subir Foto...
                     </div>
                     <div class="col-12" id="app" style="text-align:center;">
                         <progress id="progress_bar" value="0" max="100"></progress>
-                        <input type="hidden" value="" name="foto" id="fotov" title="foto"
+                        <input type="hidden" value="{{ old('foto') }}" name="foto" id="fotov" title="foto"
                             placeholder="https://example.com" list="defaultURLs" class="focus border-dark  form-control"
-                            required oninvalid="this.setCustomValidity('Please match the requested format')">
+                            oninvalid="this.setCustomValidity('Please match the requested format')">
                     </div>
                     @error('foto')
                         <span class="text-danger">{{ $message }}</span>
@@ -56,6 +56,11 @@
                     <label for="name">Ingrese el nombre de usuario</label>
                     <input type="text" name="name" class="form-control" value="" required>
                 </div>
+                @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+
+
                 <div class="col-md-3">
                     <label for="sexo">Seleccione un sexo</label>
                     <select name="sexo" id="sexo" class="form-control" onchange="habilitar()" required>
@@ -63,6 +68,10 @@
                         <option value="Femenino">Femenino</option>
                     </select>
                 </div>
+                @error('sexo')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+
                 <div class="col-md-3">
                     <label for="roles">Seleccione un rol</label>
                     <select name="roles" id="select-roles" class="form-control" onchange="habilitar()" required>
@@ -71,8 +80,7 @@
                         @endforeach
                     </select>
                     @error('roles')
-                        <small>*{{ $message }}</small>
-                        <br><br>
+                        <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
             </div>
@@ -83,18 +91,26 @@
                     <label for="direccion">Ingrese la direccion</label>
                     <input type="text" name="direccion" class="form-control" value="" required>
                 </div>
+                @error('direccion')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+
                 <div class="col-md-3">
                     <label for="edad">Ingrese la edad</label>
                     <!--<input type="text" name="edad" class="form-control" value="" required>-->
                     <input name="edad" type="tel" size="2" maxlength="2" pattern="[0-9-+()]{2,2}" placeholder=""
-                        required class="form-control" value="" required>
-
+                        class="form-control" value="" required>
+                    @error('edad')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
+
                 <div class="col-md-3">
                     <label for="telefono">Ingrese el telefono</label>
-                    <input type="tel" name="telefono" class="form-control" value="" size="5" maxlength="15"
-                        pattern="[0-9-+()]{5,15}" placeholder="+591XXXXXXXXX" required>
-
+                    <input name="telefono" type="tel" size="10" placeholder="+591XXXXXXXXX" class="form-control" require value="{{ old('telefono') }}">
+                    @error('telefono')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
 
@@ -103,16 +119,14 @@
                     <label for="email">Ingrese el correo electronico</label>
                     <input type="text" name="email" class="form-control" value="" required>
                     @error('email')
-                        <small>*{{ $message }}</small>
-                        <br><br>
+                        <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="col-md-6">
                     <label for="password">Ingrese la contraseña</label>
                     <input type="password" name="password" class="form-control" value="" required>
                     @error('password')
-                        <small>*{{ $message }}</small>
-                        <br><br>
+                        <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
             </div>

@@ -21,13 +21,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-
             $table->string('foto')->nullable();
-            $table->string('sexo');
-            $table->integer('edad');
-            $table->string('cargo');
-            $table->string('direccion');
-            $table->integer('telefono');
+            $table->string('sexo')->nullable();
+            $table->integer('edad')->nullable();
+            $table->string('cargo')->nullable(); // Se debe borrar
+            $table->string('direccion')->nullable();
+            $table->integer('telefono')->nullable();
            // $table->string('rol')->nullable(); // por borrar
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

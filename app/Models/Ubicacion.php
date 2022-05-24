@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ubicacion extends Model
 {
     use HasFactory;
-    protected $table = 'ubicaciones'; //usa el nombre de la base de datos 
+    protected $table = 'ubicacion'; //usa el nombre de la base de datos 
     protected $fillable = ['edificio', 'ciudad','pais','id_departamento'];
     //atributos de la tabla
 }

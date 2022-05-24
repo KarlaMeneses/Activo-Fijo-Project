@@ -16,23 +16,18 @@
     <div class="card">
         <div class="card-body">
             <table class="table table-striped" id="usuarios" style="width:100%">
-                <thead>
+                <thead  class="bg-dark">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Nombre de usuario</th>
+                        <th scope="col">Responsable</th>
+                        <th scope="col">Vendedor</th>
                         <th scope="col">Telefono</th>
                         <th scope="col">Email</th>
                         <th scope="col">Direccion</th>
                         <th scope="col">Ciudad</th>
-                        <th scope="col">Articulo</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Ciudad</th>
-                        <th scope="col">Vendedor</th>
-                        <th scope="col">Valor Unitario</th>
-                        <th scope="col">Valor Total</th>
-                        <th scope="col">Descripcion</th>
                         <th scope="col">Forma de Pago</th>
                         <th scope="col">Referencia</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
 
@@ -41,23 +36,34 @@
                         <tr>
                             @if ($factura->tipo == 'compra')
                             <td>{{$factura->id}}</td>
-                            <td>{{$factura->user->name}}</td>
+                            <td>{{$factura->compradoru->name}}</td>
+                            <td>{{$factura->vendedor}}</td>
                             <td>{{$factura->telefono}}</td>
-                            <td>{{$factura->email}}</td>
+                            <td>{{$factura->email}}</td> 
                             <td>{{$factura->direccion}}</td>
                             <td>{{$factura->ciudad}}</td>
-                            <td>{{$factura->articulo}}</td>
-                            <td>{{$factura->cantidad}}</td>
-                            <td>{{$factura->ciudad}}</td>
-                            <td>{{$factura->vendedor}}</td>
-                            <td>{{$factura->vunitario}}</td>
-                            <td>{{$factura->vtotal}}</td>
-                            <td>{{$factura->descripcion}}</td>
                             <td>{{$factura->formapago}}</td>
                             <td>{{$factura->referencia}}</td>
                          
                             <td>
-                               
+                                <form action="{{ route('factura.facturacompra.delete', $factura->id) }}" method="post">
+
+                                    <a class="btn btn-warning btn-sm text-light rounded-pill"
+                                        href="{{ route('factura.facturacompra.show', $factura->id) }}">
+                                        <i class="fas fa-eye"></i> </a>
+                                    <a href="{{ route('factura.facturacompra.edit', $factura) }}"
+                                        class="btn btn-primary btn-sm text-light rounded-pill">
+                                        <i class="fas fa-edit"></i> <a>
+                                            @csrf
+                                            
+                                            @can('editar factura')
+                                            @endcan
+                                            <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
+                                                value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
+                                                <i class="fas fa-trash-alt"></i></button>
+                                            @can('eliminar factura')
+                                            @endcan
+                                </form>
                             </td>
                             @endif
                            

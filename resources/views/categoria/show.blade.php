@@ -24,64 +24,32 @@
             </div>
 
             <div class="row">
+
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="nombre">Ingrese el nombre de cuenta contable</label>
-                        <input type="text" name="name" class="form-control" value="{{ $categorias->nombre }}" disabled>
-
+                        <input type="text" name="nombre" class="form-control" value="{{ $cates->nombre }}" disabled>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="descripcion">Ingrese la descripción del activo</label>
                         <input type="text" name="descripcion" class="form-control"
-                            value="{{ $categorias->descripcion }}" disabled>
+                            value="{{ $cates->descripcion }}" disabled>
                     </div>
 
                     <div class="col-md-3">
-                        <label for="tipo_activo">Seleccione el tipo activo</label>
-                        <input name="tipo_activo" type="tel" class="form-control" value="{{ $categorias->tipo_activo }}"
+                        <label for="estado">Seleccione el tipo activo</label>
+                        <input name="estado" type="tel" class="form-control" value="{{ $cates->estado }}"
                             disabled>
-
                     </div>
-
-
-                    <div class="col-md-3">
-                        <label for="cacateristica">Seleccione un cacateristica</label>
-                        <input name="cacateristica" type="tel" class="form-control"
-                            value="{{ $categorias->cacateristica }}" disabled>
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="vida_util">Ingrese la vida util (años)</label>
-                        <input name="vida_util" type="tel" class="form-control" value="{{ $categorias->vida_util }}"
-                            disabled>
-
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="valor_residual">Ingrese el valor residual %</label>
-                        <input type="tel" name="valor_residual" class="form-control"
-                            value="{{ $categorias->vida_util }}" disabled>
-
-                    </div>
-
-                </div>
-
-
-
-
 
 
 
             </div>
-
-
             <br>
-
-
             <center>
                 <a class="btn btn-warning btb-sm text-light" href="{{ route('categorias.index') }}">Volver</a>
-                <a href="{{ route('categorias.edit', $categorias->id) }}" class="btn btn-primary btb-sm text-light">
+                <a href="" class="btn btn-primary btb-sm text-light">
                     Editar </a>
             </center>
 

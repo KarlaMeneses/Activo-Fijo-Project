@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activofijo;
+use App\Models\Departamento;
+use App\Models\Factura;
+use App\Models\Ubicacion;
 use Illuminate\Http\Request;
 
 class ActivofijoController extends Controller
@@ -47,7 +50,11 @@ class ActivofijoController extends Controller
      */
     public function show($id)
     {
-        //
+        $activofijo = Activofijo::find($id);
+        $ubicaciones = Ubicacion::all();
+        $facturas = Factura::all();
+        $departamentos = Departamento::all();
+        return view('activosfijo.show', compact('activofijo','facturas','ubicaciones','departamentos'));
     }
 
     /**
