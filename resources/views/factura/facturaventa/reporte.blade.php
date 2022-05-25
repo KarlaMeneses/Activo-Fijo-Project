@@ -112,8 +112,8 @@
     <div>
 
   
-        <h4 style="text-align: center;color:#0077b5"><strong> FACTURA DE COMPRA</strong> </h4>
-        <p style="font-size: 12px;margin-top: 0.5em;padding: 0; margin: 0;"><strong>DATOS DEL VENDEDOR</strong>
+        <h4 style="text-align: center;color:#0077b5"><strong> FACTURA DE VENTA</strong> </h4>
+        <p style="font-size: 12px;margin-top: 0.5em;padding: 0; margin: 0;"><strong>DATOS DEL COMPRADOR</strong>
             
             &nbsp;&nbsp;&nbsp; &nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -132,14 +132,14 @@
                 <tr>
                    
                     <th style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);border-style:none"><strong>Vendedor: </strong></th>
+                    color: rgb(4, 4, 4);border-style:none"><strong>Comprador: </strong></th>
                     <td style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);width:250px;border-style:none" >{{$factura->vendedor}}</td>
+                    color: rgb(4, 4, 4);width:250px;border-style:none" >{{$factura->comprador}}</td>
                     
                     <th style="text-align: left;background-color: #ffffff;
                     color: rgb(4, 4, 4);border-style:none"><strong>Responsable</strong></th>
                     <td style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);width:250px;border-style:none">{{$factura->compradoru->name}}</td>
+                    color: rgb(4, 4, 4);width:250px;border-style:none">{{$factura->vendedoru->name}}</td>
                   
                 </tr>
                 <tr>
@@ -151,14 +151,14 @@
                     <th style="text-align: left;background-color: #ffffff;
                     color: rgb(4, 4, 4);border-style:none"><strong>Cargo</strong></th>
                     <td style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);border-style:none">{{$factura->compradoru->cargo}}</td>
+                    color: rgb(4, 4, 4);border-style:none">{{$factura->vendedoru->cargo}}</td>
                 </tr>
                 
                 <tr>
                     <th style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);border-style:none"><strong>Email</strong></th>
+                    color: rgb(4, 4, 4);border-style:none"><strong>Ciudad</strong></th>
                     <td style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);border-style:none">{{$factura->email}}</td>
+                    color: rgb(4, 4, 4);border-style:none">{{$factura->ciudad}}</td>
                      <th style="text-align: left;background-color: #ffffff;
                     color: rgb(4, 4, 4);border-style:none"><strong>Fecha de Emisión</strong></th>
                     <td style="text-align: left;background-color: #ffffff;
@@ -180,21 +180,7 @@
                
                    
                
-               
-                <tr>
-                    <th style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);border-style:none"><strong>Ciudad</strong></th>
-                    <td style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);border-style:none">{{$factura->ciudad}}</td>
-               
-                </tr>
-                <tr>
-                    <th style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);border-style:none"><strong>Dirección</strong></th>
-                    <td style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);border-style:none">{{$factura->direccion}}</td>
-               
-                </tr>
+             
             </table>
             
        
@@ -281,3 +267,4 @@
 </body>
 
 </html>
+2

@@ -47,7 +47,7 @@ Route::get('factura/facturacompra/edit/{id}', [App\Http\Controllers\FacturaContr
 Route::post('factura/facturacompra/update/{id}', [App\Http\Controllers\FacturaController::class, 'updatecompra'])->name('factura.facturacompra.update');
 Route::post('factura/facturacompra/{id}', [App\Http\Controllers\FacturaController::class, 'destroycompra'])->name('factura.facturacompra.delete');
 Route::get('factura/facturacompra/show/{id}', [App\Http\Controllers\FacturaController::class, 'showcompra'])->name('factura.facturacompra.show');
-Route::get('factura/facturacompra/reporte/{id}',[App\Http\Controllers\FacturaController::class,'reporte'])->name('factura.facturacompra.reporte');
+Route::get('factura/facturacompra/reporte/{id}',[App\Http\Controllers\FacturaController::class,'reportec'])->name('factura.facturacompra.reporte');
 // Detalle Factura
 Route::post('factura/detallefactura/store', [App\Http\Controllers\DetalleFacturaController::class, 'store'])->name('detallefactura.store');
 Route::delete('factura/detallefactura/destroy/{id}', [App\Http\Controllers\DetalleFacturaController::class, 'destroy'])->name('detallefactura.destroy');
@@ -59,7 +59,7 @@ Route::get('factura/facturaventa/edit/{id}', [App\Http\Controllers\FacturaContro
 Route::post('factura/facturaventa/update/{id}', [App\Http\Controllers\FacturaController::class, 'updateventa'])->name('factura.facturaventa.update');
 Route::post('facuta/facturaventa/{id}', [App\Http\Controllers\FacturaController::class, 'destroyventa'])->name('factura.facturaventa.delete');
 Route::get('factura/facturaventa/show/{id}', [App\Http\Controllers\FacturaController::class, 'showventa'])->name('factura.facturaventa.show');
-
+Route::get('factura/facturaventa/reporte/{id}',[App\Http\Controllers\FacturaController::class,'reportev'])->name('factura.facturaventa.reporte');
 ///Categoria de activo fijos
 Route::resource('categorias', CategoriaController::class)->names('categorias');
 Route::resource('depreciaciones', DepreciacionController::class)->names('depreciaciones');

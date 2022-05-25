@@ -176,11 +176,36 @@ class FacturaController extends Controller
     }
 
 
-    public function reporte(Request $request, $id)
+    public function reportec(Request $request, $id)
     {
         $factura = Factura::find($id);
         $detalles = DetalleFactura::select('*')->where('idfactura', $factura->id)->get();
         $view = View::make('factura.facturacompra.reporte', compact('factura','detalles'))->render();
+        // return $view;
+       
+     
+         $pdf = App::make('dompdf.wrapper');
+         
+         $pdf->setOptions([
+             'logOutputFile' => storage_path('logs/log.htm'),
+                 'tempDir' => storage_path('logs/')
+         ]);
+       
+      $pdf->loadHTML($view);
+     
+ 
+         //return view('reporte.reporteComercioPrint', compact('comercio', 'fechainicio', 'fechafin', 'pedidos', 'resumen', 'resumenpagos','productos'));
+     return $pdf->stream();   
+ 
+                
+            
+    }
+
+    public function reportev(Request $request, $id)
+    {
+        $factura = Factura::find($id);
+        $detalles = DetalleFactura::select('*')->where('idfactura', $factura->id)->get();
+        $view = View::make('factura.facturaventa.reporte', compact('factura','detalles'))->render();
         // return $view;
        
      
