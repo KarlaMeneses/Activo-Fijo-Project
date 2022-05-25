@@ -32,8 +32,8 @@
                     <tr>
                         <th>Id</th>
                         <th>Activo fijo</th>
-                        <th>Valor</th>
-                        <th>Tiempo de vida</th>
+                        <th>Valor Actual</th>
+                        <th>Tiempo de vida Actual</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>

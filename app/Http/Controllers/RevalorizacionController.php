@@ -63,7 +63,9 @@ class RevalorizacionController extends Controller
      */
     public function show($id)
     {
-        //
+        $revalorizacion = Revalorizacion::find($id);
+        $activosfijo = Activofijo::all();
+        return view('revalorizacion.show', compact('revalorizacion', 'activosfijo'));
     }
 
     /**
@@ -88,9 +90,11 @@ class RevalorizacionController extends Controller
      */
     public function update(Request $request,Revalorizacion $revalorizacion)
     {
+        
         $revalorizacion = Revalorizacion::findOrFail($revalorizacion->id);
-        $revalorizacion->estado = $request->input('estado');
+        $revalorizacion->valor = $request->input('valor');
         $revalorizacion->tiempo_vida = $request->input('tiempo_vida');
+        //return 'hola lu';
         $revalorizacion->save();
         return redirect()->route('revalorizacion.index');
     }
@@ -103,6 +107,8 @@ class RevalorizacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $revalorizacion = Revalorizacion::find($id);
+        $revalorizacion->delete();
+        return redirect()->back();
     }
 }
