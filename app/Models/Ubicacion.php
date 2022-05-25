@@ -11,4 +11,8 @@ class Ubicacion extends Model
     protected $table = 'ubicacion'; //usa el nombre de la base de datos 
     protected $fillable = ['edificio', 'ciudad','pais','id_departamento'];
     //atributos de la tabla
+    public function activofijo()
+    {
+        return $this->hasMany('App\Models\Activofijo','id_ubicacion','id');
+    }
 }
