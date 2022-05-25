@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'SI-ActivoFijo')
+@section('title', 'ActivoFijo')
 
 @section('content_header')
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
@@ -38,7 +38,7 @@
 
                     <!--<h5>Foto:</h5>-->
                     <div class="col-12" id="app" style="text-align:center;">
-                        <img width="200" height="200" class="img-circle" src="{{ $user->foto }}"
+                        <img width="200" height="200" class="img-circle" src="{{ old('foto', $user->foto) }}"
                             onerror="this.style.display='none'">
                         <progress id="progress_bar" value="0" max="100"></progress>
                     </div>
@@ -46,9 +46,9 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <input type="hidden" value="{{ $user->foto }}" name="foto" id="fotov" title="foto"
-                        placeholder="https://example.com" list="defaultURLs" class="focus border-dark  form-control"
-                        required oninvalid="this.setCustomValidity('Please match the requested format')">
+                    <input type="hidden" value="{{ old('foto', $user->foto) }}" name="foto" id="fotov" title="foto" placeholder="https://example.com"
+                        list="defaultURLs" class="focus border-dark  form-control" required
+                        oninvalid="this.setCustomValidity('Please match the requested format')">
 
                     <div class="custom-input-file">
                         <input type="file" id="file" accept="image/*" class="input-file" value="">
@@ -57,7 +57,7 @@
 
                     <!--Nueva Foto-->
                     <div class="col-12" id="app" style="text-align:center;">
-                        <img height=0 width=0 id="foto" src="">
+                        <img width="0" height="0" class="img-circle" id="foto" src="">
                         @error('foto')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror

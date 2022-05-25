@@ -70,6 +70,7 @@ class notaSeeder extends Seeder
                     'foto' => 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/notas%2Fcompras%2F3.jpeg?alt=media&token=b6440cf8-f26a-4e9e-af88-8e7224dfe52e',
 
                 ],
+                
             ]
         );
 
@@ -153,5 +154,6 @@ class notaSeeder extends Seeder
                 ],
             ]
         );
+        
     }
 }

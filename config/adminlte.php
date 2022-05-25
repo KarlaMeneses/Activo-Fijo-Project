@@ -259,18 +259,28 @@ return [
             'icon' => 'fas fa-ruler',
         ],
         [
-            'text' => 'departamentos',
+            'text' => 'Departamentos',
             'route'  => 'departamentos.index',
-            'icon' => 'fas fa-ruler',
+            'icon' => 'fas fa-vector-square',
         ],
         [
             'text' => 'Ubicación',
             'route'  => 'ubicaciones.index',
-            'icon' => 'fas fa-ruler',
+            'icon' => 'fas fa-map-marker-alt',
         ],
         [
-            'text'    => 'Nota',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'       => 'Depreciacion',
+            'icon' => 'fas fa-arrow-down',
+            'route'        => 'depreciaciones.index',
+        ],
+        [
+            'text'       => 'Categoria',
+            'icon' => 'fab fa-cuttlefish',
+            'route'        => 'categorias.index',
+        ],
+        [
+            'text'    => 'Nota C/V',
+            'icon'    => 'fas fa-file-invoice-dollar',
             'submenu' => [
                 [
                     'text' => 'Nota de compra',
@@ -285,28 +295,35 @@ return [
         ],
         [
             'text'    => 'Factura',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-file-invoice',
             'submenu' => [
                 [
-                    'text' => 'Crear Factura de compra',
-                    'url'  => 'factura/facturacompra/create',
-                ],
-                [
-                    'text' => 'Lista de Facturas',
+                    'text' => 'Facturas de compra',
                     'url'  => 'factura/facturacompra/index',
 
                 ],
                 [
                     'text'    => 'Factura de venta',
-                    'url'     => '#',
+                    'url'     => 'factura/facturaventa/index',
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        [
+            'text' => 'Revalorizacion',
+            'route'  => 'revalorizacion.index',
+            'icon' => 'fas fa-arrow-up',
+        ],
+        /* [
+            'text' => 'Mantenimiento',
+            'route'  => 'mantenimientos.index',
+            'icon' => 'fas fa-tools',
+        ],
+        ['header' => 'labels'], */
+        
         [
             'text'       => 'Activo fijo',
             'icon_color' => 'red',
-            'url'        => '#',
+            'route'        => 'activosfijo.index',
         ],
         [
             'text'       => 'Factura',
@@ -314,15 +331,17 @@ return [
             'url'        => '#',
         ],
         [
+            'text'       => 'Depreciacion',
+            'icon_color' => 'cyan',
+            'route'        => 'depreciaciones.index',
+        ],
+        [
             'text'       => 'Categoria',
             'icon_color' => 'cyan',
             'route'        => 'categorias.index',
         ],
-        [
-            'text'       => 'Ubicacion',
-            'icon_color' => 'blue',
-            'url'        => '#',
-        ],
+      
+       
 
     ],
 

@@ -36,20 +36,16 @@
                             <td>{{ $depa->descripcion }}</td>
 
                             <td>
-                                <a href="{{ route('departamentos.edit', $depa->id) }}" class="btn btn-primary btn-sm"
-                                    style="margin-bottom: 0.35rem"> <i class="fas fa-edit"></i> Editar<a>
-
-                                        <form action="{{ route('departamentos.destroy', $depa->id) }}" method="post">
-                                            @csrf
-                                            @method('delete')
-
-                                            <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
-                                                value="Borrar" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt">
-                                                </i>Eliminar</button>
-
-                                        </form>
+                                <form action="{{ route('departamentos.destroy', $depa->id) }}" method="post">
+                                <a href="{{ route('departamentos.edit', $depa->id) }}" class="btn btn-primary btn-sm text-light rounded-pill">
+                                    <i class="fas fa-edit"></i><a>
+                                        @csrf
+                                        @method('delete')
+                                        <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
+                                        value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
+                                        <i class="fas fa-trash-alt"></i></button>
+                                </form>
                             </td>
-
                         </tr>
                     @endforeach
                 </tbody>

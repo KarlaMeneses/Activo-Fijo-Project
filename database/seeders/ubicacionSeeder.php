@@ -21,9 +21,8 @@ class ubicacionSeeder extends Seeder
                 'pais' => 'Bolivia',
                 'id_departamento' => 1,
             ],
-
-
-             [
+            
+            [
                 'edificio' => 'Principal-piso 2',
                 'ciudad' => 'Santa Cruz de la Sierra',
                 'pais' => 'Bolivia',
@@ -84,10 +83,7 @@ class ubicacionSeeder extends Seeder
                 'ciudad' => 'Santa Cruz de la Sierra',
                 'pais' => 'Bolivia',
                 'id_departamento' => 9,
-             ] 
-             
-
-
+             ]
         ]);
     }
 }
