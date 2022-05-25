@@ -67,6 +67,7 @@ Route::resource('depreciaciones', DepreciacionController::class)->names('depreci
 
 //NOTAS
 Route::resource('notas', NotaController::class)->names('notas');
+Route::get('notas/reporte/{id}',[App\Http\Controllers\NotaController::class,'reporte'])->name('notas.reporte');
 Route::resource('notasventa', NotaventaController::class)->names('notasventa');
 Route::post('notasventa/edit', [NotaventaController::class, 'reedit'])->name('notasventa.reedit');
 
