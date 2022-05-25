@@ -93,6 +93,9 @@ Route::get('mantenimientos/edit/{id}', [App\Http\Controllers\MantenimientoContro
 Route::put('mantenimientos/update/{id}', [App\Http\Controllers\MantenimientoController::class, 'update'])->name('mantenimientos.update');
 Route::get('mantenimientos/show/{id}', [App\Http\Controllers\MantenimientoController::class, 'show'])->name('mantenimientos.show');
 Route::delete('mantenimientos/{id}', [App\Http\Controllers\MantenimientoController::class, 'destroy'])->name('mantenimientos.destroy');
+Route::get('mantenimiento/reporte_vista',[App\Http\Controllers\MantenimientoController::class,'reporte_vista'])->name('mantenimiento.reporte_vista');
+
+Route::post('mantenimiento/reporte',[App\Http\Controllers\MantenimientoController::class,'reporte'])->name('mantenimiento.reporte');
 
 // BITACORA
 
