@@ -55,5 +55,19 @@ class userSeeder extends Seeder
         $user->telefono = 6215215;
         $user->save(); //save con  parentesis
         $user->assignRole('Administrador');
+		
+		
+		        $user = new User();
+        $user->name = 'Luishiño';
+        $user->email = 'admin5@gmail.com';
+        $user->password = bcrypt('12345'); //bcrypt encripta la contraseña 
+        $user->foto = 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/usuario%2F278912771_534063228090247_1527028768983049230_n.jpg?alt=media&token=bd13dd09-a83d-4271-8326-94a6ac176dce';
+        $user->edad = 19;
+        $user->sexo = 'Femenina';
+        $user->cargo = 'Administrador';
+        $user->direccion = 'San Roque 3415';
+        $user->telefono = 6215215;
+        $user->save(); //save con  parentesis
+        $user->assignRole('Administrador');
     }
 }
