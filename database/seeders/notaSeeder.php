@@ -21,7 +21,7 @@ class notaSeeder extends Seeder
                     'proveedor' => 'Mundo de las computadoras',
                     'direccion' => 'Comercial chiriguano p/4 caseta # 123',
                     'telefono' => 6235093,
-                    'totales' => 6000,
+                    'totales' => 12800,
                     'fecha_entrega' => '2022-02-20',
                     'foto' => 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/notas%2Fcompras%2F3.jpeg?alt=media&token=b6440cf8-f26a-4e9e-af88-8e7224dfe52e',
 
@@ -65,7 +65,7 @@ class notaSeeder extends Seeder
                     'proveedor' => 'Lectra',
                     'direccion' => 'Carrera 49C # 86-20, Bogotá - Cundinamarca, Colombia',
                     'telefono' => 7071114,
-                    'totales' => 4000,
+                    'totales' => 0,
                     'fecha_entrega' => '2022-04-05',
                     'foto' => 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/notas%2Fcompras%2F3.jpeg?alt=media&token=b6440cf8-f26a-4e9e-af88-8e7224dfe52e',
 
@@ -84,7 +84,7 @@ class notaSeeder extends Seeder
                     'fecha_venta' => '2020-03-18',
                     'encargado' => 'Lucia Cabrera',
                     'cargo' => 'auxiliar de ventas',
-                    'totales' => 450,
+                  //  'totales' => 450,
                 ],
                 //nota de venta 2
                 [
@@ -95,7 +95,7 @@ class notaSeeder extends Seeder
                     'fecha_venta' => '2019-05-15',
                     'encargado' => 'Esteban Flores',
                     'cargo' => 'auxiliar de ventas',
-                    'totales' => 1500,
+                  //  'totales' => 1500,
                 ],
                 //nota de venta 3
                 [
@@ -106,7 +106,7 @@ class notaSeeder extends Seeder
                     'fecha_venta' => '2022-02-20',
                     'encargado' => 'Esteban Flores',
                     'cargo' => 'auxiliar de ventas',
-                    'totales' => 2600,
+                   // 'totales' => 2600,
                 ],
                 //nota de venta 4
                 [
@@ -117,7 +117,7 @@ class notaSeeder extends Seeder
                     'fecha_venta' => '2021-06-04',
                     'encargado' => 'Lucia Cabrera',
                     'cargo' => 'auxiliar de ventas',
-                    'totales' => 7000,
+                   // 'totales' => 7000,
                 ],
                 //nota de venta 5
                 [
@@ -128,7 +128,7 @@ class notaSeeder extends Seeder
                     'fecha_venta' => '2021-06-13',
                     'encargado' => 'Karla Meneses',
                     'cargo' => 'auxiliar de ventas',
-                    'totales' => 1700,
+                  //  'totales' => 1700,
                 ],
                 //nota de venta 6
                 [
@@ -139,7 +139,7 @@ class notaSeeder extends Seeder
                     'fecha_venta' => '2021-07-25',
                     'encargado' => 'Esteban Flores',
                     'cargo' => 'auxiliar de ventas',
-                    'totales' => 200,
+                   // 'totales' => 200,
                 ],
                 //nota de venta 7
                 [
@@ -150,7 +150,7 @@ class notaSeeder extends Seeder
                     'fecha_venta' => '2022-02-18',
                     'encargado' => 'Karla Meneses',
                     'cargo' => 'auxiliar de ventas',
-                    'totales' => 5000,
+                   // 'totales' => 5000,
                 ],
             ]
         );

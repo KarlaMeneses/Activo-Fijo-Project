@@ -25,13 +25,11 @@
             @enderror
             <form action="{{ route('notas.update', $nota) }}" method="post" novalidate>
 
-
                 @csrf
                 @method('put')
 
                 <button class="btn btn-primary btb-sm text-light" type="submit">Guardar</button>
                 <a class="btn btn-warning btb-sm text-light" href="{{ route('notas.index') }}">Volver</a>
-
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -39,7 +37,8 @@
                         <input type="text" name="proveedor" class="form-control" value="{{ $nota->proveedor }}" required>
 
                         <label for="direccion">Direccion</label>
-                        <input type="text" name="direccion" class="form-control" value="{{ $nota->direccion }}" required>
+                        <input type="text" name="direccion" class="form-control" value="{{ $nota->direccion }}"
+                            required>
 
                         <label for="telefono">Telefono</label>
                         <input type="tel" name="telefono" class="form-control" value="{{ $nota->telefono }}" required>
@@ -54,26 +53,25 @@
 
                     <div class="form-group col-md-6">
                         <h5>Comprobante - Nota de compra fisica</h5>
-           <!--Descagar imagen--->
+                        <!--Descagar imagen--->
                         <div class="download-wrap">
                             <img src="{{ asset($nota->foto) }}" width="250" height="300" />
-                              <div class="download">
-                                <a target="_blanck" href="{{($nota->foto) }}" class="button-download">
-                                        Descagar
+                            <div class="download">
+                                <a target="_blanck" href="{{ $nota->foto }}" class="button-download">
+                                    Descagar
                                     <span class="icon-wrap">
-                                    <i class="icon-download"></i>
-                                       </span>
-                                 </a>
-                                    <div class="meter">
-                                        <span class="meter-progress"></span>
-                                    </div>
-                               </div>
+                                        <i class="icon-download"></i>
+                                    </span>
+                                </a>
+                                <div class="meter">
+                                    <span class="meter-progress"></span>
+                                </div>
+                            </div>
                         </div>
-                                    <!--<button id="reset">Reset</button>
-                                    Descagar imagen--->
+                        <!--<button id="reset">Reset</button>
+                                Descagar imagen--->
                     </div>
                 </div>
-
             </form>
 
             <h5>DETALLES DE NOTA</h5>
@@ -93,9 +91,14 @@
                     <tbody>
                         @php
                             $suma_total = 0;
+                            $switch = 0;
                         @endphp
+
                         @foreach ($detallenotas as $detalle)
                             @if ($detalle->id_notas == $nota->id)
+                                @php
+                                    $switch = 1;
+                                @endphp
                                 <tr>
                                     <td>{{ $detalle->id }}</td>
                                     <td>{{ $detalle->cantidad }}</td>
@@ -113,21 +116,32 @@
                                             <input type="hidden" name="id_nota" value="{{ $nota->id }}">
                                             <input type="hidden" name="nota_totales" value="{{ $nota->totales }}">
 
-                                            <button
-                                                onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" style="margin-top: 5px"
-                                                value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
-                                                    <i class="fas fa-trash-alt"></i></button>
+                                            <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')"
+                                                style="margin-top: 5px" value="Borrar"
+                                                class="btn btn-danger btn-sm text-light rounded-pill">
+                                                <i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
                             @endif
                         @endforeach
+
+
                     </tbody>
                     <tr>
                         <th></th>
                         <th></th>
-                        <th></th>
-                        <th scope="col">Totales</th>
+
+                        @if ($switch != 0)
+                            <th></th>
+                            <th scope="col">Totales</th>
+                        @else
+                            <th>INGRESE DATOS A SU NOTA DE COMPRA POR FAVOR.</th>
+                            <th></th>
+                            <th></th>
+                        @endif
+
+
                         <th scope="col">{{ $nota->totales }}</th>
                         @if ($suma_total != $nota->totales)
                             <h1>VERIFIQUE LA SUMA TOTAL</h1>
@@ -227,10 +241,10 @@
     </script>
 @stop
 @section('css')
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 @stop
 
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 @stop
