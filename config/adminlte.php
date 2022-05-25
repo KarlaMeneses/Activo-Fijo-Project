@@ -268,6 +268,12 @@ return [
                     'route'  => 'bitacora.downloadTxt',
                     'icon' => 'fas fa-tools',
                 ],
+
+                [
+                    'text' => 'Bitacoraa',
+                    'route'  => 'Bitacora.index',
+                    'icon' => 'fas fa-tools',
+                ],
             ],
         ],
 
@@ -287,7 +293,7 @@ return [
                 ],
             ],
         ],
-        
+
         [
             'text'    => 'Gestionar Activo-Fijo',
             'icon'    => 'fab fa-autoprefixer',
@@ -311,9 +317,9 @@ return [
                     'text' => 'Revalorizacion',
                     'route'  => 'revalorizacion.index',
                     'icon' => 'fas fa-arrow-up',
-                    
+
                 ],
-                
+
                 [
                     'text' => 'Mantenimiento',
                     'route'  => 'mantenimientos.index',
@@ -321,10 +327,10 @@ return [
                 ],
             ],
         ],
-        
-        
-        
-        
+
+
+
+
         [
             'text'    => 'Nota C/V',
             'icon'    => 'fas fa-file-invoice-dollar',
@@ -355,10 +361,10 @@ return [
                 ],
             ],
         ],
-        
-        
+
+
         /* ['header' => 'labels'], */
-         
+
 
     ],
 

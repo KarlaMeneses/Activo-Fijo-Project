@@ -27,8 +27,8 @@
         <span class="text-primary">
 DECRETO SUPREMO Nº 24051
 REGLAMENTO AL IMPUESTO A LAS UTILIDADE,
-dispone que los bienes del activo fijo 
-comenzarán a depreciarse impositivamente 
+dispone que los bienes del activo fijo
+comenzarán a depreciarse impositivamente
 desde el momento en que se inicie su utilización y uso, para lo cual se entiende ya
 debieron estar previamente registrados o activados”.
         </span>
@@ -36,17 +36,17 @@ debieron estar previamente registrados o activados”.
         <div class="card-body " style="overflow-x: scroll">
 
             <!-- <table class="table table-striped" id="usuarios" style="width:100%">-->
-            <table class="table table-striped table-bordered shadow-lg mt-4 " id="usuarios" style="width:100%">
+            <table class="table table-striped" id="bitacora" style="width:100%">
                 <thead class="bg-dark">
                     <tr>
-                        <th>Id</th>
-                        <th>Cuenta contable Bienes</th>
-                        <th>Descripcion</th>
-                        <th>Tipo</th>
-                        <th>Cacateristica</th>
-                        <th>vida util</th>
-                        <th>valor residual(%)</th>
-                        <th>Acciones</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Cuenta contable Bienes</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Cacateristica</th>
+                        <th scope="col">vida util</th>
+                        <th scope="col">valor residual(%)</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
