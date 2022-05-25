@@ -60,12 +60,10 @@
                     </div>
                 </div>
 
-
-
-                <div>
-                    <button class="btn btn-danger btn-sm" type="submit">Actualizar Ubicación</button>
-                    <a class="btn btn-primary btn-sm" href="{{ route('ubicaciones.index') }}">Volver</a>
-                </div>
+                <center>
+                       <button class="btn btn-primary btb-sm text-light" type="submit">Actualizar Ubicación</button>
+                        <a class="btn btn-warning btb-sm text-light" href="{{ route('ubicaciones.index') }}">Volver</a>
+                </center>
 
             </form>
 
