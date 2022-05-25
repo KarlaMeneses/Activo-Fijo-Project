@@ -13,6 +13,8 @@
         <div class="card-header">
             <a href="{{ route('mantenimientos.create') }}" class="btn btn-primary btb-sm">
                 <i class="fas fa-wrench"></i> Registrar Mantenimiento</a>
+                <a href="{{ route('mantenimiento.reporte_vista') }}" class="btn btn-primary btb-sm">
+                    <i class="fas fa-wrench"></i> Reporte</a>
         </div>
     </div>
     <div class="card">
