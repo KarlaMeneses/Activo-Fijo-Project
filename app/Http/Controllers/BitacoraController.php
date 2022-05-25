@@ -23,6 +23,15 @@ class BitacoraController extends Controller
         return view('bitacora.index', compact('actividades'));
     }
 
+
+    public function show()
+    {
+        // $actividades = Activity::all();
+        $actividades = DB::table('activity_log')
+            ->join('users', 'activity_log.causer_id', '=', 'users.id')->select('activity_log.*', 'users.name')->get();
+        // return $actividades;
+        return view('bitacora.show', compact('actividades'));
+    }
     public function downloadTxt(Request $request)
     {
         /* $txt = "";

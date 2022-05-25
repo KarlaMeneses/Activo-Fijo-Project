@@ -41,7 +41,7 @@ debieron estar previamente registrados o activados”.
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Cuenta contable Bienes</th>
-                        <th scope="col">Descripcion</th>
+                        <!--<th scope="col">Descripcion</th>-->
                         <th scope="col">Tipo</th>
                         <th scope="col">Cacateristica</th>
                         <th scope="col">vida util</th>
@@ -55,7 +55,7 @@ debieron estar previamente registrados o activados”.
                         <tr>
                             <td>{{ $depre->id }}</td>
                             <td>{{ $depre->nombre }}</td>
-                            <td>{{ $depre->descripcion }}</td>
+                            {{-- <td>{{ $depre->descripcion }}</td>- --}}
                             <td>{{ $depre->tipo_activo }}</td>
                             <td>{{ $depre->cacateristica }}</td>
                             <td>{{ $depre->vida_util }} años</td>
