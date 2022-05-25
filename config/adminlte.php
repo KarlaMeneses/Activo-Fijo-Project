@@ -263,6 +263,11 @@ return [
                     'route'  => 'roles.index',
                     'icon' => 'fas fa-ruler',
                 ],
+                [
+                    'text' => 'Bitacora',
+                    'route'  => 'bitacora.downloadTxt',
+                    'icon' => 'fas fa-tools',
+                ],
             ],
         ],
 

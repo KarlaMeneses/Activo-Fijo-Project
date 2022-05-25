@@ -36,5 +36,6 @@ class DatabaseSeeder extends Seeder
         $this->call(activofijoSeeder::class);
         $this->call(revalorizacionSeeder::class);
         $this->call(mantenimientoSeeder::class);
+        $this->call(bitacoraSeeder::class);
     }
 }
