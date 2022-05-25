@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('foto')->nullable();
             $table->string('sexo')->nullable();
             $table->integer('edad')->nullable();
-            $table->string('cargo')->nullable();
+            $table->string('cargo')->nullable(); // Se debe borrar
             $table->string('direccion')->nullable();
             $table->integer('telefono')->nullable();
            // $table->string('rol')->nullable(); // por borrar

@@ -44,7 +44,7 @@
                     <div class="col-md-6">
                         <label for="id_departamento">Seleccione el Departamento</label>
                         <select name="id_departamento" class="focus border-dark  form-control">
-                            @foreach ($depa as $depa)
+                            @foreach ($depas as $depa)
                                 <option value={{ $depa->id }}>{{ $depa->nombre }}</option>
                             @endforeach
                         </select><br>
@@ -52,11 +52,11 @@
                 </div>
 
 
+                <center>
+                       <button class="btn btn-primary btb-sm text-light" type="submit">Crear Ubicación</button>
+                        <a class="btn btn-warning btb-sm text-light" href="{{ route('ubicaciones.index') }}">Volver</a>
+                </center>
 
-                <div>
-                    <button class="btn btn-danger btn-sm" type="submit">Crear Ubicación</button>
-                    <a class="btn btn-primary btn-sm" href="{{ route('ubicaciones.index') }}">Volver</a>
-                </div>
 
             </form>
 

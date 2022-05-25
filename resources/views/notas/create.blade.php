@@ -32,9 +32,11 @@
             @endphp
             <form action="{{ route('notas.store') }}" method="post">
                 @csrf
-                <button class="btn btn-danger " type="submit">Crear Nota</button>
+                <!--
+               <button class="btn btn-danger " type="submit">Crear Nota</button>
                 <a class="btn btn-primary " href="{{ route('notas.index') }}">Volver</a>
-                <div class="form-row">
+                -->
+                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="proveedor">Proveedor</label>
                         <input type="text" name="proveedor" class="form-control" required>
@@ -72,12 +74,17 @@
                         @enderror
 
                     </center>
-                    <!---karla todo esto es subir imagenes ---> 
+                    <!---karla todo esto es subir imagenes --->
                     </div>
 
                 </div>
+            <center>
+                <button class="btn btn-primary btb-sm text-light" type="submit">Crear Nota</button>
+                <a class="btn btn-warning btb-sm text-light" href="{{ route('notas.index') }}">Volver</a>
+            </center>
+
             </form>
-          
+
         </div>
     </div>
     <script></script>
