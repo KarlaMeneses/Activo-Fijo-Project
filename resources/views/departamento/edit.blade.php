@@ -27,8 +27,10 @@
                     <br><br>
                 @enderror
 
-                <button class="btn btn-danger btn-sm" type="submit">Actualizar Departamento</button>
-                <a class="btn btn-primary btn-sm" href="{{ route('departamentos.index') }}">Volver</a>
+
+                <button class="btn btn-primary btb-sm text-light" type="submit">Actualizar Departamento</button>
+                <a class="btn btn-warning btb-sm text-light" href="{{ route('departamentos.index') }}">Volver</a>
+
             </form>
 
         </div>

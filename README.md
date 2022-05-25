@@ -15,6 +15,7 @@
 -   php artisan serve
     http://127.0.0.1:8000
 
+
 # laravel ejemplos
 
 -   php artisan make:migration create_Users_table
@@ -56,3 +57,9 @@ Subir sus cambios al proyecto(para subir tus cambios sigue estos pasos)
 
 -   alt+shif+a
     comentar
+
+# error corregido de git
+
+-   $ rm .git/refs/remotes/origin/main
+-   $ git fetch
+-   $ git pull

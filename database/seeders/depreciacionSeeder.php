@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class depreciacionSeeder extends Seeder
 {
-   
- 
+
+
     public function run()
     {
         DB::table('depreciaciones')->insert([
@@ -155,7 +155,7 @@ class depreciacionSeeder extends Seeder
                 'updated_at' => Carbon::now(),
 
             ],
-            [
+            /* [
                 'nombre' => 'patentes de inversión', //bienes de cuenta contable nombre de la cuenta (contabilidad)
                 'descripcion' => 'Licencia de software',     //descripción de la cuenta
                 'tipo_activo' => 'Intangible',    //tipo de activo tangible , intangible o invesión
@@ -165,7 +165,7 @@ class depreciacionSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
 
-            ],
+            ],*/
 
 
 

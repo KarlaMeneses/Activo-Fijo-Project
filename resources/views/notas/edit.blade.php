@@ -7,7 +7,13 @@
         <h3><b>Nota De Compra</b></h3>
     </div>
 @stop
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/descaga.css') }}">
+@stop
 
+@section('js')
+    <link rel="stylesheet" href="{{ asset('js/descaga.js') }}">
+@stop
 @section('content')
     <div class="card">
         <div class="card-body table-responsive">
@@ -18,12 +24,15 @@
                 </div>
             @enderror
             <form action="{{ route('notas.update', $nota) }}" method="post" novalidate>
-               
-               
+
+
                 @csrf
                 @method('put')
-                <button class="btn btn-primary" type="submit">Actualizar Nota</button>
-                <a class="btn btn-danger" href="{{ route('notas.index') }}">Volver</a>
+
+                <button class="btn btn-primary btb-sm text-light" type="submit">Guardar</button>
+                <a class="btn btn-warning btb-sm text-light" href="{{ route('notas.index') }}">Volver</a>
+
+
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="proveedor">Proveedor</label>
@@ -42,11 +51,26 @@
                         <label for="totales">Totales</label>
                         <input type="text" name="totales" class="form-control" value="{{ $nota->totales }}" required>
                     </div>
+
                     <div class="form-group col-md-6">
                         <h5>Comprobante - Nota de compra fisica</h5>
-                  
+           <!--Descagar imagen--->
+                        <div class="download-wrap">
                             <img src="{{ asset($nota->foto) }}" width="250" height="300" />
-                      
+                              <div class="download">
+                                <a target="_blanck" href="{{($nota->foto) }}" class="button-download">
+                                        Descagar
+                                    <span class="icon-wrap">
+                                    <i class="icon-download"></i>
+                                       </span>
+                                 </a>
+                                    <div class="meter">
+                                        <span class="meter-progress"></span>
+                                    </div>
+                               </div>
+                        </div>
+                                    <!--<button id="reset">Reset</button>
+                                    Descagar imagen--->
                     </div>
                 </div>
 
@@ -55,7 +79,7 @@
             <h5>DETALLES DE NOTA</h5>
             <div class="card-body">
                 <table class="table table-bordered table-striped">
-                    <thead>
+                    <thead class="table-dark">
                         <tr>
                             <th scope="col">Id</th>
 
@@ -89,9 +113,10 @@
                                             <input type="hidden" name="id_nota" value="{{ $nota->id }}">
                                             <input type="hidden" name="nota_totales" value="{{ $nota->totales }}">
 
-                                            <button class="btn btn-danger btn-sm"
+                                            <button
                                                 onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" style="margin-top: 5px"
-                                                value="Borrar">Eliminar</button>
+                                                value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
+                                                    <i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -114,7 +139,7 @@
 
             <body>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                     Agregar detalles de la compra
                 </button>
                 <!-- Modal -->
@@ -200,4 +225,12 @@
             });
         });
     </script>
+@stop
+@section('css')
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+@stop
+
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 @stop
