@@ -15,18 +15,18 @@
 
     <div class="card">
         <div class="card-body">
-            <table class="table table-striped" id="usuarios" style="width:100%">
-                <thead  class="bg-dark">
+            <table class="table table-striped table-bordered shadow-lg mt-4 " id="usuarios" style="width:100%">
+                <thead class="bg-dark">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Vendedor</th>
                         <th scope="col">Comprador</th>
                         <th scope="col">NIT</th>
                         <th scope="col">Telefono</th>
-                      
+
                         <th scope="col">Ciudad</th>
                         <th scope="col">Forma de Pago</th>
-                        
+
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -40,14 +40,14 @@
                             <td>{{$factura->comprador}}</td>
                             <td>{{$factura->nit}}</td>
                             <td>{{$factura->telefono}}</td>
-                            
+
                             <td>{{$factura->ciudad}}</td>
                             <td>{{$factura->formapago}}</td>
-                           
-                         
+
+
                             <td>
                                 <form action="{{ route('factura.facturaventa.delete', $factura->id) }}" method="post">
-                                   
+
                                     <a class="btn btn-warning btn-sm text-light rounded-pill"
                                         href="{{ route('factura.facturaventa.show', $factura->id) }}">
                                         <i class="fas fa-eye"></i> </a>
@@ -58,7 +58,7 @@
                                         class="btn btn-primary btn-sm text-light rounded-pill">
                                         <i class="fas fa-edit"></i> <a>
                                             @csrf
-                                            
+
                                             @can('editar factura')
                                             @endcan
                                             <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
@@ -69,7 +69,7 @@
                                 </form>
                             </td>
                             @endif
-                           
+
                         </tr>
                     @endforeach
                 </tbody>
@@ -91,5 +91,5 @@
         $(document).ready(function() {
         $('#usuarios').DataTable();
         } );
-    </script> 
+    </script>
 @stop
