@@ -94,5 +94,6 @@ Route::put('mantenimientos/update/{id}', [App\Http\Controllers\MantenimientoCont
 Route::get('mantenimientos/show/{id}', [App\Http\Controllers\MantenimientoController::class, 'show'])->name('mantenimientos.show');
 Route::delete('mantenimientos/{id}', [App\Http\Controllers\MantenimientoController::class, 'destroy'])->name('mantenimientos.destroy');
 
+// BITACORA
 
-
+Route::get('bitacora/downloadTxt', [App\Http\Controllers\BitacoraController::class, 'downloadTxt'])->name('bitacora.downloadTxt');
