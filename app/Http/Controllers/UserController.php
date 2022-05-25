@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         return User::all();
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -51,11 +51,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'email'=>'required|unique:users',
-            'password'=>'required',
-            'roles'=>'required',
-            
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+            'roles' => 'required',
+
         ]);
 
         $usuario = new User();
@@ -66,10 +66,10 @@ class UserController extends Controller
         $usuario->sexo = $request->sexo;
         $usuario->direccion = $request->direccion;
         $usuario->telefono = $request->telefono;
-        
+
 
         $roles = Role::all();
-        foreach( $roles as $rol){
+        foreach ($roles as $rol) {
             if ($rol->id == $request->roles) {
                 $usuario->cargo = $rol->name;
             }
@@ -84,7 +84,7 @@ class UserController extends Controller
         $bita->apartado = encrypt('Usuario');
         $afectado = $usuario->id;
         $bita->afectado = encrypt($afectado);
-        $fecha_hora = date('m-d-Y h:i:s a', time()); 
+        $fecha_hora = date('m-d-Y h:i:s a', time());
         $bita->fecha_h = encrypt($fecha_hora);
         $bita->id_user = Auth::user()->id;
         $ip = $request->ip();
@@ -101,7 +101,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     public function show($id)
     {
         $user = User::find($id);
@@ -133,16 +133,16 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name'=> "unique:users,name,$user->id",
-            'roles'=>'required',
+            'name' => "unique:users,name,$user->id",
+            'roles' => 'required',
             // 'empleados'=> 'required',
         ]);
 
         $usuario = User::find($user->id);
-        if($usuario->name <> $request->name){
+        if ($usuario->name <> $request->name) {
             $usuario->name = $request->name;
         }
-        if($request->password <> ''){
+        if ($request->password <> '') {
             $usuario->password = bcrypt(($request->password));
         }
 
@@ -154,14 +154,14 @@ class UserController extends Controller
         $usuario->telefono = $request->telefono;
 
         $roles = Role::all();
-        foreach( $roles as $rol){
+        foreach ($roles as $rol) {
             if ($rol->id == $request->roles) {
                 $usuario->cargo = $rol->name;
             }
         }
         $usuario->roles()->sync($request->roles);
 
-      
+
         $usuario->save();
 
         /* ------------BITACORA----------------- */
@@ -170,14 +170,14 @@ class UserController extends Controller
         $bita->apartado = encrypt('Usuario');
         $afectado = $usuario->id;
         $bita->afectado = encrypt($afectado);
-        $fecha_hora = date('m-d-Y h:i:s a', time()); 
+        $fecha_hora = date('m-d-Y h:i:s a', time());
         $bita->fecha_h = encrypt($fecha_hora);
         $bita->id_user = Auth::user()->id;
         $ip = $request->ip();
         $bita->ip = encrypt($ip);
         $bita->save();
         /* ----------------------------------------- */
-        
+
 
         return redirect()->route('users.index');
     }
@@ -189,14 +189,14 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user, Request $request)
-    {   
+    {
         /* ------------BITACORA----------------- */
         $bita = new Bitacora();
         $bita->accion = encrypt('Eliminó');
         $bita->apartado = encrypt('Usuario');
         $afectado = $user->id;
         $bita->afectado = encrypt($afectado);
-        $fecha_hora = date('m-d-Y h:i:s a', time()); 
+        $fecha_hora = date('m-d-Y h:i:s a', time());
         $bita->fecha_h = encrypt($fecha_hora);
         $bita->id_user = Auth::user()->id;
         $ip = $request->ip();
