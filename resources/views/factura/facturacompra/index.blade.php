@@ -47,10 +47,13 @@
                          
                             <td>
                                 <form action="{{ route('factura.facturacompra.delete', $factura->id) }}" method="post">
-
+                                    
                                     <a class="btn btn-warning btn-sm text-light rounded-pill"
                                         href="{{ route('factura.facturacompra.show', $factura->id) }}">
                                         <i class="fas fa-eye"></i> </a>
+                                        <a class="btn btn-secondary btn-sm text-light rounded-pill"
+                                    href="{{ route('factura.facturacompra.reporte', $factura->id) }}">
+                                    <i class="fas fa-file-alt"></i> </a>
                                     <a href="{{ route('factura.facturacompra.edit', $factura) }}"
                                         class="btn btn-primary btn-sm text-light rounded-pill">
                                         <i class="fas fa-edit"></i> <a>

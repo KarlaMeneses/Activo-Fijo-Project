@@ -44,7 +44,7 @@
                     <div class="col-md-6">
                         <label for="id_departamento">Seleccione el Departamento</label>
                         <select name="id_departamento" class="focus border-dark  form-control">
-                            @foreach ($depa as $depa)
+                            @foreach ($depas as $depa)
                                 <option value={{ $depa->id }}>{{ $depa->nombre }}</option>
                             @endforeach
                         </select><br>

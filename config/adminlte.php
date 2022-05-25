@@ -248,36 +248,83 @@ return [
         ],
 
         ['header' => 'OPCIONES DE USUARIO'],
+
         [
-            'text' => 'Usuarios',
-            'route'  => 'users.index',
-            'icon' => 'fas fa-solid fa-users',
+            'text'    => 'Gestionar Usuario',
+            'icon'    => 'fas fa-solid fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Usuarios',
+                    'route'  => 'users.index',
+                    'icon' => 'fas fa-user',
+                ],
+                [
+                    'text' => 'Roles y Permisos',
+                    'route'  => 'roles.index',
+                    'icon' => 'fas fa-ruler',
+                ],
+                [
+                    'text' => 'Bitacora',
+                    'route'  => 'bitacora.downloadTxt',
+                    'icon' => 'fas fa-tools',
+                ],
+            ],
         ],
+
         [
-            'text' => 'Roles y Permisos',
-            'route'  => 'roles.index',
-            'icon' => 'fas fa-ruler',
+            'text'    => 'Gestionar Ubicacion',
+            'icon'    => 'fas fa-search-location',
+            'submenu' => [
+                [
+                    'text' => 'Departamentos',
+                    'route'  => 'departamentos.index',
+                    'icon' => 'fas fa-vector-square',
+                ],
+                [
+                    'text' => 'Ubicación',
+                    'route'  => 'ubicaciones.index',
+                    'icon' => 'fas fa-map-marker-alt',
+                ],
+            ],
         ],
+        
         [
-            'text' => 'Departamentos',
-            'route'  => 'departamentos.index',
-            'icon' => 'fas fa-vector-square',
+            'text'    => 'Gestionar Activo-Fijo',
+            'icon'    => 'fab fa-autoprefixer',
+            'submenu' => [
+                [
+                    'text'       => 'Activo fijo',
+                    'icon' => 'fab fa-amilia',
+                    'route'        => 'activosfijo.index',
+                ],
+                [
+                    'text'       => 'Depreciacion',
+                    'icon' => 'fas fa-arrow-down',
+                    'route'        => 'depreciaciones.index',
+                ],
+                [
+                    'text'       => 'Categoria',
+                    'icon' => 'fab fa-cuttlefish',
+                    'route'        => 'categorias.index',
+                ],
+                [
+                    'text' => 'Revalorizacion',
+                    'route'  => 'revalorizacion.index',
+                    'icon' => 'fas fa-arrow-up',
+                    
+                ],
+                
+                [
+                    'text' => 'Mantenimiento',
+                    'route'  => 'mantenimientos.index',
+                    'icon' => 'fas fa-tools',
+                ],
+            ],
         ],
-        [
-            'text' => 'Ubicación',
-            'route'  => 'ubicaciones.index',
-            'icon' => 'fas fa-map-marker-alt',
-        ],
-        [
-            'text'       => 'Depreciacion',
-            'icon' => 'fas fa-arrow-down',
-            'route'        => 'depreciaciones.index',
-        ],
-        [
-            'text'       => 'Categoria',
-            'icon' => 'fab fa-cuttlefish',
-            'route'        => 'categorias.index',
-        ],
+        
+        
+        
+        
         [
             'text'    => 'Nota C/V',
             'icon'    => 'fas fa-file-invoice-dollar',
@@ -308,40 +355,10 @@ return [
                 ],
             ],
         ],
-        [
-            'text' => 'Revalorizacion',
-            'route'  => 'revalorizacion.index',
-            'icon' => 'fas fa-arrow-up',
-        ],
-        /* [
-            'text' => 'Mantenimiento',
-            'route'  => 'mantenimientos.index',
-            'icon' => 'fas fa-tools',
-        ],
-        ['header' => 'labels'], */
         
-        [
-            'text'       => 'Activo fijo',
-            'icon_color' => 'red',
-            'route'        => 'activosfijo.index',
-        ],
-        [
-            'text'       => 'Factura',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'Depreciacion',
-            'icon_color' => 'cyan',
-            'route'        => 'depreciaciones.index',
-        ],
-        [
-            'text'       => 'Categoria',
-            'icon_color' => 'cyan',
-            'route'        => 'categorias.index',
-        ],
-      
-       
+        
+        /* ['header' => 'labels'], */
+         
 
     ],
 
