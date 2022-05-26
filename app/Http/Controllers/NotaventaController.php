@@ -139,4 +139,12 @@ class NotaventaController extends Controller
                 
             
     }
+    public function reportehtml(Request $request, $id)
+    {
+        $nota = Nota::find($id);
+        $detalles = Detallenota::select('*')->where('id_notas', $nota->id)->get();
+        $view = View::make('notas.reporte', compact('nota','detalles'))->render();
+        return $view;           
+            
+    }
 }
