@@ -49,6 +49,8 @@ Route::post('factura/facturacompra/update/{id}', [App\Http\Controllers\FacturaCo
 Route::post('factura/facturacompra/{id}', [App\Http\Controllers\FacturaController::class, 'destroycompra'])->name('factura.facturacompra.delete');
 Route::get('factura/facturacompra/show/{id}', [App\Http\Controllers\FacturaController::class, 'showcompra'])->name('factura.facturacompra.show');
 Route::get('factura/facturacompra/reporte/{id}', [App\Http\Controllers\FacturaController::class, 'reportec'])->name('factura.facturacompra.reporte');
+Route::get('factura/facturacompra/{id}', [App\Http\Controllers\FacturaController::class, 'reportechtml'])->name('factura.facturacompra.reportehmtl');
+
 // Detalle Factura
 Route::post('factura/detallefactura/store', [App\Http\Controllers\DetalleFacturaController::class, 'store'])->name('detallefactura.store');
 Route::delete('factura/detallefactura/destroy/{id}', [App\Http\Controllers\DetalleFacturaController::class, 'destroy'])->name('detallefactura.destroy');
@@ -61,6 +63,8 @@ Route::post('factura/facturaventa/update/{id}', [App\Http\Controllers\FacturaCon
 Route::post('facuta/facturaventa/{id}', [App\Http\Controllers\FacturaController::class, 'destroyventa'])->name('factura.facturaventa.delete');
 Route::get('factura/facturaventa/show/{id}', [App\Http\Controllers\FacturaController::class, 'showventa'])->name('factura.facturaventa.show');
 Route::get('factura/facturaventa/reporte/{id}', [App\Http\Controllers\FacturaController::class, 'reportev'])->name('factura.facturaventa.reporte');
+Route::get('factura/facturaventa/index/{id}', [App\Http\Controllers\FacturaController::class, 'reportevhtml'])->name('factura.facturaventa.reportehtml');
+
 ///Categoria de activo fijos
 Route::resource('categorias', CategoriaController::class)->names('categorias');
 Route::resource('depreciaciones', DepreciacionController::class)->names('depreciaciones');
@@ -70,6 +74,7 @@ Route::resource('notas', NotaController::class)->names('notas');
 Route::get('notas/reporte/{id}',[App\Http\Controllers\NotaController::class,'reporte'])->name('notas.reporte');
 Route::resource('notasventa', NotaventaController::class)->names('notasventa');
 Route::post('notasventa/edit', [NotaventaController::class, 'reedit'])->name('notasventa.reedit');
+Route::get('notasventa/reporte/{id}',[App\Http\Controllers\NotaventaController::class,'reporte'])->name('notasventa.reporte');
 
 Route::post('notas/detalle_update/{id}', [DetallenotaController::class, 'detalle_update']);
 Route::post('notasventa/detalle_update/{id}', [DetallenotaController::class, 'detalle_update']);
@@ -102,3 +107,13 @@ Route::post('mantenimiento/reporte',[App\Http\Controllers\MantenimientoControlle
 // BITACORA
 Route::resource('Bitacora', BitacoraController::class)->names('Bitacora');
 Route::get('bitacora/downloadTxt', [App\Http\Controllers\BitacoraController::class, 'downloadTxt'])->name('bitacora.downloadTxt');
+
+
+// BAJA 
+
+Route::get('baja/index', [App\Http\Controllers\BajaController::class, 'index'])->name('baja.index');
+Route::post('baja/store', [App\Http\Controllers\BajaController::class, 'store'])->name('baja.store');
+Route::get('baja/create', [App\Http\Controllers\BajaController::class, 'create'])->name('baja.create');
+Route::get('baja/edit/{id}', [App\Http\Controllers\BajaController::class, 'edit'])->name('baja.edit');
+Route::post('baja/update/{id}', [App\Http\Controllers\BajaController::class, 'update'])->name('baja.update');
+Route::post('baja/{id}', [App\Http\Controllers\BajaController::class, 'destroy'])->name('baja.delete');

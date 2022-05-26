@@ -52,7 +52,9 @@
                                         <a class="btn btn-warning btn-sm text-light rounded-pill"
                                             href="{{ route('notas.show', $nota->id) }}">
                                             <i class="fas fa-eye"></i></a>
-
+                                            <a class="btn btn-secondary btn-sm text-light rounded-pill"
+                                            href="{{ route('notas.reporte', $nota->id) }}">
+                                            <i class="fas fa-file-pdf"></i> </a>
                                         <a href="{{ route('notas.edit', $nota) }}"
                                             class="btn btn-primary btn-sm text-light rounded-pill">
                                             <i class="fas fa-edit"></i><a>

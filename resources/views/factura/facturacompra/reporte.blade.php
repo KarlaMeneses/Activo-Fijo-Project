@@ -84,12 +84,14 @@
 
         <div style="position: relative">
             <div style="position: absolute">
-                <img src="<?php echo $imagenBase64; ?>" style="height: 80px;width:auto;margin-top: 2.5em; ">
+                <img src="<?php echo $imagenBase64; ?>" style="height: 70px;width:auto;margin-top: 4.0em; ">
             </div>
-            <div style="position: absolute;text-align: left">
-                <p style="font-size: 10px;margin-top: 3em;margin-left: 25em;vertical-align:middle;">Reporte de Factura:
+            
+            <div style="position: relative;text-align: middle">
+                <p style="font-size: 10px;margin-top: 3em;margin-left: 30em;vertical-align:middle;">Reporte de Factura:
                     {{ \Carbon\Carbon::now() }}</p>
             </div>
+            
         </div>
     </header>
     <footer>
@@ -125,6 +127,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp; &nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;
+            
             <strong>DATOS DEL RESPONSABLE</strong> 
         </p>
 
@@ -132,14 +135,14 @@
                 <tr>
                    
                     <th style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);border-style:none"><strong>Vendedor: </strong></th>
+                    color: rgb(4, 4, 4);border-style:none; width:80px;"><strong>Vendedor: </strong></th>
                     <td style="text-align: left;background-color: #ffffff;
                     color: rgb(4, 4, 4);width:250px;border-style:none" >{{$factura->vendedor}}</td>
                     
                     <th style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);border-style:none"><strong>Responsable</strong></th>
+                    color: rgb(4, 4, 4);border-style:none;"><strong>Responsable</strong></th>
                     <td style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);width:250px;border-style:none">{{$factura->compradoru->name}}</td>
+                    color: rgb(4, 4, 4);width:1400px;border-style:none">{{$factura->compradoru->name}}</td>
                   
                 </tr>
                 <tr>
@@ -149,7 +152,7 @@
                     color: rgb(4, 4, 4);border-style:none">{{$factura->nit}}</td>
                    
                     <th style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);border-style:none"><strong>Cargo</strong></th>
+                    color: rgb(4, 4, 4);border-style:none;"><strong>Cargo</strong></th>
                     <td style="text-align: left;background-color: #ffffff;
                     color: rgb(4, 4, 4);border-style:none">{{$factura->compradoru->cargo}}</td>
                 </tr>

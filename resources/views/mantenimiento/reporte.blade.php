@@ -121,7 +121,7 @@
                 <tr>
                    
                     <th style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);border-style:none"><strong>Nombre: </strong></th>
+                    color: rgb(4, 4, 4);border-style:none;width:20px"><strong>Nombre: </strong></th>
                     <td style="text-align: left;background-color: #ffffff;
                     color: rgb(4, 4, 4);width:250px;border-style:none" >{{$user->name}}</td>
                     

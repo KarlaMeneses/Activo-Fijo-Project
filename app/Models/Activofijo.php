@@ -13,4 +13,10 @@ class Activofijo extends Model
         'codigo', 'detalle', 'costo', 'fecha_ingreso', 'proveedor', 'estado', 'id_factura',
         'id_categoria', 'id_ubicacion'
     ];
+
+    public function bajaa()
+    {
+        return $this->hasMany(Baja::class, 'idactivo');
+    }
+
 }
