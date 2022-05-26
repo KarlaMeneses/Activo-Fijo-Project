@@ -70,6 +70,7 @@ Route::resource('notas', NotaController::class)->names('notas');
 Route::get('notas/reporte/{id}',[App\Http\Controllers\NotaController::class,'reporte'])->name('notas.reporte');
 Route::resource('notasventa', NotaventaController::class)->names('notasventa');
 Route::post('notasventa/edit', [NotaventaController::class, 'reedit'])->name('notasventa.reedit');
+Route::get('notasventa/reporte/{id}',[App\Http\Controllers\NotaventaController::class,'reporte'])->name('notasventa.reporte');
 
 Route::post('notas/detalle_update/{id}', [DetallenotaController::class, 'detalle_update']);
 Route::post('notasventa/detalle_update/{id}', [DetallenotaController::class, 'detalle_update']);

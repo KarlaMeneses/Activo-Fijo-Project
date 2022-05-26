@@ -53,7 +53,9 @@
                                         <i class="fas fa-eye"></i> </a>
                                         <a class="btn btn-secondary btn-sm text-light rounded-pill"
                                     href="{{ route('factura.facturacompra.reporte', $factura->id) }}">
-                                    <i class="fas fa-file-alt"></i> </a>
+                                    
+                                    <i class="fas fa-file-pdf"></i>
+                                    
                                     <a href="{{ route('factura.facturacompra.edit', $factura) }}"
                                         class="btn btn-primary btn-sm text-light rounded-pill">
                                         <i class="fas fa-edit"></i> <a>
