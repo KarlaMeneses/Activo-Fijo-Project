@@ -107,7 +107,8 @@ Route::post('mantenimiento/reporte',[App\Http\Controllers\MantenimientoControlle
 
 // BITACORA
 Route::resource('Bitacora', BitacoraController::class)->names('Bitacora');
-Route::get('bitacora/downloadTxt', [App\Http\Controllers\BitacoraController::class, 'downloadTxt'])->name('bitacora.downloadTxt');
+Route::get('bitacora/auth', [App\Http\Controllers\BitacoraController::class, 'auth'])->name('bitacora.auth');
+Route::post('bitacora/downloadTxt', [App\Http\Controllers\BitacoraController::class, 'downloadTxt'])->name('bitacora.downloadTxt');
 
 
 // BAJA 

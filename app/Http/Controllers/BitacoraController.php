@@ -48,6 +48,10 @@ class BitacoraController extends Controller
             return \Response::make($txt , 200, $headers ); */
 
 
+        if (!($request->contra == 'hola123')) {
+            return redirect()->back()->with("error","¡Error! Ha ingresado una key incorrecta!");
+        }
+
         $content = "";
         $datas = Bitacora::all();
         $users = User::all();
@@ -56,14 +60,15 @@ class BitacoraController extends Controller
 
         /* $phoneNumbers = "Phone numbers \n"; */
         $content = "        		REGISTRO DE BITACORA        \n";
-        $content .= '             FECHA =' .  $DateAndTime . '               ';
+        $content .= '                    FECHA =' .  $DateAndTime . '               ';
 
         $content .= "\n";
-        $content .= "EMPRESA: ACTIVO FIJO CORP.                         NIT  :2995623 \n";
+        $content .= "\n";
+       /*  $content .= "EMPRESA: ACTIVO FIJO CORP.                         NIT  :2995623 \n";
         $content .= 'FECHA =' .  $DateAndTime . '                      TELF :62152145 ';
         $content .= "                                                    \n";
-        $content .= "\n";
-        $content .= "ORDEN DE INFORMACION = ID_BITACORA|USUARIO|ACCION|APARTADO|ID AFECTADO|FECHA-HORA|DIRECCION-IP \n";
+        $content .= "\n"; */
+        $content .= "INFORMATION =FECHA-HORA|ID_BITACORA|USUARIO|ACCION|APARTADO|ID AFECTADO|DIRECCION-IP \n";
         $content .= "\n";
         $content .= "-----------------------------LOG----------------------------------\n";
         /* foreach ($datas as  $data) {
@@ -78,7 +83,7 @@ class BitacoraController extends Controller
 
             foreach ($users as $user) {
                 if ($data->id_user == $user->id) {
-                    $content .= $data->id . '|' . $user->name . '|' . decrypt($data->accion) . '|' . decrypt($data->apartado)  . '|' . decrypt($data->afectado) . '|' . decrypt($data->fecha_h) . '|' . decrypt($data->ip) . PHP_EOL;
+                    $content .=  decrypt($data->fecha_h) . '|' .$data->id . '|' . $user->name . '|' . decrypt($data->accion) . '|' . decrypt($data->apartado)  . '|' . decrypt($data->afectado) . '|' . decrypt($data->ip) . PHP_EOL;
                 }
             }
 
@@ -88,7 +93,7 @@ class BitacoraController extends Controller
         $content .= "----------------------------END_LOG-------------------------------\n";
 
         // file name to download
-        $fileName = "LOG_BITACORA.log";
+        $fileName = "LOG.log";
 
         // make a response, with the content, a 200 response code and the headers
         return Response::make($content, 200, [
@@ -96,5 +101,12 @@ class BitacoraController extends Controller
             'Content-Disposition' => sprintf('attachment; filename="%s"', $fileName),
             'Content-Length' => strlen($content)
         ]);
+
+        
+    }
+
+    public function auth()
+    {
+        return view('bitacora.show');
     }
 }

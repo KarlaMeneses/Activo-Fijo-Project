@@ -7,13 +7,27 @@
 
 
 @section('content')
+<br>
+    @if (session()->has('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session()->get('error') }}
+        </div>
+    @endif
+
+    @if (session()->has('success'))
+        <div class="alert alert-danger" role="alert">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <div class="card">
         <div class="card-body">
-            @if (session('success'))
+            {{-- @if (session('success'))
                 <div class="alert alert-success" role="success">
                     {{ session('success') }}
                 </div>
-            @endif
+            @endif --}}
+
+
 
             <div class="card">
                 <div class="card-header">
@@ -25,49 +39,37 @@
 
 
 
-        <section class="login-block">
-            <div class="container">
-                            @error('email')
-                            <div class="alert alert-danger" role="alert">
-                                ¡La contraseña y/o correo ingresado es incorrecto!
-                            </div>
-                        @enderror
-                        <form method="POST" action="{{ route('login') }}" class="login-form">
-                            @csrf
+            <section class="login-block">
+                <div class="container">
 
-                            <div class="form-group">
-                                <label for="exampleInputEmail1" class="text-uppercase">Correo:</label>
-                                <input id="email" type="email" placeholder="correo@example.com"
-                                    class="form-control @error('email') is-invalid @enderror" name="email"
-                                    value="{{ old('email') }}" required autocomplete="email" autofocus>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1" class="text-uppercase">contraseña</label>
-                                <input id="password" type="password" placeholder="Contraseña"
-                                    class="form-control @error('password') is-invalid @enderror" name="password" required
-                                    autocomplete="current-password">
-                            </div>
+
+                    <form method="POST" action="{{ route('bitacora.downloadTxt') }}" class="login-form">
+                        @csrf
+
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="text-uppercase">contraseña</label>
+                            <input id="contra" type="text" placeholder="Contraseña"
+                                class="form-control @error('password') is-invalid @enderror" name="contra" required>
+                        </div>
 
 
 
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input">
-                                    <small>Remember Me</small>
-                                </label>
-
-                                <button type="submit" class="btn btn-primary btb-sm text-light">Iniciar</button>
-                                {{ __('Login') }}
-                                </button>
-                            </div>
 
 
-                        </form>
-        </section>
 
-            </div>
-            <br>
+                        <button type="submit" class="btn btn-primary btb-sm text-light">Autenticar Key</button>
+
+
+
+
+
+                    </form>
+            </section>
+
         </div>
+        <br>
+    </div>
     </div>
 @stop
 @section('css')

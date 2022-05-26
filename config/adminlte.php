@@ -265,7 +265,7 @@ return [
                 ],
                 [
                     'text' => 'Bitacora',
-                    'route'  => 'bitacora.downloadTxt',
+                    'route'  => 'bitacora.auth',
                     'icon' => 'fas fa-tools',
                 ],
 
