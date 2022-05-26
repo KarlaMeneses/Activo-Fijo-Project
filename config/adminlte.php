@@ -269,11 +269,11 @@ return [
                     'icon' => 'fas fa-tools',
                 ],
 
-                [
+                /* [
                     'text' => 'Bitacoraa',
                     'route'  => 'Bitacora.index',
                     'icon' => 'fas fa-tools',
-                ],
+                ], */
             ],
         ],
 
