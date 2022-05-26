@@ -47,6 +47,7 @@ class BitacoraController extends Controller
 
         /* $phoneNumbers = "Phone numbers \n"; */
         $content = "        		REGISTRO DE BITACORA        \n";
+        $content .= '             FECHA =' .  $DateAndTime . '               ';
 
         $content .= "\n";
         $content .= "EMPRESA: ACTIVO FIJO CORP.                         NIT  :2995623 \n";
