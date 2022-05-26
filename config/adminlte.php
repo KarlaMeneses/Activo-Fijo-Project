@@ -265,15 +265,15 @@ return [
                 ],
                 [
                     'text' => 'Bitacora',
-                    'route'  => 'bitacora.downloadTxt',
+                    'route'  => 'bitacora.auth',
                     'icon' => 'fas fa-tools',
                 ],
 
-                [
+                /* [
                     'text' => 'Bitacoraa',
                     'route'  => 'Bitacora.index',
                     'icon' => 'fas fa-tools',
-                ],
+                ], */
             ],
         ],
 
@@ -324,6 +324,11 @@ return [
                     'text' => 'Mantenimiento',
                     'route'  => 'mantenimientos.index',
                     'icon' => 'fas fa-tools',
+                ],
+                [
+                    'text' => 'Bajas',
+                    'route'  => 'baja.index',
+                    'icon' => 'fas fa-arrow-down',
                 ],
             ],
         ],

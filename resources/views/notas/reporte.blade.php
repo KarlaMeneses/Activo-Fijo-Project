@@ -84,9 +84,9 @@
 
         <div style="position: relative">
             <div style="position: absolute">
-                <img src="<?php echo $imagenBase64; ?>" style="height: 80px;width:auto;margin-top: 2.5em; ">
+                <img src="<?php echo $imagenBase64; ?>" style="height: 70px;width:auto;margin-top: 4.0em; ">
             </div>
-            <div style="position: absolute;text-align: left">
+            <div style="position: relative;text-align: left">
                 <p style="font-size: 10px;margin-top: 3em;margin-left: 25em;vertical-align:middle;">Reporte de Nota:
                     {{ \Carbon\Carbon::now() }}</p>
             </div>
