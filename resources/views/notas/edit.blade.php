@@ -48,7 +48,7 @@
                             required>
 
                         <label for="totales">Totales</label>
-                        <input type="text" name="totales" class="form-control" value="{{ $nota->totales }}" required>
+                        <input type="text" name="totales" class="form-control" value="{{ $nota->totales }}" disabled>
                     </div>
 
                     <div class="form-group col-md-6">

@@ -38,7 +38,11 @@
                 -->
                  <div class="form-row">
                     <div class="form-group col-md-6">
+                        <label for="codigo">Codigo</label>
+                        <input type="text" name="codigo" class="form-control" required>
+
                         <label for="proveedor">Proveedor</label>
+
                         <input type="text" name="proveedor" class="form-control" required>
                         <label for="direccion">Direccion</label>
                         <input type="text" name="direccion" class="form-control" required>
