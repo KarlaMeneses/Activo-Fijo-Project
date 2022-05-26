@@ -40,7 +40,7 @@ class DepreciacionController extends Controller
     {
         date_default_timezone_set("America/La_Paz"); // se define la zona horaria que usa Bolivia
         $request->validate([
-            'nombre' => 'required|unique:depreciaciones', //Se valida el nombre en categoria para que no se repitan antes de registrar una nueva
+            'nombre' => 'required|unique:depreciaciones', //Se valida el nombre en depreciaciones para que no se repitan antes de registrar una nueva
             'descripcion' => 'required|unique:depreciaciones',
             'tipo_activo' => 'required|unique:depreciaciones',
             'cacateristica' => 'required|unique:depreciaciones',
