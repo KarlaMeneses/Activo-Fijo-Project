@@ -32,10 +32,11 @@ class DatabaseSeeder extends Seeder
         $this->call(DetallenotaSeeder::class);
         $this->call(detallefacturaSeeder::class);
      
-        $this->call(DetalleFacturaSeeder::class);
+      
         $this->call(activofijoSeeder::class);
         $this->call(revalorizacionSeeder::class);
         $this->call(mantenimientoSeeder::class);
         $this->call(bitacoraSeeder::class);
+        $this->call(BajaSeeder::class);
     }
 }
