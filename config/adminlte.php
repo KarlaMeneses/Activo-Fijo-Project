@@ -325,6 +325,11 @@ return [
                     'route'  => 'mantenimientos.index',
                     'icon' => 'fas fa-tools',
                 ],
+                [
+                    'text' => 'Bajas',
+                    'route'  => 'baja.index',
+                    'icon' => 'fas fa-arrow-down',
+                ],
             ],
         ],
 

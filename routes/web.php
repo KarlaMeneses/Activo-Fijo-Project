@@ -107,3 +107,13 @@ Route::post('mantenimiento/reporte',[App\Http\Controllers\MantenimientoControlle
 // BITACORA
 Route::resource('Bitacora', BitacoraController::class)->names('Bitacora');
 Route::get('bitacora/downloadTxt', [App\Http\Controllers\BitacoraController::class, 'downloadTxt'])->name('bitacora.downloadTxt');
+
+
+// BAJA 
+
+Route::get('baja/index', [App\Http\Controllers\BajaController::class, 'index'])->name('baja.index');
+Route::post('baja/store', [App\Http\Controllers\BajaController::class, 'store'])->name('baja.store');
+Route::get('baja/create', [App\Http\Controllers\BajaController::class, 'create'])->name('baja.create');
+Route::get('baja/edit/{id}', [App\Http\Controllers\BajaController::class, 'edit'])->name('baja.edit');
+Route::post('baja/update/{id}', [App\Http\Controllers\BajaController::class, 'update'])->name('baja.update');
+Route::post('baja/{id}', [App\Http\Controllers\BajaController::class, 'destroy'])->name('baja.delete');
