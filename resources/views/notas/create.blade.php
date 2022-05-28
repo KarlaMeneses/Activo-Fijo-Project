@@ -38,16 +38,31 @@
                 -->
                  <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="proveedor">Proveedor</label>
-                        <input type="text" name="proveedor" class="form-control" required>
-                        <label for="direccion">Direccion</label>
-                        <input type="text" name="direccion" class="form-control" required>
+                        <label for="proveedor">Proveedor:</label>
+                        <input type="text" name="proveedor" class="form-control" min="5" max="20"
+                        maxlength="20" size="0" pattern="{5,20}" placeholder="proveedor" required>
+                        @error('proveedor')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
 
-                        <label for="telefono">Telefono</label>
-                        <input type="tel" name="telefono" class="form-control" required>
+                        <label for="direccion">Dirección:</label>
+                        <input type="text" name="direccion" class="form-control"
+                        maxlength="30" size="0" pattern="{5,30}" placeholder="dirección" required>
+                        @error('direccion')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+
+                        <label for="telefono">Telefono:</label>
+                        <input type="tel" name="telefono" class="form-control" size="0" maxlength="9" pattern="[0-9-+()]{6,9}" placeholder="+591XXXXXXXXX" require>
+                        @error('telefono')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
 
                         <label for="fecha_entrega">Fecha compra</label>
                         <input type="date" name="fecha_entrega" class="form-control" required>
+                        @error('fecha_entrega')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
 
                     </div>
                     <div class="form-group col-md-6">
@@ -59,14 +74,14 @@
                         <label>Subir foto de Comprobante - Nota de compra fisica</label>
                         <img width="300" height="400" id="foto">
                         <div class="custom-input-file">
-                            <input type="file" id="file" accept="image/*" class="input-file" value="" required>
+                            <input type="file" id="file" accept="image/*" class="input-file" value="">
                             <i class="fas fa-file-upload"></i> Subir Foto...
                         </div>
                         <div class="col-12" id="app" style="text-align:center;">
                             <progress id="progress_bar" value="0" max="100"></progress>
-                            <input type="hidden" value="" name="foto" id="fotov" title="foto"
+                            <input type="hidden" value="{{ old('foto') }}" name="foto" id="fotov" title="foto"
                                 placeholder="https://example.com" list="defaultURLs"
-                                class="focus border-dark  form-control" required
+                                class="focus border-dark  form-control"
                                 oninvalid="this.setCustomValidity('Please match the requested format')">
                         </div>
                         @error('foto')

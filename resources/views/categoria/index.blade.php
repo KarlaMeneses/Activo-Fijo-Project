@@ -1,15 +1,10 @@
 @extends('adminlte::page')
 @section('title', 'Activo Fijo')
-
 @section('content_header')
-
     <div class="card-header  text-center">
         <h3><b>Lista Categorias</b></h3>
     </div>
 
-@stop
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop
 
 @section('content')
@@ -22,10 +17,9 @@
     </div>
 
     <div class="card">
-
         <div class="card-body " style="overflow-x: scroll">
 
-            <table class="table table-striped table-bordered shadow-lg mt-4 " id="usuarios" style="width:100%">
+            <table class="table table-striped shadow-lg mt-4" id="categorias" style="width:100%">
                 <thead class="bg-dark">
                     <tr>
                         <th>Id</th>
@@ -38,8 +32,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
-
                     @foreach ($cates as $cate)
                         <tr>
                             <td>{{ $cate->id }}</td>
@@ -86,7 +78,6 @@
     </div>
 
 @stop
-
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
@@ -97,9 +88,8 @@
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
     <script>
-        $('#categorias').DataTable({
-            autoWidth: false
+        $(document).ready(function() {
+            $('#categorias').DataTable();
         });
     </script>
-
-@endsection
+@stop

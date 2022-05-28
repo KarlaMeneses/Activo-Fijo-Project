@@ -34,46 +34,46 @@
                         <!--body-->
 
                         <div class="container">
-                            <div class="row">
-
-                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                    <div class="form-group">
+                            <div class="form-row">
+                                    <div class="form-group col-md-6">
                                         <label>Proveedor: </label>
                                         <input class="form-control" value="{{ $nota->proveedor }}" disabled>
-                                    </div>
-                                </div>
 
-                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                    <div class="form-group">
                                         <label>Direccion: </label>
                                         <input class="form-control" value="  {{ $nota->direccion }}" disabled>
-                                    </div>
-                                </div>
 
-
-                                <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                                    <div class="form-group">
                                         <label>Telefono: </label>
                                         <input class="form-control" value="{{ $nota->telefono }}" disabled>
-                                    </div>
-                                </div>
 
-
-                                <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                                    <div class="form-group">
                                         <label>Fecha entrega: </label>
                                         <input class="form-control" value="{{ $nota->fecha_entrega }}" disabled>
-                                    </div>
-                                </div>
 
-                                <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                                    <div class="form-group">
                                         <label>Totales: </label>
                                         <input class="form-control" value="{{ $nota->totales }}" disabled>
-                                    </div>
-                                </div>
 
-                                <br>
+                                    </div>
+
+                            <div class="form-group col-md-6">
+                                <center>
+                                     <h5>Comprobante - Nota de compra fisica</h5>
+                                    <img src="{{ asset($nota->foto) }}" width="250" height="300" />
+                                        <!--Descagar imagen--->
+                                    <div class="download-wrap">
+                                        <div class="download">
+                                        <a target="_blanck" href="{{($nota->foto) }}" class="button-download">
+                                        Descagar
+                                            <span class="icon-wrap">
+                                                 <i class="icon-download"></i>
+                                             </span>
+                                        </a>
+                                        <div class="meter">
+                                             <span class="meter-progress"></span>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <!--<button id="reset">Reset</button>
+                                    Descagar imagen--->
+                                </center>
                             </div>
                         </div>
 
@@ -93,7 +93,8 @@
 
                                 <!--Start third-->
                                 <div class="card-body">
-                                    <table class="table table-bordered table-striped">
+                                    <h5 style=" font-size:23px;text-align: center;color:rgb(40, 147, 253);">DETALLE DE NOTA</h5>
+                                    <table class="table table-bordered border-dark">
                                         <thead class="table-dark">
                                             <tr>
                                                 <th scope="col">Cantidad</th>
@@ -120,32 +121,12 @@
                                         <tr>
                                             <th></th>
                                             <th></th>
-                                            <th scope="col">Totales</th>
-                                            <th scope="col">{{ $nota->totales }}</th>
+                                            <th class="table-dark" scope="col">Total Bs.</th>
+                                            <th class="table-dark" scope="col">{{ $nota->totales }}</th>
                                         </tr>
 
                                     </table>
-                                <center>
-                                     <h5>Comprobante - Nota de compra fisica</h5>
-                                    <img src="{{ asset($nota->foto) }}" width="250" height="300" />
 
-                                        <!--Descagar imagen--->
-                                    <div class="download-wrap">
-                                        <div class="download">
-                                        <a target="_blanck" href="{{($nota->foto) }}" class="button-download">
-                                        Descagar
-                                            <span class="icon-wrap">
-                                                 <i class="icon-download"></i>
-                                             </span>
-                                        </a>
-                                        <div class="meter">
-                                             <span class="meter-progress"></span>
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <!--<button id="reset">Reset</button>
-                                    Descagar imagen--->
-                                </center>
 
                                 </div>
                                 <!--end third-->

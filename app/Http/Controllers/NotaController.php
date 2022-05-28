@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\App;
+
 class NotaController extends Controller
 {
     /**
@@ -47,6 +48,7 @@ class NotaController extends Controller
         $nota->direccion = $request->direccion;
         $nota->telefono = $request->telefono;
         $nota->fecha_entrega = $request->fecha_entrega;
+        $nota->foto = $request->foto;
         $nota->tipo = 'compra';
         $nota->save();
         $nota = Nota::latest('id')->first();
@@ -95,6 +97,7 @@ class NotaController extends Controller
         $nota->direccion = $request->input('direccion');
         $nota->telefono = $request->input('telefono');
         $nota->fecha_entrega = $request->input('fecha_entrega');
+        $nota->foto = $request->input('foto');
         $nota->totales = $request->input('totales');
         $nota->save();
         return redirect()->route('notas.index');
@@ -116,32 +119,28 @@ class NotaController extends Controller
     {
         $nota = Nota::find($id);
         $detalles = Detallenota::select('*')->where('id_notas', $nota->id)->get();
-        $view = View::make('notas.reporte', compact('nota','detalles'))->render();
+        $view = View::make('notas.reporte', compact('nota', 'detalles'))->render();
         // return $view;
-       
-     
-         $pdf = App::make('dompdf.wrapper');
-         
-         $pdf->setOptions([
-             'logOutputFile' => storage_path('logs/log.htm'),
-                 'tempDir' => storage_path('logs/')
-         ]);
-       
-      $pdf->loadHTML($view);
-     
- 
-         //return view('reporte.reporteComercioPrint', compact('comercio', 'fechainicio', 'fechafin', 'pedidos', 'resumen', 'resumenpagos','productos'));
-     return $pdf->stream();   
- 
-                
-            
+
+
+        $pdf = App::make('dompdf.wrapper');
+
+        $pdf->setOptions([
+            'logOutputFile' => storage_path('logs/log.htm'),
+            'tempDir' => storage_path('logs/')
+        ]);
+
+        $pdf->loadHTML($view);
+
+
+        //return view('reporte.reporteComercioPrint', compact('comercio', 'fechainicio', 'fechafin', 'pedidos', 'resumen', 'resumenpagos','productos'));
+        return $pdf->stream();
     }
     public function reportehtml(Request $request, $id)
     {
         $nota = Nota::find($id);
         $detalles = Detallenota::select('*')->where('id_notas', $nota->id)->get();
-        $view = View::make('notas.reporte', compact('nota','detalles'))->render();
-        return $view;           
-            
+        $view = View::make('notas.reporte', compact('nota', 'detalles'))->render();
+        return $view;
     }
 }
