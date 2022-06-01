@@ -31,7 +31,7 @@ class activofijoSeeder extends Seeder
             [
                 'codigo' => 'AB-02',
                 'detalle' => 'para RRHH',
-                'costo' => 100,
+                'costo' => 200,
                 'fecha_ingreso' => '2022-09-15',
                 'proveedor' => 'alguien',
                 'estado' => 'regular',
@@ -41,7 +41,7 @@ class activofijoSeeder extends Seeder
             [
                 'codigo' => 'AB-03',
                 'detalle' => 'para RRHH',
-                'costo' => 100,
+                'costo' => 250,
                 'fecha_ingreso' => '2022-04-17',
                 'proveedor' => 'alguien',
                 'estado' => 'bueno',
