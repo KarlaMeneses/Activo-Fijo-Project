@@ -31,34 +31,51 @@
             @endphp
             <form action="{{ route('notasventa.store') }}" method="post">
                 @csrf
-                <button class="btn btn-danger " type="submit">Crear Nota</button>
+                {{-- <button class="btn btn-danger " type="submit">Crear Nota</button>
                 <a class="btn btn-primary " href="{{ route('notasventa.index') }}">Volver</a>
+                --}}
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="adquirente">Adquirente</label>
-                        <input type="text" name="adquirente" class="form-control" required>
-                       
+                        <input type="text" name="adquirente" class="form-control"  min="5" max="20"
+                        maxlength="20" size="0" pattern="{5,20}" placeholder="adquirente" required>
+                        @error('adquirente')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+
+
                         <label for="telefono">Telefono</label>
-                        <input type="tel" name="telefono" class="form-control" required>
+                        <input type="tel" name="telefono" class="form-control" size="0" maxlength="9" pattern="[0-9-+()]{6,9}" placeholder="+591XXXXXXXXX" require>
+                        @error('telefono')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
 
                         <label for="fecha_venta">Fecha venta</label>
                         <input type="date" name="fecha_venta" class="form-control" required>
 
                         <label for="encargado">Encargado</label>
-                        <input type="text" name="encargado" class="form-control" required>
+                        <input type="text" name="encargado" class="form-control" min="5" max="20"
+                        maxlength="20" size="0" pattern="{5,20}" placeholder="encargado" required>
+                        @error('encargado')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+
 
                         <label for="cargo">Cargo</label>
-                        <input type="text" name="cargo" class="form-control" required>
+                        <input type="text" name="cargo" class="form-control" min="5" max="20"
+                        maxlength="20" size="0" pattern="{5,20}" placeholder="cargo" required>
+                        @error('cargo')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
 
-                        
                     </div>
                     <div class="form-group col-md-6">
                         <!---karla todo esto es subir imagenes --->
                     @section('js')
-                        <script src="{{ asset('js/notascompras.js') }}"></script>
+                        <script src="{{ asset('js/notasventas.js') }}"></script>
                     @endsection
                     <center>
-                        <label>Subir foto de Comprobante - Nota de compra fisica</label>
+                        <label>Subir foto de Comprobante - Nota de venta fisica</label>
                         <img width="300" height="400" id="foto">
                         <div class="custom-input-file">
                             <input type="file" id="file" accept="image/*" class="input-file" value="" required>
@@ -66,7 +83,7 @@
                         </div>
                         <div class="col-12" id="app" style="text-align:center;">
                             <progress id="progress_bar" value="0" max="100"></progress>
-                            <input type="hidden" value="" name="foto" id="fotov" title="foto"
+                            <input type="hidden" value="{{ old('foto') }}" name="foto" id="fotov" title="foto"
                                 placeholder="https://example.com" list="defaultURLs"
                                 class="focus border-dark  form-control" required
                                 oninvalid="this.setCustomValidity('Please match the requested format')">
@@ -76,13 +93,17 @@
                         @enderror
 
                     </center>
-                    <!---karla todo esto es subir imagenes ---> 
+                    <!---karla todo esto es subir imagenes --->
 
                     </div>
 
                 </div>
+                    <center>
+                        <button class="btn btn-primary btb-sm text-light" type="submit">Crear Nota</button>
+                        <a class="btn btn-warning btb-sm text-light" href="{{ route('notasventa.index') }}">Volver</a>
+                    </center>
             </form>
-          
+
         </div>
     </div>
     <script></script>

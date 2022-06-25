@@ -17,7 +17,7 @@ class CreateActivosfijoTable extends Migration
             $table->id();
             $table->string('codigo')->nullable();
             $table->string('detalle')->nullable();
-            $table->integer('costo')->nullable();
+            $table->decimal('costo')->nullable();
             $table->date('fecha_ingreso')->nullable();
             $table->string('proveedor')->nullable();
             $table->string('estado')->nullable();

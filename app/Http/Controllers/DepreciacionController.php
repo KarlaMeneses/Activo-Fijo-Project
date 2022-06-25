@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Depreciacion;
 use Illuminate\Http\Request;
-
+use Spatie\Activitylog\Models\Activity;
 
 
 class DepreciacionController extends Controller
@@ -40,7 +40,7 @@ class DepreciacionController extends Controller
     {
         date_default_timezone_set("America/La_Paz"); // se define la zona horaria que usa Bolivia
         $request->validate([
-            'nombre' => 'required|unique:depreciaciones', //Se valida el nombre en categoria para que no se repitan antes de registrar una nueva
+            'nombre' => 'required|unique:depreciaciones', //Se valida el nombre en depreciaciones para que no se repitan antes de registrar una nueva
             'descripcion' => 'required|unique:depreciaciones',
             'tipo_activo' => 'required|unique:depreciaciones',
             'cacateristica' => 'required|unique:depreciaciones',
@@ -48,6 +48,11 @@ class DepreciacionController extends Controller
             'valor_residual' => 'required|unique:depreciaciones',
         ]);
         $depres = Depreciacion::create($request->all()); // se crea una categoria con una funcion directa de laravel usando al model de referencia para solicitar los datos
+        //bitacora
+        activity()->useLog('gestionar depreciaciones')->log('Registro')->subject();
+        $lastActivity = Activity::all()->last();
+        $lastActivity->subject_id = $depres->id;
+        $lastActivity->save();
         return redirect()->route('depreciaciones.index'); // Se redirige a la vista categoria.index
     }
 

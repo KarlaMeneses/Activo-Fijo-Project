@@ -181,7 +181,7 @@ class FacturaController extends Controller
         $factura = Factura::find($id);
         $detalles = DetalleFactura::select('*')->where('idfactura', $factura->id)->get();
         $view = View::make('factura.facturacompra.reporte', compact('factura','detalles'))->render();
-        // return $view;
+        //return $view;
        
      
          $pdf = App::make('dompdf.wrapper');
@@ -194,10 +194,17 @@ class FacturaController extends Controller
       $pdf->loadHTML($view);
      
  
-         //return view('reporte.reporteComercioPrint', compact('comercio', 'fechainicio', 'fechafin', 'pedidos', 'resumen', 'resumenpagos','productos'));
      return $pdf->stream();   
  
                 
+            
+    }
+    public function reportechtml(Request $request, $id)
+    {
+        $factura = Factura::find($id);
+        $detalles = DetalleFactura::select('*')->where('idfactura', $factura->id)->get();
+        $view = View::make('factura.facturacompra.reporte', compact('factura','detalles'))->render();
+        return $view;           
             
     }
 
@@ -223,6 +230,14 @@ class FacturaController extends Controller
      return $pdf->stream();   
  
                 
+            
+    }
+    public function reportevhtml(Request $request, $id)
+    {
+        $factura = Factura::find($id);
+        $detalles = DetalleFactura::select('*')->where('idfactura', $factura->id)->get();
+        $view = View::make('factura.facturaventa.reporte', compact('factura','detalles'))->render();
+        return $view;           
             
     }
 }

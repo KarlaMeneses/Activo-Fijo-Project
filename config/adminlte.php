@@ -247,6 +247,14 @@ return [
             'can'  => 'manage-blog',
         ],
 
+        ['header' => 'CONFIGURACION'],
+        [
+            'text' => 'Perfil',
+            'url'  => 'user/perfil/',
+            'icon' => 'fas fa-fw fa-user',
+            'icon_color' => 'text-light',
+            //'can' => 'Gestionar Usuario'
+        ],
         ['header' => 'OPCIONES DE USUARIO'],
 
         [
@@ -265,9 +273,15 @@ return [
                 ],
                 [
                     'text' => 'Bitacora',
-                    'route'  => 'bitacora.downloadTxt',
+                    'route'  => 'bitacora.auth',
                     'icon' => 'fas fa-tools',
                 ],
+
+                /* [
+                    'text' => 'Bitacoraa',
+                    'route'  => 'Bitacora.index',
+                    'icon' => 'fas fa-tools',
+                ], */
             ],
         ],
 
@@ -287,7 +301,7 @@ return [
                 ],
             ],
         ],
-        
+
         [
             'text'    => 'Gestionar Activo-Fijo',
             'icon'    => 'fab fa-autoprefixer',
@@ -311,20 +325,25 @@ return [
                     'text' => 'Revalorizacion',
                     'route'  => 'revalorizacion.index',
                     'icon' => 'fas fa-arrow-up',
-                    
+
                 ],
-                
+
                 [
                     'text' => 'Mantenimiento',
                     'route'  => 'mantenimientos.index',
                     'icon' => 'fas fa-tools',
                 ],
+                [
+                    'text' => 'Bajas',
+                    'route'  => 'baja.index',
+                    'icon' => 'fas fa-arrow-down',
+                ],
             ],
         ],
-        
-        
-        
-        
+
+
+
+
         [
             'text'    => 'Nota C/V',
             'icon'    => 'fas fa-file-invoice-dollar',
@@ -355,10 +374,10 @@ return [
                 ],
             ],
         ],
-        
-        
+
+
         /* ['header' => 'labels'], */
-         
+
 
     ],
 

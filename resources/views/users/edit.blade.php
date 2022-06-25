@@ -25,6 +25,7 @@
                     <strong>¡Error!</strong> Este usuario ya está registrado.
                 </div>
             @enderror
+
             <form action="{{ route('users.update', $user) }}" method="post" novalidate>
                 @csrf
                 @method('put')
@@ -63,7 +64,6 @@
                         @enderror
                     </div>
                 </div>
-
             </center>
 
 

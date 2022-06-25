@@ -20,4 +20,9 @@ class Activofijo extends Model
     public function ubicacion(){
         return $this->belongsTo('App\Models\Consulta','id_ubicacion','id');
     }
+    public function bajaa()
+    {
+        return $this->hasMany(Baja::class, 'idactivo');
+    }
+
 }

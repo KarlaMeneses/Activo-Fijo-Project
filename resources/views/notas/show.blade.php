@@ -8,12 +8,21 @@
     </div>
 @stop
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/descaga.css') }}">
+@stop
+
+@section('js')
+    <link rel="stylesheet" href="{{ asset('js/descaga.js') }}">
+@stop
+
 @section('content')
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
+                        <!--
                         <div class="card-header card-header-primary">
                             <a href="{{ route('notas.index') }}" class="btn btn-sm btn-success mr-3">
                                 Volver </a>
@@ -21,52 +30,53 @@
                                 <a href="{{ route('notas.edit', $nota) }}" class="btn btn-sm btn-success mr-3">
                                     Editar </a>
                         </div>
+                    -->
                         <!--body-->
 
                         <div class="container">
-                            <div class="row">
-
-                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                    <div class="form-group">
+                            <div class="form-row">
+                                    <div class="form-group col-md-6">
                                         <label>Proveedor: </label>
                                         <input class="form-control" value="{{ $nota->proveedor }}" disabled>
-                                    </div>
-                                </div>
-                
-                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                    <div class="form-group">
+
                                         <label>Direccion: </label>
                                         <input class="form-control" value="  {{ $nota->direccion }}" disabled>
-                                    </div>
-                                </div>
-                
-                
-                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                    <div class="form-group">
+
                                         <label>Telefono: </label>
                                         <input class="form-control" value="{{ $nota->telefono }}" disabled>
-                                    </div>
-                                </div>
-                
-                
-                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                    <div class="form-group">
+
                                         <label>Fecha entrega: </label>
                                         <input class="form-control" value="{{ $nota->fecha_entrega }}" disabled>
-                                    </div>
-                                </div>
-                
-                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                    <div class="form-group">
+
                                         <label>Totales: </label>
                                         <input class="form-control" value="{{ $nota->totales }}" disabled>
+
                                     </div>
-                                </div>
-            
-                                <br>
+
+                            <div class="form-group col-md-6">
+                                <center>
+                                     <h5>Comprobante - Nota de compra fisica</h5>
+                                    <img src="{{ asset($nota->foto) }}" width="250" height="300" />
+                                        <!--Descagar imagen--->
+                                    <div class="download-wrap">
+                                        <div class="download">
+                                        <a target="_blanck" href="{{($nota->foto) }}" class="button-download">
+                                        Descagar
+                                            <span class="icon-wrap">
+                                                 <i class="icon-download"></i>
+                                             </span>
+                                        </a>
+                                        <div class="meter">
+                                             <span class="meter-progress"></span>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <!--<button id="reset">Reset</button>
+                                    Descagar imagen--->
+                                </center>
                             </div>
                         </div>
-                        
+
                         <div class="card-body">
 
                             @if (session('success'))
@@ -83,8 +93,9 @@
 
                                 <!--Start third-->
                                 <div class="card-body">
-                                    <table class="table table-bordered table-striped">
-                                        <thead>
+                                    <h5 style=" font-size:23px;text-align: center;color:rgb(40, 147, 253);">DETALLE DE NOTA</h5>
+                                    <table class="table table-bordered border-dark">
+                                        <thead class="table-dark">
                                             <tr>
                                                 <th scope="col">Cantidad</th>
                                                 <th scope="col">Detalle</th>
@@ -110,18 +121,21 @@
                                         <tr>
                                             <th></th>
                                             <th></th>
-                                            <th scope="col">Totales</th>
-                                            <th scope="col">{{ $nota->totales }}</th>
+                                            <th class="table-dark" scope="col">Total Bs.</th>
+                                            <th class="table-dark" scope="col">{{ $nota->totales }}</th>
                                         </tr>
 
                                     </table>
-                                    <h5>Comprobante - Nota de compra fisica</h5>
-                                    <img src="{{ asset($nota->foto) }}" width="250" height="300" />
+
 
                                 </div>
                                 <!--end third-->
-
                             </div>
+            <center>
+                <a class="btn btn-warning btb-sm text-light" href="{{ route('notas.index') }}">Volver</a>
+                <a href="{{ route('notas.edit', $nota->id) }}" class="btn btn-primary btb-sm text-light">
+                    Editar </a>
+            </center>
                         </div>
                     </div>
                 </div>
@@ -129,3 +143,12 @@
         </div>
     </div>
 @endsection
+
+@section('css')
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+@stop
+
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+@stop

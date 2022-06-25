@@ -15,6 +15,15 @@
 -   php artisan serve
     http://127.0.0.1:8000
 
+# laravel dependecias activitylog
+
+-   composer require spatie/laravel-activitylog
+-   php artisan vendor:publish --provider="Spatie\Activitylog\ActivitylogServiceProvider" --tag="activitylog-migrations"
+-   php artisan vendor:publish --provider="Spatie\Activitylog\ActivitylogServiceProvider" --tag="activitylog-config"
+
+-   php artisan vendor:publish --provider="Spatie\Activitylog\ActivitylogServiceProvider" --tag="migrations"
+-   php artisan vendor:publish --provider="Spatie\Activitylog\ActivitylogServiceProvider" --tag="config"
+
 # laravel ejemplos
 
 -   php artisan make:migration create_Users_table
@@ -56,3 +65,13 @@ Subir sus cambios al proyecto(para subir tus cambios sigue estos pasos)
 
 -   alt+shif+a
     comentar
+
+# laravel
+
+-   php artisan route:cache
+
+# error corregido de git
+
+-   $ rm .git/refs/remotes/origin/main
+-   $ git fetch
+-   $ git pull
