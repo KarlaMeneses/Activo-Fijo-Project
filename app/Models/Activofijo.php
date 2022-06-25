@@ -11,7 +11,7 @@ class Activofijo extends Model
     protected $table = 'activosfijo';
     protected $fillable = [
         'codigo', 'detalle', 'costo', 'fecha_ingreso', 'proveedor', 'estado', 'id_factura',
-        'id_categoria', 'id_ubicacion'
+        'id_categoria', 'id_ubicacion','vida_util'
     ];
 
     public function bajaa()
