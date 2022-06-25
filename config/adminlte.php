@@ -253,7 +253,7 @@ return [
             'url'  => 'user/perfil/',
             'icon' => 'fas fa-fw fa-user',
             'icon_color' => 'text-light',
-            //'can' => 'Gestionar Usuario'
+            'can' => 'Gestionar Usuario'
         ],
         ['header' => 'OPCIONES DE USUARIO'],
 
@@ -325,7 +325,7 @@ return [
                     'text' => 'Revalorizacion',
                     'route'  => 'revalorizacion.index',
                     'icon' => 'fas fa-arrow-up',
-
+                    'can' => 'Gestionar Revalorizacion'
                 ],
 
                 [
