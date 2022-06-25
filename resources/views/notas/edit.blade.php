@@ -9,9 +9,14 @@
 @stop
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/descaga.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/subir.css') }}">
 @stop
 
 @section('js')
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
     <link rel="stylesheet" href="{{ asset('js/descaga.js') }}">
 @stop
 @section('content')
@@ -24,13 +29,11 @@
                 </div>
             @enderror
             <form action="{{ route('notas.update', $nota) }}" method="post" novalidate>
-
                 @csrf
                 @method('put')
-
+                <input type="hidden" name="id" value="{{ $nota->id }}">
                 <button class="btn btn-primary btb-sm text-light" type="submit">Guardar</button>
                 <a class="btn btn-warning btb-sm text-light" href="{{ route('notas.index') }}">Volver</a>
-
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="proveedor">Proveedor</label>
@@ -47,18 +50,18 @@
                         <input type="date" name="fecha_entrega" class="form-control" value="{{ $nota->fecha_entrega }}"
                             required>
 
-                        <label for="totales">Totales</label>
-                        <input type="text" name="totales" class="form-control" value="{{ $nota->totales }}" disabled>
+                        <label for="totales">Total Bs.</label>
+                        <input type="text" name="totales" class="form-control" value="{{ $nota->totales }}" required>
                     </div>
 
                     <div class="form-group col-md-6">
-                        <h5>Comprobante - Nota de compra fisica</h5>
                         <!--Descagar imagen--->
+                        <p style="text-align: center">Comprobante - Nota de compra fisica</p>
                         <div class="download-wrap">
-                            <img src="{{ asset($nota->foto) }}" width="250" height="300" />
-                            <div class="download">
-                                <a target="_blanck" href="{{ $nota->foto }}" class="button-download">
-                                    Descagar
+                            <img src="{{ old('foto', $nota->foto) }}" width="240" height="300" required />
+                              <div class="download">
+                                <a target="_blanck" href="{{ old('foto', $nota->foto) }}" class="button-download">
+                                        Descagar
                                     <span class="icon-wrap">
                                         <i class="icon-download"></i>
                                     </span>
@@ -69,18 +72,20 @@
                             </div>
                         </div>
                         <!--<button id="reset">Reset</button>
-                                Descagar imagen--->
+                        Descagar imagen--->
+
+
+
                     </div>
                 </div>
             </form>
 
-            <h5>DETALLES DE NOTA</h5>
             <div class="card-body">
-                <table class="table table-bordered table-striped">
+                <h5 style=" font-size:23px;text-align: center;color:rgb(40, 147, 253);">DETALLE DE NOTA</h5>
+                <table class="table table-bordered border-dark">
                     <thead class="table-dark">
                         <tr>
                             <th scope="col">Id</th>
-
                             <th scope="col">Cantidad</th>
                             <th scope="col">Detalle</th>
                             <th scope="col">Precio unitario</th>
@@ -131,20 +136,13 @@
                     <tr>
                         <th></th>
                         <th></th>
-
-                        @if ($switch != 0)
-                            <th></th>
-                            <th scope="col">Totales</th>
-                        @else
-                            <th>INGRESE DATOS A SU NOTA DE COMPRA POR FAVOR.</th>
-                            <th></th>
-                            <th></th>
-                        @endif
-
-
-                        <th scope="col">{{ $nota->totales }}</th>
+                        <th></th>
+                        <th class="table-dark" scope="col">Total Bs.</th>
+                        <th class="table-dark" scope="col">{{ $nota->totales }}</th>
                         @if ($suma_total != $nota->totales)
-                            <h1>VERIFIQUE LA SUMA TOTAL</h1>
+                            <div class="alert alert-success" role="alert">
+                            VERIFIQUE LA SUMA TOTAL
+                            </div>
                         @endif
                     </tr>
                 </table>
@@ -161,7 +159,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="myModalLabel"> Agregar activo </h4>
+                                <h4 class="modal-title" id="myModalLabel">  Agregar detalles de la compra </h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
                             </div>
@@ -170,14 +168,14 @@
                                 @csrf
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label for="cantidad">Cantidad</label>
+                                        <label for="cantidad">Cantidad:</label>
                                         <div class="col-sm-10">
                                             <input type="text" name="cantidad" class="form-control" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="detalle">Detalle</label>
+                                        <label for="detalle">Detalle:</label>
                                         <div class="col-sm-10">
                                             <input type="text" name="detalle" class="form-control" required>
                                         </div>
@@ -209,8 +207,9 @@
 @stop
 
 @section('css')
+  <link rel="stylesheet"href="/css/admin_custom.css">
     <style>
-        <link rel="stylesheet"href="/css/admin_custom.css">img.zoom {
+      img.zoom {
             width: 350px;
             height: 200px;
             -webkit-transition: all .2s ease-in-out;

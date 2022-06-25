@@ -54,7 +54,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="name">Ingrese el nombre de usuario</label>
-                    <input type="text" name="name" class="form-control" value="" required>
+                    <input type="text" name="name" class="form-control" value="" placeholder="nombre completo" required>
                 </div>
                 @error('name')
                     <span class="text-danger">{{ $message }}</span>
@@ -63,7 +63,7 @@
 
                 <div class="col-md-3">
                     <label for="sexo">Seleccione un sexo</label>
-                    <select name="sexo" id="sexo" class="form-control" onchange="habilitar()" required>
+                    <select name="sexo" id="sexo" class="form-control" onchange="habilitar()" placeholder="sexo" required>
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
                     </select>
@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="direccion">Ingrese la direccion</label>
-                    <input type="text" name="direccion" class="form-control" value="" required>
+                    <input type="text" name="direccion" class="form-control" value="" maxlength="30" size="0" pattern="{5,30}" placeholder="dirección" required>
                 </div>
                 @error('direccion')
                     <span class="text-danger">{{ $message }}</span>
@@ -97,17 +97,18 @@
 
                 <div class="col-md-3">
                     <label for="edad">Ingrese la edad</label>
-                    <!--<input type="text" name="edad" class="form-control" value="" required>-->
                     <input name="edad" type="tel" size="2" maxlength="2" pattern="[0-9-+()]{2,2}" placeholder=""
-                        class="form-control" value="" required>
+                        class="form-control" value="" placeholder="edad" required>
                     @error('edad')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
 
+
+
                 <div class="col-md-3">
                     <label for="telefono">Ingrese el telefono</label>
-                    <input name="telefono" type="tel" size="10" placeholder="+591XXXXXXXXX" class="form-control" require value="{{ old('telefono') }}">
+                    <input name="telefono" type="tel" placeholder="+591XXXXXXXXX" class="form-control" value="{{ old('telefono') }}" size="0" maxlength="9" pattern="[0-9-+()]{6,9}" placeholder="+591XXXXXXXXX" require>
                     @error('telefono')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -117,14 +118,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="email">Ingrese el correo electronico</label>
-                    <input type="text" name="email" class="form-control" value="" required>
+                    <input type="text" name="email" class="form-control" value="" placeholder="correo" required>
                     @error('email')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="col-md-6">
                     <label for="password">Ingrese la contraseña</label>
-                    <input type="password" name="password" class="form-control" value="" required>
+                    <input type="password" name="password" class="form-control" value="" placeholder="***********"required>
                     @error('password')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror

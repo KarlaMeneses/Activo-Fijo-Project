@@ -206,4 +206,37 @@ class UserController extends Controller
         User::destroy($user->id);
         return redirect('users');
     }
+
+
+    public function show2()
+    {
+        $user = User::find(auth()->user()->id);
+        return view('perfil.edit', compact('user'));
+    }
+
+    public function edit2(User $user)
+    {
+        $roles = Role::all();
+        return view('perfil.edit', compact('user', 'roles'));
+    }
+
+    public function update2(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        //actualiza nombre
+        if ($user->name <> $request->name) {
+            $user->name = $request->name;
+        }
+        //actualiza email
+        if ($user->email <> $request->email) {
+            $user->email = $request->email;
+        }
+        //actualiza contraseña
+        if ($request->password <> '') {
+            $user->password = password_hash($request->password, PASSWORD_DEFAULT);
+        }
+
+        $user->save();
+        return redirect()->route('user.show');
+    }
 }

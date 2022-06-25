@@ -6,10 +6,6 @@
     <div class="card-header  text-center">
         <h3><b>DS 24051 Reglamento del IUE Depreciación</b></h3>
     </div>
-
-@stop
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop
 
 @section('content')
@@ -36,7 +32,7 @@ debieron estar previamente registrados o activados”.
         <div class="card-body " style="overflow-x: scroll">
 
             <!-- <table class="table table-striped" id="usuarios" style="width:100%">-->
-            <table class="table table-striped" id="bitacora" style="width:100%">
+            <table class="table table-striped" id="depreciaciones" style="width:100%">
                 <thead class="bg-dark">
                     <tr>
                         <th scope="col">Id</th>
@@ -101,7 +97,7 @@ debieron estar previamente registrados o activados”.
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
     <script>
-        $('#categorias').DataTable({
+        $('#depreciaciones').DataTable({
             autoWidth: false
         });
     </script>

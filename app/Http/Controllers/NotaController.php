@@ -10,7 +10,6 @@ use Illuminate\Log\Events\MessageLogged;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\MessageBag;
 
 class NotaController extends Controller
 {
@@ -52,6 +51,7 @@ class NotaController extends Controller
         $nota->direccion = $request->direccion;
         $nota->telefono = $request->telefono;
         $nota->fecha_entrega = $request->fecha_entrega;
+        $nota->foto = $request->foto;
         $nota->tipo = 'compra';
         $nota->save();
         $nota = Nota::latest('id')->first();
@@ -137,6 +137,7 @@ class NotaController extends Controller
         $nota->direccion = $request->input('direccion');
         $nota->telefono = $request->input('telefono');
         $nota->fecha_entrega = $request->input('fecha_entrega');
+        $nota->foto = $request->input('foto');
         $nota->totales = $request->input('totales');
         $nota->save();
 
@@ -184,8 +185,7 @@ class NotaController extends Controller
     {
         $nota = Nota::find($id);
         $detalles = Detallenota::select('*')->where('id_notas', $nota->id)->get();
-        $view = View::make('notas.reporte', compact('nota','detalles'))->render();
-        return $view;           
-            
+        $view = View::make('notas.reporte', compact('nota', 'detalles'))->render();
+        return $view;
     }
 }
