@@ -4,10 +4,11 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>CodePen - Login form with slider in Bootstrap 4</title>
+        <title>Activo Fijo</title>
         <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css'>
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/captcha.css">
 
     </head>
 
@@ -40,7 +41,11 @@
                                     autocomplete="current-password">
                             </div>
 
-
+                            <div class="form-group">
+                                <label for="captcha" class="text-uppercase">captcha</label>
+                                <div id="captcha"></div>
+                                <div id="msg"></div>
+                            </div>
 
                             <div class="form-check">
                                 <label class="form-check-label">
