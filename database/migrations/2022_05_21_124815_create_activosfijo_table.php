@@ -27,6 +27,8 @@ class CreateActivosfijoTable extends Migration
             $table->unsignedBigInteger('id_factura')->nullable();
             $table->foreign('id_factura')->on('facturas')->references('id')->onDelete('cascade');
 
+            $table->timestamps();
+
             /*
             $table->unsignedBigInteger('id_categñoria');
             $table->foreign('id_categoria')->on('categorias')->references('id')->onDelete('cascade');
