@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 @section('title', 'Activo Fijo')
 
+
 @section('content_header')
     <div class="card-header  text-center">
         <h3><b>Activo Fijo</b></h3>
@@ -22,12 +23,12 @@
                     <tr>
 
                         <th scope="col">ID</th>
-                        <th scope="col">detalle</th>
-                        <th scope="col">costo</th>
-                        <th scope="col">vida_util</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Costo</th>
+                        <th scope="col">Valor residual</th>
                         <th scope="col">fecha_ingreso</th>
-                        <th scope="col">proveedor</th>
-                        <th scope="col">estado</th>
+                        <th scope="col">Proveedor</th>
+                        <th scope="col">Estado</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -36,32 +37,50 @@
                     @foreach ($activosfijo as $activo)
                         <tr>
                             <td>{{ $activo->id }}</td>
-                            <td>{{ $activo->detalle }}</td>
+                            <td>{{ $activo->nombre }}</td>
                             <td>{{ $activo->costo }}</td>
-                            <td>{{ $activo->vida_util }}</td>
+                            <td>{{ $activo->v_residual }}</td>
                             <td>{{ $activo->fecha_ingreso }}</td>
                             <td>{{ $activo->proveedor }}</td>
-                            <td>{{ $activo->estado }}</td>
+
+                            @if ($activo->estado == 'Activo')
+                                <td class="badge rounded-pill bg-success">{{ $activo->estado }}</td>
+                            @else
+                                @if ($activo->estado == 'No activo')
+                                    <td class="badge rounded-pill bg-danger">{{ $activo->estado }}</td>
+                                @else
+                                    @if ($activo->estado == 'En mantenimiento')
+                                        <td class="badge rounded-pill bg-warning">{{ $activo->estado }}</td>
+                                    @else
+                                        <td>{{ $activo->estado }}</td>
+                                    @endif
+                                @endif
+                            @endif
+
                             <td>
                                 <form action="{{ route('activosfijo.destroy', $activo) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <a href="{{ route('activosfijo.show', $activo->id) }}"
-                                    class="btn btn-warning btn-sm text-light rounded-pill"><i class="fas fa-eye"></i><a>
-                                    <a href="{{ route('activosfijo.edit', $activo) }}"
-                                        class="btn btn-primary btn-sm text-light rounded-pill"><i class="fas fa-edit"></i><a>
-                                        @can('editar activo fijo')
-                                            @endcan
-                                         <button class="btn btn-danger btn-sm text-light rounded-pill" onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')"
+                                        class="btn btn-warning btn-sm text-light rounded-pill"><i class="fas fa-eye"></i><a>
+                                            <a href="{{ route('activosfijo.edit', $activo) }}"
+                                                class="btn btn-primary btn-sm text-light rounded-pill"><i
+                                                    class="fas fa-edit"></i><a>
+                                                    @can('editar activo fijo')
+                                                    @endcan
+                                                    <button class="btn btn-danger btn-sm text-light rounded-pill"
+                                                        onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')"
                                                         value="Borrar"><i class="fas fa-trash-alt"></i></button>
-                                            @can('eliminar activo fijo')
-                                        @endcan
+                                                    @can('eliminar activo fijo')
+                                                    @endcan
                                 </form>
 
                                 <form action="{{ route('activosfijo.idactivo') }}" method="post">
                                     @csrf
-                                    <input type="hidden" name="id_activo" class="form-control" value="{{ $activo->id }}"> <br>
-                                    <button class="btn btn-danger btn-sm text-light rounded-pill" type="submit">Revalorizacion</button>
+                                    <input type="hidden" name="id_activo" class="form-control"
+                                        value="{{ $activo->id }}"> <br>
+                                    <button class="btn btn-danger btn-sm text-light rounded-pill"
+                                        type="submit">Revalorizacion</button>
                                 </form>
                             </td>
                         </tr>
@@ -70,12 +89,8 @@
             </table>
         </div>
     </div>
-    <df-messenger
-  intent="WELCOME"
-  chat-title="bots"
-  agent-id="86938b5f-1e37-43dc-9f38-1bd5322b1eb7"
-  language-code="es"
-></df-messenger>
+    <df-messenger intent="WELCOME" chat-title="bots" agent-id="86938b5f-1e37-43dc-9f38-1bd5322b1eb7" language-code="es">
+    </df-messenger>
 @stop
 
 @section('css')

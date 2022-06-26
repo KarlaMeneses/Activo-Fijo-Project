@@ -23,80 +23,110 @@
                 </div>
             </div>
 
+            <div>
                 <center>
                     <img src="{{ asset($activofijo->codigo) }}" width="350" height="350" />
                     <br>
-                    <img height=120 width=300 data-value="{{ $activofijo->codigo }}" class="codigo"
-                            id="contenedor" />
+                    <img height=120 width=300 data-value="{{ $activofijo->codigo }}" class="codigo" id="contenedor" />
                     <br>
                     <label for="name">Vista detallada de {{ $activofijo->detalle }} </label>
 
                 </center>
             </div>
-
+            <br>
             <div class="row">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="codigo">Ingrese el nombre de cuenta contable</label>
-                        <input type="text" name="codigo" class="form-control" value="{{ $activofijo->codigo }}" disabled>
+                        <label for="codigo">Codigo De Activo</label>
+                        <input type="text" name="codigo" class="form-control" value="{{ $activofijo->codigo }}"
+                            disabled>
 
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="detalle">Ingrese la descripción del activo</label>
+                        <label for="detalle">Nombre Del Activo</label>
+                        <input type="text" name="detalle" class="form-control" value="{{ $activofijo->nombre }}"
+                            disabled>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="detalle">Descripcion Del Activo</label>
                         <input type="text" name="detalle" class="form-control" value="{{ $activofijo->detalle }}"
                             disabled>
                     </div>
 
                     <div class="col-md-3">
-                        <label for="costo">Seleccione el tipo activo</label>
-                        <input name="costo" type="tel" class="form-control" value="{{ $activofijo->costo }}" disabled>
-
+                        <label for="costo">Tipo De Activo</label>
+                        <input name="costo" type="tel" class="form-control" value="{{ $activofijo->tipo }}"
+                            disabled>
                     </div>
 
                     <div class="col-md-3">
-                        <label for="fecha_ingreso">Seleccione un cacateristica</label>
+                        <label for="fecha_ingreso">Fecha Ingreso</label>
                         <input name="fecha_ingreso" type="tel" class="form-control"
                             value="{{ $activofijo->fecha_ingreso }}" disabled>
                     </div>
 
                     <div class="col-md-3">
-                        <label for="proveedor">Ingrese la vida util (años)</label>
+                        <label for="costo">Costo Activo</label>
+                        <input name="costo" type="tel" class="form-control" value="{{ $activofijo->costo }}"
+                            disabled>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="proveedor">Vida Util Del Activo (años/meses)</label>
                         <input name="proveedor" type="tel" class="form-control" value="{{ $activofijo->vida_util }}"
                             disabled>
                     </div>
 
                     <div class="col-md-3">
-                        <label for="estado">Ingrese el valor residual %</label>
-                        <input type="tel" name="estado" class="form-control" value="{{ $activofijo->estado }}" disabled>
+                        <label for="estado">Valor Residual%</label>
+                        <input type="tel" name="estado" class="form-control" value="{{ $activofijo->v_residual }}"
+                            disabled>
+                    </div>
 
+                    <div class="col-md-3">
+                        <label for="estado">Estado</label>
+                        <input type="tel" name="estado" class="form-control" value="{{ $activofijo->estado }}"
+                            disabled>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="detalle">Proveedor Del Activo</label>
+                        <input type="text" name="detalle" class="form-control" value="{{ $activofijo->proveedor }}"
+                            disabled>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <br>
+                        <label for="name">UBICACION DEL ACTIVO</label>
                     </div>
 
 
                     @foreach ($ubicaciones as $ubicacion)
                         @if ($activofijo->id_ubicacion == $ubicacion->id)
-                            <div class="col-md-3">
-                                <label for="edificio">edificio</label>
+                            <div class="col-md-6">
+                                <label for="edificio">Edificio</label>
                                 <input name="edificio" type="tel" class="form-control"
                                     value="{{ $ubicacion->edificio }}" disabled>
                             </div>
 
                             <div class="col-md-3">
-                                <label for="ciudad">ciudad</label>
-                                <input name="ciudad" type="tel" class="form-control" value="{{ $ubicacion->ciudad }}"
-                                    disabled>
+                                <label for="ciudad">Ciudad</label>
+                                <input name="ciudad" type="tel" class="form-control"
+                                    value="{{ $ubicacion->ciudad }}" disabled>
                             </div>
 
                             <div class="col-md-3">
-                                <label for="pais">pais</label>
+                                <label for="pais">Pais</label>
                                 <input name="pais" type="tel" class="form-control" value="{{ $ubicacion->pais }}"
                                     disabled>
                             </div>
 
                             @foreach ($departamentos as $departamento)
                                 @if ($departamento->id == $ubicacion->id_departamento)
-                                    <div class="col-md-3">
-                                        <label for="pais">departamento</label>
+                                    <div class="col-md-6">
+                                        <label for="pais">Departamento/Area</label>
                                         <input name="pais" type="tel" class="form-control"
                                             value="{{ $departamento->nombre }}" disabled>
                                     </div>
@@ -124,7 +154,7 @@
 @stop
 
 @section('js')
-<script>
+    <script>
         const activo = [{
             nombre: "activo",
             precio: 20,
