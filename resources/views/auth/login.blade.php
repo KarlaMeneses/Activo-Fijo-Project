@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+                            @section('js')
+                                <script src="{{ asset('js/captcha.js') }}"></script>
+                            @endsection
 @section('content')
 
     <head>
@@ -11,9 +13,7 @@
         <link rel="stylesheet" href="css/captcha.css">
 
     </head>
-        @section('js')
-            <script src="{{ asset('js/captcha.js') }}"></script>
-        @endsection
+
     <body>
         <!-- partial:index.partial.html -->
         <section class="login-block">
@@ -45,25 +45,14 @@
 
                             <div class="form-group">
                                 <label for="captcha" class="text-uppercase">captcha</label>
-       <section>
-  <fieldset class="captchaField">
-    <span id="SuccessMessage" class="success">Thanks! , you can now submit the form!</span>
-    <input type="text" id="UserCaptchaCode" class="CaptchaTxtField" placeholder='Enter Captcha - Case Sensitive'>
-    <span id="WrongCaptchaError" class="error"></span>
-    <div class='CaptchaWrap'>
-      <div id="CaptchaImageCode" class="CaptchaTxtField">
-        <canvas id="CapCode" class="capcode" width="300" height="80"></canvas>
-      </div>
-      <input type="button" class="ReloadBtn" onclick='CreateCaptcha();'>
+<div class="capt" onload="createCaptcha()">
+  <form onsubmit="validateCaptcha()">
+    <div class="capt" id="captcha">
     </div>
-    <input type="button" class="btnSubmit" onclick="CheckCaptcha(); Submit();" value="Submit">
-  </fieldset>
-</section>
+    <input type="text" placeholder="Captcha" id="cpatchaTextBox"/>
 
-
-<button style="visibility: hidden;" id="thebutton">
-SUBMIT</button>
-
+  </form>
+</div>
                             </div>
 
                             <div class="form-check">
