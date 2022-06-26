@@ -338,6 +338,11 @@ return [
                     'route'  => 'baja.index',
                     'icon' => 'fas fa-arrow-down',
                 ],
+                [
+                    'text'       => 'Solicitud',
+                    'icon' => 'fas fa-file-alt',
+                    'route'        => 'solicitud.index',
+                ],
             ],
         ],
 

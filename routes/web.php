@@ -121,3 +121,17 @@ Route::get('baja/create', [App\Http\Controllers\BajaController::class, 'create']
 Route::get('baja/edit/{id}', [App\Http\Controllers\BajaController::class, 'edit'])->name('baja.edit');
 Route::post('baja/update/{id}', [App\Http\Controllers\BajaController::class, 'update'])->name('baja.update');
 Route::post('baja/{id}', [App\Http\Controllers\BajaController::class, 'destroy'])->name('baja.delete');
+
+// SOLICITUD
+
+//MANTENIMIENTO
+Route::get('solicitud/index', [App\Http\Controllers\SolicitudController::class, 'index'])->name('solicitud.index');
+Route::get('solicitud/create', [App\Http\Controllers\SolicitudController::class, 'create'])->name('solicitud.create');
+Route::post('solicitud/store', [App\Http\Controllers\SolicitudController::class, 'store'])->name('solicitud.store');
+Route::post('solicitud/store_act/{id}', [App\Http\Controllers\SolicitudController::class, 'store_act'])->name('solicitud.store_act');
+Route::get('solicitud/edit/{id}', [App\Http\Controllers\SolicitudController::class, 'edit'])->name('solicitud.edit');
+Route::put('solicitud/update/{id}', [App\Http\Controllers\SolicitudController::class, 'update'])->name('solicitud.update');
+Route::get('solicitud/show/{id}', [App\Http\Controllers\SolicitudController::class, 'show'])->name('solicitud.show');
+Route::delete('solicitud/{id}', [App\Http\Controllers\SolicitudController::class, 'destroy'])->name('solicitud.destroy');
+Route::delete('solicitud_act/{id}', [App\Http\Controllers\SolicitudController::class, 'destroy_act'])->name('solicitud.destroy_act');
+/* Route::get('solicitud/activo', [App\Http\Controllers\SolicitudController::class, 'reporte_vista'])->name('solicitud.activo'); */
