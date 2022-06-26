@@ -84,15 +84,23 @@ debieron estar previamente registrados o activados”.
             </table>
         </div>
     </div>
+<df-messenger
+  intent="WELCOME"
+  chat-title="bots"
+  agent-id="86938b5f-1e37-43dc-9f38-1bd5322b1eb7"
+  language-code="es"
+></df-messenger>
 
 @stop
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('css/bot.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
 @stop
 
 @section('js')
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
