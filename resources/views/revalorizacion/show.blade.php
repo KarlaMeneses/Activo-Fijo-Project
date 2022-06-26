@@ -28,40 +28,68 @@
 
                     @foreach ($activosfijo as $activo)
                         @if ($activo->id == $revalorizacion->id_activo)
-                            <div class="form-group col-md-6">
-                                <label for="codigo">CODIGO</label>
-                                <input type="text" name="codigo" class="form-control" value="{{ $activo->codigo }}"
-                                    disabled>
+                        <div class="form-group col-md-12">
+                            <br>
+                            <label for="name">---------------------------------------------------------------------DATOS DEL ACTIVO ACTUAL---------------------------------------------------------------------</label>
+                        </div>
 
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="nombre">DESCRIPCION</label>
-                                <input type="text" name="nombre" class="form-control" value="{{ $activo->detalle }}"
-                                    id="nombre" disabled>
-
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="nombre">COSTO ACTUAL</label>
-                                <input type="text" name="nombre" class="form-control" value="{{ $activo->costo }}"
-                                    id="nombre" disabled>
-
-                            </div>
-
-                            <div class="col-md-3">
-                                <label for="fecha_ingreso">FECHA DE INGRESO DEL ACTIVO</label>
-                                <input name="fecha_ingreso" type="tel" class="form-control"
-                                    value="{{ $activo->fecha_ingreso }}" disabled>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label for="estado">ESTADO</label>
-                                <input type="tel" name="estado" class="form-control" value="{{ $activo->estado }}" disabled>
-
-                            </div>
+                        <div class="form-group col-md-6">
+                            <label for="codigo">CODIGO DE ACTIVO</label>
+                            <input type="text" name="codigo" class="form-control" value="{{ $activo->codigo }}"
+                                disabled>
+    
+                        </div>
+    
+                        <div class="form-group col-md-6">
+                            <label for="detalle">NOMBRE DEL ACTIVO</label>
+                            <input type="text" name="detalle" class="form-control" value="{{ $activo->nombre }}"
+                                disabled>
+                        </div>
+    
+    
+                        <div class="col-md-3">
+                            <label for="costo">TIPO DE ACTIVO</label>
+                            <input name="costo" type="tel" class="form-control" value="{{ $activo->tipo }}"
+                                disabled>
+                        </div>
+    
+                        <div class="col-md-3">
+                            <label for="fecha_ingreso">FECHA DE INGRESO DEL ACTIVO</label>
+                            <input name="fecha_ingreso" type="tel" class="form-control"
+                                value="{{ $activo->fecha_ingreso }}" disabled>
+                        </div>
+    
+                        <div class="col-md-3">
+                            <label for="costo">COSTO ACTUAL</label>
+                            <input name="costo" type="tel" class="form-control" value="{{ $activo->costo }}"
+                                disabled>
+                        </div>
+    
+                        <div class="col-md-3">
+                            <label for="proveedor">VIDA UTIL DEL ACTIVO</label>
+                            <input name="proveedor" type="tel" class="form-control" value="{{ $activo->vida_util }}"
+                                disabled>
+                        </div>
+    
+                        <div class="col-md-3">
+                            <label for="estado">VALOR RESIDUAL%</label>
+                            <input type="tel" name="estado" class="form-control" value="{{ $activo->v_residual }}"
+                                disabled>
+                        </div>
+    
+                        <div class="col-md-3">
+                            <label for="estado">ESTADO</label>
+                            <input type="tel" name="estado" class="form-control" value="{{ $activo->estado }}"
+                                disabled>
+                        </div>
+    
                         @endif
                     @endforeach
+
+                    <div class="form-group col-md-12">
+                        <br>
+                        <label for="name">---------------------------------------------------------------------DATOS DEL ACTIVO REVALORIZADO---------------------------------------------------------------------</label>
+                    </div>
 
                     <div class="form-group col-md-6">
                         <label for="nombre">TIEMPO DE VIDA ESTIMADO</label>
