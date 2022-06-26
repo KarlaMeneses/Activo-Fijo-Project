@@ -11,7 +11,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="#" class="btn btn-primary btb-sm">Crear Activo fijo</a>
+            <a href="{{ route('activosfijo.create') }}"class="btn btn-primary btb-sm">Crear Activo fijo</a>
         </div>
     </div>
 
