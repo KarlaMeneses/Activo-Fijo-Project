@@ -6,6 +6,10 @@ use App\Models\DetalleFactura;
 use App\Models\Factura;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\App;
+Use Dompdf\Options;
 class FacturaController extends Controller
 {
     // COMPRAAA
@@ -169,5 +173,71 @@ class FacturaController extends Controller
         $factura = Factura::find($id);
         $detalles = DetalleFactura::all();
         return view('factura.facturaventa.show', compact('factura', 'detalles'));
+    }
+
+
+    public function reportec(Request $request, $id)
+    {
+        $factura = Factura::find($id);
+        $detalles = DetalleFactura::select('*')->where('idfactura', $factura->id)->get();
+        $view = View::make('factura.facturacompra.reporte', compact('factura','detalles'))->render();
+        //return $view;
+       
+     
+         $pdf = App::make('dompdf.wrapper');
+         
+         $pdf->setOptions([
+             'logOutputFile' => storage_path('logs/log.htm'),
+                 'tempDir' => storage_path('logs/')
+         ]);
+       
+      $pdf->loadHTML($view);
+     
+ 
+     return $pdf->stream();   
+ 
+                
+            
+    }
+    public function reportechtml(Request $request, $id)
+    {
+        $factura = Factura::find($id);
+        $detalles = DetalleFactura::select('*')->where('idfactura', $factura->id)->get();
+        $view = View::make('factura.facturacompra.reporte', compact('factura','detalles'))->render();
+        return $view;           
+            
+    }
+
+    public function reportev(Request $request, $id)
+    {
+        $factura = Factura::find($id);
+        $detalles = DetalleFactura::select('*')->where('idfactura', $factura->id)->get();
+        $view = View::make('factura.facturaventa.reporte', compact('factura','detalles'))->render();
+        // return $view;
+       
+     
+         $pdf = App::make('dompdf.wrapper');
+         
+         $pdf->setOptions([
+             'logOutputFile' => storage_path('logs/log.htm'),
+                 'tempDir' => storage_path('logs/')
+         ]);
+       
+      $pdf->loadHTML($view);
+     
+ 
+         //return view('reporte.reporteComercioPrint', compact('comercio', 'fechainicio', 'fechafin', 'pedidos', 'resumen', 'resumenpagos','productos'));
+     return $pdf->stream();   
+ 
+                
+            
+    }
+    public function reportevhtml(Request $request, $id)
+    {
+        $factura = Factura::find($id);
+        $detalles = DetalleFactura::select('*')->where('idfactura', $factura->id)->get();
+        $view = View::make('factura.facturaventa.reporte', compact('factura','detalles'))->render();
+        return $view;           
+            
     }
 }

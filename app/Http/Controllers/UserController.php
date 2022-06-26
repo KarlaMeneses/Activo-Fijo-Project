@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bitacora;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class UserController extends Controller
     {
         return User::all();
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -50,11 +51,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'email'=>'required|unique:users',
-            'password'=>'required',
-            'roles'=>'required',
-            
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+            'roles' => 'required',
+
         ]);
 
         $usuario = new User();
@@ -65,10 +66,10 @@ class UserController extends Controller
         $usuario->sexo = $request->sexo;
         $usuario->direccion = $request->direccion;
         $usuario->telefono = $request->telefono;
-        
+
 
         $roles = Role::all();
-        foreach( $roles as $rol){
+        foreach ($roles as $rol) {
             if ($rol->id == $request->roles) {
                 $usuario->cargo = $rol->name;
             }
@@ -76,6 +77,21 @@ class UserController extends Controller
         $usuario->password = bcrypt(($request->password));
         $usuario->save();
         $usuario->roles()->sync($request->roles);
+
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Registró');
+        $bita->apartado = encrypt('Usuario');
+        $afectado = $usuario->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
+
         return redirect()->route('users.index');
     }
 
@@ -85,7 +101,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     public function show($id)
     {
         $user = User::find($id);
@@ -117,16 +133,16 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name'=> "unique:users,name,$user->id",
-            'roles'=>'required',
+            'name' => "unique:users,name,$user->id",
+            'roles' => 'required',
             // 'empleados'=> 'required',
         ]);
 
         $usuario = User::find($user->id);
-        if($usuario->name <> $request->name){
+        if ($usuario->name <> $request->name) {
             $usuario->name = $request->name;
         }
-        if($request->password <> ''){
+        if ($request->password <> '') {
             $usuario->password = bcrypt(($request->password));
         }
 
@@ -138,16 +154,30 @@ class UserController extends Controller
         $usuario->telefono = $request->telefono;
 
         $roles = Role::all();
-        foreach( $roles as $rol){
+        foreach ($roles as $rol) {
             if ($rol->id == $request->roles) {
                 $usuario->cargo = $rol->name;
             }
         }
         $usuario->roles()->sync($request->roles);
 
-      
+
         $usuario->save();
-        
+
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Editó');
+        $bita->apartado = encrypt('Usuario');
+        $afectado = $usuario->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
+
 
         return redirect()->route('users.index');
     }
@@ -158,9 +188,55 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $user, Request $request)
     {
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Eliminó');
+        $bita->apartado = encrypt('Usuario');
+        $afectado = $user->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
         User::destroy($user->id);
         return redirect('users');
+    }
+
+
+    public function show2()
+    {
+        $user = User::find(auth()->user()->id);
+        return view('perfil.edit', compact('user'));
+    }
+
+    public function edit2(User $user)
+    {
+        $roles = Role::all();
+        return view('perfil.edit', compact('user', 'roles'));
+    }
+
+    public function update2(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        //actualiza nombre
+        if ($user->name <> $request->name) {
+            $user->name = $request->name;
+        }
+        //actualiza email
+        if ($user->email <> $request->email) {
+            $user->email = $request->email;
+        }
+        //actualiza contraseña
+        if ($request->password <> '') {
+            $user->password = password_hash($request->password, PASSWORD_DEFAULT);
+        }
+
+        $user->save();
+        return redirect()->route('user.show');
     }
 }

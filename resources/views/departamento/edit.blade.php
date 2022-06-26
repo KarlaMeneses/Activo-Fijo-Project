@@ -14,21 +14,23 @@
                 @method('put')
 
                 <label for="nombre">Ingrese el nombre del Departamento</label>
-                <input type="text" name="nombre" class="form-control" value="{{ $depa->nombre }}"> <br>
+                <input type="text" name="nombre" class="form-control" value="{{ $depa->nombre }}" placeholder="Escriba el nombre del departamento"> <br>
                 @error('nombre')
                     <small class="text-danger">*{{ $message }}</small>
                     <br><br>
                 @enderror
 
                 <label for="descripcion">Ingresar Descripción</label>
-                <input type="text" name="descripcion" class="form-control" value="{{ $depa->descripcion }}"> <br>
+                <input type="text" name="descripcion" class="form-control" value="{{ $depa->descripcion }}" placeholder="Escriba una descripción del departamento"> <br>
                 @error('descripcion')
                     <small class="text-danger">*{{ $message }}</small>
                     <br><br>
                 @enderror
 
-                <button class="btn btn-danger btn-sm" type="submit">Actualizar Departamento</button>
-                <a class="btn btn-primary btn-sm" href="{{ route('departamentos.index') }}">Volver</a>
+
+                <button class="btn btn-primary btb-sm text-light" type="submit">Actualizar Departamento</button>
+                <a class="btn btn-warning btb-sm text-light" href="{{ route('departamentos.index') }}">Volver</a>
+
             </form>
 
         </div>

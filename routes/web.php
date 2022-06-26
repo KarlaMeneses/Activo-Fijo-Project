@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\ActivofijoController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\RoleController;
@@ -35,6 +36,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
+Route::get('user/perfil/', [userController::class, 'show2'])->name('user.show');
+Route::patch('user/update/', [userController::class, 'update2'])->name('user.update');
 /* Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show'); */
 /*El apartado de arriba ya se incluye en el resource */
 Route::resource('activosfijo', ActivofijoController::class)->names('activosfijo');
@@ -47,6 +50,8 @@ Route::get('factura/facturacompra/edit/{id}', [App\Http\Controllers\FacturaContr
 Route::post('factura/facturacompra/update/{id}', [App\Http\Controllers\FacturaController::class, 'updatecompra'])->name('factura.facturacompra.update');
 Route::post('factura/facturacompra/{id}', [App\Http\Controllers\FacturaController::class, 'destroycompra'])->name('factura.facturacompra.delete');
 Route::get('factura/facturacompra/show/{id}', [App\Http\Controllers\FacturaController::class, 'showcompra'])->name('factura.facturacompra.show');
+Route::get('factura/facturacompra/reporte/{id}', [App\Http\Controllers\FacturaController::class, 'reportec'])->name('factura.facturacompra.reporte');
+Route::get('factura/facturacompra/{id}', [App\Http\Controllers\FacturaController::class, 'reportechtml'])->name('factura.facturacompra.reportehmtl');
 
 // Detalle Factura
 Route::post('factura/detallefactura/store', [App\Http\Controllers\DetalleFacturaController::class, 'store'])->name('detallefactura.store');
@@ -59,6 +64,8 @@ Route::get('factura/facturaventa/edit/{id}', [App\Http\Controllers\FacturaContro
 Route::post('factura/facturaventa/update/{id}', [App\Http\Controllers\FacturaController::class, 'updateventa'])->name('factura.facturaventa.update');
 Route::post('facuta/facturaventa/{id}', [App\Http\Controllers\FacturaController::class, 'destroyventa'])->name('factura.facturaventa.delete');
 Route::get('factura/facturaventa/show/{id}', [App\Http\Controllers\FacturaController::class, 'showventa'])->name('factura.facturaventa.show');
+Route::get('factura/facturaventa/reporte/{id}', [App\Http\Controllers\FacturaController::class, 'reportev'])->name('factura.facturaventa.reporte');
+Route::get('factura/facturaventa/index/{id}', [App\Http\Controllers\FacturaController::class, 'reportevhtml'])->name('factura.facturaventa.reportehtml');
 
 ///Categoria de activo fijos
 Route::resource('categorias', CategoriaController::class)->names('categorias');
@@ -66,9 +73,12 @@ Route::resource('depreciaciones', DepreciacionController::class)->names('depreci
 
 //NOTAS
 Route::resource('notas', NotaController::class)->names('notas');
+Route::get('notas/reporte/{id}', [App\Http\Controllers\NotaController::class, 'reporte'])->name('notas.reporte');
+Route::get('nota/{id}', [App\Http\Controllers\NotaController::class, 'reportehtml'])->name('notas.reportehtml');
 Route::resource('notasventa', NotaventaController::class)->names('notasventa');
-Route::post('notasventa/edit',[NotaventaController::class,'reedit'])->name('notasventa.reedit');
-
+Route::post('notasventa/edit', [NotaventaController::class, 'reedit'])->name('notasventa.reedit');
+Route::get('notasventa/reporte/{id}', [App\Http\Controllers\NotaventaController::class, 'reporte'])->name('notasventa.reporte');
+Route::get('notasventa/index/{id}', [App\Http\Controllers\NotaventaController::class, 'reportehtml'])->name('notasventa.reportehtml');
 Route::post('notas/detalle_update/{id}', [DetallenotaController::class, 'detalle_update']);
 Route::post('notasventa/detalle_update/{id}', [DetallenotaController::class, 'detalle_update']);
 
@@ -83,7 +93,7 @@ Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones')
 
 //REVALORIZACION
 Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');
-Route::post('activosfijo/index',[RevalorizacionController::class,'idactivo'])->name('activosfijo.idactivo');
+Route::post('activosfijo/index', [RevalorizacionController::class, 'idactivo'])->name('activosfijo.idactivo');
 
 //MANTENIMIENTO
 Route::get('mantenimientos/index', [App\Http\Controllers\MantenimientoController::class, 'index'])->name('mantenimientos.index');
@@ -93,6 +103,21 @@ Route::get('mantenimientos/edit/{id}', [App\Http\Controllers\MantenimientoContro
 Route::put('mantenimientos/update/{id}', [App\Http\Controllers\MantenimientoController::class, 'update'])->name('mantenimientos.update');
 Route::get('mantenimientos/show/{id}', [App\Http\Controllers\MantenimientoController::class, 'show'])->name('mantenimientos.show');
 Route::delete('mantenimientos/{id}', [App\Http\Controllers\MantenimientoController::class, 'destroy'])->name('mantenimientos.destroy');
+Route::get('mantenimiento/reporte_vista', [App\Http\Controllers\MantenimientoController::class, 'reporte_vista'])->name('mantenimiento.reporte_vista');
+
+Route::post('mantenimiento/reporte', [App\Http\Controllers\MantenimientoController::class, 'reporte'])->name('mantenimiento.reporte');
+
+// BITACORA
+Route::resource('Bitacora', BitacoraController::class)->names('Bitacora');
+Route::get('bitacora/auth', [App\Http\Controllers\BitacoraController::class, 'auth'])->name('bitacora.auth');
+Route::post('bitacora/downloadTxt', [App\Http\Controllers\BitacoraController::class, 'downloadTxt'])->name('bitacora.downloadTxt');
 
 
+// BAJA
 
+Route::get('baja/index', [App\Http\Controllers\BajaController::class, 'index'])->name('baja.index');
+Route::post('baja/store', [App\Http\Controllers\BajaController::class, 'store'])->name('baja.store');
+Route::get('baja/create', [App\Http\Controllers\BajaController::class, 'create'])->name('baja.create');
+Route::get('baja/edit/{id}', [App\Http\Controllers\BajaController::class, 'edit'])->name('baja.edit');
+Route::post('baja/update/{id}', [App\Http\Controllers\BajaController::class, 'update'])->name('baja.update');
+Route::post('baja/{id}', [App\Http\Controllers\BajaController::class, 'destroy'])->name('baja.delete');

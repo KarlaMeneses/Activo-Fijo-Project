@@ -3,7 +3,18 @@
 @section('title', 'Activo Fijo')
 
 @section('content_header')
-    <h1>Nota De Venta</h1>  
+    <h1>Nota De Venta</h1>
+@stop
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/descaga.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/subir.css') }}">
+@stop
+@section('js')
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('js/descaga.js') }}">
 @stop
 @section('content')
     <div class="card">
@@ -25,10 +36,16 @@
             @foreach ($notas as $notaventa)
                 <form action="{{ route('notasventa.reedit') }}" method="post" novalidate>
                     @csrf
-                 
+                <input type="hidden" name="id" value="{{ $notaventa->id }}">
+                <button class="btn btn-primary btb-sm text-light" type="submit">Guardar</button>
+                <a class="btn btn-warning btb-sm text-light" href="{{ route('notasventa.index') }}">Volver</a>
+
+                    {{-- -
                     <input type="hidden" name="id" value="{{ $notaventa->id }}">
                     <button class="btn btn-primary" type="submit">Actualizar Nota</button>
                     <a class="btn btn-danger" href="{{ route('notasventa.index') }}">Volver</a>
+
+                        --}}
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="adquirente">Adquirente</label>
@@ -51,14 +68,29 @@
                             <input type="text" name="cargo" class="form-control" value="{{ $notaventa->cargo }}"
                                 required>
 
-                            <label for="totales">Totales</label>
+                            <label for="totales">Total Bs.</label>
                             <input type="text" name="totales" class="form-control" value="{{ $notaventa->totales }}"
                                 required>
                         </div>
                         <div class="form-group col-md-6">
-                            <h5>Comprobante - Nota de compra fisica</h5>
-
-                            <img src="{{ asset($notaventa->foto) }}" width="250" height="300" />
+                        <!--Descagar imagen--->
+                        <p style="text-align: center">Comprobante - Nota de compra fisica</p>
+                        <div class="download-wrap">
+                            <img src="{{ old('foto', $notaventa->foto) }}" width="240" height="300" required />
+                              <div class="download">
+                                <a target="_blanck" href="{{ old('foto', $notaventa->foto) }}" class="button-download">
+                                        Descagar
+                                    <span class="icon-wrap">
+                                    <i class="icon-download"></i>
+                                       </span>
+                                 </a>
+                                    <div class="meter">
+                                        <span class="meter-progress"></span>
+                                    </div>
+                               </div>
+                        </div>
+                        <!--<button id="reset">Reset</button>
+                        Descagar imagen--->
 
                         </div>
                     </div>
@@ -66,13 +98,13 @@
                 </form>
             @endforeach
 
-            <h5>DETALLES DE NOTA</h5>
+
             <div class="card-body">
-                <table class="table table-bordered table-striped">
-                    <thead>
+                <h5 style=" font-size:23px;text-align: center;color:rgb(40, 147, 253);">DETALLE DE NOTA</h5>
+                <table class="table table-bordered border-dark">
+                    <thead class="table-dark">
                         <tr>
                             <th scope="col">Id</th>
-
                             <th scope="col">Cantidad</th>
                             <th scope="col">Detalle</th>
                             <th scope="col">Precio unitario</th>
@@ -104,9 +136,10 @@
                                             <input type="hidden" name="id_nota" value="{{ $notaventa->id }}">
                                             <input type="hidden" name="nota_totales" value="{{ $notaventa->totales }}">
 
-                                            <button class="btn btn-danger btn-sm"
+                                            <button
                                                 onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" style="margin-top: 5px"
-                                                value="Borrar">Eliminar</button>
+                                                value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
+                                                    <i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -117,10 +150,12 @@
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th scope="col">Totales</th>
-                        <th scope="col">{{ $notaventa->totales }}</th>
+                        <th class="table-dark" scope="col">Total Bs.</th>
+                        <th class="table-dark" scope="col">{{ $notaventa->totales }}</th>
                         @if ($suma_total != $notaventa->totales)
-                            <h1>VERIFIQUE LA SUMA TOTAL</h1>
+                            <div class="alert alert-success" role="alert">
+                            VERIFIQUE LA SUMA TOTAL
+                            </div>
                         @endif
                     </tr>
                 </table>
@@ -129,8 +164,8 @@
 
             <body>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                    Agregar detalles de la compra
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                    Agregar detalles de la venta
                 </button>
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -185,8 +220,9 @@
 @stop
 
 @section('css')
+  <link rel="stylesheet"href="/css/admin_custom.css">
     <style>
-        <link rel="stylesheet"href="/css/admin_custom.css">img.zoom {
+      img.zoom {
             width: 350px;
             height: 200px;
             -webkit-transition: all .2s ease-in-out;
@@ -215,4 +251,12 @@
             });
         });
     </script>
+@stop
+@section('css')
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+@stop
+
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 @stop

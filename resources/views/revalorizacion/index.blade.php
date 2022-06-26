@@ -32,9 +32,10 @@
                     <tr>
                         <th>Id</th>
                         <th>Activo fijo</th>
-                        <th>Valor</th>
-                        <th>Tiempo de vida</th>
+                        <th>Valor Actual</th>
+                        <th>Estimacion</th>
                         <th>Estado</th>
+                        <th>Fecha solicitud</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -51,6 +52,7 @@
                             <td>{{ $revalorizacion->tiempo_vida }}</td>
                             
                             <td>{{ $revalorizacion->estado }}</td>
+                            <td>{{ $revalorizacion->created_at }}</td>
                             <td>
                                 <form action="{{ route('revalorizacion.destroy', $revalorizacion) }}" method="post">
                                     <!--<a class="btn btn-warning btn-sm text-light" href="#">-->

@@ -1,15 +1,10 @@
 @extends('adminlte::page')
 @section('title', 'Activo Fijo')
-
 @section('content_header')
-
     <div class="card-header  text-center">
         <h3><b>Lista Categorias</b></h3>
     </div>
 
-@stop
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop
 
 @section('content')
@@ -22,13 +17,13 @@
     </div>
 
     <div class="card">
-
         <div class="card-body " style="overflow-x: scroll">
 
-            <table class="table table-striped table-bordered shadow-lg mt-4 " id="usuarios" style="width:100%">
+            <table class="table table-striped shadow-lg mt-4" id="categorias" style="width:100%">
                 <thead class="bg-dark">
                     <tr>
                         <th>Id</th>
+                        <th>Codigo</th>
                         <th>Cuenta contable Bienes</th>
                         <th>Descripcion</th>
                         <th>Cacateristica</th>
@@ -37,26 +32,24 @@
                     </tr>
                 </thead>
                 <tbody>
-
-
                     @foreach ($cates as $cate)
                         <tr>
                             <td>{{ $cate->id }}</td>
-                            <td>{{ $cate->nombre }}</td>
-                            <td>{{ $cate->descripcion }}</td>
-                            <td>{{ $cate->estado }}</td>
+                           <td>{{ $cate->nombre }}</td>
+                           {{--  <td>{{ $cate->descripcion }}</td> --}}
+                           {{--  <td>{{ $cate->estado }}</td> --}}
 
                             @foreach ($depres as $depre)
                                 @if ($cate->id_depreciacion == $depre->id)
                                     <td>{{ $depre->nombre }}</td>
-                                    {{-- <td>{{ $depre->descripcion }}</td> --}}
+                                    <td>{{ $depre->descripcion }}</td>
                                     <td class="badge rounded-pill bg-success">{{ $depre->cacateristica }}</td>
                                     <td>{{ $depre->tipo_activo }}</td>
                                 @endif
                             @endforeach
                             <td>
                                 <form action="{{ route('categorias.destroy', $cate) }}" method="post">
-
+                                    <!--<a class="btn btn-warning btn-sm text-light" href="#">-->
                                     <a class="btn btn-warning btn-sm text-light rounded-pill"
                                         href="{{ route('categorias.show', $cate->id) }}">
                                         <i class="fas fa-eye"></i></a>
@@ -65,9 +58,15 @@
                                         class="btn btn-primary btn-sm text-light rounded-pill">
                                         <i class="fas fa-edit"></i><a>
                                             @csrf
+                                            @method('delete')
+                                            @can('editar categoria')
+                                            @endcan
                                             <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
                                                 value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
                                                 <i class="fas fa-trash-alt"></i></button>
+                                            @can('eliminar categoria')
+                                            @endcan
+                                </form>
 
                             </td>
 
@@ -79,7 +78,6 @@
     </div>
 
 @stop
-
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
@@ -90,9 +88,8 @@
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
     <script>
-        $('#categorias').DataTable({
-            autoWidth: false
+        $(document).ready(function() {
+            $('#categorias').DataTable();
         });
     </script>
-
-@endsection
+@stop

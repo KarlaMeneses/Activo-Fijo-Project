@@ -77,7 +77,7 @@ class detallefacturaSeeder extends Seeder
                 'valor_total' => 118300.00,
                 'idfactura' => 4, 
             ],
-                // FACTURA 4
+                // FACTURA 5
                 [
                 
                     'cantidad' => 5,
@@ -87,6 +87,105 @@ class detallefacturaSeeder extends Seeder
                     'valor_unitario' => 1530.00,
                     'valor_total' => 7497.00,
                     'idfactura' => 5, 
+                ],
+                //-------------------------- VENTA ---------------------------------
+
+                // FACTURA 6
+                [
+                
+                    'cantidad' => 2,
+                    'descuento' => 0.00,
+                    'articulo' => 'Mesa',
+                    'codigo' => 'H1-45',
+                    'valor_unitario' => 225.00,
+                    'valor_total' => 450.00,
+                    'idfactura' => 6, 
+                ],
+                // FACTURA 7
+                [
+                
+                    'cantidad' => 2,
+                    'descuento' => 0.00,
+                    'articulo' => 'Sillas Gammer',
+                    'codigo' => 'G1-04',
+                    'valor_unitario' => 250.00,
+                    'valor_total' => 500.00,
+                    'idfactura' => 7, 
+                ],
+                [
+                
+                    'cantidad' => 4,
+                    'descuento' => 0.00,
+                    'articulo' => 'Sillas Gammer',
+                    'codigo' => 'G1-05',
+                    'valor_unitario' => 200.00,
+                    'valor_total' => 1000.00,
+                    'idfactura' => 7, 
+                ],
+                  // FACTURA 8
+                [
+                
+                    'cantidad' => 1,
+                    'descuento' => 100.00,
+                    'articulo' => 'Antena',
+                    'codigo' => 'L1-04',
+                    'valor_unitario' => 1800.00,
+                    'valor_total' => 1700.00,
+                    'idfactura' => 8, 
+                ],
+                //FACTURA 9
+                [
+                
+                    'cantidad' => 40,
+                    'descuento' => 100.00,
+                    'articulo' => 'Sillas',
+                    'codigo' => 'U1-05',
+                    'valor_unitario' => 102.50,
+                    'valor_total' => 4000.00,
+                    'idfactura' => 9, 
+                ],
+                [
+                
+                    'cantidad' => 40,
+                    'descuento' => 0.00,
+                    'articulo' => 'Gorras',
+                    'codigo' => 'U1-05',
+                    'valor_unitario' => 25.,
+                    'valor_total' => 1000.00,
+                    'idfactura' => 9, 
+                ],
+                  // FACTURA 10
+                  [
+                
+                    'cantidad' => 1,
+                    'descuento' => 100.00,
+                    'articulo' => 'Silla con ruedas',
+                    'codigo' => 'S1-04',
+                    'valor_unitario' => 300.00,
+                    'valor_total' => 200.00,
+                    'idfactura' => 10, 
+                ],
+                  // FACTURA 11
+                  [
+                
+                    'cantidad' => 1,
+                    'descuento' => 100.00,
+                    'articulo' => 'Laptop',
+                    'codigo' => 'P1-04',
+                    'valor_unitario' => 7100.50,
+                    'valor_total' => 7000.00,
+                    'idfactura' => 11, 
+                ],
+                  // FACTURA 11
+                  [
+                
+                    'cantidad' => 1,
+                    'descuento' => 0.00,
+                    'articulo' => 'Monitor',
+                    'codigo' => 'P1-04',
+                    'valor_unitario' => 2600.00,
+                    'valor_total' => 2600.00,
+                    'idfactura' => 12, 
                 ],
         ]);
     }

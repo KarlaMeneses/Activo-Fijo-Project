@@ -22,6 +22,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">detalle</th>
                         <th scope="col">costo</th>
+                        <th scope="col">vida_util</th>
                         <th scope="col">fecha_ingreso</th>
                         <th scope="col">proveedor</th>
                         <th scope="col">estado</th>
@@ -35,6 +36,7 @@
                             <td>{{ $activo->id }}</td>
                             <td>{{ $activo->detalle }}</td>
                             <td>{{ $activo->costo }}</td>
+                            <td>{{ $activo->vida_util }}</td>
                             <td>{{ $activo->fecha_ingreso }}</td>
                             <td>{{ $activo->proveedor }}</td>
                             <td>{{ $activo->estado }}</td>

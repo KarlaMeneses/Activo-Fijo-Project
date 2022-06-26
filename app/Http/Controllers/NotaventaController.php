@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Detallenota;
 use App\Models\Nota;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\App;
 class NotaventaController extends Controller
 {
     /**
@@ -118,5 +119,32 @@ class NotaventaController extends Controller
         $nota = Nota::find($id);
         $nota->delete();
         return redirect()->back();
+    }
+
+    public function reporte(Request $request, $id)
+    {
+        $nota = Nota::find($id);
+        $detalles = Detallenota::select('*')->where('id_notas', $nota->id)->get();
+        $view = View::make('notasventa.reporte', compact('nota','detalles'))->render();
+         $pdf = App::make('dompdf.wrapper');
+         
+         $pdf->setOptions([
+             'logOutputFile' => storage_path('logs/log.htm'),
+                 'tempDir' => storage_path('logs/')
+         ]);
+       
+      $pdf->loadHTML($view);
+        return $pdf->stream();   
+ 
+                
+            
+    }
+    public function reportehtml(Request $request, $id)
+    {
+        $nota = Nota::find($id);
+        $detalles = Detallenota::select('*')->where('id_notas', $nota->id)->get();
+        $view = View::make('notasventa.reporte', compact('nota','detalles'))->render();
+        return $view;           
+            
     }
 }

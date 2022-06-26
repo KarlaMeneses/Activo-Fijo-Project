@@ -12,7 +12,8 @@ class Mantenimiento extends Model
     protected $fillable = [
         'problema',
         'costo',
-        'duracion',
+        'id_activo',
+        'estado',
         'fecha_ini',
         'fecha_fin',
         'solucion'

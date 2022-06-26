@@ -27,7 +27,7 @@
                             @foreach ($permisos as $permiso)
                             <div class="form-group col-md-3">
                                 @if (in_array($permiso->name, $perA))
-                                    <input type="checkbox" value="{{$permiso->id}}" name="permisos[]"       
+                                    <input type="checkbox" value="{{$permiso->id}}" name="permisos[]" 
                                         class="form-check-input" checked> {{$permiso->name}} <br>
                                 @else
                                     <input type="checkbox" value="{{$permiso->id}}" name="permisos[]"       
