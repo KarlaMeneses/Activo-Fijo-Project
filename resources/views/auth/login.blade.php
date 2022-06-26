@@ -11,7 +11,9 @@
         <link rel="stylesheet" href="css/captcha.css">
 
     </head>
-
+        @section('js')
+            <script src="{{ asset('js/captcha.js') }}"></script>
+        @endsection
     <body>
         <!-- partial:index.partial.html -->
         <section class="login-block">
@@ -43,8 +45,25 @@
 
                             <div class="form-group">
                                 <label for="captcha" class="text-uppercase">captcha</label>
-                                <div id="captcha"></div>
-                                <div id="msg"></div>
+       <section>
+  <fieldset class="captchaField">
+    <span id="SuccessMessage" class="success">Thanks! , you can now submit the form!</span>
+    <input type="text" id="UserCaptchaCode" class="CaptchaTxtField" placeholder='Enter Captcha - Case Sensitive'>
+    <span id="WrongCaptchaError" class="error"></span>
+    <div class='CaptchaWrap'>
+      <div id="CaptchaImageCode" class="CaptchaTxtField">
+        <canvas id="CapCode" class="capcode" width="300" height="80"></canvas>
+      </div>
+      <input type="button" class="ReloadBtn" onclick='CreateCaptcha();'>
+    </div>
+    <input type="button" class="btnSubmit" onclick="CheckCaptcha(); Submit();" value="Submit">
+  </fieldset>
+</section>
+
+
+<button style="visibility: hidden;" id="thebutton">
+SUBMIT</button>
+
                             </div>
 
                             <div class="form-check">
@@ -117,6 +136,7 @@
                     </div>
                 </div>
         </section>
+
         <!-- partial -->
         <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
         <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js'></script>

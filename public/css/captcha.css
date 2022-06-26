@@ -1,31 +1,7 @@
-.block {
-    position: absolute;
-    left: 0;
-    top: 0;
-}
 
-.sliderContainer {
-    position: relative;
-    text-align: center;
-    width: 310px;
-    height: 40px;
-    line-height: 40px;
-    margin-top: 15px;
-    background: #f7f9fa;
-    color: #45494c;
-    border: 1px solid #e4e7eb;
-}
 
-.sliderContainer_active .slider {
-    height: 38px;
-    top: -1px;
-    border: 1px solid #1991FA;
-}
 
-.sliderContainer_active .sliderMask {
-    height: 38px;
-    border-width: 1px;
-}
+
 
 .sliderContainer_success .slider {
     height: 38px;
@@ -118,22 +94,6 @@
     background-size: 34px 471px;
 }
 
-.container {
-    width: 310px;
-    margin: 100px auto;
-}
-
-input {
-    display: block;
-    width: 290px;
-    line-height: 40px;
-    margin: 10px 0;
-    padding: 0 10px;
-    outline: none;
-    border: 1px solid #c8cccf;
-    border-radius: 4px;
-    color: #6a6f77;
-}
 
 #msg {
     width: 100%;

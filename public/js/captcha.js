@@ -1,21 +1,15 @@
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 (function (window) {
   var l = 42,
-      // 滑块边长
   r = 9,
-      // 滑块半径
   w = 310,
-      // canvas宽度
   h = 155,
-      // canvas高度
   PI = Math.PI;
-  var L = l + r * 2 + 3; // 滑块实际边长
-
+  var L = l + r * 2 + 3;
   function getRandomNumberByRange(start, end) {
     return Math.round(Math.random() * (end - start) + start);
   }
@@ -43,7 +37,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     elment.className = className;
     return elment;
   }
-  //不支持element.classList方法的兼容写法（ie10及以下）
+
     if (!("classList" in document.documentElement)) {
         Object.defineProperty(HTMLElement.prototype, 'classList', {
             get: function() {
@@ -173,9 +167,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         el.appendChild(sliderContainer);
 
         //20181113
-        // 不支持assign方法的兼容写法
         if (typeof Object.assign != 'function') {
-    		  // Must be writable: true, enumerable: false, configurable: true
     		  Object.defineProperty(Object, "assign", {
     		    value: function assign(target, varArgs) { // .length of function is 2
     		      'use strict';
