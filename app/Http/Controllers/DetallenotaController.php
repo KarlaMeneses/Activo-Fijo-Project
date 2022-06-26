@@ -117,7 +117,7 @@ class DetallenotaController extends Controller
                     [   //nota compra
                         [
                             'detalle' => $request->detalle,
-                            'fecha' => $date,
+                            'fecha_ingreso' => $date,
                             'estado' => 'espera',
                         ],
                     ]
@@ -142,9 +142,9 @@ class DetallenotaController extends Controller
         //ELIMINAR DE LOS ACTIVOS FIJOS
         //$tipo_nota = DB::table('activosfijo')->where('tipo', 'compra')->get();
         //if ($tipo_nota == 'compra') {
-            for ($i = 0; $i < $detalle->cantidad; $i++) {
+         /*el bueno for ($i = 0; $i < $detalle->cantidad; $i++) {
                 DB::table('activosfijo')->where('detalle', $detalle->detalle)->delete();
-            }
+            }*/
         //}
 
         return back();

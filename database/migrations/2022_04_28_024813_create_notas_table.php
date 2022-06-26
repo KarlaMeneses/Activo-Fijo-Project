@@ -15,6 +15,8 @@ class CreateNotasTable extends Migration
     {
         Schema::create('notas', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo')->nullable();
+            $table->integer('ayuda')->nullable();
             //NOTA COMPRA
             $table->string('proveedor')->nullable();
             $table->string('direccion')->nullable();
@@ -29,6 +31,8 @@ class CreateNotasTable extends Migration
             $table->string('encargado')->nullable();
             $table->string('cargo')->nullable();
             $table->timestamps();
+         
+
         });
     }
 

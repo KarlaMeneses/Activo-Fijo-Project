@@ -40,7 +40,8 @@
                         <input type="text" name="proveedor" class="form-control" value="{{ $nota->proveedor }}" required>
 
                         <label for="direccion">Direccion</label>
-                        <input type="text" name="direccion" class="form-control" value="{{ $nota->direccion }}" required>
+                        <input type="text" name="direccion" class="form-control" value="{{ $nota->direccion }}"
+                            required>
 
                         <label for="telefono">Telefono</label>
                         <input type="tel" name="telefono" class="form-control" value="{{ $nota->telefono }}" required>
@@ -62,13 +63,13 @@
                                 <a target="_blanck" href="{{ old('foto', $nota->foto) }}" class="button-download">
                                         Descagar
                                     <span class="icon-wrap">
-                                    <i class="icon-download"></i>
-                                       </span>
-                                 </a>
-                                    <div class="meter">
-                                        <span class="meter-progress"></span>
-                                    </div>
-                               </div>
+                                        <i class="icon-download"></i>
+                                    </span>
+                                </a>
+                                <div class="meter">
+                                    <span class="meter-progress"></span>
+                                </div>
+                            </div>
                         </div>
                         <!--<button id="reset">Reset</button>
                         Descagar imagen--->
@@ -95,9 +96,14 @@
                     <tbody>
                         @php
                             $suma_total = 0;
+                            $switch = 0;
                         @endphp
+
                         @foreach ($detallenotas as $detalle)
                             @if ($detalle->id_notas == $nota->id)
+                                @php
+                                    $switch = 1;
+                                @endphp
                                 <tr>
                                     <td>{{ $detalle->id }}</td>
                                     <td>{{ $detalle->cantidad }}</td>
@@ -115,15 +121,17 @@
                                             <input type="hidden" name="id_nota" value="{{ $nota->id }}">
                                             <input type="hidden" name="nota_totales" value="{{ $nota->totales }}">
 
-                                            <button
-                                                onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" style="margin-top: 5px"
-                                                value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
-                                                    <i class="fas fa-trash-alt"></i></button>
+                                            <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')"
+                                                style="margin-top: 5px" value="Borrar"
+                                                class="btn btn-danger btn-sm text-light rounded-pill">
+                                                <i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
                             @endif
                         @endforeach
+
+
                     </tbody>
                     <tr>
                         <th></th>
@@ -232,10 +240,10 @@
     </script>
 @stop
 @section('css')
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 @stop
 
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 @stop

@@ -19,31 +19,31 @@ class revalorizacionSeeder extends Seeder
             [
                 'tiempo_vida' => '5 años',
                 'valor' => 150,
-                'estado' => 'en espera',
+                'estado' => 'En espera',
                 'id_activo' => 1,
             ],
             [
                 'tiempo_vida' => '6 años',
                 'valor' => 600,
-                'estado' => 'en espera',
+                'estado' => 'En espera',
                 'id_activo' => 2, 
             ],
             [
                 'tiempo_vida' => '3 años',
                 'valor' => 200,
-                'estado' => 'en espera',
+                'estado' => 'En espera',
                 'id_activo' => 3,
             ],
             [
                 'tiempo_vida' => '9 meses',
                 'valor' => 200,
-                'estado' => 'en espera',
+                'estado' => 'En espera',
                 'id_activo' => 4,
             ],
             [
                 'tiempo_vida' => '2 años',
                 'valor' => 800,
-                'estado' => 'en espera',
+                'estado' => 'En espera',
                 'id_activo' => 5,
             ],
             

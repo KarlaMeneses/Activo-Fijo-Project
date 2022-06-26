@@ -51,7 +51,7 @@
 
                     <div class="col-md-3">
                         <label for="proveedor">Ingrese la vida util (años)</label>
-                        <input name="proveedor" type="tel" class="form-control" value="{{ $activofijo->proveedor }}"
+                        <input name="proveedor" type="tel" class="form-control" value="{{ $activofijo->vida_util }}"
                             disabled>
                     </div>
 
