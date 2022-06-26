@@ -29,7 +29,7 @@ class SolicitudController extends Controller
         $soli->estado        = 'En Proceso';
         $soli->fecha         = $request->fecha;
         $soli->save();
-        return redirect()->route('revalorizacion.edit', $soli->id);
+        return redirect()->route('solicitud.edit', $soli->id);
     }
 
     public function store_act(Request $request, $id)

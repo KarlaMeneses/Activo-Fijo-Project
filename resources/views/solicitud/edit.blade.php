@@ -86,6 +86,10 @@
 
                 <tbody>
                     @foreach ($soli_acts as $soli_act)
+
+                        @if ($soli_act->id_sol == $soli->id)
+                            
+                       
                         <tr>
                             <td>{{ $soli_act->id }}</td>
                             <td>{{ $soli_act->item }}</td>
@@ -106,6 +110,7 @@
                             </td>
 
                         </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>
