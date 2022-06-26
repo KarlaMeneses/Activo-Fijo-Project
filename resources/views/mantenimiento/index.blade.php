@@ -26,6 +26,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Activo Fijo</th>
                         <th scope="col">Problema</th>
+                        <th scope="col">Proveedor</th>
                         {{-- <th scope="col">Costo</th>
                         <th scope="col">Duración</th> --}}
                         <th scope="col">Fecha de Inicio</th>
@@ -46,9 +47,9 @@
                                 <td>{{ $activo->detalle }}</td>
                                 @endif
                             @endforeach
-                            <td>{{ $mante->problema }}</td>
 
-                            
+                            <td>{{ $mante->problema }}</td>
+                            <td>{{ $mante->proveedor }}</td>
                             {{-- <td>{{ $mante->costo }}</td>
                             <td>{{ $mante->duracion }}</td> --}}
                             <td>{{ $mante->fecha_ini }}</td>
