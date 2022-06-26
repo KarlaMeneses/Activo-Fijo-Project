@@ -32,14 +32,22 @@ class MantenimientoController extends Controller
     public function store(Request $request)
     {
         $mante = new Mantenimiento();
-        $mante->problema  = $request->problema;
-        $mante->costo     = 0;
-        $mante->fecha_ini = $request->fecha_ini;
-        $mante->fecha_fin = $request->fecha_fin;
-        $mante->estado    = "En Proceso";
-        $mante->solucion  = "En Espera";
-        $mante->id_activo = $request->id_activo;
+        $mante->problema    = $request->problema;
+        $mante->proveedor   = $request->proveedor;
+        $mante->tiempo      = $request->tiempo;
+        $mante->costo       = 0;
+        $mante->fecha_ini   = $request->fecha_ini;
+        $mante->fecha_fin   = '2000-01-01';
+        $mante->fecha_aprox = $request->fecha_aprox;
+        $mante->estado      = "En Proceso";
+        $mante->solucion    = "En Espera";
+        $mante->id_activo   = $request->id_activo;
         $mante->save();
+
+        $activo = Activofijo::find($mante->id_activo);
+        $activo->estado = 'En Mantenimiento';
+        $activo->save();
+
         return redirect()->route('mantenimientos.index'); // Se redirige a la vista categoria.index
     }
 
@@ -53,14 +61,27 @@ class MantenimientoController extends Controller
     public function update(Request $request, $id)
     {
         $mante = Mantenimiento::find($id);
-        $mante->problema  = $request->problema;
-        $mante->costo     = $request->costo;
-        $mante->fecha_ini = $request->fecha_ini;
-        $mante->fecha_fin = $request->fecha_fin;
-        $mante->estado    = $request->estado;
-        $mante->solucion  = $request->solucion;
-        $mante->id_activo = $request->id_activo;
+        $mante->problema    = $request->problema;
+        $mante->proveedor   = $request->proveedor;
+        $mante->tiempo      = $request->tiempo;
+        $mante->costo       = $request->costo;
+        $mante->fecha_ini   = $request->fecha_ini;
+        $mante->fecha_fin   = $request->fecha_fin;
+        $mante->fecha_aprox = $mante->fecha_aprox;
+        $mante->estado      = $request->estado;
+        $mante->solucion    = $request->solucion;
+        $mante->id_activo   = $request->id_activo;
         $mante->save();
+
+        $activo = Activofijo::find($mante->id_activo);
+
+        if ($mante->estado == 'Finalizado' ) {
+            $activo->estado = 'Activo';
+        } else {
+            $activo->estado = 'En Mantenimiento';
+        }    
+
+        $activo->save(); 
         return redirect()->route('mantenimientos.index');
     }
 
