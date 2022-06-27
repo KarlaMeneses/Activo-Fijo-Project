@@ -74,4 +74,11 @@ class EmpresaController extends Controller
         $empresa->delete();
         return redirect()->back();
     }
+
+    public function show($id)
+    {
+        $empresa = Empresa::find($id);
+
+        return view('empresa.show', compact('empresa'));
+    }
 }

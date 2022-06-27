@@ -131,6 +131,7 @@ Route::get('empresa/create', [App\Http\Controllers\EmpresaController::class, 'cr
 Route::get('empresa/edit/{id}', [App\Http\Controllers\EmpresaController::class, 'edit'])->name('empresa.edit');
 Route::put('empresa/update/{id}', [App\Http\Controllers\EmpresaController::class, 'update'])->name('empresa.update');
 Route::post('empresa/{id}', [App\Http\Controllers\EmpresaController::class, 'destroy'])->name('empresa.delete');
+Route::get('empresa/show/{id}', [App\Http\Controllers\EmpresaController::class, 'show'])->name('empresa.show');
 
 // SOLICITUD
 

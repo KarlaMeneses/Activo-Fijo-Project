@@ -47,7 +47,7 @@
                         <form action="{{ route('empresa.delete', $empresa->id) }}" method="post">
 
                             <a class="btn btn-warning btn-sm text-light rounded-pill"
-                                href="{{ route('empresa.edit', $empresa->id) }}">
+                                href="{{ route('empresa.show', $empresa->id) }}">
                                 <i class="fas fa-eye"></i> </a>
 
                             <a href="{{ route('empresa.edit', $empresa) }}"
