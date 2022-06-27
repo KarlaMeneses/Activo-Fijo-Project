@@ -39,9 +39,39 @@ class EmpresaController extends Controller
                 'telefono'=>request('telefono'),
                 'juridica'=>request('juridica'), 
                 'foto'=>request('foto'),
+                'email'=>request('email'),
             ]); 
        
 
         return redirect()->route('empresa.index');
+    }
+
+
+    public function edit($id)
+    {
+        $empresa = Empresa::find($id);
+      
+        return view('empresa.edit', compact('empresa'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $empresa = Empresa::findOrFail($id);
+        $empresa->nombre = $request->input('nombre');
+        $empresa->direccion = $request->input('direccion');
+        $empresa->nit = $request->input('nit');
+        $empresa->telefono = $request->input('telefono');
+        $empresa->email = $request->input('email');
+        $empresa->foto = $request->input('foto');
+        $empresa->save();
+        return redirect()->route('empresa.index');
+    }
+
+    public function destroy($id)
+    {
+        $empresa = Empresa::find($id);
+        $empresa->delete();
+        return redirect()->back();
     }
 }

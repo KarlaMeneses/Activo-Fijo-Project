@@ -38,7 +38,7 @@
                     <img width="200" height="200" class="img-circle" id="foto">
                     <div class="custom-input-file">
                         <input type="file" id="file" accept="image/*" class="input-file" value="">
-                        <i class="fas fa-file-upload"></i> Subir Logo de la empresa...
+                        <i class="fas fa-file-upload"></i> Subir Logo...
                     </div>
                     <div class="col-12" id="app" style="text-align:center;">
                         <progress id="progress_bar" value="0" max="100"></progress>
@@ -78,7 +78,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="nit">Ingrese el NIT</label>
-                    <input type="text" name="nit" class="form-control" value="" maxlength="30" size="0" pattern="{5,30}" placeholder="dirección" required>
+                    <input type="text" name="nit" class="form-control" value="" maxlength="30" size="0" pattern="{5,30}" placeholder="NIT" required>
                 </div>
                 <div class="col-md-6">
                     <label for="direccion">Ingrese la dirección</label>
@@ -90,7 +90,7 @@
 
                 <div class="col-md-3">
                     <label for="email">Ingrese el correo de la empresa</label>
-                    <input name="email" type="email" size="2" maxlength="2" pattern="[0-9-+()]{2,2}" placeholder="" class="form-control" value="" placeholder="edad" required>
+                    <input name="email" type="email"placeholder="empresa@gmail.com" class="form-control" value="" placeholder="edad" required>
                     @error('edad')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -111,7 +111,7 @@
 
             <center>
                 <button class="btn btn-primary btb-sm text-light" type="submit">Crear Empresa</button>
-                <a class="btn btn-warning btb-sm text-light" href="{{ route('users.index') }}">Volver</a>
+                <a class="btn btn-warning btb-sm text-light" href="{{ route('empresa.index') }}">Volver</a>
             </center>
         </form>
 

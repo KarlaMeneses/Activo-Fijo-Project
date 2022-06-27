@@ -256,7 +256,6 @@ return [
             'can' => 'Gestionar Usuario'
         ],
         ['header' => 'OPCIONES DE USUARIO'],
-
         [
             'text'    => 'Gestionar Usuario',
             'icon'    => 'fas fa-solid fa-users',
@@ -282,6 +281,19 @@ return [
                     'route'  => 'Bitacora.index',
                     'icon' => 'fas fa-tools',
                 ], */
+            ],
+        ],
+        [
+            'text'    => 'Gestionar Empresa',
+            'icon'    => 'fas fa-solid fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Empresas',
+                    'route'  => 'empresa.index',
+                    'icon' => 'fas fa-users',
+                ],
+               
+                
             ],
         ],
 
@@ -337,6 +349,11 @@ return [
                     'text' => 'Bajas',
                     'route'  => 'baja.index',
                     'icon' => 'fas fa-arrow-down',
+                ],
+                [
+                    'text'       => 'Solicitud',
+                    'icon' => 'fas fa-file-alt',
+                    'route'        => 'solicitud.index',
                 ],
             ],
         ],
