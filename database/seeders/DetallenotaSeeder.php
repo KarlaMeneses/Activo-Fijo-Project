@@ -22,6 +22,8 @@ class DetallenotaSeeder extends Seeder
                 'precio_uni' => 3000,
                 'total' => 6000,
                 'id_notas' => 1, //id de la nota
+                'id_facturas' => 2,
+                'id_activosfijo' => 1
             ],
             [
                 'cantidad' => 4,
@@ -29,6 +31,8 @@ class DetallenotaSeeder extends Seeder
                 'precio_uni' => 50,
                 'total' => 200,
                 'id_notas' => 1, //id de la nota 
+                'id_facturas' => 2,
+                'id_activosfijo' => 1
             ],
             //----------------------------------------------------------
             [
@@ -37,6 +41,8 @@ class DetallenotaSeeder extends Seeder
                 'precio_uni' => 720,
                 'total' => 1440,
                 'id_notas' => 2, //id de la nota 
+                'id_facturas' => 2,
+                'id_activosfijo' => 1
             ],
             [
                 'cantidad' => 4,
@@ -44,6 +50,8 @@ class DetallenotaSeeder extends Seeder
                 'precio_uni' => 410,
                 'total' => 1640,
                 'id_notas' => 2, //id de la nota 
+                'id_facturas' => 2,
+                'id_activosfijo' => 1
             ],
             //-----------------------------------------------------------------
             [
@@ -52,6 +60,8 @@ class DetallenotaSeeder extends Seeder
                 'precio_uni' => 750,
                 'total' => 2250,
                 'id_notas' => 3, //id de la nota 
+                'id_facturas' => 2,
+                'id_activosfijo' => 1
             ],
             [
                 'cantidad' => 1,
@@ -59,6 +69,8 @@ class DetallenotaSeeder extends Seeder
                 'precio_uni' => 520,
                 'total' => 520,
                 'id_notas' => 3, //id de la nota 
+                'id_facturas' => 2,
+                'id_activosfijo' => 1
             ],
             //--------------------------------------------------------------------
             [
@@ -67,6 +79,8 @@ class DetallenotaSeeder extends Seeder
                 'precio_uni' => 11336,
                 'total' => 11336,
                 'id_notas' => 4, //id de la nota 
+                'id_facturas' => 2,
+                'id_activosfijo' => 1
             ],
             [
                 'cantidad' => 1,
@@ -74,6 +88,8 @@ class DetallenotaSeeder extends Seeder
                 'precio_uni' => 130.80,
                 'total' => 130.80,
                 'id_notas' => 4, //id de la nota 
+                'id_facturas' => 2,
+                'id_activosfijo' => 1
             ],
         ]);
     }

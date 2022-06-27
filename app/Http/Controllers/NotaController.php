@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Detallenota;
 use App\Models\Nota;
+use Dompdf\FrameDecorator\Text;
 use Illuminate\Contracts\Support\MessageProvider;
 use Illuminate\Http\Request;
 use Illuminate\Log\Events\MessageLogged;
+use Illuminate\Log\Logger;
+use Illuminate\Mail\Events\MessageSent;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
+use JeroenNoten\LaravelAdminLte\View\Components\Widget\Alert;
+use PHPUnit\TextUI\XmlConfiguration\Php;
 
 class NotaController extends Controller
 {
@@ -138,7 +144,7 @@ class NotaController extends Controller
         $nota->telefono = $request->input('telefono');
         $nota->fecha_entrega = $request->input('fecha_entrega');
         $nota->foto = $request->input('foto');
-        $nota->totales = $request->input('totales');
+        //totales es automatico por eso no lo ponemos 
         $nota->save();
 
         $sindetalle = DB::table('detallenotas')->where('id_notas', $nota->id)->get();
