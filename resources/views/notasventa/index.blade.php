@@ -47,7 +47,7 @@
                             <a class="btn btn-warning btn-sm text-light rounded-pill" href="{{ route('notasventa.show', $nota->id) }}">
                                 <i class="fas fa-eye"></i></a>
 
-                            <a href="{{ route('notasventa.edit', $nota) }}" class="btn btn-primary btn-sm text-light rounded-pill">
+                            <a class="btn btn-primary btn-sm text-light rounded-pill" href="{{ route('notasventa.edit', $nota) }}">
                                 <i class="fas fa-edit"></i><a>
                                     @csrf
                                     @method('delete')
@@ -78,12 +78,10 @@
             </tbody>
         </table>
     </div>
-    <df-messenger intent="WELCOME" chat-title="bots" agent-id="86938b5f-1e37-43dc-9f38-1bd5322b1eb7" language-code="es"></df-messenger>
 </div>
 @stop
 
 @section('css')
-<link rel="stylesheet" href="{{asset('css/bot.css')}}">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
 @stop

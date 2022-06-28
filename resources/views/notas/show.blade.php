@@ -22,17 +22,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <!--
-                        <div class="card-header card-header-primary">
-                            <a href="{{ route('notas.index') }}" class="btn btn-sm btn-success mr-3">
-                                Volver </a>
-
-                                <a href="{{ route('notas.edit', $nota) }}" class="btn btn-sm btn-success mr-3">
-                                    Editar </a>
-                        </div>
-                    -->
                         <!--body-->
-
                         <div class="container">
                             <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -78,7 +68,6 @@
                         </div>
 
                         <div class="card-body">
-
                             @if (session('success'))
                                 <div class="alert alert-success" role="success">
                                     {{ session('success') }}

@@ -21,12 +21,12 @@
 
     <div class="card">
         <span class="text-primary">
-DECRETO SUPREMO Nº 24051
-REGLAMENTO AL IMPUESTO A LAS UTILIDADE,
-dispone que los bienes del activo fijo
-comenzarán a depreciarse impositivamente
-desde el momento en que se inicie su utilización y uso, para lo cual se entiende ya
-debieron estar previamente registrados o activados”.
+            DECRETO SUPREMO Nº 24051
+            REGLAMENTO AL IMPUESTO A LAS UTILIDADE,
+            dispone que los bienes del activo fijo
+            comenzarán a depreciarse impositivamente
+            desde el momento en que se inicie su utilización y uso, para lo cual se entiende ya
+            debieron estar previamente registrados o activados”.
         </span>
         <!--<div class="card-body">-->
         <div class="card-body " style="overflow-x: scroll">
@@ -37,9 +37,9 @@ debieron estar previamente registrados o activados”.
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Cuenta contable Bienes</th>
-                        <!--<th scope="col">Descripcion</th>-->
+                        <th scope="col">Descripcion</th>
                         <th scope="col">Tipo</th>
-                        <th scope="col">Cacateristica</th>
+
                         <th scope="col">vida util</th>
                         <th scope="col">valor residual(%)</th>
                         <th scope="col">Acciones</th>
@@ -51,9 +51,8 @@ debieron estar previamente registrados o activados”.
                         <tr>
                             <td>{{ $depre->id }}</td>
                             <td>{{ $depre->nombre }}</td>
-                            {{-- <td>{{ $depre->descripcion }}</td>- --}}
+                            <td>{{ $depre->descripcion }}</td>
                             <td>{{ $depre->tipo_activo }}</td>
-                            <td>{{ $depre->cacateristica }}</td>
                             <td>{{ $depre->vida_util }} años</td>
                             <td>{{ $depre->valor_residual }} %</td>
                             <td>
@@ -84,12 +83,8 @@ debieron estar previamente registrados o activados”.
             </table>
         </div>
     </div>
-<df-messenger
-  intent="WELCOME"
-  chat-title="bots"
-  agent-id="86938b5f-1e37-43dc-9f38-1bd5322b1eb7"
-  language-code="es"
-></df-messenger>
+    <df-messenger intent="WELCOME" chat-title="bots" agent-id="86938b5f-1e37-43dc-9f38-1bd5322b1eb7" language-code="es">
+    </df-messenger>
 
 @stop
 

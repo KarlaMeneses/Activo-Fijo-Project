@@ -51,10 +51,11 @@
                             required>
 
                         <label for="totales">Total Bs.</label>
-                        <input type="text" name="totales" class="form-control" value="{{ $nota->totales }}" required>
+                        <input type="text" name="totales" class="form-control" value="{{ $nota->totales }}" disabled>
                     </div>
 
                     <div class="form-group col-md-6">
+
                         <!--Descagar imagen--->
                         <p style="text-align: center">Comprobante - Nota de compra fisica</p>
                         <div class="download-wrap">
@@ -74,9 +75,8 @@
                         <!--<button id="reset">Reset</button>
                         Descagar imagen--->
 
-
-
                     </div>
+                    
                 </div>
             </form>
 
@@ -87,6 +87,7 @@
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Cantidad</th>
+                            <th scope="col">Nombre</th>
                             <th scope="col">Detalle</th>
                             <th scope="col">Precio unitario</th>
                             <th scope="col">Total</th>
@@ -107,6 +108,7 @@
                                 <tr>
                                     <td>{{ $detalle->id }}</td>
                                     <td>{{ $detalle->cantidad }}</td>
+                                    <td>{{ $detalle->nombre }}</td>
                                     <td>{{ $detalle->detalle }}</td>
                                     <td>{{ $detalle->precio_uni }}</td>
                                     <td>{{ $detalle->total }}</td>
@@ -134,6 +136,7 @@
 
                     </tbody>
                     <tr>
+                        <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -171,6 +174,13 @@
                                         <label for="cantidad">Cantidad:</label>
                                         <div class="col-sm-10">
                                             <input type="text" name="cantidad" class="form-control" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="nombre">Nombre:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="nombre" class="form-control" required>
                                         </div>
                                     </div>
 

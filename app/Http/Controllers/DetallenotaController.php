@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activofijo;
 use App\Models\Detallenota;
 use App\Models\Nota;
 use Illuminate\Http\Request;
@@ -98,10 +99,12 @@ class DetallenotaController extends Controller
     {
         $detallenota = new Detallenota();
         $detallenota->cantidad = $request->cantidad;
+        $detallenota->nombre = $request->nombre;
         $detallenota->detalle = $request->detalle;
         $detallenota->precio_uni = $request->precio_uni;
         $detallenota->total = $request->cantidad * $request->precio_uni;
         $detallenota->id_notas = $id;
+        $detallenota->id_facturas = 1;
         $detallenota->save();
 
         $total = $request->nota_totales + $detallenota->total;
@@ -109,23 +112,30 @@ class DetallenotaController extends Controller
         DB::table('notas')->where('id', $id)->update(['totales' => $total]);
 
         //AQUI SE TIENE QUE INSERTAR LOS ACTIVOS A LA TABLA DE ACTIVOS
-        $date = date('Y-m-d', time());
+
+        $date = date('Y-m-d', time()); //POR SI SE REGISTRAN ACTIVOS DEL MES PASADO verifica (NO ACTIVO)
         $nota = Nota::find($id);
         if ($nota->tipo == 'compra') {
             for ($i = 0; $i < $request->cantidad; $i++) {
                 DB::table('activosfijo')->insert(
                     [   //nota compra
                         [
+                            'nombre' => $request->nombre,
                             'detalle' => $request->detalle,
-                            'fecha_ingreso' => $date,
                             'estado' => 'espera',
+                            'costo' => $request->precio_uni,
+                            'proveedor' => $nota->proveedor,
+                            'v_residual' => $request->precio_uni,
+                            'estado' => "No activo",
+                            'fecha_ingreso' => $date
                         ],
                     ]
                 );
             }
         }
-
-
+        $actifijo = Activofijo::latest('id')->first();
+        $detallenota->id_activosfijo = $actifijo->id;
+        $detallenota->save();
         return back();
     }
 
