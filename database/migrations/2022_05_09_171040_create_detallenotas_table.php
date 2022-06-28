@@ -16,11 +16,16 @@ class CreateDetallenotasTable extends Migration
         Schema::create('detallenotas', function (Blueprint $table) {
             $table->id();
             $table->integer('cantidad');
+            $table->string('nombre')->nullable();
             $table->string('detalle');
             $table->decimal('precio_uni')->nullable();
             $table->decimal('total')->nullable();
             $table->unsignedBigInteger('id_notas');
             $table->foreign('id_notas')->on('notas')->references('id')->onDelete('cascade');
+            $table->unsignedBigInteger('id_facturas');
+            $table->foreign('id_facturas')->on('facturas')->references('id')->onDelete('cascade');
+            $table->unsignedBigInteger('id_activosfijo')->nullable();
+            $table->foreign('id_activosfijo')->on('activosfijo')->references('id')->onDelete('cascade');
             $table->timestamps();
         });
     }

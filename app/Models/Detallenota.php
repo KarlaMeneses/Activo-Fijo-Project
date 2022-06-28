@@ -9,6 +9,6 @@ class Detallenota extends Model
 {
     use HasFactory;
     protected $table = 'detallenotas';
-    protected $fillable = ['cantidad','detalle','precio_uni','total','id_notas'];
+    protected $fillable = ['cantidad','nombre','detalle','precio_uni','total','id_notas', 'id_facturas','id_activosfijo'];
 
 }
