@@ -22,13 +22,13 @@ class CreateActivosfijoTable extends Migration
             $table->date('fecha_ingreso')->nullable();
             $table->string('proveedor')->nullable();
             $table->decimal('costo')->nullable();
-            $table->string('vida_util')->nullable();
-            $table->decimal('v_residual')->nullable();
             $table->string('estado')->nullable();
             $table->unsignedBigInteger('id_ubicacion')->nullable();
             $table->foreign('id_ubicacion')->on('ubicacion')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('id_factura')->nullable();
             $table->foreign('id_factura')->on('facturas')->references('id')->onDelete('cascade');
+            $table->unsignedBigInteger('id_depreciacion')->nullable();
+            $table->foreign('id_depreciacion')->on('depreciaciones')->references('id')->onDelete('cascade');
 
             $table->timestamps();
 
