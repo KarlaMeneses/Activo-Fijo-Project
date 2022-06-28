@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\ActivofijoController;
+use App\Http\Controllers\AyudaController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -91,6 +92,9 @@ Route::resource('notas', NotaController::class)->names('notas');
 
 //DEPARTAMENTOS
 Route::resource('departamentos', DepartamentoController::class)->names('departamentos');
+
+//AYUDA
+Route::resource('ayudas', AyudaController::class)->names('ayudas');
 
 //UBICACIONES
 Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones');

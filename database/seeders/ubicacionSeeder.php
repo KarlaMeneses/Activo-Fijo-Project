@@ -16,11 +16,12 @@ class ubicacionSeeder extends Seeder
     {
         DB::table('ubicacion')->insert([
             [
-                'edificio' => 'Principal',
+                'edificio' => 'Principal-piso 1',
                 'ciudad' => 'Santa Cruz de la Sierra',
                 'pais' => 'Bolivia',
                 'id_departamento' => 1,
             ],
+            
             [
                 'edificio' => 'Principal-piso 2',
                 'ciudad' => 'Santa Cruz de la Sierra',

@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="name">Ingrese el nombre de usuario</label>
-                    <input type="text" name="name" class="form-control" value="" placeholder="nombre completo" required>
+                    <input type="text" name="name" class="form-control" value="" placeholder="Nombres y Apellidos " required>
                 </div>
                 @error('name')
                 <span class="text-danger">{{ $message }}</span>
@@ -86,8 +86,8 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <label for="direccion">Ingrese la direccion</label>
-                    <input type="text" name="direccion" class="form-control" value="" maxlength="30" size="0" pattern="{5,30}" placeholder="dirección" required>
+                    <label for="direccion">Ingrese la dirección</label>
+                    <input type="text" name="direccion" class="form-control" value="" maxlength="30" size="0" pattern="{5,30}" placeholder="dirección del usuario" required>
                 </div>
                 @error('direccion')
                 <span class="text-danger">{{ $message }}</span>
@@ -95,7 +95,8 @@
 
                 <div class="col-md-3">
                     <label for="edad">Ingrese la edad</label>
-                    <input name="edad" type="tel" size="2" maxlength="2" pattern="[0-9-+()]{2,2}" placeholder="" class="form-control" value="" placeholder="edad" required>
+                    <input name="edad" type="tel" size="2" maxlength="2" pattern="[0-9-+()]{2,2}"
+                        class="form-control" value="" placeholder="Edad del ususario" required>
                     @error('edad')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -104,7 +105,7 @@
 
 
                 <div class="col-md-3">
-                    <label for="telefono">Ingrese el telefono</label>
+                    <label for="telefono">Ingrese el teléfono</label>
                     <input name="telefono" type="tel" placeholder="+591XXXXXXXXX" class="form-control" value="{{ old('telefono') }}" size="0" maxlength="9" pattern="[0-9-+()]{6,9}" placeholder="+591XXXXXXXXX" require>
                     @error('telefono')
                     <span class="text-danger">{{ $message }}</span>
@@ -115,7 +116,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="email">Ingrese el correo electronico</label>
-                    <input type="text" name="email" class="form-control" value="" placeholder="correo" required>
+                    <input type="text" name="email" class="form-control" value="" placeholder="Ecriba el correo" required>
                     @error('email')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror

@@ -55,6 +55,7 @@
                     </div>
 
                     <div class="form-group col-md-6">
+
                         <!--Descagar imagen--->
                         <p style="text-align: center">Comprobante - Nota de compra fisica</p>
                         <div class="download-wrap">
@@ -74,9 +75,8 @@
                         <!--<button id="reset">Reset</button>
                         Descagar imagen--->
 
-
-
                     </div>
+                    
                 </div>
             </form>
 

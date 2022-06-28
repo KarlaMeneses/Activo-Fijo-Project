@@ -33,14 +33,14 @@
                     <div class="form-group col-md-6">
                         <label for="nombre">Ingrese el nombre de cuenta contable</label>
                         <input type="text" name="nombre" class="form-control" value="{{ $depres->nombre }}"
-                            id="nombre">
+                            id="nombre" placeholder="Nombre de la cuenta contable" >
 
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="descripcion">Ingrese la descripción del activo</label>
                         <input type="text" name="descripcion" class="form-control" value="{{ $depres->descripcion }}"
-                            id="descripcion">
+                            id="descripcion" placeholder="Escriba una descripción del activo">
                     </div>
 
                     <div class="col-md-3">
@@ -81,14 +81,19 @@
 
                     <div class="col-md-3">
                         <label for="vida_util">Ingrese la vida util (años)</label>
+<<<<<<< HEAD
+                        <input name="vida_util" type="tel" size="2" maxlength="2" pattern="[0-9-+()]{1,3}"  placeholder="Valor numérico"
+                            required class="form-control" value="{{ $depres->vida_util }}" required>
+=======
                         <input name="vida_util" type="tel" size="2" maxlength="2" pattern="[0-9-+()]{1,3}"
                             placeholder="" required class="form-control" value="{{ $depres->vida_util }}" required>
+>>>>>>> 12c72bcff67805e5da38a16dc121a04ac259752d
 
                     </div>
 
                     <div class="col-md-3">
                         <label for="valor_residual">Ingrese el valor residual %</label>
-                        <input type="tel" name="valor_residual" size="3" maxlength="3" pattern="[0-9-+()]{1,3}"
+                        <input type="tel" name="valor_residual" size="3" maxlength="3" pattern="[0-9-+()]{1,3}"  placeholder="Valor numérico"
                             placeholder="" required class="form-control" value="{{ $depres->vida_util }}" required>
 
                     </div>
