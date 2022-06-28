@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="detalle">Nombre Del Activo</label>
+                            <label for="nombre">Nombre Del Activo</label>
                             <input type="text" name="nombre" class="form-control" value="">
                         </div>
 

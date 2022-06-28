@@ -111,6 +111,7 @@ class NotaController extends Controller
      */
     public function show($id)
     {
+       // dd($id);
         $nota = Nota::find($id);
         $detallenotas = Detallenota::all();
         return view('notas.show', compact('nota', 'detallenotas'));

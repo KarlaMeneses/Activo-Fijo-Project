@@ -39,6 +39,9 @@ Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
 Route::get('user/perfil/', [userController::class, 'show2'])->name('user.show');
 Route::patch('user/update/', [userController::class, 'update2'])->name('user.update');
+
+Route::post('users/reporte', [App\Http\Controllers\UserController::class, 'reporte'])->name('users.reporte');
+
 /* Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show'); */
 /*El apartado de arriba ya se incluye en el resource */
 Route::resource('activosfijo', ActivofijoController::class)->names('activosfijo');
@@ -85,6 +88,7 @@ Route::post('notasventa/detalle_update/{id}', [DetallenotaController::class, 'de
 
 Route::delete('notas/detalle_destroy/{id}', [DetallenotaController::class, 'detalle_destroy']);
 Route::delete('notasventa/detalle_destroy/{id}', [DetallenotaController::class, 'detalle_destroy']);
+Route::resource('notas', NotaController::class)->names('notas');
 
 //DEPARTAMENTOS
 Route::resource('departamentos', DepartamentoController::class)->names('departamentos');

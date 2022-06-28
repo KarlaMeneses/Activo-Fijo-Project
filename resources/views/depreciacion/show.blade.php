@@ -23,42 +23,41 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="nombre">Ingrese el nombre de cuenta contable</label>
-                        <input type="text" name="name" class="form-control" value="{{ $depres->nombre }}" disabled>
-                    </div>
+            <div class="card">
+                <div class="card-body">
 
-                    <div class="form-group col-md-6">
-                        <label for="descripcion">Ingrese la descripción del activo</label>
-                        <input type="text" name="descripcion" class="form-control"
-                            value="{{ $depres->descripcion }}" disabled>
-                    </div>
+                    <div class="row">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="nombre">NOMBRE DE CUENTA CONTABLE</label>
+                                <input type="text" name="name" class="form-control" value="{{ $depres->nombre }}"
+                                    disabled>
+                            </div>
 
-                    <div class="col-md-3">
-                        <label for="tipo_activo">Seleccione el tipo activo</label>
-                        <input name="tipo_activo" type="tel" class="form-control" value="{{ $depres->tipo_activo }}"
-                            disabled>
-                    </div>
+                            <div class="form-group col-md-6">
+                                <label for="descripcion">DESCRIPCIÓN DE LA CUENTA</label>
+                                <input type="text" name="descripcion" class="form-control"
+                                    value="{{ $depres->descripcion }}" disabled>
+                            </div>
 
+                            <div class="col-md-4">
+                                <label for="tipo_activo">TIPO DE CUENTA</label>
+                                <input name="tipo_activo" type="tel" class="form-control"
+                                    value="{{ $depres->tipo_activo }}" disabled>
+                            </div>
 
-                    <div class="col-md-3">
-                        <label for="cacateristica">Seleccione un cacateristica</label>
-                        <input name="cacateristica" type="tel" class="form-control"
-                            value="{{ $depres->cacateristica }}" disabled>
-                    </div>
+                            <div class="col-md-4">
+                                <label for="vida_util">VIDA UTIL (AÑOS)</label>
+                                <input name="vida_util" type="tel" class="form-control"
+                                    value="{{ $depres->vida_util }}" disabled>
+                            </div>
 
-                    <div class="col-md-3">
-                        <label for="vida_util">Ingrese la vida util (años)</label>
-                        <input name="vida_util" type="tel" class="form-control" value="{{ $depres->vida_util }}"
-                            disabled>
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="valor_residual">Ingrese el valor residual %</label>
-                        <input type="tel" name="valor_residual" class="form-control"
-                            value="{{ $depres->vida_util }}" disabled>
+                            <div class="col-md-4">
+                                <label for="valor_residual">VALOR RESIDUAL %</label>
+                                <input type="tel" name="valor_residual" class="form-control"
+                                    value="{{ $depres->vida_util }}" disabled>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
