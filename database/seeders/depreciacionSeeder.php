@@ -15,7 +15,7 @@ class depreciacionSeeder extends Seeder
         DB::table('depreciaciones')->insert([
             [
                 'nombre' => 'Edificios', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Licencia de software',     //descripción de la cuenta
+                'descripcion' => 'edificios de la empresa',     //descripción de la cuenta
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                 'vida_util' => 40,                //años de vida de un activo
                 'valor_residual' => 2.50,         //% de vida del activo fijo
@@ -26,7 +26,7 @@ class depreciacionSeeder extends Seeder
 
             [
                 'nombre' => 'Viviendas para el Personal', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Licencia de software',     //descripción de la cuenta
+                'descripcion' => 'departamento, casa',     //descripción de la cuenta
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 20,                //años de vida de un activo
@@ -38,7 +38,7 @@ class depreciacionSeeder extends Seeder
 
             [
                 'nombre' => 'Tinglados y Cobertizos de Madera', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Licencia de software',     //descripción de la cuenta
+                'descripcion' => 'tinglados de madera',     //descripción de la cuenta
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 5,                //años de vida de un activo
@@ -48,10 +48,9 @@ class depreciacionSeeder extends Seeder
 
             ],
 
-
             [
                 'nombre' => 'Tinglados y Cobertizos de Metal', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Licencia de software',     //descripción de la cuenta
+                'descripcion' => 'tinglados de metal',     //descripción de la cuenta
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 10,                //años de vida de un activo
@@ -63,7 +62,7 @@ class depreciacionSeeder extends Seeder
 
             [
                 'nombre' => 'Muebles y Enseres', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Licencia de software',     //descripción de la cuenta
+                'descripcion' => 'Silla, Sofás, Armarios, Archivadores',     //descripción de la cuenta
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 10,                //años de vida de un activo
@@ -75,7 +74,7 @@ class depreciacionSeeder extends Seeder
 
             [
                 'nombre' => 'Equipo de Computación', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Licencia de software',     //descripción de la cuenta
+                'descripcion' => 'pc, laptop',     //descripción de la cuenta
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 4,                //años de vida de un activo
@@ -87,7 +86,7 @@ class depreciacionSeeder extends Seeder
 
             [
                 'nombre' => 'Maquinarias', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Licencia de software',     //descripción de la cuenta
+                'descripcion' => 'cualquier tipo de maquinaria',     //descripción de la cuenta
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 8,                //años de vida de un activo
@@ -99,7 +98,7 @@ class depreciacionSeeder extends Seeder
 
             [
                 'nombre' => 'Equipos e Instalaciones', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Licencia de software',     //descripción de la cuenta
+                'descripcion' => 'router, redes',     //descripción de la cuenta
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 8,                //años de vida de un activo
@@ -111,7 +110,7 @@ class depreciacionSeeder extends Seeder
 
             [
                 'nombre' => 'Barcos y Lanchas', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Licencia de software',     //descripción de la cuenta
+                'descripcion' => 'para uso exclusivo de la empresa',     //descripción de la cuenta
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 10,                //años de vida de un activo
@@ -132,17 +131,7 @@ class depreciacionSeeder extends Seeder
                 'updated_at' => Carbon::now(),
 
             ],
-            [
-                'nombre' => 'Equipos e instalaciones', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Maquinaria',     //descripción de la cuenta
-                'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
-                 //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-                'vida_util' => 8,                //años de vida de un activo
-                'valor_residual' => 12.5,         //% de vida del activo fijo
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
 
-            ],
             [
                 'nombre' => 'Muebles y enseres de oficina', //bienes de cuenta contable nombre de la cuenta (contabilidad)
                 'descripcion' => 'Mesa de Escritorio',     //descripción de la cuenta

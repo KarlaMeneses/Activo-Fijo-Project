@@ -15,6 +15,7 @@ class CreateActivosfijoTable extends Migration
     {
         Schema::create('activosfijo', function (Blueprint $table) {
             $table->id();
+            $table->string('d_anual')->nullable(); 
             $table->string('codigo')->nullable();
             $table->string('nombre')->nullable();
             $table->string('detalle')->nullable();

@@ -103,6 +103,13 @@ Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones')
 Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');
 Route::post('activosfijo/index', [RevalorizacionController::class, 'idactivo'])->name('activosfijo.idactivo');
 
+
+
+
+//Route::post('activosfijo/{id}', [ActivofijoController::class, 'calcular'])->name('activosfijo.calcular');
+//Route::get('activosfijo.{id}', [ActivofijoController::class, 'calcular'])->name('activosfijo.calcular');
+Route::get('activosfijo/show/{id}', [ActivofijoController::class, 'calcular'])->name('activosfijo.calcular');
+
 //MANTENIMIENTO
 Route::get('mantenimientos/index', [App\Http\Controllers\MantenimientoController::class, 'index'])->name('mantenimientos.index');
 Route::get('mantenimientos/create', [App\Http\Controllers\MantenimientoController::class, 'create'])->name('mantenimientos.create');
@@ -138,9 +145,9 @@ Route::post('empresa/store', [App\Http\Controllers\EmpresaController::class, 'st
 Route::get('empresa/create', [App\Http\Controllers\EmpresaController::class, 'create'])->name('empresa.create');
 Route::get('empresa/edit/{id}', [App\Http\Controllers\EmpresaController::class, 'edit'])->name('empresa.edit');
 Route::put('empresa/update/{id}', [App\Http\Controllers\EmpresaController::class, 'update'])->name('empresa.update');
-Route::post('empresa/{id}', [App\Http\Controllers\EmpresaController::class, 'destroy'])->name('empresa.delete');
+Route::post('empresa/delete/{id}', [App\Http\Controllers\EmpresaController::class, 'destroy'])->name('empresa.delete');
 Route::get('empresa/show/{id}', [App\Http\Controllers\EmpresaController::class, 'show'])->name('empresa.show');
-
+Route::post('empresa/reporte', [App\Http\Controllers\EmpresaController::class, 'reporte'])->name('empresa.reporte');
 // SOLICITUD
 
 //MANTENIMIENTO

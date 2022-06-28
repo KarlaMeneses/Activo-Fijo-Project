@@ -8,9 +8,11 @@
         <h3><b>Editar Datos De Revalorizacion</b></h3>
     </div>
 @stop
-@section('css')
+
+{{--@section('css')
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop
+--}}
 
 @section('content')
     <div class="card">
@@ -26,62 +28,78 @@
             <form method="post" action="{{ route('revalorizacion.update', $revalorizacion->id) }}" novalidate>
                 @csrf
                 @method('PUT')
-                <div class="form-row">
 
-   
-                    @foreach ($activosfijo as $activo)
-                        @if ($activo->id == $revalorizacion->id_activo)
-                            <div class="form-group col-md-6">
-                                <label for="codigo">CODIGO</label>
-                                <input type="text" name="codigo" class="form-control" value="{{ $activo->codigo }}"
-                                    disabled>
 
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-row">
+                                <div class="card-header form-group col-md-12">
+                                    <h5 class="font-weight-bold px-2">DATOS DEL ACTIVO FIJO</h5>
+                                </div>
+                                @foreach ($activosfijo as $activo)
+                                @if ($activo->id == $revalorizacion->id_activo)
+                                    <div class="form-group col-md-6">
+                                        <label for="codigo">CODIGO</label>
+                                        <input type="text" name="codigo" class="form-control" value="{{ $activo->codigo }}"
+                                            disabled>
+        
+                                    </div>
+        
+                                    <div class="form-group col-md-6">
+                                        <label for="nombre">DESCRIPCION</label>
+                                        <input type="text" name="nombre" class="form-control" value="{{ $activo->detalle }}"
+                                            id="nombre" disabled>
+        
+                                    </div>
+        
+                                    <div class="form-group col-md-6">
+                                        <label for="nombre">COSTO ACTUAL</label>
+                                        <input type="text" name="nombre" class="form-control" value="{{ $activo->costo }}"
+                                            id="nombre" disabled>
+        
+                                    </div>
+        
+                                    <div class="col-md-3">
+                                        <label for="fecha_ingreso">FECHA DE INGRESO DEL ACTIVO</label>
+                                        <input name="fecha_ingreso" type="tel" class="form-control"
+                                            value="{{ $activo->fecha_ingreso }}" disabled>
+                                    </div>
+        
+                                    <div class="col-md-3">
+                                        <label for="estado">ESTADO</label>
+                                        <input type="tel" name="estado" class="form-control" value="{{ $activo->estado }}" disabled>
+        
+                                    </div>
+                                @endif
+                            @endforeach
                             </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="nombre">DESCRIPCION</label>
-                                <input type="text" name="nombre" class="form-control" value="{{ $activo->detalle }}"
-                                    id="nombre" disabled>
-
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="nombre">COSTO ACTUAL</label>
-                                <input type="text" name="nombre" class="form-control" value="{{ $activo->costo }}"
-                                    id="nombre" disabled>
-
-                            </div>
-
-                            <div class="col-md-3">
-                                <label for="fecha_ingreso">FECHA DE INGRESO DEL ACTIVO</label>
-                                <input name="fecha_ingreso" type="tel" class="form-control"
-                                    value="{{ $activo->fecha_ingreso }}" disabled>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label for="estado">ESTADO</label>
-                                <input type="tel" name="estado" class="form-control" value="{{ $activo->estado }}" disabled>
-
-                            </div>
-                        @endif
-                    @endforeach
-
-                    <div class="form-group col-md-6">
-                        <label for="tiempo_vida">TIEMPO DE VIDA ESTIMADO</label>
-                        <input type="text" name="tiempo_vida" class="form-control" value="{{ $revalorizacion->tiempo_vida }}" id="nombre">
-
+                        </div>
                     </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="valor">COSTO ESTIMADO</label>
-                        <input type="text" name="valor" class="form-control" value="{{ $revalorizacion->valor }}" id="descripcion">
-                    </div>
-
-    
-
                 </div>
 
 
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-row">
+                                <div class="card-header form-group col-md-12">
+                                    <h5 class="font-weight-bold px-2">DATOS DE REVALORIZACION</h5>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="tiempo_vida">TIEMPO DE VIDA ESTIMADO</label>
+                                    <input type="text" name="tiempo_vida" class="form-control" value="{{ $revalorizacion->tiempo_vida }}" id="nombre">
+            
+                                </div>
+            
+                                <div class="form-group col-md-6">
+                                    <label for="valor">COSTO ESTIMADO</label>
+                                    <input type="text" name="valor" class="form-control" value="{{ $revalorizacion->valor }}" id="descripcion">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
 
 
