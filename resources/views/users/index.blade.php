@@ -15,6 +15,9 @@
     <div class="card-header">
         <a href="{{ route('users.create') }}" class="btn btn-primary btb-sm"><i class="fas fa-user-plus"></i> Crear
             Usuario</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Reporte
+            </button>
     </div>
 </div>
 
@@ -70,6 +73,58 @@
 <df-messenger intent="WELCOME" chat-title="bots" agent-id="86938b5f-1e37-43dc-9f38-1bd5322b1eb7" language-code="es">
 
 </df-messenger>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel"> Generar Reporte</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+
+            <form action="{{route('users.reporte')}}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="codigo">Fecha de Inicio</label>
+                        <div class="col-sm-10">
+                            <input type="date" name="inicio" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="fin">Fecha de Fin</label>
+                        <div class="col-sm-10">
+                            <input type="date" name="fin" class="form-control" required>
+                        </div>
+                    </div>
+
+                   
+                    <div class="form-group">
+                        <label for="fin">Seleccione los Atributos para el reporte</label>
+                      <br>
+                      <div class="checkbox">
+                            <input type="checkbox" name="nombre" value="true" > Nombre <br>
+                            <input type="checkbox" name="sexo" value="true" > Sexo <br>
+                            <input type="checkbox" name="edad" value="true"> Edad <br>
+                            <input type="checkbox" name="cargo" value="true"> Cargo <br>
+                            <input type="checkbox" name="direccion" value="true" > Dirección <br>
+                            <input type="checkbox" name="telefono" value="true"> Telefono <br>
+                            <input type="checkbox" name="email" value="true"> Email <br>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Reporte</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 @stop
 
 @section('css')
