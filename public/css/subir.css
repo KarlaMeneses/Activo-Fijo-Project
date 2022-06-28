@@ -12,7 +12,7 @@
                         text-align: center;
                         width: 200px;
                     }
-                    
+
                     .custom-input-file .input-file {
                         border: 200px;
                         cursor: pointer;
@@ -25,7 +25,7 @@
                         right: -1000px;
                         top: -1000px;
                     }
-                    
+
                     .custom-input-file2 {
                         background-color: #fd7e14;
                         color: #fff;
@@ -35,7 +35,7 @@
                         width: 200px;
                         text-align: center;
                     }
-                    
+
                     .custom-input-file2 .input-file2 {
                         margin: 0;
                         opacity: 0;

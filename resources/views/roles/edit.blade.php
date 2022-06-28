@@ -13,7 +13,7 @@
                 @csrf
                 @method('put')
                 <label for="name">Ingrese el nombre del Rol</label>
-                <input type="text" name="name" class="form-control" value="{{old('name', $role->name)}}"><br>
+                <input type="text" name="name" class="form-control" value="{{old('name', $role->name)}}" placeholder="Nombre para el nuevo rol"><br>
                 @error('name')                    
                 <small class="text-danger">*{{$message}}</small>
                 <br><br>                                            

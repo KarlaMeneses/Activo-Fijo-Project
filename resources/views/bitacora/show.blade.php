@@ -49,8 +49,10 @@
 
                         <div class="form-group">
                             <label for="exampleInputPassword1" class="text-uppercase">contraseña</label>
-                            <input id="contra" type="text" placeholder="Contraseña"
-                                class="form-control @error('password') is-invalid @enderror" name="contra" required>
+                            <input id="contra" type="password" placeholder="Ingrese la contraseña"
+                                class="form-control" name="contra" required>
+                            {{-- <input id="contra" type="text" placeholder="Contraseña"
+                                class="form-control @error('password') is-invalid @enderror" name="contra" required> --}}
                         </div>
 
 
