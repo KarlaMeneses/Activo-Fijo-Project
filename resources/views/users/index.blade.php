@@ -15,6 +15,9 @@
     <div class="card-header">
         <a href="{{ route('users.create') }}" class="btn btn-primary btb-sm"><i class="fas fa-user-plus"></i> Crear
             Usuario</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Reporte
+            </button>
     </div>
 </div>
 
@@ -70,6 +73,64 @@
 <df-messenger intent="WELCOME" chat-title="bots" agent-id="86938b5f-1e37-43dc-9f38-1bd5322b1eb7" language-code="es">
 
 </df-messenger>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel"> Agregar activo </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+
+            <form action="#" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="codigo">Fecha de Inicio</label>
+                        <div class="col-sm-10">
+                            <input type="date" name="inicio" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="fin">Fecha de Fin</label>
+                        <div class="col-sm-10">
+                            <input type="date" name="fin" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="detalle">Detalle</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="articulo" class="form-control" required>
+                        </div>
+                    </div>
+                 
+                    <div class="form-group">
+                        <label for="precio_uni">Precio unitario</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="valor_unitario" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="descuento">Descuento%</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="descuento" class="form-control" required>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Agregar detalle</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 @stop
 
 @section('css')
