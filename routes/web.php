@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\ActivofijoController;
+use App\Http\Controllers\AyudaController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -88,6 +89,9 @@ Route::delete('notasventa/detalle_destroy/{id}', [DetallenotaController::class, 
 //DEPARTAMENTOS
 Route::resource('departamentos', DepartamentoController::class)->names('departamentos');
 
+//AYUDA
+Route::resource('ayudas', AyudaController::class)->names('ayudas');
+
 //UBICACIONES
 Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones');
 
@@ -121,3 +125,28 @@ Route::get('baja/create', [App\Http\Controllers\BajaController::class, 'create']
 Route::get('baja/edit/{id}', [App\Http\Controllers\BajaController::class, 'edit'])->name('baja.edit');
 Route::post('baja/update/{id}', [App\Http\Controllers\BajaController::class, 'update'])->name('baja.update');
 Route::post('baja/{id}', [App\Http\Controllers\BajaController::class, 'destroy'])->name('baja.delete');
+
+
+// empresa
+
+Route::get('empresa/index', [App\Http\Controllers\EmpresaController::class, 'index'])->name('empresa.index');
+Route::post('empresa/store', [App\Http\Controllers\EmpresaController::class, 'store'])->name('empresa.store');
+Route::get('empresa/create', [App\Http\Controllers\EmpresaController::class, 'create'])->name('empresa.create');
+Route::get('empresa/edit/{id}', [App\Http\Controllers\EmpresaController::class, 'edit'])->name('empresa.edit');
+Route::put('empresa/update/{id}', [App\Http\Controllers\EmpresaController::class, 'update'])->name('empresa.update');
+Route::post('empresa/{id}', [App\Http\Controllers\EmpresaController::class, 'destroy'])->name('empresa.delete');
+Route::get('empresa/show/{id}', [App\Http\Controllers\EmpresaController::class, 'show'])->name('empresa.show');
+
+// SOLICITUD
+
+//MANTENIMIENTO
+Route::get('solicitud/index', [App\Http\Controllers\SolicitudController::class, 'index'])->name('solicitud.index');
+Route::get('solicitud/create', [App\Http\Controllers\SolicitudController::class, 'create'])->name('solicitud.create');
+Route::post('solicitud/store', [App\Http\Controllers\SolicitudController::class, 'store'])->name('solicitud.store');
+Route::post('solicitud/store_act/{id}', [App\Http\Controllers\SolicitudController::class, 'store_act'])->name('solicitud.store_act');
+Route::get('solicitud/edit/{id}', [App\Http\Controllers\SolicitudController::class, 'edit'])->name('solicitud.edit');
+Route::put('solicitud/update/{id}', [App\Http\Controllers\SolicitudController::class, 'update'])->name('solicitud.update');
+Route::get('solicitud/show/{id}', [App\Http\Controllers\SolicitudController::class, 'show'])->name('solicitud.show');
+Route::delete('solicitud/{id}', [App\Http\Controllers\SolicitudController::class, 'destroy'])->name('solicitud.destroy');
+Route::delete('solicitud_act/{id}', [App\Http\Controllers\SolicitudController::class, 'destroy_act'])->name('solicitud.destroy_act');
+/* Route::get('solicitud/activo', [App\Http\Controllers\SolicitudController::class, 'reporte_vista'])->name('solicitud.activo'); */

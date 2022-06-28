@@ -23,7 +23,7 @@
             @enderror
 
 
-            <form method="post" action="{{route('depreciaciones.update', $depres->id)}}" novalidate>
+            <form method="post" action="{{ route('depreciaciones.update', $depres->id) }}" novalidate>
                 @csrf
                 @method('PATCH')
                 <!--@method('put')-->
@@ -45,19 +45,29 @@
 
                     <div class="col-md-3">
                         <label for="tipo_activo">Seleccione el tipo activo</label>
-                        <select name="tipo_activo" id="tipo_activo" class="form-select" onchange="habilitar()" required>
-                            <option value="{{ $depres->tipo_activo }}">{{ $depres->tipo_activo }}</option>
-                            <option value="Tangible">Tangible</option>
-                            <option value="Intangible">Intangible</option>
-                            <option value="Invesión">Invesión</option>
+                        <select name="tipo_activo" id="tipo_activo" class="form-select" required>
+                            @if ($depres->tipo_activo == 'Tangible')
+                                <option value="Tangible" selected>Tangible</option>
+                                <option value="Intangible">Intangible</option>
+                                <option value="Inversion">Inversion</option>
+                            @else
+                                @if ($depres->tipo_activo == 'Intangible')
+                                    <option value="Tangible">Tangible</option>
+                                    <option value="Intangible" selected>Intangible</option>
+                                    <option value="Inversion">Inversion</option>
+                                @else
+                                    <option value="Tangible">Tangible</option>
+                                    <option value="Intangible">Intangible</option>
+                                    <option value="Inversion" selected>Inversion</option>
+                                @endif
+                            @endif
                         </select>
                     </div>
 
 
                     <div class="col-md-3">
                         <label for="cacateristica">Seleccione un cacateristica</label>
-                        <select name="cacateristica" id="cacateristica" class="form-select" onchange="habilitar()"
-                            required>
+                        <select name="cacateristica" id="cacateristica" class="form-select" onchange="habilitar()" required>
                             <option value="{{ $depres->cacateristica }}">{{ $depres->cacateristica }}</option>
                             <option value="No depreciables">No depreciables</option>
                             <option value="Depreciable">Depreciable</option>
@@ -71,8 +81,13 @@
 
                     <div class="col-md-3">
                         <label for="vida_util">Ingrese la vida util (años)</label>
+<<<<<<< HEAD
                         <input name="vida_util" type="tel" size="2" maxlength="2" pattern="[0-9-+()]{1,3}"  placeholder="Valor numérico"
                             required class="form-control" value="{{ $depres->vida_util }}" required>
+=======
+                        <input name="vida_util" type="tel" size="2" maxlength="2" pattern="[0-9-+()]{1,3}"
+                            placeholder="" required class="form-control" value="{{ $depres->vida_util }}" required>
+>>>>>>> 12c72bcff67805e5da38a16dc121a04ac259752d
 
                     </div>
 
@@ -94,7 +109,7 @@
             <a class="btn btn-warning btb-sm text-light" href="{{ route('depreciaciones.index') }}">Volver</a>
         </center>
 
-     
+
 
         </form>
     </div>

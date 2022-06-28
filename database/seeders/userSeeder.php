@@ -34,7 +34,7 @@ class userSeeder extends Seeder
         $user->foto = 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/usuario%2F269929687_3004715393100802_7132891553517560707_n.jpg?alt=media&token=21922377-f8a0-4b66-a36d-34d3957bfd8c';
         $user->edad = 22;
         $user->sexo = 'Femenino';
-        $user->cargo = 'Encargado';
+        $user->cargo = 'Administrador';
         $user->direccion = 'La Angostura. B Primavera';
         $user->telefono = 77169918;
         $user->save(); //save con  parentesis
@@ -61,11 +61,11 @@ class userSeeder extends Seeder
         $user->foto = 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/usuario%2FPhotoGrid_1568399833200.jpg?alt=media&token=d8753c3b-bc41-4beb-a6f8-d7b89e960053';
         $user->edad = 19;
         $user->sexo = 'Femenino';
-        $user->cargo = 'Auxiliar';
+        $user->cargo = 'Administrador';
         $user->direccion = 'Los Lotes';
         $user->telefono = 71005231;
         $user->save(); //save con  parentesis
-        $user->assignRole('Auxiliar');
+        $user->assignRole('Administrador');
 
         $user = new User();
         $user->name = 'Luishiño';

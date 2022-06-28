@@ -28,15 +28,17 @@ class DatabaseSeeder extends Seeder
         $this->call(ubicacionSeeder::class);
         $this->call(notaSeeder::class);
         $this->call(facturaSeeder::class);
-        
+        $this->call(activofijoSeeder::class);
         $this->call(DetallenotaSeeder::class);
         $this->call(DetalleFacturaSeeder::class);
      
       
-        $this->call(activofijoSeeder::class);
+        
         $this->call(revalorizacionSeeder::class);
         $this->call(mantenimientoSeeder::class);
         $this->call(bitacoraSeeder::class);
         $this->call(BajaSeeder::class);
+
+        $this->call(solicitudSeeder::class);
     }
 }

@@ -247,16 +247,21 @@ return [
             'can'  => 'manage-blog',
         ],
 
-        ['header' => 'CONFIGURACION'],
+        ['header' => 'CONFIGURACIÓN'],
         [
             'text' => 'Perfil',
             'url'  => 'user/perfil/',
             'icon' => 'fas fa-fw fa-user',
             'icon_color' => 'text-light',
-            'can' => 'Gestionar Usuario'
+        //    'can' => 'Gestionar Usuario'
         ],
-        ['header' => 'OPCIONES DE USUARIO'],
+        [
+            'text' => 'Ayuda',
+            'route'  => 'ayudas.index',
+            'icon' => 'fas fa-user',
+        ],
 
+        ['header' => 'OPCIONES DE USUARIO'],
         [
             'text'    => 'Gestionar Usuario',
             'icon'    => 'fas fa-solid fa-users',
@@ -271,7 +276,7 @@ return [
                     'route'  => 'roles.index',
                     'icon' => 'fas fa-ruler',
                 ],
-                [
+                /*[
                     'text' => 'Bitacora',
                     'route'  => 'bitacora.auth',
                     'icon' => 'fas fa-tools',
@@ -282,6 +287,19 @@ return [
                     'route'  => 'Bitacora.index',
                     'icon' => 'fas fa-tools',
                 ], */
+            ],
+        ],
+        [
+            'text'    => 'Gestionar Empresa',
+            'icon'    => 'fas fa-solid fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Empresas',
+                    'route'  => 'empresa.index',
+                    'icon' => 'fas fa-users',
+                ],
+               
+                
             ],
         ],
 
@@ -337,6 +355,11 @@ return [
                     'text' => 'Bajas',
                     'route'  => 'baja.index',
                     'icon' => 'fas fa-arrow-down',
+                ],
+                [
+                    'text'       => 'Solicitud',
+                    'icon' => 'fas fa-file-alt',
+                    'route'        => 'solicitud.index',
                 ],
             ],
         ],
