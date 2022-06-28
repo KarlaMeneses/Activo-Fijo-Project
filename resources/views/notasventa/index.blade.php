@@ -48,8 +48,8 @@
                                             href="{{ route('notasventa.show', $nota->id) }}">
                                             <i class="fas fa-eye"></i></a>
 
-                                        <a href="{{ route('notasventa.edit', $nota) }}"
-                                            class="btn btn-primary btn-sm text-light rounded-pill">
+                                        <a class="btn btn-primary btn-sm text-light rounded-pill"
+                                            href="{{ route('notasventa.edit', $nota) }}">
                                             <i class="fas fa-edit"></i><a>
                                                 @csrf
                                                 @method('delete')

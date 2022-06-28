@@ -84,6 +84,7 @@ Route::post('notasventa/detalle_update/{id}', [DetallenotaController::class, 'de
 
 Route::delete('notas/detalle_destroy/{id}', [DetallenotaController::class, 'detalle_destroy']);
 Route::delete('notasventa/detalle_destroy/{id}', [DetallenotaController::class, 'detalle_destroy']);
+Route::resource('notas', NotaController::class)->names('notas');
 
 //DEPARTAMENTOS
 Route::resource('departamentos', DepartamentoController::class)->names('departamentos');

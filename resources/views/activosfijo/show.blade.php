@@ -14,7 +14,6 @@
                     {{ session('success') }}
                 </div>
             @endif
-
             <div class="card">
                 <div class="card-header">
                     <center>
@@ -139,9 +138,10 @@
             </div>
             <br>
             <center>
-                <a class="btn btn-warning btb-sm text-light" href="{{ route('activosfijo.index') }}">Volver</a>
-                <a href="{{ route('activosfijo.edit', $activofijo->id) }}" class="btn btn-primary btb-sm text-light">
-                    Editar </a>
+                <a href="{{ route('activosfijo.index') }}" class="btn btn-warning btb-sm text-light">Volver</a>
+                <a href="{{ route('activosfijo.edit', $activofijo->id) }}" class="btn btn-primary btb-sm text-light">Editar </a>
+                <a href="{{ route('notas.show', $activofijo->id) }}" class="btn btn-danger btb-sm text-light">Ver nota de compra</a>
+                <a href="{{ route('factura.facturacompra.show', $activofijo->id) }}" class="btn btn-danger btb-sm text-light">Ver factura</a>
             </center>
 
 
