@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empresa;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class EmpresaController extends Controller
 {
@@ -45,7 +49,25 @@ class EmpresaController extends Controller
 
         return redirect()->route('empresa.index');
     }
+    public function reporte(Request $request)
+    {
+        $user_c = Auth::user()->id;
+      
+        $user = User::find($user_c);
+        
+         $lol = $request;
+        $empresas = Empresa::whereBetween('created_at', [$request->inicio, $request->fin])->get();
+        $view = View::make('empresa.reporte', compact('empresas','user', 'lol'))->render();
 
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->setOptions([
+            'logOutputFile' => storage_path('logs/log.htm'),
+            'tempDir' => storage_path('logs/')
+        ]);
+
+        $pdf->loadHTML($view);
+        return $pdf->stream();
+    }
 
     public function edit($id)
     {
@@ -81,4 +103,6 @@ class EmpresaController extends Controller
 
         return view('empresa.show', compact('empresa'));
     }
+
+
 }

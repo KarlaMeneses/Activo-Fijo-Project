@@ -134,9 +134,9 @@ Route::post('empresa/store', [App\Http\Controllers\EmpresaController::class, 'st
 Route::get('empresa/create', [App\Http\Controllers\EmpresaController::class, 'create'])->name('empresa.create');
 Route::get('empresa/edit/{id}', [App\Http\Controllers\EmpresaController::class, 'edit'])->name('empresa.edit');
 Route::put('empresa/update/{id}', [App\Http\Controllers\EmpresaController::class, 'update'])->name('empresa.update');
-Route::post('empresa/{id}', [App\Http\Controllers\EmpresaController::class, 'destroy'])->name('empresa.delete');
+Route::post('empresa/delete/{id}', [App\Http\Controllers\EmpresaController::class, 'destroy'])->name('empresa.delete');
 Route::get('empresa/show/{id}', [App\Http\Controllers\EmpresaController::class, 'show'])->name('empresa.show');
-
+Route::post('empresa/reporte', [App\Http\Controllers\EmpresaController::class, 'reporte'])->name('empresa.reporte');
 // SOLICITUD
 
 //MANTENIMIENTO
