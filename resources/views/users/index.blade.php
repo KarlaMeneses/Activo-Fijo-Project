@@ -79,12 +79,12 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel"> Agregar activo </h4>
+                <h4 class="modal-title" id="myModalLabel"> Generar Reporte</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
             </div>
 
-            <form action="#" method="POST">
+            <form action="{{route('users.reporte')}}" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -100,31 +100,25 @@
                         </div>
                     </div>
 
+                   
                     <div class="form-group">
-                        <label for="detalle">Detalle</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="articulo" class="form-control" required>
+                        <label for="fin">Seleccione los Atributos para el reporte</label>
+                      <br>
+                      <div class="checkbox">
+                            <input type="checkbox" name="nombre" value="true" > Nombre <br>
+                            <input type="checkbox" name="sexo" value="true" > Sexo <br>
+                            <input type="checkbox" name="edad" value="true"> Edad <br>
+                            <input type="checkbox" name="cargo" value="true"> Cargo <br>
+                            <input type="checkbox" name="direccion" value="true" > Dirección <br>
+                            <input type="checkbox" name="telefono" value="true"> Telefono <br>
+                            <input type="checkbox" name="email" value="true"> Email <br>
                         </div>
                     </div>
-                 
-                    <div class="form-group">
-                        <label for="precio_uni">Precio unitario</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="valor_unitario" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="descuento">Descuento%</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="descuento" class="form-control" required>
-                        </div>
-                    </div>
-
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Agregar detalle</button>
+                    <button type="submit" class="btn btn-primary">Reporte</button>
                 </div>
             </form>
 
