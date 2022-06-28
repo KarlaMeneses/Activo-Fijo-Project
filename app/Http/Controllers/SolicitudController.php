@@ -30,6 +30,8 @@ class SolicitudController extends Controller
         $soli->fecha         = $request->fecha;
         $soli->save();
         return redirect()->route('solicitud.edit', $soli->id);
+
+        
     }
 
     public function store_act(Request $request, $id)
