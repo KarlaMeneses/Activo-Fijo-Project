@@ -9,6 +9,6 @@ class Revalorizacion extends Model
 {
     use HasFactory;
     protected $table = 'revalorizacion';
-    protected $fillable = ['tiempo_vida','valor'];
+    protected $fillable = ['tiempo_vida','valor','estado','created_at'];
 
 }

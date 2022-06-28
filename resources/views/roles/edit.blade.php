@@ -13,7 +13,7 @@
                 @csrf
                 @method('put')
                 <label for="name">Ingrese el nombre del Rol</label>
-                <input type="text" name="name" class="form-control" value="{{old('name', $role->name)}}"><br>
+                <input type="text" name="name" class="form-control" value="{{old('name', $role->name)}}" placeholder="Nombre para el nuevo rol"><br>
                 @error('name')                    
                 <small class="text-danger">*{{$message}}</small>
                 <br><br>                                            
@@ -27,7 +27,7 @@
                             @foreach ($permisos as $permiso)
                             <div class="form-group col-md-3">
                                 @if (in_array($permiso->name, $perA))
-                                    <input type="checkbox" value="{{$permiso->id}}" name="permisos[]"       
+                                    <input type="checkbox" value="{{$permiso->id}}" name="permisos[]" 
                                         class="form-check-input" checked> {{$permiso->name}} <br>
                                 @else
                                     <input type="checkbox" value="{{$permiso->id}}" name="permisos[]"       

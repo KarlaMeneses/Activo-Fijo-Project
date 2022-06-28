@@ -12,14 +12,14 @@
             <form action="{{route('roles.store')}}" method="post" novalidate >
                 @csrf
                 <label for="name">Ingrese el nombre del Rol</label>
-                <input type="text" name="name" class="form-control"> <br>
+                <input type="text" name="name" class="form-control" placeholder="Nombre para el nuevo rol">  <br> 
                 @error('name')                    
                 <small class="text-danger">*{{$message}}</small>
                 <br><br>                                            
                 @enderror                                                
                 
 
-                <label for="permisos">Asignación de permisos</label><br>
+                <label for="permisos">Seleccione los permisos para el rol</label><br>
 
                 <div class="form-check">
                     <div class="form row">

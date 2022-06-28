@@ -91,6 +91,8 @@ class DetallenotaSeeder extends Seeder
                 'id_facturas' => 2,
                 'id_activosfijo' => 1
             ],
+
+            //------
         ]);
     }
 }

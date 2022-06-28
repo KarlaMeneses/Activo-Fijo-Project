@@ -40,5 +40,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BajaSeeder::class);
 
         $this->call(solicitudSeeder::class);
+        $this->call(AyudaSeeder::class);
     }
 }

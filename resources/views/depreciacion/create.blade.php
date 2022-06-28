@@ -29,22 +29,22 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="nombre">Ingrese el nombre de cuenta contable</label>
-                        <input type="text" name="nombre" class="form-control" value="" required>
+                        <input type="text" name="nombre" class="form-control" value="" placeholder="Nombre de la cuenta contable" required >
                     </div>
 
                     <div class="col-md-6">
                         <label for="descripcion">Ingrese la descripción del activo</label>
-                        <input type="text" name="descripcion" class="form-control" value="" required>
+                        <input type="text" name="descripcion" class="form-control" value="" placeholder="Escriba una descripción del activo" required >
                     </div>
 
                     <div class="col-md-3">
                         <label for="tipo_activo">Ingrese el tipo activo</label>
-                        <input type="text" name="tipo_activo" class="form-control" value="" required>
+                        <input type="text" name="tipo_activo" class="form-control" value="" placeholder="tangible, intangible , etc " required >
                     </div>
 
                     <div class="col-md-3">
-                        <label for="cacateristica">Ingrese la cacateristica activo</label>
-                        <input type="text" name="cacateristica" class="form-control" value="" required>
+                        <label for="cacateristica">Ingrese la característica del activo</label>
+                        <input type="text" name="cacateristica" class="form-control" value="" placeholder="Depreciable, no depreciable..."  required>
                     </div>
 
                     <!--
@@ -77,14 +77,14 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label for="vida_util">Ingrese la vida util (años)</label>
-                        <input name="vida_util" type="tel" size="0" maxlength="3" pattern="[0-9-+()]{0,2}" placeholder=""
-                            required class="form-control" value="">
+                        <input name="vida_util" type="tel" size="0" maxlength="3" pattern="[0-9-+()]{0,2}" 
+                        placeholder="Valor numérico" required class="form-control" value="" ">
 
                     </div>
                     <div class="col-md-3">
                         <label for="valor_residual">Ingrese el valor residual %</label>
                         <input type="tel" name="valor_residual" size="0" maxlength="3" pattern="[0-9-+()]{0,2}"
-                            placeholder="" required class="form-control" value="">
+                            placeholder="Valor numérico" required class="form-control" value="">
 
                     </div>
                 </div>

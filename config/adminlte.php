@@ -247,14 +247,20 @@ return [
             'can'  => 'manage-blog',
         ],
 
-        ['header' => 'CONFIGURACION'],
+        ['header' => 'CONFIGURACIÓN'],
         [
             'text' => 'Perfil',
             'url'  => 'user/perfil/',
             'icon' => 'fas fa-fw fa-user',
             'icon_color' => 'text-light',
-            'can' => 'Gestionar Usuario'
+        //    'can' => 'Gestionar Usuario'
         ],
+        [
+            'text' => 'Ayuda',
+            'route'  => 'ayudas.index',
+            'icon' => 'fas fa-user',
+        ],
+
         ['header' => 'OPCIONES DE USUARIO'],
         [
             'text'    => 'Gestionar Usuario',

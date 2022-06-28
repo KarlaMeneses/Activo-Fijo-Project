@@ -15,8 +15,18 @@ class departamentoSeeder extends Seeder
      */
     public function run()
     {
-
-
+        /*
+        DB::table('departamentos')->insert([
+            [
+                'nombre' => 'Departamento General',
+                'descripcion' => 'Este departamento es la cabeza de la empresa. 
+                Se basa en su plan de negocios, sus metas personales y sus conocimientos,
+                 por lo que toma las decisiones en situaciones críticas.',
+            ]
+             
+        ]);
+         */
+        
         $depa= new Departamento();
         $depa->nombre= 'Departamento General';
         $depa->descripcion = 'Este departamento es la cabeza de la empresa. Se basa en su plan de negocios, sus metas personales y sus conocimientos, por lo que toma las decisiones en situaciones críticas.';

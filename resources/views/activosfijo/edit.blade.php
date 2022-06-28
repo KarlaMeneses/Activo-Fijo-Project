@@ -3,7 +3,9 @@
 @section('title', 'Activo Fijo')
 
 @section('content_header')
-    <h1>Actualizar Activo</h1>
+<div class="card-header  text-center">
+    <h3><b>Actualizar Activo Fijo</b></h3>
+</div>
 @stop
 
 @section('content')
@@ -29,90 +31,98 @@
                     </center>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="codigo">Codigo De Activo</label>
-                            <input type="text" name="codigo" class="form-control" value="{{ $activofijo->codigo }}">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-row">
+                                <div class="card-header form-group col-md-12">
+                                    <h5 class="font-weight-bold px-2">DATOS DEL ACTIVO</h5>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="codigo">Codigo De Activo</label>
+                                    <input type="text" name="codigo" class="form-control"
+                                        value="{{ $activofijo->codigo }}">
 
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="nombre">Nombre Del Activo</label>
+                                    <input type="text" name="nombre" class="form-control"
+                                        value="{{ $activofijo->nombre }}">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="detalle">Descripcion Del Activo</label>
+                                    <input type="text" name="detalle" class="form-control"
+                                        value="{{ $activofijo->detalle }}">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="tipo">Tipo De Activo</label>
+                                    <input name="tipo" type="text" class="form-control"
+                                        value="{{ $activofijo->tipo }}">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="fecha_ingreso">Fecha Ingreso</label>
+                                    <input name="fecha_ingreso" type="date" class="form-control"
+                                        value="{{ $activofijo->fecha_ingreso }}">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="costo">Costo Activo</label>
+                                    <input name="costo" type="text" class="form-control"
+                                        value="{{ $activofijo->costo }}">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="estado">Estado</label>
+                                    <input type="text" name="estado" class="form-control"
+                                        value="{{ $activofijo->estado }}">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="proveedor">Proveedor Del Activo</label>
+                                    <input type="text" name="proveedor" class="form-control"
+                                        value="{{ $activofijo->proveedor }}">
+                                </div>
+
+                            </div>
                         </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="nombre">Nombre Del Activo</label>
-                            <input type="text" name="nombre" class="form-control" value="{{ $activofijo->nombre }}">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="detalle">Descripcion Del Activo</label>
-                            <input type="text" name="detalle" class="form-control" value="{{ $activofijo->detalle }}">
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="tipo">Tipo De Activo</label>
-                            <input name="tipo" type="text" class="form-control" value="{{ $activofijo->tipo }}">
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="fecha_ingreso">Fecha Ingreso</label>
-                            <input name="fecha_ingreso" type="date" class="form-control"
-                                value="{{ $activofijo->fecha_ingreso }}">
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="costo">Costo Activo</label>
-                            <input name="costo" type="text" class="form-control" value="{{ $activofijo->costo }}">
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="vida_util">Vida Util Del Activo (años/meses)</label>
-                            <input name="vida_util" type="text" class="form-control"
-                                value="{{ $activofijo->vida_util }}">
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="v_residual">Valor Residual%</label>
-                            <input type="text" name="v_residual" class="form-control"
-                                value="{{ $activofijo->v_residual }}">
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="estado">Estado</label>
-                            <input type="text" name="estado" class="form-control" value="{{ $activofijo->estado }}">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="proveedor">Proveedor Del Activo</label>
-                            <input type="text" name="proveedor" class="form-control"
-                                value="{{ $activofijo->proveedor }}">
-                        </div>
-
-                        <div class="form-group col-md-12">
-                            <br>
-                            <label for="name">UBICACION DEL ACTIVO</label>
-                        </div>
-
-
-
-                        <div class="col-md-12">
-                            <label for="id_ubicacion">Seleccione la Ubicacion</label>
-                            <select name="id_ubicacion" class="focus border-dark  form-control">
-                                <option hidden disabled selected value> -- {{ $ubicaci->edificio }} / {{ $depa->nombre }} / {{ $ubicaci->ciudad }} -- </option>
-                                @foreach ($ubicaciones as $ubi)
-                                    @foreach ($departamentos as $departamento)
-                                        @if ($departamento->id == $ubi->id_departamento)
-                                            <option value="{{ $ubi->edificio }}">
-                                                {{ $ubi->edificio }} / {{ $departamento->nombre }} / {{ $ubi->ciudad }}</option>
-                                        @endif
-                                    @endforeach
-                                @endforeach
-
-                            </select><br>
-
-                        </div>
-
-
                     </div>
                 </div>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-row">
+                                <div class="card-header form-group col-md-12">
+                                    <h5 class="font-weight-bold px-2">UBICACION DEL ACTIVO</h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="id_ubicacion">Seleccione la Ubicacion</label>
+                                    <select name="id_ubicacion" class="focus border-dark  form-control">
+                                        <option hidden disabled selected value> -- {{ $ubicaci->edificio }} /
+                                            {{ $depa->nombre }} / {{ $ubicaci->ciudad }} -- </option>
+                                        @foreach ($ubicaciones as $ubi)
+                                            @foreach ($departamentos as $departamento)
+                                                @if ($departamento->id == $ubi->id_departamento)
+                                                    <option value="{{ $ubi->edificio }}">
+                                                        {{ $ubi->edificio }} / {{ $departamento->nombre }} /
+                                                        {{ $ubi->ciudad }}</option>
+                                                @endif
+                                            @endforeach
+                                        @endforeach
+                
+                                    </select><br>
+                
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
                 <br>
                 <br>
 
