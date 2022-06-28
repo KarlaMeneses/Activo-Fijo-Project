@@ -48,7 +48,6 @@
                                 <h5 class="font-weight-bold px-2">DATOS DEL ACTIVO</h5>
                             </div>
 
-
                             <div class="form-group col-md-6">
                                 <label for="codigo">Codigo De Activo</label>
                                 <input type="text" name="codigo" class="form-control"
@@ -96,6 +95,12 @@
                                 <label for="detalle">Proveedor Del Activo</label>
                                 <input type="text" name="detalle" class="form-control"
                                     value="{{ $activofijo->proveedor }}" disabled>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="d_anual">Depreciacion anual</label>
+                                <input type="text" name="d_anual" class="form-control"
+                                    value="{{ $activofijo->d_anual }}" disabled>
                             </div>
                         </div>
                     </div>
@@ -159,8 +164,8 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label for="costo">Bienes</label>
-                                <input name="costo" type="tel" class="form-control"
+                                <label for="nombre">Bienes</label>
+                                <input name="nombre" type="tel" class="form-control"
                                     value="{{ $depreciacion->nombre }}" disabled>
                             </div>
 
@@ -187,6 +192,7 @@
                                 <input type="tel" name="estado" class="form-control"
                                     value="{{ $depreciacion->valor_residual }}" disabled>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -196,6 +202,10 @@
 
 
             <center>
+                
+                <a href="{{ route('activosfijo.calcular', $activofijo->id) }}"
+                    class="btn btn-warning btb-sm text-light">Calculo</a>
+
                 <a href="{{ route('activosfijo.index') }}" class="btn btn-warning btb-sm text-light">Volver</a>
                 <a href="{{ route('activosfijo.edit', $activofijo->id) }}"
                     class="btn btn-primary btb-sm text-light">Editar </a>
@@ -203,6 +213,7 @@
                     de compra</a>
                 <a href="{{ route('factura.facturacompra.show', $activofijo->id) }}"
                     class="btn btn-danger btb-sm text-light">Ver factura</a>
+                    
             </center>
 
 

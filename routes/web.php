@@ -103,6 +103,13 @@ Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones')
 Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');
 Route::post('activosfijo/index', [RevalorizacionController::class, 'idactivo'])->name('activosfijo.idactivo');
 
+
+
+
+//Route::post('activosfijo/{id}', [ActivofijoController::class, 'calcular'])->name('activosfijo.calcular');
+//Route::get('activosfijo.{id}', [ActivofijoController::class, 'calcular'])->name('activosfijo.calcular');
+Route::get('activosfijo/show/{id}', [ActivofijoController::class, 'calcular'])->name('activosfijo.calcular');
+
 //MANTENIMIENTO
 Route::get('mantenimientos/index', [App\Http\Controllers\MantenimientoController::class, 'index'])->name('mantenimientos.index');
 Route::get('mantenimientos/create', [App\Http\Controllers\MantenimientoController::class, 'create'])->name('mantenimientos.create');

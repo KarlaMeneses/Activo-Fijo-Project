@@ -5,7 +5,7 @@
 @section('content_header')
 
     <div class="card-header  text-center">
-        <h3><b>Lista revalorizacion</b></h3>
+        <h3><b>Listado de Revalorizacion</b></h3>
     </div>
 
 @stop
@@ -14,6 +14,7 @@
 @stop
 
 @section('content')
+{{--}} NO ES NECESARIO CREARLO
     <div class="card">
         <div class="card-header">
             <a class="btn btn-primary" href="{{ route('revalorizacion.create') }}">
@@ -21,6 +22,7 @@
                 revalorizacion</a>
         </div>
     </div>
+--}}
 
     <div class="card">
         <!--<div class="card-body">-->
