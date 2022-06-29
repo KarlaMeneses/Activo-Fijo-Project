@@ -16,9 +16,12 @@ class CreateMantenimientosTable extends Migration
         Schema::create('mantenimientos', function (Blueprint $table) {
             $table->id();
             $table->string('problema');
+            $table->string('proveedor');
+            $table->string('tiempo');
             $table->float('costo');
             $table->date('fecha_ini');
             $table->date('fecha_fin');
+            $table->date('fecha_aprox');
             $table->string('solucion');
             $table->string('estado');
             $table->unsignedBigInteger('id_activo');

@@ -15,17 +15,23 @@ class CreateActivosfijoTable extends Migration
     {
         Schema::create('activosfijo', function (Blueprint $table) {
             $table->id();
+            $table->string('d_anual')->nullable(); 
             $table->string('codigo')->nullable();
+            $table->string('nombre')->nullable();
             $table->string('detalle')->nullable();
-            $table->decimal('costo')->nullable();
+            $table->string('tipo')->nullable();
             $table->date('fecha_ingreso')->nullable();
             $table->string('proveedor')->nullable();
+            $table->decimal('costo')->nullable();
             $table->string('estado')->nullable();
-            $table->string('vida_util')->nullable();
             $table->unsignedBigInteger('id_ubicacion')->nullable();
             $table->foreign('id_ubicacion')->on('ubicacion')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('id_factura')->nullable();
             $table->foreign('id_factura')->on('facturas')->references('id')->onDelete('cascade');
+            $table->unsignedBigInteger('id_depreciacion')->nullable();
+            $table->foreign('id_depreciacion')->on('depreciaciones')->references('id')->onDelete('cascade');
+
+            $table->timestamps();
 
             /*
             $table->unsignedBigInteger('id_categñoria');

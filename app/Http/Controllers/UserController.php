@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
+
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\App;
+
+
 class UserController extends Controller
 {
 
@@ -238,5 +243,31 @@ class UserController extends Controller
 
         $user->save();
         return redirect()->route('user.show');
+    }
+
+
+
+    public function reporte(Request $request)
+    {
+        $user_c = Auth::user()->id;
+      
+        $user = User::find($user_c);
+        $i =$request->inicio;
+        $f =$request->fin;
+         $lol = $request;
+        $users = User::whereBetween('created_at', [$request->inicio, $request->fin])->get();
+        
+   
+
+        $view = View::make('users.reporte', compact('users','user','i','f', 'lol'))->render();
+
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->setOptions([
+            'logOutputFile' => storage_path('logs/log.htm'),
+            'tempDir' => storage_path('logs/')
+        ]);
+
+        $pdf->loadHTML($view);
+        return $pdf->stream();
     }
 }

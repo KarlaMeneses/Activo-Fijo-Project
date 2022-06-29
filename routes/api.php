@@ -30,3 +30,5 @@ Route::group(['middleware' => ['jwt.verify']], function (){
     Route::post('actualizarFoto', [UserController::class, 'actualizarFoto']);
     Route::get('obtenerFacturas', [FacturaController::class, 'obtenerFacturas']);
 });
+
+

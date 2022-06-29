@@ -13,7 +13,36 @@
                 @csrf
                 @method('put')
 
-                <div class="row">
+                <div class="row" style="padding-bottom: 1rem">
+                    <div class="col-md-12">
+                        <label for="id_activo">Seleccione el Activo Fijo para Mantenimiento</label>
+                        <select name="id_activo" class=" form-control">
+                            @foreach ($activos as $activo)
+                                @if($mante->id_activo == $activo->id)
+                                <option value="{{ $activo->id }}">{{ $activo->detalle }}</option>
+                                @endif
+                            @endforeach
+                            @foreach ($activos as $activo)
+                                @if(!($mante->id_activo == $activo->id))
+                                <option value="{{ $activo->id }}">{{ $activo->detalle }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>      
+                </div>
+
+                <div class="row" style="padding-bottom: 1rem">
+                    <div class="col-md-6">
+                        <label for="proveedor">Proveedor</label>
+                        <input type="text" name="proveedor" value="{{ $mante->proveedor }}" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="tiempo">Días Esperados</label>
+                        <input type="text" name="tiempo" value="{{ $mante->tiempo }}" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row" style="padding-bottom: 1rem">
                     <div class="col-md-6">
                         <label for="fecha_ini">Ingrese Fecha de Inicio</label>
                         <input type="date" name="fecha_ini" class="form-control" value="{{$mante->fecha_ini}}" required> 
@@ -24,7 +53,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row" style="padding-bottom: 1rem">
                     <div class="col-md-6">
                         <label for="problema">Ingrese la Descripción del Mantenimiento</label>
                         <input type="text" name="problema" class="form-control" value="{{$mante->problema}}" required>
@@ -45,7 +74,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row" style="padding-bottom: 1rem">
                     <div class="col-md-6">
                         <label for="solucion">Ingresar Solución</label>
                         <input type="text" name="solucion" class="form-control"value="{{$mante->solucion}}" required> 
@@ -56,24 +85,7 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <label for="id_activo">Seleccione el Activo Fijo para Mantenimiento</label>
-                        <select name="id_activo" class=" form-control">
-                            @foreach ($activos as $activo)
-                                @if($mante->id_activo == $activo->id)
-                                <option value="{{ $activo->id }}">{{ $activo->detalle }}</option>
-                                @endif
-                            @endforeach
-                            @foreach ($activos as $activo)
-                                @if(!($mante->id_activo == $activo->id))
-                                <option value="{{ $activo->id }}">{{ $activo->detalle }}</option>
-                                @endif
-                            @endforeach
-                        </select>
-                    </div>
-                    
-                </div>
+                
                 <br>
                 <button class="btn btn-danger btn-sm" type="submit">Actualizar</button>
                 <a class="btn btn-primary btn-sm" href="{{ route('mantenimientos.index') }}">Volver</a>
