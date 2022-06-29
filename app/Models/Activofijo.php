@@ -10,7 +10,8 @@ class Activofijo extends Model
     use HasFactory;
     protected $table = 'activosfijo';
     protected $fillable = [
-        'codigo', 'detalle', 'costo', 'fecha_ingreso', 'proveedor', 'estado', 'id_factura', 'id_ubicacion'
+        'codigo', 'detalle', 'costo', 'fecha_ingreso', 'proveedor', 'estado', 'id_factura',
+        'id_categoria', 'id_ubicacion','vida_util'
     ];
 
     public function factura(){

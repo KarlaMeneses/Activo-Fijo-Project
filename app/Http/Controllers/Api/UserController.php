@@ -18,7 +18,7 @@ class UserController extends Controller
             }
             $usuario = auth('api')->user();
 
-            if($usuario->getRoleNames()[0] != 'Administrador'){
+            if($usuario->getRoleNames()[0] == 'Administrador'){
                 return response()->json(['mensaje' => 'Rol sin acceso'], 401);
             }
 
