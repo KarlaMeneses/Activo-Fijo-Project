@@ -3,6 +3,7 @@
 @section('title', 'Activo Fijo')
 
 @section('content_header')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
 
@@ -14,7 +15,10 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <link rel="stylesheet" href="{{ asset('css/subir.css') }}">
+<link rel="stylesheet" href="{{ asset('css/qr.css') }}">
+
 @stop
+
 
 
 @section('content')
@@ -30,7 +34,7 @@
             <center>
                 {{-- separador --}}
                 <div class="form-group col-md-3">
-                    <img width="200" height="200"  id="foto">
+                    <img width="200" height="200" id="foto">
                     <div class="custom-input-file">
                         <input type="file" id="file" accept="image/*" class="input-file" value="">
                         <i class="fas fa-file-upload"></i> Subir Foto...
@@ -44,7 +48,6 @@
                     @enderror
                 </div>
             </center>
-
 
             <br>
             <div class="row">

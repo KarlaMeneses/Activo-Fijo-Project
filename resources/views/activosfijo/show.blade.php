@@ -3,8 +3,10 @@
 @section('title', 'Activo Fijo')
 
 @section('content_header')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
 @stop
+
 
 @section('content')
 <div class="card">
@@ -33,6 +35,10 @@
                         <img height=200 width=300 data-value="{{ $activofijo->codigo }}" class="codigo" id="contenedor" />
                         <br>
                         <label for="name">Vista detallada de {{ $activofijo->detalle }} </label>
+
+                        <div id="qrcode">
+                            <a href="{{$activofijo->id }}">descagar</a>
+                        </div>
                     </center>
                 </div>
 
@@ -205,6 +211,13 @@
 @stop
 
 @section('js')
+<script>
+    window.addEventListener("load", () => {
+        var qrc = new QRCode(document.getElementById("qrcode"), "{{ $activofijo->id }}");
+    });
+
+</script>
+
 <script>
     const activo = [{
         nombre: "activo"
