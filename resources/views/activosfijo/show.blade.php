@@ -24,19 +24,19 @@
 
         <div class="card">
             <div class="card-body">
-                <div class="row">
-                    <div>
-                        <center>
-                            <br>
-                            <img src="{{ asset($activofijo->codigo) }}" width="350" height="350" />
-                            <br>
-                            <img height=200 width=300 data-value="{{ $activofijo->codigo }}" class="codigo" id="contenedor" />
-                            <br>
-                            <label for="name">Vista detallada de {{ $activofijo->detalle }} </label>
-                        </center>
-                    </div>
 
+                <div>
+                    <center>
+                        <br>
+                        <img src="{{ asset($activofijo->foto) }}" width="350" height="350" />
+                        <br>
+                        <img height=200 width=300 data-value="{{ $activofijo->codigo }}" class="codigo" id="contenedor" />
+                        <br>
+                        <label for="name">Vista detallada de {{ $activofijo->detalle }} </label>
+                    </center>
                 </div>
+
+
             </div>
         </div>
 
