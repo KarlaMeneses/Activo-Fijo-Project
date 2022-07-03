@@ -255,11 +255,11 @@ return [
             'icon_color' => 'text-light',
         //    'can' => 'Gestionar Usuario'
         ],
-        [
+      /*  [
             'text' => 'Ayuda',
             'route'  => 'ayudas.index',
             'icon' => 'fas fa-user',
-        ],
+        ],*/
 
         ['header' => 'OPCIONES DE USUARIO'],
         [

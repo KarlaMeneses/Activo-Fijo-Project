@@ -13,8 +13,10 @@ use Spatie\Permission\Models\Role;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\App;
-
-
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\Exportable;
+use App\Exports\UserExport;
+use Maatwebsite\Excel\Facades\Excel;
 class UserController extends Controller
 {
 
@@ -31,11 +33,16 @@ class UserController extends Controller
     public function index()
     {
         // dd(Auth::user()->getRoleNames()[0]);
-        $users = User::all();
-        return view('users.index', compact('users'));
+    $users = User::all();
+     return view('users.index', compact('users'));     
     }
-
-
+   
+    public function export()
+    {
+        return Excel::download(new UserExport, 'users.xlsx');
+    }
+    //return (new UserController)->download('invoices.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+    //
     /**
      * Show the form for creating a new resource.
      *
@@ -257,17 +264,24 @@ class UserController extends Controller
          $lol = $request;
         $users = User::whereBetween('created_at', [$request->inicio, $request->fin])->get();
         
-   
+        if($request->tipo == 'pdf'){
+            $view = View::make('users.reporte', compact('users','user','i','f', 'lol'))->render();
 
-        $view = View::make('users.reporte', compact('users','user','i','f', 'lol'))->render();
+            $pdf = App::make('dompdf.wrapper');
+            $pdf->setOptions([
+                'logOutputFile' => storage_path('logs/log.htm'),
+                'tempDir' => storage_path('logs/')
+            ]);
+    
+            $pdf->loadHTML($view);
+            return $pdf->stream();
+        }
 
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->setOptions([
-            'logOutputFile' => storage_path('logs/log.htm'),
-            'tempDir' => storage_path('logs/')
-        ]);
-
-        $pdf->loadHTML($view);
-        return $pdf->stream();
+       if($request->tipo == 'excel'){
+        return Excel::download(new UserExport($request), 'users.xlsx');
+       }
+       if($request->tipo == 'html'){
+        return  $view = View::make('users.reporte', compact('users','user','i','f', 'lol'))->render();
+       }
     }
 }
