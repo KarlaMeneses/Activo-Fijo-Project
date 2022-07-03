@@ -8,6 +8,7 @@ use App\Models\Depreciacion;
 use App\Models\Factura;
 use App\Models\Ubicacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Psy\Readline\Hoa\Console;
 
 class ActivofijoController extends Controller
@@ -45,14 +46,13 @@ class ActivofijoController extends Controller
     {
         $activofijo = new Activofijo();
         $activofijo->codigo = $request->codigo;
+        $activofijo->foto = $request->foto;
         $activofijo->nombre = $request->nombre;
         $activofijo->detalle = $request->detalle;
         $activofijo->tipo = $request->tipo;
         $activofijo->fecha_ingreso = $request->fecha_ingreso;
         $activofijo->proveedor = $request->proveedor;
         $activofijo->costo = $request->costo;
-        $activofijo->vida_util = $request->vida_util;
-        $activofijo->v_residual = $request->costo;
         $activofijo->estado = $request->estado;
 
         $ubicacion = Ubicacion::all();
@@ -78,14 +78,14 @@ class ActivofijoController extends Controller
         $ubicaciones = Ubicacion::all();
         $facturas = Factura::all();
         $departamentos = Departamento::all();
-
         $depreciacion = Depreciacion::all();
         foreach ($depreciacion as $depreci) {
-            if ($depreci->id == $activofijo->id_depreciacion) {
-                $depreciacion = Depreciacion::find($depreci->id );
+            if ($activofijo->id_depreciacion == $depreci->id) {
+                $depreciacion = Depreciacion::find($depreci->id);
             }
         }
-        return view('activosfijo.show', compact('activofijo', 'facturas', 'ubicaciones', 'departamentos','depreciacion'));
+
+        return view('activosfijo.show', compact('activofijo', 'facturas', 'ubicaciones', 'departamentos', 'depreciacion'));
     }
 
     /**
@@ -116,14 +116,13 @@ class ActivofijoController extends Controller
     {
         $activofi = Activofijo::findOrFail($activofijo);
         $activofi->codigo = $request->codigo;
+        $activofi->foto = $request->foto;
         $activofi->nombre = $request->nombre;
         $activofi->detalle = $request->detalle;
         $activofi->tipo = $request->tipo;
         $activofi->fecha_ingreso = $request->fecha_ingreso;
         $activofi->proveedor = $request->proveedor;
         $activofi->costo = $request->costo;
-        $activofi->vida_util = $request->vida_util;
-        $activofi->v_residual = $request->costo;
         $activofi->estado = $request->estado;
         if ($request->id_ubicacion != null) {
             $ubicacion = Ubicacion::all();
@@ -147,6 +146,54 @@ class ActivofijoController extends Controller
     {
         $activofijo = Activofijo::find($id);
         $activofijo->delete();
+        return redirect()->back();
+    }
+
+    public function calcular($id)
+    {
+        $activofijo = Activofijo::find($id);
+        //anual - semanas
+        //$fechaActual = date('Y-m-d'); //2022-06-28
+        //$fechaingreso = $activofijo->fecha_ingreso; //2022-02-03
+
+        $fechaActual = 2022 - 06 - 28;
+        $fechaingreso = 2018 - 06 - 28;
+        $segundosFechaActual = strtotime($fechaActual);
+        $segundosFechaingreso = strtotime($fechaingreso);
+        $segundosTranscurridos = $segundosFechaActual - $segundosFechaingreso;
+        $semanasTranscurridos = $segundosTranscurridos / 604800;
+        $semana = floor($semanasTranscurridos);
+
+        $depreciacion = Depreciacion::all();
+        foreach ($depreciacion as $depreci) {
+            if ($depreci->id == $activofijo->id_depreciacion) {
+                $auxi = $depreci->vida_util;
+                $idaux = $depreci->id;
+            }
+        }
+        return $auxi;
+        $DAnual = $activofijo->costo / $auxi;
+
+        if ($semana >= 52 && $semana < 104) { // 1 año
+            DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual]);
+        } else {
+            if ($semana >= 104 && $semana < 156) { // 2 año
+                DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 2]);
+            } else {
+                if ($semana >= 156 && $semana < 208) { //3 año
+                    DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 3]);
+                } else {
+                    if ($semana >= 208 && $semana < 260) { //4 año
+                        DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 4]);
+                    } else {
+                        if ($semana >= 260 && $semana < 312) { //5 año
+                            DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 5]);
+                        }
+                    }
+                }
+            }
+        }
+
         return redirect()->back();
     }
 }

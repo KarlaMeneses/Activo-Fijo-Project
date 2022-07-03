@@ -298,8 +298,8 @@ return [
                     'route'  => 'empresa.index',
                     'icon' => 'fas fa-users',
                 ],
-               
-                
+
+
             ],
         ],
 

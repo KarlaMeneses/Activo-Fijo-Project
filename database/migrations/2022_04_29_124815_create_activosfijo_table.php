@@ -15,7 +15,9 @@ class CreateActivosfijoTable extends Migration
     {
         Schema::create('activosfijo', function (Blueprint $table) {
             $table->id();
+            $table->string('d_anual')->nullable();
             $table->string('codigo')->nullable();
+            $table->string('foto')->nullable(); //añadi imagen al activo atte:luishiño
             $table->string('nombre')->nullable();
             $table->string('detalle')->nullable();
             $table->string('tipo')->nullable();
