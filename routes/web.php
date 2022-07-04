@@ -17,6 +17,8 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Contracts\Role;
+use App\Exports\UserExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,13 +37,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
+<<<<<<< HEAD
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+=======
+
+// $user = User::find(auth()->user()->id);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+>>>>>>> 902ca0239ce65639962be90a55f4addc30a3c63a
 Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
 Route::get('user/perfil/', [userController::class, 'show2'])->name('user.show');
 Route::patch('user/update/', [userController::class, 'update2'])->name('user.update');
 
 Route::post('users/reporte', [App\Http\Controllers\UserController::class, 'reporte'])->name('users.reporte');
+Route::get('/export', [App\Http\Controllers\UserController::class, 'export'])->name('users.export');
 
 /* Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show'); */
 /*El apartado de arriba ya se incluye en el resource */

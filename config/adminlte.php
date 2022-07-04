@@ -276,7 +276,7 @@ return [
                     'route'  => 'roles.index',
                     'icon' => 'fas fa-ruler',
                 ],
-                /*[
+                [
                     'text' => 'Bitacora',
                     'route'  => 'bitacora.auth',
                     'icon' => 'fas fa-tools',
@@ -298,8 +298,8 @@ return [
                     'route'  => 'empresa.index',
                     'icon' => 'fas fa-users',
                 ],
-               
-                
+
+
             ],
         ],
 

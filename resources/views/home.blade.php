@@ -25,7 +25,12 @@
 
 
 <div style="width: 6rem; position:relative;width:100%">
-    <img style="margin:auto;display:block; padding-top: 6rem" width="400rem" src="https://anepsa.com.mx/wp-content/uploads/2021/05/SAAF-logo-con-tipografi%CC%81a.png" alt="">
+
+    <?php
+        $nombreImagen = $user->usuario->foto;
+        $imagenBase64 = 'data:image/jpg;base64,' . base64_encode(file_get_contents($nombreImagen));
+        ?>
+    <img style="margin:auto;display:block; padding-top: 5rem" width="400rem" src="{{ asset($user->usuario->foto) }}" alt="">
 </div>
 
 <df-messenger intent="WELCOME" chat-title="bots" agent-id="86938b5f-1e37-43dc-9f38-1bd5322b1eb7" language-code="es"></df-messenger>

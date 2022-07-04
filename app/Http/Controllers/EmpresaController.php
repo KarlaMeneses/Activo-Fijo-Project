@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\EmpresaExport;
 use App\Models\Empresa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EmpresaController extends Controller
 {
@@ -57,6 +59,7 @@ class EmpresaController extends Controller
         
          $lol = $request;
         $empresas = Empresa::whereBetween('created_at', [$request->inicio, $request->fin])->get();
+        if($request->tipo == 'pdf'){
         $view = View::make('empresa.reporte', compact('empresas','user', 'lol'))->render();
 
         $pdf = App::make('dompdf.wrapper');
@@ -67,6 +70,15 @@ class EmpresaController extends Controller
 
         $pdf->loadHTML($view);
         return $pdf->stream();
+        }
+
+        if($request->tipo == 'excel'){
+            return Excel::download(new EmpresaExport($request), 'empresas.xlsx');
+           }
+           if($request->tipo == 'html'){
+            return  $view = View::make('empresa.reporte', compact('empresas','user', 'lol'))->render();
+           }
+
     }
 
     public function edit($id)

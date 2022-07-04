@@ -14,10 +14,11 @@ class activofijoSeeder extends Seeder
      */
     public function run()
     {
-   
+
         DB::table('activosfijo')->insert([
             [
                 'codigo' => 'AB-01',
+                'foto' => 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/activo%2Fc823dc21-282b-4c55-9a2c-0bccaa45f169.jpg?alt=media&token=c96bb004-7c1a-4bc6-b55a-5c721fd43e28',
                 'nombre' => 'Laptop',
                 'detalle' => 'Para uso de personal',
                 'tipo' => 'Tangible',
@@ -32,6 +33,7 @@ class activofijoSeeder extends Seeder
 
             [
                 'codigo' => 'AB-02',
+                'foto' => 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/activo%2Factivo-fijo-3.jpg?alt=media&token=e60e4fe5-353a-4faf-ad05-461f5bb9061b',
                 'nombre' => 'Escritorio',
                 'detalle' => 'Para uso de personal',
                 'tipo' => 'Tangible',
@@ -45,6 +47,7 @@ class activofijoSeeder extends Seeder
             ],
             [
                 'codigo' => 'AB-03',
+                'foto' => 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/activo%2Factivo-fijo-3.jpg?alt=media&token=e60e4fe5-353a-4faf-ad05-461f5bb9061b',
                 'nombre' => 'Monitor',
                 'detalle' => 'Para uso de personal',
                 'tipo' => 'Tangible',
@@ -58,6 +61,7 @@ class activofijoSeeder extends Seeder
             ],
             [
                 'codigo' => 'AB-04',
+                'foto' => 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/activo%2Factivo-fijo-3.jpg?alt=media&token=e60e4fe5-353a-4faf-ad05-461f5bb9061b',
                 'nombre' => 'Impresora',
                 'detalle' => 'Para uso de personal',
                 'tipo' => 'Tangible',
@@ -71,6 +75,7 @@ class activofijoSeeder extends Seeder
             ],
             [
                 'codigo' => 'AB-05',
+                'foto' => 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/activo%2Factivo-fijo-3.jpg?alt=media&token=e60e4fe5-353a-4faf-ad05-461f5bb9061b',
                 'nombre' => 'Licencia de Software Office 2019 Profesional Plus',
                 'detalle' => 'Para uso de personal',
                 'tipo' => 'Tangible',
@@ -84,6 +89,7 @@ class activofijoSeeder extends Seeder
             ],
             [
                 'codigo' => 'AB-06',
+                'foto' => 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/activo%2Factivo-fijo-3.jpg?alt=media&token=e60e4fe5-353a-4faf-ad05-461f5bb9061b',
                 'nombre' => 'Automovil',
                 'detalle' => 'Para uso de personal',
                 'tipo' => 'Tangible',
