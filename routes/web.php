@@ -37,13 +37,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-<<<<<<< HEAD
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-=======
-
 // $user = User::find(auth()->user()->id);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
->>>>>>> 902ca0239ce65639962be90a55f4addc30a3c63a
 Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
 Route::get('user/perfil/', [userController::class, 'show2'])->name('user.show');
