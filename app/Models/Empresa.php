@@ -21,4 +21,10 @@ class Empresa extends Model
     'telefono',
     ];
 
+
+    public function usuario()
+    {
+        return $this->hasMany(User::class, 'idempresa');
+    }
+
 }

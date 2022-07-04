@@ -36,6 +36,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+// $user = User::find(auth()->user()->id);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
