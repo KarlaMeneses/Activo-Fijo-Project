@@ -43,7 +43,7 @@ class DepreciacionController extends Controller
             'nombre' => 'required|unique:depreciaciones', //Se valida el nombre en depreciaciones para que no se repitan antes de registrar una nueva
             'descripcion' => 'required|unique:depreciaciones',
             'tipo_activo' => 'required|unique:depreciaciones',
-            'cacateristica' => 'required|unique:depreciaciones',
+       
             'vida_util' => 'required|unique:depreciaciones',
             'valor_residual' => 'required|unique:depreciaciones',
         ]);
@@ -93,7 +93,7 @@ class DepreciacionController extends Controller
         $depres->nombre = $request->nombre;
         $depres->descripcion = $request->descripcion;
         $depres->tipo_activo = $request->tipo_activo;
-        $depres->cacateristica = $request->cacateristica;
+   
         $depres->vida_util = $request->vida_util;
         $depres->valor_residual = $request->valor_residual;
         $depres->save();

@@ -152,47 +152,15 @@ class ActivofijoController extends Controller
     public function calcular($id)
     {
         $activofijo = Activofijo::find($id);
-        $fechaActual = 2022 - 06 - 28;
-        $fechaingreso = 2018 - 06 - 28;
-        $segundosFechaActual = strtotime($fechaActual);
-        $segundosFechaingreso = strtotime($fechaingreso);
-        $segundosTranscurridos = $segundosFechaActual - $segundosFechaingreso;
-        $semanasTranscurridos = $segundosTranscurridos / 604800;
-        $semana = floor($semanasTranscurridos);
 
-        $depreciacion = Depreciacion::all();
-        foreach ($depreciacion as $depreci) {
-            if ($depreci->id == $activofijo->id_depreciacion) {
-                $auxi = $depreci->vida_util;
-                $idaux = $depreci->id;
-            }
-        }
-<<<<<<< HEAD
+        $V_activo = $activofijo->costo;
+        $id_de = $activofijo->id_depreciacion;
+        $depreciacion = Depreciacion::find($id_de);
 
-=======
-        return $auxi;
->>>>>>> 533d61bc98263d29e5d7baca9b2fc8c38081569e
-        $DAnual = $activofijo->costo / $auxi;
+        $V_residual = $depreciacion->valor_residual; //12,50 %
+        $VidaU_activo = $depreciacion->vida_util;    //20 años
 
-        if ($semana >= 52 && $semana < 104) { // 1 año
-            DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual]);
-        } else {
-            if ($semana >= 104 && $semana < 156) { // 2 año
-                DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 2]);
-            } else {
-                if ($semana >= 156 && $semana < 208) { //3 año
-                    DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 3]);
-                } else {
-                    if ($semana >= 208 && $semana < 260) { //4 año
-                        DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 4]);
-                    } else {
-                        if ($semana >= 260 && $semana < 312) { //5 año
-                            DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 5]);
-                        }
-                    }
-                }
-            }
-        }
+        $G_anual = ($V_activo - $V_residual) / $VidaU_activo; 
 
         return redirect()->back();
     }

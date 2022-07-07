@@ -66,28 +66,9 @@
 
 
                     <div class="col-md-3">
-                        <label for="cacateristica">Seleccione un cacateristica</label>
-                        <select name="cacateristica" id="cacateristica" class="form-select" onchange="habilitar()" required>
-                            <option value="{{ $depres->cacateristica }}">{{ $depres->cacateristica }}</option>
-                            <option value="No depreciables">No depreciables</option>
-                            <option value="Depreciable">Depreciable</option>
-                            <option value="Agotable">Agotable</option>
-                            <option value="Amortización">Amortización</option>
-                            <option value="No Amortizable">No Amortizable</option>
-                        </select>
-                    </div>
-
-
-
-                    <div class="col-md-3">
                         <label for="vida_util">Ingrese la vida util (años)</label>
-<<<<<<< HEAD
-                        <input name="vida_util" type="tel" size="2" maxlength="2" pattern="[0-9-+()]{1,3}"  placeholder="Valor numérico"
-                            required class="form-control" value="{{ $depres->vida_util }}" required>
-=======
                         <input name="vida_util" type="tel" size="2" maxlength="2" pattern="[0-9-+()]{1,3}"
                             placeholder="" required class="form-control" value="{{ $depres->vida_util }}" required>
->>>>>>> 12c72bcff67805e5da38a16dc121a04ac259752d
 
                     </div>
 
