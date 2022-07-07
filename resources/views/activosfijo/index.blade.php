@@ -25,7 +25,6 @@
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Costo</th>
-                        <th scope="col">Valor residual</th>
                         <th scope="col">fecha_ingreso</th>
                         <th scope="col">Proveedor</th>
                         <th scope="col">Estado</th>
@@ -39,7 +38,6 @@
                             <td>{{ $activo->id }}</td>
                             <td>{{ $activo->nombre }}</td>
                             <td>{{ $activo->costo }}</td>
-                            <td>{{ $activo->v_residual }}</td>
                             <td>{{ $activo->fecha_ingreso }}</td>
                             <td>{{ $activo->proveedor }}</td>
 

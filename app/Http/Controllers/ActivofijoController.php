@@ -150,10 +150,6 @@ class ActivofijoController extends Controller
     public function calcular($id)
     {
         $activofijo = Activofijo::find($id);
-        //anual - semanas
-        //$fechaActual = date('Y-m-d'); //2022-06-28
-        //$fechaingreso = $activofijo->fecha_ingreso; //2022-02-03
-
         $fechaActual = 2022 - 06 - 28;
         $fechaingreso = 2018 - 06 - 28;
         $segundosFechaActual = strtotime($fechaActual);
@@ -169,7 +165,7 @@ class ActivofijoController extends Controller
                 $idaux = $depreci->id;
             }
         }
-return $auxi;
+
         $DAnual = $activofijo->costo / $auxi;
 
         if ($semana >= 52 && $semana < 104 ) { // 1 año

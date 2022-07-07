@@ -30,15 +30,8 @@ class CreateActivosfijoTable extends Migration
             $table->foreign('id_factura')->on('facturas')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('id_depreciacion')->nullable();
             $table->foreign('id_depreciacion')->on('depreciaciones')->references('id')->onDelete('cascade');
-
             $table->timestamps();
-
-            /*
-            $table->unsignedBigInteger('id_categñoria');
-            $table->foreign('id_categoria')->on('categorias')->references('id')->onDelete('cascade');
-            $table->unsignedBigInteger('id_ubicacion');
-            $table->foreign('id_ubicacion')->on('ubicaciones')->references('id')->onDelete('cascade');*/
-        });
+ });
     }
 
     /**
