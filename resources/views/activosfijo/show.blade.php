@@ -26,34 +26,33 @@
             </div>
 
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="background-color: #E6E6E6;">
                     <div class="row">
-                        <div class="col-md-6">
-                            <img src="{{ asset($activofijo->foto) }}" width="350" height="300" />
-                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <img src="{{ asset($activofijo->foto) }}" width="350" height="300" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name">Vista detallada de {{ $activofijo->detalle }} </label>
+                                <div id="qrcode">
+                                    <a href="{{ $activofijo->id }}">descagar</a>
+                                </div>
+                            </div>
 
-                        <div class="col-md-6">
-                            <label for="name">Vista detallada de {{ $activofijo->detalle }} </label>
-                            <div id="qrcode">
-                                <a href="{{ $activofijo->id }}">descagar</a>
+                            <div class="form-group col-md-12">
+                                <br>
+                                <center>
+                                    <img height=120 width=200 data-value="{{ $activofijo->codigo }}" class="codigo"
+                                        id="contenedor" />
+                                </center>
                             </div>
                         </div>
                     </div>
-                    <div class="row">   
-                        <div class="col-md-12">
-                            <br><br>
-                            <center>
-                                <img height=120 width=200 data-value="{{ $activofijo->codigo }}" class="codigo"
-                                id="contenedor" />
-                            </center>
-                        </div>
-                    </div>
-                   
 
                 </div>
-
+                <br>
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: #00AA9E;">
                         <div class="row">
                             <div class="form-row">
                                 <div class="card-header form-group col-md-12">
@@ -120,7 +119,7 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: #00AA9E;">
                         <div class="row">
                             <div class="form-row">
                                 <div class="card-header form-group col-md-12">
@@ -165,7 +164,7 @@
 
 
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body " style="background-color: #00AA9E;">
                         <div class="row">
                             <div class="form-row">
                                 <div class="card-header form-group col-md-12">
@@ -193,13 +192,13 @@
                                 <div class="col-md-3">
                                     <label for="estado">Vida util</label>
                                     <input type="tel" name="estado" class="form-control"
-                                        value="{{ $depreciacion->vida_util }}" disabled>
+                                        value="{{ $depreciacion->vida_util }} años" disabled>
                                 </div>
 
                                 <div class="col-md-3">
                                     <label for="estado">Valor residual</label>
                                     <input type="tel" name="estado" class="form-control"
-                                        value="{{ $depreciacion->valor_residual }}" disabled>
+                                        value="{{ $activofijo->valor_residual }} Bs" disabled>
                                 </div>
 
                             </div>

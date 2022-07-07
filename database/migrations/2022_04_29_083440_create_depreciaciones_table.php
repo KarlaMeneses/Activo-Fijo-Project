@@ -23,7 +23,7 @@ class CreateDepreciacionesTable extends Migration
             $table->string('descripcion')->nullable(); ////descripción de la cuenta terreno,edificio etc
             $table->string('tipo_activo')->nullable(); //tipo de activo tangible,inttangible y inversion
             $table->integer('vida_util')->nullable(); //años de vida de un activo
-            $table->decimal('valor_residual')->nullable(); //% de vida del activo fijo
+            $table->decimal('coeficiente')->nullable(); //% de vida del activo fijo
             $table->timestamps();
         });
     }

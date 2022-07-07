@@ -13,9 +13,8 @@ class Depreciacion extends Model
         'nombre',
         'descripcion',
         'tipo_activo',
-        'caracteristica',
         'vida_util',
-        'valor_residual',
+        'coeficiente',
         'created_at',
         'updated_at'
     ];

@@ -124,6 +124,7 @@ class ActivofijoController extends Controller
         $activofi->proveedor = $request->proveedor;
         $activofi->costo = $request->costo;
         $activofi->estado = $request->estado;
+        
         if ($request->id_ubicacion != null) {
             $ubicacion = Ubicacion::all();
             foreach ($ubicacion as $ubi) {
@@ -152,7 +153,7 @@ class ActivofijoController extends Controller
     public function calcular($id)
     {
         $activofijo = Activofijo::find($id);
-
+        /*
         $V_activo = $activofijo->costo;
         $id_de = $activofijo->id_depreciacion;
         $depreciacion = Depreciacion::find($id_de);
@@ -163,5 +164,13 @@ class ActivofijoController extends Controller
         $G_anual = ($V_activo - $V_residual) / $VidaU_activo; 
 
         return redirect()->back();
+        */
+        $id_de = $activofijo->id_depreciacion;
+        $depreciacion = Depreciacion::find($id_de);
+        $depreciacion = ($activofijo->costo - $activofijo->valor_residual) / $depreciacion->vida_util;
+       // DB::insert('insert into activosfijo (id, d_anual) values (?, ?)', [$activofijo->id, $depreciacion]);
+        $activofijo->d_anual = $depreciacion;
+        $activofijo->save();
+       return redirect()->back();
     }
 }

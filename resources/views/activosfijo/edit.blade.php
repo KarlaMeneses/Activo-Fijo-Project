@@ -20,19 +20,31 @@
             <form action="{{ route('activosfijo.update', $activofijo) }}" method="post" novalidate>
                 @csrf
                 @method('put')
-                <div>
-                    <center>
-                        <img src="{{ asset($activofijo->codigo) }}" width="350" height="350" />
-                        <br>
-                        <img height=120 width=300 data-value="{{ $activofijo->codigo }}" class="codigo" id="contenedor" />
-                        <br>
-                        <label for="name">Vista detallada de {{ $activofijo->detalle }} </label>
+                <div class="row">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <img src="{{ asset($activofijo->foto) }}" width="350" height="300" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="name">Vista detallada de {{ $activofijo->detalle }} </label>
+                            <div id="qrcode">
+                                <a href="{{ $activofijo->id }}">descagar</a>
+                            </div>
+                        </div>
 
-                    </center>
+                        <div class="form-group col-md-12">
+                            <br>
+                            <center>
+                                <img height=120 width=200 data-value="{{ $activofijo->codigo }}" class="codigo"
+                                    id="contenedor" />
+                            </center>
+                        </div>
+                    </div>
                 </div>
+
                 <br>
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: #00AA9E;">
                         <div class="row">
                             <div class="form-row">
                                 <div class="card-header form-group col-md-12">
@@ -93,7 +105,7 @@
                 </div>
                 
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: #00AA9E;">
                         <div class="row">
                             <div class="form-row">
                                 <div class="card-header form-group col-md-12">
