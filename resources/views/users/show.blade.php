@@ -30,7 +30,6 @@
                 <img src="{{ asset($user->foto) }}" width="200" height="200" class="img-circle" />
                 <br>
                 <label for="name">Vista detallada de {{ $user->name }} </label>
-
             </center>
         </div>
 

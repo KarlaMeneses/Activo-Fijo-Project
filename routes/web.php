@@ -13,9 +13,12 @@ use App\Http\Controllers\NotaventaController;
 use App\Http\Controllers\RevalorizacionController;
 use App\Http\Controllers\UbicacionController;
 use App\Http\Controllers\DepreciacionController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Contracts\Role;
+use App\Exports\UserExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +37,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// $user = User::find(auth()->user()->id);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('users', UserController::class)->names('users');
@@ -41,6 +45,7 @@ Route::get('user/perfil/', [userController::class, 'show2'])->name('user.show');
 Route::patch('user/update/', [userController::class, 'update2'])->name('user.update');
 
 Route::post('users/reporte', [App\Http\Controllers\UserController::class, 'reporte'])->name('users.reporte');
+Route::get('/export', [App\Http\Controllers\UserController::class, 'export'])->name('users.export');
 
 /* Route::get('users/show/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show'); */
 /*El apartado de arriba ya se incluye en el resource */

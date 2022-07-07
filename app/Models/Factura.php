@@ -41,4 +41,9 @@ class Factura extends Model
         return $this->hasMany(DetalleFactura::class, 'idfactura');
     }
 
+    public function activofijo()
+    {
+        return $this->hasMany('App\Models\Activofijo','id_factura','id');
+    }
+
 }

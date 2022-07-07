@@ -46,6 +46,7 @@ class ActivofijoController extends Controller
     {
         $activofijo = new Activofijo();
         $activofijo->codigo = $request->codigo;
+        $activofijo->foto = $request->foto;
         $activofijo->nombre = $request->nombre;
         $activofijo->detalle = $request->detalle;
         $activofijo->tipo = $request->tipo;
@@ -115,6 +116,7 @@ class ActivofijoController extends Controller
     {
         $activofi = Activofijo::findOrFail($activofijo);
         $activofi->codigo = $request->codigo;
+        $activofi->foto = $request->foto;
         $activofi->nombre = $request->nombre;
         $activofi->detalle = $request->detalle;
         $activofi->tipo = $request->tipo;
@@ -165,22 +167,26 @@ class ActivofijoController extends Controller
                 $idaux = $depreci->id;
             }
         }
+<<<<<<< HEAD
 
+=======
+        return $auxi;
+>>>>>>> 533d61bc98263d29e5d7baca9b2fc8c38081569e
         $DAnual = $activofijo->costo / $auxi;
 
-        if ($semana >= 52 && $semana < 104 ) { // 1 año
+        if ($semana >= 52 && $semana < 104) { // 1 año
             DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual]);
         } else {
-            if ($semana >= 104 && $semana < 156 ) { // 2 año
+            if ($semana >= 104 && $semana < 156) { // 2 año
                 DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 2]);
             } else {
-                if ($semana >= 156 && $semana < 208 ) { //3 año
+                if ($semana >= 156 && $semana < 208) { //3 año
                     DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 3]);
                 } else {
-                    if ($semana >= 208 && $semana < 260 ) { //4 año
+                    if ($semana >= 208 && $semana < 260) { //4 año
                         DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 4]);
                     } else {
-                        if ($semana >= 260 && $semana < 312 ) { //5 año
+                        if ($semana >= 260 && $semana < 312) { //5 año
                             DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 5]);
                         }
                     }

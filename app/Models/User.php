@@ -34,6 +34,7 @@ class User extends Authenticatable implements JWTSubject
         'rol',
         'email',
         'password',
+        'idempresa',
     ];
 
     /**
@@ -59,6 +60,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Factura::class, 'idcomprador');
     }
+
+    public function usuario(){
+        return $this->belongsTo(Empresa::class,'idempresa');
+    }
+
     public function vendedoru()
     {
         return $this->hasMany(Factura::class, 'idvendedor');

@@ -60,7 +60,18 @@
                            
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="fin">Seleccione el formato</label>
+                      <br>
+                      <div class="checkbox">
+                            <select name="tipo" id="">
+                                <option value="pdf">PDF</option>
+                                <option value="excel">EXCEL</option>
+                                <option value="html">HTML</option>
+                            </select>
+                    </div>
 
+                </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
