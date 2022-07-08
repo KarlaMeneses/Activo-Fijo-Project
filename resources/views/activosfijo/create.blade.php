@@ -3,33 +3,35 @@
 @section('title', 'Activo Fijo')
 
 @section('content_header')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
 
-    <div class="card-header  text-center">
-        <h3><b>Crear Activo Fijo</b></h3>
-    </div>
+
+<div class="card-header  text-center">
+    <h3><b>Crear Activo Fijo</b></h3>
+</div>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/subir.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/qr.css') }}">
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<link rel="stylesheet" href="{{ asset('css/subir.css') }}">
+<link rel="stylesheet" href="{{ asset('css/qr.css') }}">
 
 @stop
 
 
 
 @section('content')
-    <div class="card">
-        <div class="card-body">
+<div class="card">
+    <div class="card-body">
 
-            <form action="{{ route('activosfijo.store') }}" method="post">
-                @csrf
+        <form action="{{ route('activosfijo.store') }}" method="post">
+            @csrf
 
             @section('js')
-                <script src="{{ asset('js/activo.js') }}"></script>
+            <script src="{{ asset('js/activo.js') }}"></script>
             @endsection
             <center>
                 {{-- separador --}}
@@ -41,12 +43,10 @@
                     </div>
                     <div class="col-12" id="app" style="text-align:center;">
                         <progress id="progress_bar" value="0" max="100"></progress>
-                        <input type="hidden" value="{{ old('foto') }}" name="foto" id="fotov" title="foto"
-                            placeholder="https://example.com" list="defaultURLs" class="focus border-dark  form-control"
-                            oninvalid="this.setCustomValidity('Please match the requested format')">
+                        <input type="hidden" value="{{ old('foto') }}" name="foto" id="fotov" title="foto" placeholder="https://example.com" list="defaultURLs" class="focus border-dark  form-control" oninvalid="this.setCustomValidity('Please match the requested format')">
                     </div>
                     @error('foto')
-                        <span class="text-danger">{{ $message }}</span>
+                    <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
             </center>
@@ -118,7 +118,7 @@
                         <select name="id_ubicacion" class="focus border-dark  form-control">
                             <option hidden disabled selected value> -- seleccionar-- </option>
                             @foreach ($ubi as $ubi)
-                                <option value="{{ $ubi->edificio }}">{{ $ubi->edificio }}</option>
+                            <option value="{{ $ubi->edificio }}">{{ $ubi->edificio }}</option>
                             @endforeach
                         </select><br>
                     </div>
@@ -174,6 +174,7 @@
             odontologos = false
         }
     } */
+
 </script>
 @stop
 
@@ -182,5 +183,32 @@
 @stop
 
 @section('js')
+<script>
+    window.addEventListener("load", () => {
+        var qrc = new QRCode(document.getElementById("qrcode"), "{{ $activofijo->id }}");
+    });
+
+</script>
+
+<script>
+    const activo = [{
+        nombre: "activo"
+        , precio: 20
+        , codigo: "123"
+    , }];
+    const $contenedor = document.querySelector("#contenedor");
+    // Por cada producto, crear un SVG y adjuntarlo
+    activo.forEach(activo => {
+        const elemento = document.createElement("img");
+        elemento.dataset.format = "CODE128";
+        elemento.dataset.value = activo.codigo;
+        elemento.dataset.text = activo.nombre + " " + activo.precio.toFixed(2);
+        elemento.classList.add("codigo");
+        $contenedor.appendChild(elemento);
+    });
+    // Al final, inicializamos
+    JsBarcode(".codigo").init();
+
+</script>
 
 @stop
