@@ -27,27 +27,21 @@
 
         <div class="card">
             <div class="card-body" style="background-color: #E6E6E6;">
-                <div class="row">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <center>
                             <img src="{{ asset($activofijo->foto) }}" width="350" height="300" />
-                        </div>
-                        <div class="form-group col-md-6">
+                        </center>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <center>
                             <label for="name">Vista detallada de {{ $activofijo->detalle }} </label>
                             <div id="qrcode">
                                 <a href="{{ $activofijo->id }}">descagar</a>
                             </div>
-                        </div>
-
-                        <div class="form-group col-md-12">
-                            <br>
-                            <center>
-                                <img height=120 width=200 data-value="{{ $activofijo->codigo }}" class="codigo" id="contenedor" />
-                            </center>
-                        </div>
+                        </center>
                     </div>
                 </div>
-
             </div>
             <br>
             <div class="card">
@@ -187,7 +181,18 @@
                 </div>
             </div>
 
+            <div class="card-body" style="background-color: #E6E6E6;">
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <br>
+                        <center>
+                            <img height=120 width=200 data-value="{{ $activofijo->codigo }}" class="codigo" id="contenedor" />
+                        </center>
+                    </div>
+                </div>
+            </div>
 
+            <br>
 
 
             <center>
@@ -203,7 +208,7 @@
 
             </center>
 
-
+            <br>
 
         </div>
     </div>

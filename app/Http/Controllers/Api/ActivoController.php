@@ -24,15 +24,25 @@ class ActivoController extends Controller
     public function obtenerActivo(Request $request)
     {
         try {
-            $p = Activofijo::where('codigo', $request->codigo)->first();
-            $activo = Activofijo::join('ubicacion', 'activosfijo.id_ubicacion', 'ubicacion.id')
-            ->join('departamentos', 'ubicacion.id_departamento', 'departamentos.id')
-            ->join('depreciaciones', 'activosfijo.id_depreciacion', 'depreciaciones.id')
-            ->select('activosfijo.codigo', 'activosfijo.nombre', 'activosfijo.detalle', 'activosfijo.tipo', 'activosfijo.fecha_ingreso', 'activosfijo.costo', 'activosfijo.estado', 'activosfijo.proveedor', 'activosfijo.d_anual',
-            'ubicacion.pais as ubicacion_pais', 'ubicacion.ciudad as ubicacion_ciudad', 'ubicacion.edificio as ubicacion_edificio', 'departamentos.nombre as departamento_nombre','depreciaciones.nombre as depreciacion_nombre', 'depreciaciones.descripcion as depreciacion_descripcion',
-            'depreciaciones.vida_util as depreciacion_vidaUtil', 'depreciaciones.valor_residual as depreciacion_valorResidual')
-            ->where('codigo', $request->codigo)
-            ->first();
+            if ($request->id == 0) {
+                $activo = Activofijo::join('ubicacion', 'activosfijo.id_ubicacion', 'ubicacion.id')
+                ->join('departamentos', 'ubicacion.id_departamento', 'departamentos.id')
+                ->join('depreciaciones', 'activosfijo.id_depreciacion', 'depreciaciones.id')
+                ->select('activosfijo.codigo', 'activosfijo.foto', 'activosfijo.nombre', 'activosfijo.detalle', 'activosfijo.tipo', 'activosfijo.fecha_ingreso', 'activosfijo.costo', 'activosfijo.estado', 'activosfijo.proveedor', 'activosfijo.d_anual', 'activosfijo.valor_residual',
+                'ubicacion.pais as ubicacion_pais', 'ubicacion.ciudad as ubicacion_ciudad', 'ubicacion.edificio as ubicacion_edificio', 'departamentos.nombre as departamento_nombre', 'depreciaciones.descripcion as depreciacion_descripcion',
+                'depreciaciones.vida_util as depreciacion_vidaUtil')
+                ->where('activosfijo.codigo', $request->codigo)
+                ->first();
+            }else{
+                $activo = Activofijo::join('ubicacion', 'activosfijo.id_ubicacion', 'ubicacion.id')
+                ->join('departamentos', 'ubicacion.id_departamento', 'departamentos.id')
+                ->join('depreciaciones', 'activosfijo.id_depreciacion', 'depreciaciones.id')
+                ->select('activosfijo.codigo', 'activosfijo.foto', 'activosfijo.nombre', 'activosfijo.detalle', 'activosfijo.tipo', 'activosfijo.fecha_ingreso', 'activosfijo.costo', 'activosfijo.estado', 'activosfijo.proveedor', 'activosfijo.d_anual', 'activosfijo.valor_residual',
+                'ubicacion.pais as ubicacion_pais', 'ubicacion.ciudad as ubicacion_ciudad', 'ubicacion.edificio as ubicacion_edificio', 'departamentos.nombre as departamento_nombre', 'depreciaciones.descripcion as depreciacion_descripcion',
+                'depreciaciones.vida_util as depreciacion_vidaUtil')
+                ->where('activosfijo.id', $request->id)
+                ->first();
+            }
             return response()->json(['mensaje' => 'Consulta exitosa', 'data' => $activo], 200);
         } catch (\Exception $e) {
             return response()->json(['mensaje' => $e->getMessage()], 500);
