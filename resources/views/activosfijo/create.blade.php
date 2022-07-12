@@ -185,7 +185,8 @@
 @section('js')
 <script>
     window.addEventListener("load", () => {
-        var qrc = new QRCode(document.getElementById("qrcode"), "{{ $activofijo->id }}");
+        var qrc = new QRCode(document.getElementById("qrcode"), "{{ $activofijo->codigo }}");
+
     });
 
 </script>
