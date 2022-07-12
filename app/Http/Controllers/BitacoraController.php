@@ -13,8 +13,6 @@ use Response;
 
 class BitacoraController extends Controller
 {
-
-
     public function index()
     {
         // $actividades = Activity::all();
@@ -23,7 +21,6 @@ class BitacoraController extends Controller
         // return $actividades;
         return view('bitacora.index', compact('actividades'));
     }
-
 
     public function show()
     {

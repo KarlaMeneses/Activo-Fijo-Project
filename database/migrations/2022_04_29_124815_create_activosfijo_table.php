@@ -15,14 +15,16 @@ class CreateActivosfijoTable extends Migration
     {
         Schema::create('activosfijo', function (Blueprint $table) {
             $table->id();
-            $table->string('d_anual')->nullable(); 
+            $table->string('d_anual')->nullable();
             $table->string('codigo')->nullable();
+            $table->string('foto')->nullable(); //añadi imagen al activo atte:luishiño
             $table->string('nombre')->nullable();
             $table->string('detalle')->nullable();
             $table->string('tipo')->nullable();
             $table->date('fecha_ingreso')->nullable();
             $table->string('proveedor')->nullable();
             $table->decimal('costo')->nullable();
+            $table->decimal('valor_residual')->nullable();
             $table->string('estado')->nullable();
             $table->unsignedBigInteger('id_ubicacion')->nullable();
             $table->foreign('id_ubicacion')->on('ubicacion')->references('id')->onDelete('cascade');
@@ -30,15 +32,8 @@ class CreateActivosfijoTable extends Migration
             $table->foreign('id_factura')->on('facturas')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('id_depreciacion')->nullable();
             $table->foreign('id_depreciacion')->on('depreciaciones')->references('id')->onDelete('cascade');
-
             $table->timestamps();
-
-            /*
-            $table->unsignedBigInteger('id_categñoria');
-            $table->foreign('id_categoria')->on('categorias')->references('id')->onDelete('cascade');
-            $table->unsignedBigInteger('id_ubicacion');
-            $table->foreign('id_ubicacion')->on('ubicaciones')->references('id')->onDelete('cascade');*/
-        });
+ });
     }
 
     /**

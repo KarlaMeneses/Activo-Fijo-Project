@@ -4,14 +4,14 @@
 
 @section('content_header')
     <div class="card-header  text-center">
-        <h3><b>Activo Fijo</b></h3>
+        <h3><b>ACTIVO FIJO</b></h3>
     </div>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('activosfijo.create') }}"class="btn btn-primary btb-sm">Crear Activo fijo</a>
+            <a href="{{ route('activosfijo.create') }}" class="btn btn-primary btb-sm">Crear Activo fijo</a>
         </div>
     </div>
 
@@ -21,15 +21,13 @@
             <table class="table table-striped" id="activo" style="width:100%">
                 <thead class="bg-dark">
                     <tr>
-
                         <th scope="col">ID</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Costo</th>
-                        <th scope="col">Valor residual</th>
-                        <th scope="col">fecha_ingreso</th>
-                        <th scope="col">Proveedor</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col">FOTO</th>
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">COSTO</th>
+                        <th scope="col">PROVEEDOR</th>
+                        <th scope="col">ESTADO</th>
+                        <th scope="col">ACCIONES</th>
                     </tr>
                 </thead>
 
@@ -37,26 +35,26 @@
                     @foreach ($activosfijo as $activo)
                         <tr>
                             <td>{{ $activo->id }}</td>
+                            <td><img src="{{ asset($activo->foto) }}" width="100" height="80" />
                             <td>{{ $activo->nombre }}</td>
-                            <td>{{ $activo->costo }}</td>
-                            <td>{{ $activo->v_residual }}</td>
-                            <td>{{ $activo->fecha_ingreso }}</td>
+                            <td>{{ $activo->costo }} Bs</td>
                             <td>{{ $activo->proveedor }}</td>
-
-                            @if ($activo->estado == 'Activo')
-                                <td class="badge rounded-pill bg-success">{{ $activo->estado }}</td>
-                            @else
-                                @if ($activo->estado == 'No activo')
-                                    <td class="badge rounded-pill bg-danger">{{ $activo->estado }}</td>
+                            <td>
+                                @if ($activo->estado == 'Activo')
+                                    <span class="badge rounded-pill bg-success">{{ $activo->estado }}</span>
                                 @else
-                                    @if ($activo->estado == 'En mantenimiento')
-                                        <td class="badge rounded-pill bg-warning">{{ $activo->estado }}</td>
+                                    @if ($activo->estado == 'No activo')
+                                        <span class="badge rounded-pill bg-danger">{{ $activo->estado }}</span>
                                     @else
-                                        <td>{{ $activo->estado }}</td>
+                                        @if ($activo->estado == 'En mantenimiento')
+                                            <span class="badge rounded-pill bg-warning">{{ $activo->estado }}</span>
+                                        @else
+                                            <span>{{ $activo->estado }}</span>
+                                        @endif
                                     @endif
                                 @endif
-                            @endif
-
+                            </td>
+                       
                             <td>
                                 <form action="{{ route('activosfijo.destroy', $activo) }}" method="post">
                                     @csrf
@@ -74,7 +72,6 @@
                                                     @can('eliminar activo fijo')
                                                     @endcan
                                 </form>
-
                                 <form action="{{ route('activosfijo.idactivo') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="id_activo" class="form-control"

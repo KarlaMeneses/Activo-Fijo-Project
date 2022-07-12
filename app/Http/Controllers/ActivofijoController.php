@@ -46,6 +46,7 @@ class ActivofijoController extends Controller
     {
         $activofijo = new Activofijo();
         $activofijo->codigo = $request->codigo;
+        $activofijo->foto = $request->foto;
         $activofijo->nombre = $request->nombre;
         $activofijo->detalle = $request->detalle;
         $activofijo->tipo = $request->tipo;
@@ -115,6 +116,7 @@ class ActivofijoController extends Controller
     {
         $activofi = Activofijo::findOrFail($activofijo);
         $activofi->codigo = $request->codigo;
+        $activofi->foto = $request->foto;
         $activofi->nombre = $request->nombre;
         $activofi->detalle = $request->detalle;
         $activofi->tipo = $request->tipo;
@@ -122,6 +124,7 @@ class ActivofijoController extends Controller
         $activofi->proveedor = $request->proveedor;
         $activofi->costo = $request->costo;
         $activofi->estado = $request->estado;
+        
         if ($request->id_ubicacion != null) {
             $ubicacion = Ubicacion::all();
             foreach ($ubicacion as $ubi) {
@@ -150,48 +153,24 @@ class ActivofijoController extends Controller
     public function calcular($id)
     {
         $activofijo = Activofijo::find($id);
-        //anual - semanas
-        //$fechaActual = date('Y-m-d'); //2022-06-28
-        //$fechaingreso = $activofijo->fecha_ingreso; //2022-02-03
+        /*
+        $V_activo = $activofijo->costo;
+        $id_de = $activofijo->id_depreciacion;
+        $depreciacion = Depreciacion::find($id_de);
 
-        $fechaActual = 2022 - 06 - 28;
-        $fechaingreso = 2018 - 06 - 28;
-        $segundosFechaActual = strtotime($fechaActual);
-        $segundosFechaingreso = strtotime($fechaingreso);
-        $segundosTranscurridos = $segundosFechaActual - $segundosFechaingreso;
-        $semanasTranscurridos = $segundosTranscurridos / 604800;
-        $semana = floor($semanasTranscurridos);
+        $V_residual = $depreciacion->valor_residual; //12,50 %
+        $VidaU_activo = $depreciacion->vida_util;    //20 años
 
-        $depreciacion = Depreciacion::all();
-        foreach ($depreciacion as $depreci) {
-            if ($depreci->id == $activofijo->id_depreciacion) {
-                $auxi = $depreci->vida_util;
-                $idaux = $depreci->id;
-            }
-        }
-return $auxi;
-        $DAnual = $activofijo->costo / $auxi;
-
-        if ($semana >= 52 && $semana < 104 ) { // 1 año
-            DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual]);
-        } else {
-            if ($semana >= 104 && $semana < 156 ) { // 2 año
-                DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 2]);
-            } else {
-                if ($semana >= 156 && $semana < 208 ) { //3 año
-                    DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 3]);
-                } else {
-                    if ($semana >= 208 && $semana < 260 ) { //4 año
-                        DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 4]);
-                    } else {
-                        if ($semana >= 260 && $semana < 312 ) { //5 año
-                            DB::table('activosfijo')->where('id', $idaux)->update(['d_anual' => $DAnual * 5]);
-                        }
-                    }
-                }
-            }
-        }
+        $G_anual = ($V_activo - $V_residual) / $VidaU_activo; 
 
         return redirect()->back();
+        */
+        $id_de = $activofijo->id_depreciacion;
+        $depreciacion = Depreciacion::find($id_de);
+        $depreciacion = ($activofijo->costo - $activofijo->valor_residual) / $depreciacion->vida_util;
+       // DB::insert('insert into activosfijo (id, d_anual) values (?, ?)', [$activofijo->id, $depreciacion]);
+        $activofijo->d_anual = $depreciacion;
+        $activofijo->save();
+       return redirect()->back();
     }
 }

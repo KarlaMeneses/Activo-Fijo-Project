@@ -18,7 +18,7 @@ class depreciacionSeeder extends Seeder
                 'descripcion' => 'edificios de la empresa',     //descripción de la cuenta
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                 'vida_util' => 40,                //años de vida de un activo
-                'valor_residual' => 2.50,         //% de vida del activo fijo
+                'coeficiente' => 2.50,         //% de vida del activo fijo
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
 
@@ -30,7 +30,7 @@ class depreciacionSeeder extends Seeder
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 20,                //años de vida de un activo
-                'valor_residual' => 5.0,         //% de vida del activo fijo
+                'coeficiente' => 5.0,         //% de vida del activo fijo
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
 
@@ -42,7 +42,7 @@ class depreciacionSeeder extends Seeder
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 5,                //años de vida de un activo
-                'valor_residual' => 20.00,         //% de vida del activo fijo
+                'coeficiente' => 20.00,         //% de vida del activo fijo
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
 
@@ -54,7 +54,7 @@ class depreciacionSeeder extends Seeder
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 10,                //años de vida de un activo
-                'valor_residual' => 10.00,         //% de vida del activo fijo
+                'coeficiente' => 10.00,         //% de vida del activo fijo
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
 
@@ -66,7 +66,7 @@ class depreciacionSeeder extends Seeder
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 10,                //años de vida de un activo
-                'valor_residual' => 10.00,         //% de vida del activo fijo
+                'coeficiente' => 10.00,         //% de vida del activo fijo
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
 
@@ -78,7 +78,7 @@ class depreciacionSeeder extends Seeder
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 4,                //años de vida de un activo
-                'valor_residual' => 25.00,         //% de vida del activo fijo
+                'coeficiente' => 25.00,         //% de vida del activo fijo
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
 
@@ -90,7 +90,7 @@ class depreciacionSeeder extends Seeder
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 8,                //años de vida de un activo
-                'valor_residual' => 12.50,         //% de vida del activo fijo
+                'coeficiente' => 12.50,         //% de vida del activo fijo
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
 
@@ -102,7 +102,7 @@ class depreciacionSeeder extends Seeder
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 8,                //años de vida de un activo
-                'valor_residual' => 12.50,         //% de vida del activo fijo
+                'coeficiente' => 12.50,         //% de vida del activo fijo
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
 
@@ -114,7 +114,7 @@ class depreciacionSeeder extends Seeder
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 10,                //años de vida de un activo
-                'valor_residual' => 10.00,         //% de vida del activo fijo
+                'coeficiente' => 10.00,         //% de vida del activo fijo
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
 
@@ -126,7 +126,7 @@ class depreciacionSeeder extends Seeder
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 5,                //años de vida de un activo
-                'valor_residual' => 12.5,         //% de vida del activo fijo
+                'coeficiente' => 12.5,         //% de vida del activo fijo
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
 
@@ -138,7 +138,7 @@ class depreciacionSeeder extends Seeder
                 'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
                  //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 10,                //años de vida de un activo
-                'valor_residual' => 10.0,         //% de vida del activo fijo
+                'coeficiente' => 10.0,         //% de vida del activo fijo
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
 
@@ -149,7 +149,7 @@ class depreciacionSeeder extends Seeder
                 'tipo_activo' => 'Intangible',    //tipo de activo tangible , intangible o invesión
                 'caracteristica' => 'Amortización', //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
                 'vida_util' => 0,                //años de vida de un activo
-                'valor_residual' => 0,         //% de vida del activo fijo
+                'coeficiente' => 0,         //% de vida del activo fijo
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
 
