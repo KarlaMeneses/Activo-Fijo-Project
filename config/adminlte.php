@@ -256,122 +256,153 @@ return [
             //    'can' => 'Gestionar Usuario'
         ],
         [
+            'text' => 'Empresas',
+            'route'  => 'empresa.index',
+            'icon' => 'fas fa-users',
+        ],
+        [
             'text' => 'Ayuda',
             'route'  => 'ayudas.index',
             'icon' => 'fas fa-user',
         ],
+       
+        [
+            'text'    => 'MÓDULO USUARIO',
+            'icon'    => 'fas fa-solid fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Usuarios',
+                    'route'  => 'users.index',
+                    'icon' => 'fas fa-user',
+                ],
+                [
+                    'text' => 'Roles y Permisos',
+                    'route'  => 'roles.index',
+                    'icon' => 'fas fa-ruler',
+                ],
+                [
+                    'text' => 'Bitacora',
+                    'route'  => 'bitacora.auth',
+                    'icon' => 'fas fa-tools',
+                ],
+            ]
 
-        ['header' => 'OPCIONES DE USUARIO'],
-        [
-            'text' => 'Usuarios',
-            'route'  => 'users.index',
-            'icon' => 'fas fa-user',
         ],
-        [
-            'text' => 'Roles y Permisos',
-            'route'  => 'roles.index',
-            'icon' => 'fas fa-ruler',
-        ],
-        [
-            'text' => 'Bitacora',
-            'route'  => 'bitacora.auth',
-            'icon' => 'fas fa-tools',
-        ],
-
         /* [
                     'text' => 'Bitacoraa',
                     'route'  => 'Bitacora.index',
                     'icon' => 'fas fa-tools',
                 ], */
 
+        [
+            'text'    => 'MÓDULO ACTIVO FIJO',
+            'icon'    => 'fas fa-solid fa-users',
+            'submenu' => [
 
-        ['header' => 'GESTIONAR EMPRESA'],
-        [
-            'text' => 'Empresas',
-            'route'  => 'empresa.index',
-            'icon' => 'fas fa-users',
-        ],
+                ['header' => 'Gestionar Activo Fijo'],
+                [
+                    'text'       => 'Activo fijo',
+                    'icon' => 'fab fa-amilia',
+                    'route'        => 'activosfijo.index',
+                    'co'
+                ],
+                [
+                    'text'       => 'Categoria',
+                    'icon' => 'fab fa-cuttlefish',
+                    'route'        => 'categorias.index',
+                ],
+                [
+                    'text'       => 'Depreciacion',
+                    'icon' => 'fas fa-arrow-down',
+                    'route'        => 'depreciaciones.index',
+                ],
 
-        ['header' => 'GESTIONAR UBICACION'],
-        [
-            'text' => 'Departamentos',
-            'route'  => 'departamentos.index',
-            'icon' => 'fas fa-vector-square',
-        ],
-        [
-            'text' => 'Ubicación',
-            'route'  => 'ubicaciones.index',
-            'icon' => 'fas fa-map-marker-alt',
-        ],
+                [
+                    'text' => 'Revalorizacion',
+                    'route'  => 'revalorizacion.index',
+                    'icon' => 'fas fa-arrow-up',
+                    'can' => 'Gestionar Revalorizacion'
+                ],
+                [
+                    'text' => 'Bajas',
+                    'route'  => 'baja.index',
+                    'icon' => 'fas fa-arrow-down',
+                ],
+                [
+                    'text' => 'Altas',
+                    'url'  => '#',
+                    'icon' => 'fas fa-arrow-up',
+                ],
+                [
+                    'text' => 'Mantenimiento',
+                    'route'  => 'mantenimientos.index',
+                    'icon' => 'fas fa-tools',
+                ],
 
-        ['header' => 'GESTIONAR ACTIVO-FIJO'],
-        [
-            'text'       => 'Activo fijo',
-            'icon' => 'fab fa-amilia',
-            'route'        => 'activosfijo.index',
-        ],
-        [
-            'text'       => 'Depreciacion',
-            'icon' => 'fas fa-arrow-down',
-            'route'        => 'depreciaciones.index',
-        ],
-        [
-            'text'       => 'Categoria',
-            'icon' => 'fab fa-cuttlefish',
-            'route'        => 'categorias.index',
-        ],
-        [
-            'text' => 'Revalorizacion',
-            'route'  => 'revalorizacion.index',
-            'icon' => 'fas fa-arrow-up',
-            'can' => 'Gestionar Revalorizacion'
-        ],
-
-        [
-            'text' => 'Mantenimiento',
-            'route'  => 'mantenimientos.index',
-            'icon' => 'fas fa-tools',
-        ],
-        [
-            'text' => 'Bajas',
-            'route'  => 'baja.index',
-            'icon' => 'fas fa-arrow-down',
-        ],
-        [
-            'text'       => 'Solicitud',
-            'icon' => 'fas fa-file-alt',
-            'route'        => 'solicitud.index',
-        ],
-
-
-
-        ['header' => 'NOTA C/V'],
-        [
-            'text' => 'Nota de compra',
-            'route'  => 'notas.index',
-        ],
-        [
-            'text'    => 'Nota de venta',
-            'route'  => 'notasventa.index',
-            // 'route'     => 'notasventa.indexVenta',
-        ],
-
-        ['header' => 'FACTURA'],
-        [
-            'text' => 'Facturas de compra',
-            'url'  => 'factura/facturacompra/index',
+            ]
 
         ],
         [
-            'text'    => 'Factura de venta',
-            'url'     => 'factura/facturaventa/index',
+            'text'    => 'MÓDULO UBICACIÓN',
+            'icon'    => 'fas fa-solid fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Departamentos',
+                    'route'  => 'departamentos.index',
+                    'icon' => 'fas fa-vector-square',
+                ],
+                [
+                    'text' => 'Ubicación',
+                    'route'  => 'ubicaciones.index',
+                    'icon' => 'fas fa-map-marker-alt',
+                ],
+
+            ]
         ],
 
+        [
+            'text'    => 'MÓDULO SOLICITUD',
+            'icon'    => 'fas fa-solid fa-users',
+            'submenu' => [
+                [
+                    'text'       => 'Solicitud',
+                    'icon' => 'fas fa-file-alt',
+                    'route'        => 'solicitud.index',
+                ],
+            ]
+        ],
 
+        [
+            'text'    => 'MÓDULO COMPRA/VENTA',
+            'icon'    => 'fas fa-solid fa-users',
+            'submenu' => [
 
+                ['header' => 'NOTA C/V'],
+                [
+                    'text' => 'Nota de compra',
+                    'route'  => 'notas.index',
+                ],
+                [
+                    'text'    => 'Nota de venta',
+                    'route'  => 'notasventa.index',
+                    // 'route'     => 'notasventa.indexVenta',
+                ],
+
+                ['header' => 'FACTURA'],
+                [
+                    'text' => 'Facturas de compra',
+                    'url'  => 'factura/facturacompra/index',
+
+                ],
+                [
+                    'text'    => 'Factura de venta',
+                    'url'     => 'factura/facturaventa/index',
+                ],
+
+            ]
+        ],
+        ['header' => 'MÓDULO TRASPASO'],
         /* ['header' => 'labels'], */
-
-
     ],
 
     /*

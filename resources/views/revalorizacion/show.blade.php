@@ -104,15 +104,14 @@
                                 <input type="text" name="estado" class="form-control"
                                     value="{{ $revalorizacion->estado }}" id="descripcion" disabled>
                             </div>
-        
+
+                            <div class="form-group col-md-4">
+                                <label for="estado">FECHA</label>
+                                <input type="text" name="estado" class="form-control"
+                                    value="{{ $revalorizacion->created_at }}" id="descripcion" disabled>
+                            </div>
                         </div>
-        
                         <h3>SUBIR INFORME TECNICO </h3>
-        
-        
-        
-        
-        
                     </div>
                 </div>
             </div>
