@@ -19,7 +19,8 @@ class CreateSolicitudTable extends Migration
             $table->string('tipo_soli');
             $table->string('clasificacion');
             $table->string('concepto');
-            $table->string('estado');
+            $table->string('estado')->default('Sin Asignar');;
+            $table->string('estado_fin')->default('Sin Asignar');;
             $table->date('fecha');
             $table->timestamps();
         });

@@ -25,6 +25,7 @@ class roleSeeder extends Seeder
         permission::create(['name'=>'Gestionar Revalorizacion'])->syncRoles([$role3, $role4]);
         permission::create(['name'=>'Gestionar Revalorizacion Reporte'])->syncRoles([$role1]);
         permission::create(['name'=>'editar notas'])->syncRoles([$role2]);
+        permission::create(['name'=>'Solicitud-Fin'])->syncRoles([$role4]);
     }
 }
 

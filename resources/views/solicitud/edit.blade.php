@@ -33,33 +33,61 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="clasificacion">Clasificación</label>
-                        <input type="text" name="clasificacion" value="{{ $soli->clasificacion }}"
-                            class="form-control"> <br>
+                        <select name="clasificacion" class=" form-control">
+                            @if ($soli->clasificacion == 'Urgente')
+                                <option value="Urgente">Urgente</option>
+                                <option value="No Urgente">No Urgente</option>
+                            @else
+                                <option value="No Urgente">No Urgente</option>
+                                <option value="Urgente">Urgente</option>
+                            @endif
+
+                        </select> <br>
                     </div>
                     <div class="col-md-6">
                         <label for="concepto">Concepto</label>
                         <input type="text" name="concepto" value="{{ $soli->concepto }}" class="form-control"> <br>
                     </div>
+
+
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="estado">Seleccione el Estado</label>
-                        <select name="estado" class=" form-control">
+                        <select name="estado" class=" form-control" onchange="hidexd()" id="estado">
 
                             @if ($soli->estado == 'En Proceso')
                                 <option value="En Proceso">En Proceso</option>
-                                <option value="Finalizado">Finalizado</option>
+                                @can('Solicitud-Fin')
+                                    <option value="Finalizado">Finalizado</option>
+                                @endcan
                             @else
-                                <option value="Finalizado">Finalizado</option>
+                                @can('Solicitud-Fin')
+                                    <option value="Finalizado">Finalizado</option>
+                                @endcan
                                 <option value="En Proceso">En Proceso</option>
                             @endif
 
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="fecha">Fecha</label>
                         <input type="date" name="fecha" value="{{ $soli->fecha }}" class="form-control"> <br>
+                    </div>
+
+                    <div class="col-md-4" id="estado_fin" style="display: none">
+                        <label for="estado_fin">Aprobación Final</label>
+                        <select name="estado_fin" class=" form-control">
+                            @if ($soli->estado_fin == 'Aprobado')
+                                <option value="Aprobado">Aprobado</option>
+                                <option value="No Aprobado">No Aprobado</option>
+                            @else
+                                <option value="No Aprobado">No Aprobado</option>
+                                <option value="Aprobado">Aprobado</option>
+                            @endif
+
+                        </select> <br>
                     </div>
                 </div>
 
@@ -86,30 +114,28 @@
 
                 <tbody>
                     @foreach ($soli_acts as $soli_act)
-
                         @if ($soli_act->id_sol == $soli->id)
-                            
-                       
-                        <tr>
-                            <td>{{ $soli_act->id }}</td>
-                            <td>{{ $soli_act->item }}</td>
-                            <td>{{ $soli_act->unidad }}</td>
-                            <td>{{ $soli_act->cantidad }}</td>
-                            <td>
-                                <center>
-                                    <form action="{{ route('solicitud.destroy_act', $soli_act->id) }}" method="post">
+                            <tr>
+                                <td>{{ $soli_act->id }}</td>
+                                <td>{{ $soli_act->item }}</td>
+                                <td>{{ $soli_act->unidad }}</td>
+                                <td>{{ $soli_act->cantidad }}</td>
+                                <td>
+                                    <center>
+                                        <form action="{{ route('solicitud.destroy_act', $soli_act->id) }}"
+                                            method="post">
 
-                                        @csrf
-                                        @method('delete')
-                                        <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
-                                            value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
-                                            <i class="fas fa-trash-alt"></i></button>
-                                    </form>
-                                </center>
+                                            @csrf
+                                            @method('delete')
+                                            <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
+                                                value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
+                                                <i class="fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </center>
 
-                            </td>
+                                </td>
 
-                        </tr>
+                            </tr>
                         @endif
                     @endforeach
                 </tbody>
@@ -177,11 +203,27 @@
 
     @section('css')
         <link rel="stylesheet" href="{{ asset('css/bot.css') }}">
-        <link rel="stylesheet" href="/css/admin_custom.css">
+        {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     @stop
 
     @section('js')
-        <script>
+        <script type="text/javascript">
             console.log('Hi!');
+
+            function hidexd() {
+                var status = document.getElementById('estado');
+                if (status.value == "Finalizado") {
+                    document.getElementById('estado_fin').style.display = 'block';
+                } else {
+                    document.getElementById('estado_fin').style.display = 'none';
+                }
+            }
+
+            /* $('.estado').change(function() {
+                var responseID = $(this).val();
+                if (responseID == "Finalizado") {
+                    document.getElementById('estado_fin').style.display = 'block';
+                }
+            }) */
         </script>
     @stop

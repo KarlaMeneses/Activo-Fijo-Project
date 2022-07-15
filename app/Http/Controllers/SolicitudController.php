@@ -27,6 +27,7 @@ class SolicitudController extends Controller
         $soli->clasificacion = $request->clasificacion;
         $soli->concepto      = $request->concepto;
         $soli->estado        = 'En Proceso';
+        $soli->estado_fin    = 'En Proceso';
         $soli->fecha         = $request->fecha;
         $soli->save();
         return redirect()->route('solicitud.edit', $soli->id);
@@ -68,6 +69,7 @@ class SolicitudController extends Controller
         $soli->clasificacion = $request->clasificacion;
         $soli->concepto      = $request->concepto;
         $soli->estado        = $request->estado;
+        $soli->estado_fin        = $request->estado_fin;
         $soli->fecha         = $request->fecha;
         $soli->save();
 

@@ -2,7 +2,7 @@
 @section('title', 'Activo Fijo')
 @section('content_header')
     <div class="card-header  text-center">
-        <h3><b>Lista Categorias</b></h3>
+        <h3><b>LISTA DE CATEGORIA</b></h3>
     </div>
 
 @stop
@@ -17,64 +17,60 @@
     </div>
 
     <div class="card">
-        <div class="card-body " style="overflow-x: scroll">
+          <!--<div class="card-body">-->
+            <div class="card-body " style="overflow-x: scroll">
 
-            <table class="table table-striped shadow-lg mt-4" id="categorias" style="width:100%">
-                <thead class="bg-dark">
-                    <tr>
-                        <th>Id</th>
-                        <th>Codigo</th>
-                        <th>Cuenta contable Bienes</th>
-                        <th>Descripcion</th>
-                        <th>Cacateristica</th>
-                        <th>Tipo</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($cates as $cate)
+                <!-- <table class="table table-striped" id="usuarios" style="width:100%">-->
+                <table class="table table-striped" id="categorias" style="width:100%">
+                    <thead class="bg-dark">
                         <tr>
-                            <td>{{ $cate->id }}</td>
-                           <td>{{ $cate->nombre }}</td>
-                           {{--  <td>{{ $cate->descripcion }}</td> --}}
-                           {{--  <td>{{ $cate->estado }}</td> --}}
-
-                            @foreach ($depres as $depre)
-                                @if ($cate->id_depreciacion == $depre->id)
-                                    <td>{{ $depre->nombre }}</td>
-                                    <td>{{ $depre->descripcion }}</td>
-                                    <td class="badge rounded-pill bg-success">{{ $depre->cacateristica }}</td>
-                                    <td>{{ $depre->tipo_activo }}</td>
-                                @endif
-                            @endforeach
-                            <td>
-                                <form action="{{ route('categorias.destroy', $cate) }}" method="post">
-                                    <!--<a class="btn btn-warning btn-sm text-light" href="#">-->
-                                    <a class="btn btn-warning btn-sm text-light rounded-pill"
-                                        href="{{ route('categorias.show', $cate->id) }}">
-                                        <i class="fas fa-eye"></i></a>
-
-                                    <a href="{{ route('categorias.edit', $cate) }}"
-                                        class="btn btn-primary btn-sm text-light rounded-pill">
-                                        <i class="fas fa-edit"></i><a>
-                                            @csrf
-                                            @method('delete')
-                                            @can('editar categoria')
-                                            @endcan
-                                            <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
-                                                value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
-                                                <i class="fas fa-trash-alt"></i></button>
-                                            @can('eliminar categoria')
-                                            @endcan
-                                </form>
-
-                            </td>
-
+                            <th scope="col">ID</th>
+                            <th scope="col">CUENTA CONTABLE BIENES</th>
+                            <th scope="col">DESCRIPCION</th>
+                            <th scope="col">TIPO</th>
+    
+                            <th scope="col">VIDA UTIL</th>
+                            <th scope="col">COEFICIENTE</th>
+                            <th scope="col">ACCIONES</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+    
+                        @foreach ($cate as $categoria)
+                            <tr>
+                                <td>{{ $categoria->id }}</td>
+                                <td>{{ $categoria->nombre }}</td>
+                                <td>{{ $categoria->descripcion }}</td>
+                                <td>{{ $categoria->tipo_activo }}</td>
+                                <td>{{ $categoria->vida_util }} años</td>
+                                <td>{{ $categoria->coeficiente }} %</td>
+                                <td>
+                                    <form action="{{ route('categorias.destroy', $categoria) }}" method="post">
+                                        <!--<a class="btn btn-warning btn-sm text-light" href="#">
+                                            <a class="btn btn-warning btn-sm text-light rounded-pill"
+                                                href="{{ route('categorias.show', $categoria->id) }}">
+                                                <i class="fas fa-eye"></i></a>
+        -->
+                                        <a href="{{ route('categorias.edit', $categoria) }}"
+                                            class="btn btn-primary btn-sm text-light rounded-pill">
+                                            <i class="fas fa-edit"></i><a>
+                                                @csrf
+                                                @method('delete')
+                                                @can('editar categoria')
+                                                @endcan
+                                                <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
+                                                    value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
+                                                    <i class="fas fa-trash-alt"></i></button>
+                                                @can('eliminar categoria')
+                                                @endcan
+                                    </form>
+                                </td>
+    
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
     </div>
 
 @stop

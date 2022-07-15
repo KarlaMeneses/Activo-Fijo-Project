@@ -22,49 +22,73 @@
                     </center>
                 </div>
             </div>
-
             <div class="card">
-                <div class="card-body">
-
+                <div class="card-body" style="background-color: #00AA9E;">
                     <div class="row">
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="nombre">NOMBRE DE CUENTA CONTABLE</label>
-                                <input type="text" name="name" class="form-control" value="{{ $depres->nombre }}"
-                                    disabled>
+                            <div class="card-header form-group col-md-12">
+                                <h5 class="font-weight-bold px-2">DATOS DEL ACTIVO</h5>
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="descripcion">DESCRIPCIÓN DE LA CUENTA</label>
-                                <input type="text" name="descripcion" class="form-control"
-                                    value="{{ $depres->descripcion }}" disabled>
+                                <label for="codigo">Codigo De Activo</label>
+                                <input type="text" name="codigo" class="form-control" value="{{ $activofijo->codigo }}" disabled>
+
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="tipo_activo">TIPO DE CUENTA</label>
-                                <input name="tipo_activo" type="tel" class="form-control"
-                                    value="{{ $depres->tipo_activo }}" disabled>
+                            <div class="form-group col-md-6">
+                                <label for="detalle">Nombre Del Activo</label>
+                                <input type="text" name="detalle" class="form-control" value="{{ $activofijo->nombre }}" disabled>
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="vida_util">VIDA UTIL (AÑOS)</label>
-                                <input name="vida_util" type="tel" class="form-control"
-                                    value="{{ $depres->vida_util }}" disabled>
+                            <div class="form-group col-md-6">
+                                <label for="detalle">Descripcion Del Activo</label>
+                                <input type="text" name="detalle" class="form-control" value="{{ $activofijo->detalle }}" disabled>
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="valor_residual">VALOR RESIDUAL %</label>
-                                <input type="tel" name="valor_residual" class="form-control"
-                                    value="{{ $depres->vida_util }}" disabled>
+                            <div class="col-md-3">
+                                <label for="costo">Tipo De Activo</label>
+                                <input name="costo" type="tel" class="form-control" value="{{ $activofijo->tipo }}" disabled>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="fecha_ingreso">Fecha Ingreso</label>
+                                <input name="fecha_ingreso" type="tel" class="form-control" value="{{ $activofijo->fecha_ingreso }}" disabled>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="costo">Costo Activo</label>
+                                <input name="costo" type="tel" class="form-control" value="{{ $activofijo->costo }}" disabled>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="estado">Estado</label>
+                                <input type="tel" name="estado" class="form-control" value="{{ $activofijo->estado }}" disabled>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="detalle">Proveedor Del Activo</label>
+                                <input type="text" name="detalle" class="form-control" value="{{ $activofijo->proveedor }}" disabled>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label>Responsable</label>
+                                <input class="form-control" value="{{ $activofijo->responsable }}" disabled>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="d_anual">Depreciacion anual</label>
+                                <input type="text" name="d_anual" class="form-control" value="{{ $activofijo->d_anual }}" disabled>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+           
             <br>
             <center>
                 <a class="btn btn-warning btb-sm text-light" href="{{ route('depreciaciones.index') }}">Volver</a>
-                <a href="{{ route('depreciaciones.edit', $depres->id) }}" class="btn btn-primary btb-sm text-light">
+                <a href="{{ route('depreciaciones.edit', $activofijo->id) }}" class="btn btn-primary btb-sm text-light">
                     Editar </a>
             </center>
 

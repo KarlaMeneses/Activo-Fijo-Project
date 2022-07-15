@@ -47,8 +47,8 @@
                             <td>{{ $revalorizacion->id }}</td>
                             @foreach ($activosfijo as $activo)
                                 @if ($activo->id == $revalorizacion->id_activo)
-                                    <td>{{ $activo->detalle }}</td>
-                                    <td>{{ $activo->costo }}</td>
+                                    <td>{{ $activo->nombre }}</td>
+                                    <td>{{ $activo->valor_residual }}</td>
                                 @endif
                             @endforeach
                             <td>{{ $revalorizacion->tiempo_vida }}</td>
