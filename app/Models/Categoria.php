@@ -12,8 +12,9 @@ class Categoria extends Model
     protected $fillable = [
         'nombre',
         'descripcion',
-        'estado',
-        'id_depreciacion',
+        'tipo_activo',
+        'vida_util',
+        'coeficiente',
         'created_at',
         'updated_at'
     ];

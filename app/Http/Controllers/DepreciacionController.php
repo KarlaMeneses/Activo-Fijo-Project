@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activofijo;
 use App\Models\Depreciacion;
 use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
@@ -16,8 +17,8 @@ class DepreciacionController extends Controller
      */
     public function index()
     {
-        $depres = Depreciacion::all();
-        return view('depreciacion.index', compact('depres'));
+        $activosfijo = Activofijo::all();
+        return view('depreciacion.index', compact('activosfijo'));
     }
 
     /**
@@ -27,7 +28,7 @@ class DepreciacionController extends Controller
      */
     public function create()
     {
-        return view('depreciacion.create');
+    
     }
 
     /**
@@ -73,8 +74,8 @@ class DepreciacionController extends Controller
      */
     public function show($id)
     {
-        $depres = Depreciacion::find($id);
-        return view('depreciacion.show', compact('depres'));
+        $activofijo = Activofijo::find($id);
+        return view('depreciacion.show', compact('activofijo'));
     }
 
     /**

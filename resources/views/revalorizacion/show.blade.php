@@ -84,21 +84,23 @@
                         <div class="form-row">
                             <div class="card-header form-group col-md-12">
                                 <h5 class="font-weight-bold px-2">DATOS DEL
-                                    ACTIVO REVALORIZADO</h5>
+                                    ACTIVO REVALORIZADO POR EL EXPERTO</h5>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="nombre">TIEMPO DE VIDA ESTIMADO</label>
+                                <label for="descripcion">VALOR REVALUO</label>
+                                <input type="text" name="descripcion" class="form-control"
+                                    value="{{ $revalorizacion->valor }}" id="descripcion" disabled>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="nombre">VIDA UTIL</label>
                                 <input type="text" name="nombre" class="form-control"
                                     value="{{ $revalorizacion->tiempo_vida }}" id="nombre" disabled>
         
                             </div>
         
-                            <div class="form-group col-md-4">
-                                <label for="descripcion">COSTO ESTIMADO</label>
-                                <input type="text" name="descripcion" class="form-control"
-                                    value="{{ $revalorizacion->valor }}" id="descripcion" disabled>
-                            </div>
+                           
                             <div class="form-group col-md-4">
                                 <label for="estado">ESTADO</label>
                                 <input type="text" name="estado" class="form-control"
@@ -106,7 +108,7 @@
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="estado">FECHA</label>
+                                <label for="estado">FECHA SOLICITUD</label>
                                 <input type="text" name="estado" class="form-control"
                                     value="{{ $revalorizacion->created_at }}" id="descripcion" disabled>
                             </div>
