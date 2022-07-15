@@ -26,24 +26,29 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="clasificacion">Clasificación</label>
-                        <input type="text" name="clasificacion" class="form-control"> <br>
+                        <label for="tipo_soli">Clasificación</label>
+                        <select name="clasificacion" class=" form-control">
+                            <option value="Urgente">Urgente</option>
+                            <option value="No Urgente">No Urgente</option>
+                        </select>
+
+                        <br>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="concepto">Concepto</label>
                         <input type="text" name="concepto" class="form-control"> <br>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="estado">Seleccione el Estado</label>
                         <select name="estado" class=" form-control">
                             <option value="En Proceso">En Proceso</option>
-                            <option value="Finalizado">Finalizado</option>
+                            {{-- <option value="Finalizado">Finalizado</option> --}}
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="fecha">Fecha</label>
                         <input type="date" name="fecha" class="form-control"> <br>
                     </div>
