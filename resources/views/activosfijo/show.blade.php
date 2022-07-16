@@ -99,7 +99,7 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label for="d_anual">Depreciacion anual</label>
+                                <label for="d_anual">categoria anual</label>
                                 <input type="text" name="d_anual" class="form-control" value="{{ $activofijo->d_anual }}" disabled>
                             </div>
                         </div>
@@ -153,27 +153,27 @@
                     <div class="row">
                         <div class="form-row">
                             <div class="card-header form-group col-md-12">
-                                <h5 class="font-weight-bold px-2">DEPRECIACION</h5>
+                                <h5 class="font-weight-bold px-2">CATEGORIA</h5>
                             </div>
 
                             <div class="col-md-3">
                                 <label for="nombre">Bienes</label>
-                                <input name="nombre" type="tel" class="form-control" value="{{ $depreciacion->nombre }}" disabled>
+                                <input name="nombre" type="tel" class="form-control" value="{{ $categoria->nombre }}" disabled>
                             </div>
 
                             <div class="col-md-3">
                                 <label for="proveedor">Descripcion</label>
-                                <input name="proveedor" type="tel" class="form-control" value="{{ $depreciacion->descripcion }}" disabled>
+                                <input name="proveedor" type="tel" class="form-control" value="{{ $categoria->descripcion }}" disabled>
                             </div>
 
                             <div class="col-md-3">
                                 <label for="estado">Tipo Activo</label>
-                                <input type="tel" name="estado" class="form-control" value="{{ $depreciacion->tipo_activo }}" disabled>
+                                <input type="tel" name="estado" class="form-control" value="{{ $categoria->tipo_activo }}" disabled>
                             </div>
 
                             <div class="col-md-3">
                                 <label for="estado">Vida util</label>
-                                <input type="tel" name="estado" class="form-control" value="{{ $depreciacion->vida_util }} años" disabled>
+                                <input type="tel" name="estado" class="form-control" value="{{ $categoria->vida_util }} años" disabled>
                             </div>
 
                             <div class="col-md-3">
@@ -197,13 +197,40 @@
                 </div>
             </div>
 
+            
+            <h3> {{ $activofijo->d_anual}} </h3>
+
+            <table class="table table-striped"style="width:100%">
+                <div class="card-header form-group col-md-12">
+                    <h5 class="font-weight-bold px-2">TABLA DE DEPRECIACION</h5>
+                </div>
+                <thead class="bg-dark">
+                    <tr>
+                        <th scope="col">AÑO</th>
+                        <th scope="col">VALOR</th>
+                        <th scope="col">DEP. ANUAL</th>
+                        <th scope="col">DEP. ACUMULADA</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach ($depreciacion as $depreciacion)
+                        @if ($depreciacion->id_activo == $activofijo->id)
+                        <tr>
+                            <td>{{ $depreciacion->año}}</td>
+                            <td>{{ $activofijo->d_anual}}</td>
+                            <td>{{ $depreciacion->d_acumulada}}</td>
+                        </tr>
+                        @endif
+                    @endforeach
+                </tbody>
+            </table>
+
             <br>
 
 
             <center>
-
                 <a href="{{ route('activosfijo.calcular', $activofijo->id) }}" class="btn btn-warning btb-sm text-light">Calcular</a>
-
                 <a href="{{ route('activosfijo.index') }}" class="btn btn-warning btb-sm text-light">Volver</a>
                 <a href="{{ route('activosfijo.edit', $activofijo->id) }}" class="btn btn-primary btb-sm text-light">Editar </a>
                 <a href="{{ route('notas.show', $activofijo->id) }}" class="btn btn-danger btb-sm text-light">Ver

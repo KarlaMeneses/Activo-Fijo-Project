@@ -8,155 +8,24 @@ use Illuminate\Support\Facades\DB;
 
 class depreciacionSeeder extends Seeder
 {
-
-
     public function run()
     {
         DB::table('depreciaciones')->insert([
             [
-                'nombre' => 'Edificios', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'edificios de la empresa',     //descripción de la cuenta
-                'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
-                'vida_util' => 40,                //años de vida de un activo
-                'coeficiente' => 2.50,         //% de vida del activo fijo
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-
+                'año' => 1,
+                'd_acumulada' => 10,
+                'id_activo' => 1,
             ],
-
             [
-                'nombre' => 'Viviendas para el Personal', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'departamento, casa',     //descripción de la cuenta
-                'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
-                 //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-                'vida_util' => 20,                //años de vida de un activo
-                'coeficiente' => 5.0,         //% de vida del activo fijo
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-
+                'año' => 2,
+                'd_acumulada' => 20,
+                'id_activo' => 1,
             ],
-
             [
-                'nombre' => 'Tinglados y Cobertizos de Madera', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'tinglados de madera',     //descripción de la cuenta
-                'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
-                 //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-                'vida_util' => 5,                //años de vida de un activo
-                'coeficiente' => 20.00,         //% de vida del activo fijo
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-
+                'año' => 3,
+                'd_acumulada' => 30,
+                'id_activo' => 1,
             ],
-
-            [
-                'nombre' => 'Tinglados y Cobertizos de Metal', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'tinglados de metal',     //descripción de la cuenta
-                'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
-                 //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-                'vida_util' => 10,                //años de vida de un activo
-                'coeficiente' => 10.00,         //% de vida del activo fijo
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-
-            ],
-
-            [
-                'nombre' => 'Muebles y Enseres', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Silla, Sofás, Armarios, Archivadores',     //descripción de la cuenta
-                'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
-                 //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-                'vida_util' => 10,                //años de vida de un activo
-                'coeficiente' => 10.00,         //% de vida del activo fijo
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-
-            ],
-
-            [
-                'nombre' => 'Equipo de Computación', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'pc, laptop',     //descripción de la cuenta
-                'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
-                 //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-                'vida_util' => 4,                //años de vida de un activo
-                'coeficiente' => 25.00,         //% de vida del activo fijo
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-
-            ],
-
-            [
-                'nombre' => 'Maquinarias', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'cualquier tipo de maquinaria',     //descripción de la cuenta
-                'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
-                 //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-                'vida_util' => 8,                //años de vida de un activo
-                'coeficiente' => 12.50,         //% de vida del activo fijo
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-
-            ],
-
-            [
-                'nombre' => 'Equipos e Instalaciones', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'router, redes',     //descripción de la cuenta
-                'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
-                 //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-                'vida_util' => 8,                //años de vida de un activo
-                'coeficiente' => 12.50,         //% de vida del activo fijo
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-
-            ],
-
-            [
-                'nombre' => 'Barcos y Lanchas', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'para uso exclusivo de la empresa',     //descripción de la cuenta
-                'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
-                 //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-                'vida_util' => 10,                //años de vida de un activo
-                'coeficiente' => 10.00,         //% de vida del activo fijo
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-
-            ],
-
-            [
-                'nombre' => 'Vehículos automotores', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Vehiculo',     //descripción de la cuenta
-                'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
-                 //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-                'vida_util' => 5,                //años de vida de un activo
-                'coeficiente' => 12.5,         //% de vida del activo fijo
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-
-            ],
-
-            [
-                'nombre' => 'Muebles y enseres de oficina', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Mesa de Escritorio',     //descripción de la cuenta
-                'tipo_activo' => 'Tangible',    //tipo de activo tangible , intangible o invesión
-                 //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-                'vida_util' => 10,                //años de vida de un activo
-                'coeficiente' => 10.0,         //% de vida del activo fijo
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-
-            ],
-            /* [
-                'nombre' => 'patentes de inversión', //bienes de cuenta contable nombre de la cuenta (contabilidad)
-                'descripcion' => 'Licencia de software',     //descripción de la cuenta
-                'tipo_activo' => 'Intangible',    //tipo de activo tangible , intangible o invesión
-                'caracteristica' => 'Amortización', //No depreciables,Depreciable,Agotable,Amortización,No Amortizable
-                'vida_util' => 0,                //años de vida de un activo
-                'coeficiente' => 0,         //% de vida del activo fijo
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-
-            ],*/
-
-
-
         ]);
     }
 }

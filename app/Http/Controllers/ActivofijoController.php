@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Activofijo;
 use App\Models\Departamento;
+use App\Models\categoria;
 use App\Models\Depreciacion;
 use App\Models\Factura;
 use App\Models\Ubicacion;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Psy\Readline\Hoa\Console;
@@ -78,14 +81,9 @@ class ActivofijoController extends Controller
         $ubicaciones = Ubicacion::all();
         $facturas = Factura::all();
         $departamentos = Departamento::all();
+        $categoria = categoria::find($activofijo->id_categoria);
         $depreciacion = Depreciacion::all();
-        foreach ($depreciacion as $depreci) {
-            if ($activofijo->id_depreciacion == $depreci->id) {
-                $depreciacion = Depreciacion::find($depreci->id);
-            }
-        }
-
-        return view('activosfijo.show', compact('activofijo', 'facturas', 'ubicaciones', 'departamentos', 'depreciacion'));
+        return view('activosfijo.show', compact('activofijo', 'facturas', 'ubicaciones', 'departamentos', 'categoria','depreciacion'));
     }
 
     /**
@@ -124,7 +122,7 @@ class ActivofijoController extends Controller
         $activofi->proveedor = $request->proveedor;
         $activofi->costo = $request->costo;
         $activofi->estado = $request->estado;
-        
+
         if ($request->id_ubicacion != null) {
             $ubicacion = Ubicacion::all();
             foreach ($ubicacion as $ubi) {
@@ -155,22 +153,35 @@ class ActivofijoController extends Controller
         $activofijo = Activofijo::find($id);
         /*
         $V_activo = $activofijo->costo;
-        $id_de = $activofijo->id_depreciacion;
-        $depreciacion = Depreciacion::find($id_de);
+        $id_de = $activofijo->id_categoria;
+        $categoria = categoria::find($id_de);
 
-        $V_residual = $depreciacion->valor_residual; //12,50 %
-        $VidaU_activo = $depreciacion->vida_util;    //20 años
+        $V_residual = $categoria->valor_residual; //12,50 %
+        $VidaU_activo = $categoria->vida_util;    //20 años
 
         $G_anual = ($V_activo - $V_residual) / $VidaU_activo; 
 
         return redirect()->back();
         */
-        $id_de = $activofijo->id_depreciacion;
-        $depreciacion = Depreciacion::find($id_de);
-        $depreciacion = ($activofijo->costo - $activofijo->valor_residual) / $depreciacion->vida_util;
-       // DB::insert('insert into activosfijo (id, d_anual) values (?, ?)', [$activofijo->id, $depreciacion]);
-        $activofijo->d_anual = $depreciacion;
+        $id_de = $activofijo->id_categoria;
+        $categoria = categoria::find($id_de);
+        $categoria = ($activofijo->costo - $activofijo->valor_residual) / $categoria->vida_util;
+        // DB::insert('insert into activosfijo (id, d_anual) values (?, ?)', [$activofijo->id, $categoria]);
+        $activofijo->d_anual = $categoria;
+  
+       //CALCULANDO EL TIEMPO
+       $fecha1 = new DateTime($activofijo->fecha_ingreso);
+       $actualf = Carbon::now()->toDateString();
+
+       $fecha2 = new DateTime($actualf);
+       $tiempo_transcurrido = $fecha1->diff($fecha2);
+      
+       $Tiempo = $tiempo_transcurrido->y; 
+       //GET YEAR
+       $activofijo->d_acumulada = $Tiempo * $activofijo->d_anual;
         $activofijo->save();
-       return redirect()->back();
+        return redirect()->back();
     }
+
+
 }

@@ -78,7 +78,6 @@ Route::get('factura/facturaventa/index/{id}', [App\Http\Controllers\FacturaContr
 
 ///Categoria de activo fijos
 Route::resource('categorias', CategoriaController::class)->names('categorias');
-Route::resource('depreciaciones', DepreciacionController::class)->names('depreciaciones');
 
 //NOTAS
 Route::resource('notas', NotaController::class)->names('notas');
