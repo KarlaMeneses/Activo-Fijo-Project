@@ -67,5 +67,35 @@ class AyudaSeeder extends Seeder
         $user->foto = 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/ayuda%2FRegistrar%20categorias.png?alt=media&token=bd050dc3-a41a-41d0-bbcd-206d3790f939';
         $user->descripcion = "para registrar a que categoría pertenecen los activos: Ingresar al MÓDULO ACTIVO FIJO 1 >>Categoría. Aquí se mostrará la lista de categoría existentes  2 >> Registrar Categoría. Se abre una vista dffonde debe llenar los campos solicitados como vida util, coeficiente porcentual de depreciación, etc. y finalmente para guardar click en 3 >>Registrar ";
         $user->save();
+
+
+        $user = new Ayuda();
+        $user->foto = 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/ayuda%2FMantenimiento.png?alt=media&token=3b81f1b1-c7c7-4a06-9c51-bb87ccebe205';
+        $user->descripcion ="Cuando un activo esté en mantenimiento este se debe registrar en el sistema en >>MÓDULO ACTIVO FIJO  >>Mantenimiento >>Registrar Mantenimiento : 
+        llenar los datos soliciatdos y elegur que activo está en mantenimiento, esto hace que su estado se cambie";
+        $user->save();
+
+
+        $user = new Ayuda();
+        $user->foto = 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/ayuda%2FDepartamentos.png?alt=media&token=c2612b81-e1e7-44c2-8bdc-e4a53d91cbee';
+        $user->descripcion ="En el >>MÓDULO UBICACIÓN >>Departamentos, se puede registrar los distintos dptos que existan en su empresa tales como: RR.HH, Dpto. de Compras,Logistica,etc. 
+        Para registrar un departamento click en >>Crear Departamento, se redirige a una nueva vista donde depe llenar los datos como el Nombre y una descripción y para guardar precionar en >>Crear Departamento";
+        $user->save();
+
+
+        $user = new Ayuda();
+        $user->foto = 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/ayuda%2FCrear%20Ubicacion.png?alt=media&token=21f52f08-2f3b-462a-b871-c28d82fe949b';
+        $user->descripcion ="Para agregar una ubicación del activo fijo ingresar a >>MÓDULO UBICACIÓN >>Ubicación y en esa vista click en >>Crear Ubicación que está en la parte superior izquerda de la pantalla.
+        Esto le abre otra vista para llenar los datos de ubicación con Nombre del edificio, País,Ciudad y debe seleccionar un dpto de la empresa previamente creado por último presionar en 'Crear Ubicación' de la parte inferior para guardar.
+        En este mismo apartado podrá Eliminar y editar una ubicaión ya creada con los íconos que aparecen en la parte derecha de la lista de ubicaciones";
+        $user->save();
+
+        $user = new Ayuda();
+        $user->foto = '';
+        $user->descripcion ="";
+        $user->save();
+
+
+
     }
 }
