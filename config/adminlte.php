@@ -265,7 +265,7 @@ return [
             'route'  => 'ayudas.index',
             'icon' => 'fas fa-user',
         ],
-       
+//------------------------------------------------------------------------
         [
             'text'    => 'MÓDULO USUARIO',
             'icon'    => 'fas fa-solid fa-users',
@@ -293,13 +293,13 @@ return [
                     'route'  => 'Bitacora.index',
                     'icon' => 'fas fa-tools',
                 ], */
-
+//------------------------------------------------------------------------
         [
             'text'    => 'MÓDULO ACTIVO FIJO',
             'icon'    => 'fas fa-solid fa-users',
             'submenu' => [
 
-                ['header' => 'Gestionar Activo Fijo'],
+               // ['header' => 'Gestionar Activo Fijo'],
                 [
                     'text'       => 'Activo fijo',
                     'icon' => 'fab fa-amilia',
@@ -342,6 +342,7 @@ return [
             ]
 
         ],
+//------------------------------------------------------------------------
         [
             'text'    => 'MÓDULO UBICACIÓN',
             'icon'    => 'fas fa-solid fa-users',
@@ -359,7 +360,7 @@ return [
 
             ]
         ],
-
+//------------------------------------------------------------------------
         [
             'text'    => 'MÓDULO SOLICITUD',
             'icon'    => 'fas fa-solid fa-users',
@@ -371,7 +372,7 @@ return [
                 ],
             ]
         ],
-
+//------------------------------------------------------------------------
         [
             'text'    => 'MÓDULO COMPRA/VENTA',
             'icon'    => 'fas fa-solid fa-users',
@@ -401,6 +402,8 @@ return [
 
             ]
         ],
+
+//------------------------------------------------------------------------        
         ['header' => 'MÓDULO TRASPASO'],
         /* ['header' => 'labels'], */
     ],
