@@ -23,10 +23,16 @@
                         <input type="text" name="persona_sol" value="{{ $soli->persona_sol }}" class="form-control">
                         <br>
                     </div>
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <label for="tipo_soli">Tipo Solicitud</label>
                         <input type="text" name="tipo_soli" value="{{ $soli->tipo_soli }}" class="form-control"> <br>
+                    </div> --}}
+                    <div class="col-md-6">
+                        <label for="concepto">Concepto</label>
+                        <input type="text" name="concepto" value="{{ $soli->concepto }}" class="form-control"> <br>
                     </div>
+
+
                 </div>
 
 
@@ -44,17 +50,19 @@
 
                         </select> <br>
                     </div>
+
                     <div class="col-md-6">
-                        <label for="concepto">Concepto</label>
-                        <input type="text" name="concepto" value="{{ $soli->concepto }}" class="form-control"> <br>
+                        <label for="fecha">Fecha</label>
+                        <input type="date" name="fecha" value="{{ $soli->fecha }}" class="form-control"> <br>
                     </div>
+
 
 
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4">
-                        <label for="estado">Seleccione el Estado</label>
+                    <div class="col-md-6">
+                        <label for="estado">Estado</label>
                         <select name="estado" class=" form-control" onchange="hidexd()" id="estado">
 
                             @if ($soli->estado == 'En Proceso')
@@ -71,13 +79,10 @@
 
                         </select>
                     </div>
-                    <div class="col-md-4">
-                        <label for="fecha">Fecha</label>
-                        <input type="date" name="fecha" value="{{ $soli->fecha }}" class="form-control"> <br>
-                    </div>
 
-                    <div class="col-md-4" id="estado_fin" style="display: none">
-                        <label for="estado_fin">Aprobación Final</label>
+
+                    <div class="col-md-6" id="estado_fin" style="display: none">
+                        <label for="estado_fin">Aprobación</label>
                         <select name="estado_fin" class=" form-control">
                             @if ($soli->estado_fin == 'Aprobado')
                                 <option value="Aprobado">Aprobado</option>
@@ -88,6 +93,15 @@
                             @endif
 
                         </select> <br>
+                    </div>
+                </div>
+
+                
+
+                <div class="row" id="respuesta_fin" style="display: none">
+                    <div class="col-md-12">
+                        <label for="respuesta_fin">Respuesta Solicitud</label>
+                        <textarea name="respuesta_fin" cols="10" rows="10" style="height: 5rem;width: 80rem;resize: none">{{ $soli->respuesta_fin }}</textarea>
                     </div>
                 </div>
 
@@ -214,8 +228,10 @@
                 var status = document.getElementById('estado');
                 if (status.value == "Finalizado") {
                     document.getElementById('estado_fin').style.display = 'block';
+                    document.getElementById('respuesta_fin').style.display = 'block';
                 } else {
                     document.getElementById('estado_fin').style.display = 'none';
+                    document.getElementById('respuesta_fin').style.display = 'none';
                 }
             }
 

@@ -24,11 +24,19 @@
                             readonly>
                         <br>
                     </div>
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <label for="tipo_soli">Tipo Solicitud</label>
                         <input type="text" name="tipo_soli" value="{{ $soli->tipo_soli }}" class="form-control"
                             readonly> <br>
+                    </div> --}}
+
+                    <div class="col-md-6">
+                        <label for="concepto">Concepto</label>
+                        <input type="text" name="concepto" value="{{ $soli->concepto }}" class="form-control" readonly>
+                        <br>
                     </div>
+
+                    
                 </div>
 
 
@@ -39,38 +47,32 @@
                             readonly> <br>
                     </div>
                     <div class="col-md-6">
-                        <label for="concepto">Concepto</label>
-                        <input type="text" name="concepto" value="{{ $soli->concepto }}" class="form-control" readonly>
-                        <br>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="estado">Seleccione el Estado</label>
-                        <input type="text" name="estado" value="{{ $soli->estado }}" class="form-control" readonly>
-                    </div>
-                    <div class="col-md-4">
                         <label for="fecha">Fecha</label>
                         <input type="date" name="fecha" value="{{ $soli->fecha }}" class="form-control" readonly>
                         <br>
                     </div>
-                    <div class="col-md-4" id="estado_fin" >
-                        <label for="estado_fin">Aprobación Final</label>
-                        <select name="estado_fin" class=" form-control" disabled>
-                            @if ($soli->estado_fin == 'Aprobado')
-                                <option value="Aprobado">Aprobado/option>
-                                <option value="No Aprobado">No Aprobado</option>
-                            @else
-                                <option value="No Aprobado">No Aprobado</option>
-                                <option value="Aprobado">Aprobado</option>
-                            @endif
+                    
+                </div>
 
-                        </select> <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="estado">Seleccione el Estado</label>
+                        <input type="text" name="estado" value="{{ $soli->estado }}" class="form-control" readonly>
+                    </div>
+                    
+                    <div class="col-md-6" id="estado_fin" >
+                        <label for="estado_fin">Aprobación Final</label>
+                        <input type="text" name="estado_fin" value="{{ $soli->estado_fin }}" class="form-control" readonly>
                     </div>
                 </div>
 
-
+                <br>
+                <div class="row" id="respuesta_fin" >
+                    <div class="col-md-12">
+                        <label for="respuesta_fin">Respuesta Solicitud</label>
+                        <textarea name="respuesta_fin" cols="10" rows="10" style="height: 5rem;width: 80rem;resize: none" disabled>{{ $soli->respuesta_fin }}</textarea>
+                    </div>
+                </div>
 
 
                 <br>
