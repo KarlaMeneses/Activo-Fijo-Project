@@ -10,12 +10,8 @@ class Depreciacion extends Model
         use HasFactory;
     protected $table = 'depreciaciones'; //usa el nombre de la base de datos 
     protected $fillable = [
-        'nombre',
-        'descripcion',
-        'tipo_activo',
-        'vida_util',
-        'coeficiente',
-        'created_at',
-        'updated_at'
+        'año',
+        'd_acumulada',
+        'id_activo',
     ];
 }

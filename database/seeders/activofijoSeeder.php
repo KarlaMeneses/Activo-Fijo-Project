@@ -29,7 +29,7 @@ class activofijoSeeder extends Seeder
                 'estado' => 'Activo',
                 'id_ubicacion' => 1,
                 'id_factura' => 1,
-                'id_depreciacion' => 6,
+                'id_categoria' => 6,
             ],
 
             [
@@ -45,7 +45,7 @@ class activofijoSeeder extends Seeder
                 'estado' => 'Activo',
                 'id_ubicacion' => 2,
                 'id_factura' => 1,
-                'id_depreciacion' => 11,
+                'id_categoria' => 11,
             ],
             [
                 'codigo' => 'AB-03',
@@ -60,7 +60,7 @@ class activofijoSeeder extends Seeder
                 'estado' => 'En mantenimiento',
                 'id_ubicacion' => 3,
                 'id_factura' => 1,
-                'id_depreciacion' => 6,
+                'id_categoria' => 6,
             ],
             [
                 'codigo' => 'AB-04',
@@ -75,7 +75,7 @@ class activofijoSeeder extends Seeder
                 'estado' => 'No activo',
                 'id_ubicacion' => 4,
                 'id_factura' => 1,
-                'id_depreciacion' => 6,
+                'id_categoria' => 6,
             ],
             [
                 'codigo' => 'AB-05',
@@ -90,7 +90,7 @@ class activofijoSeeder extends Seeder
                 'estado' => 'Estravio',
                 'id_ubicacion' => 5,
                 'id_factura' => 1,
-                'id_depreciacion' => 6,
+                'id_categoria' => 6,
             ],
             [
                 'codigo' => 'AB-06',
@@ -105,7 +105,7 @@ class activofijoSeeder extends Seeder
                 'estado' => 'No activo',
                 'id_ubicacion' => 6,
                 'id_factura' => 1,
-                'id_depreciacion' => 10,
+                'id_categoria' => 10,
             ],
 
         ]);
