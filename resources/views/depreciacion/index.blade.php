@@ -8,19 +8,11 @@
 @stop
 
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            <a class="btn btn-primary" href="{{ route('depreciaciones.create') }}">
-                <i class="fas fa-bookmark"></i> Registrar
-                Depreciación</a>
-        </div>
-    </div>
 
     <div class="card">
         <div class="card-body">
             <span class="text-primary">
                 <h5>
-                  
                     <div class="card">
                         <div class="card-body " style="background-color: hsl(0, 0%, 95%);">
                             DECRETO SUPREMO Nº 24051
@@ -29,15 +21,11 @@
                             comenzarán a depreciarse impositivamente
                             desde el momento en que se inicie su utilización y uso, para lo cual se entiende ya
                             debieron estar previamente registrados o activados”.
-                           
                             <br>
-
                             METODO DE DEPRECIACIÓN POR LÍNEA RECTA
                             <br>
                             Depreciacion = (Valor del activo - valor residual) / vida util del activo
-
                         </div>
-
                     </div>
                 </h5>
             </span>
@@ -51,47 +39,32 @@
                 <thead class="bg-dark">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">CUENTA CONTABLE BIENES</th>
-                        <th scope="col">DESCRIPCION</th>
-                        <th scope="col">TIPO</th>
-
-                        <th scope="col">VIDA UTIL</th>
-                        <th scope="col">COEFICIENTE</th>
+                        <th scope="col">FOTO</th>
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">COSTO</th>
                         <th scope="col">ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
-
-                    @foreach ($depres as $depre)
+                    @foreach ($activosfijo as $activo)
                         <tr>
-                            <td>{{ $depre->id }}</td>
-                            <td>{{ $depre->nombre }}</td>
-                            <td>{{ $depre->descripcion }}</td>
-                            <td>{{ $depre->tipo_activo }}</td>
-                            <td>{{ $depre->vida_util }} años</td>
-                            <td>{{ $depre->coeficiente }} %</td>
+                            <td>{{ $activo->id }}</td>
+                            <td><img src="{{ asset($activo->foto) }}" width="100" height="80" />
+                            <td>{{ $activo->nombre }}</td>
+                            <td>{{ $activo->costo }} Bs</td>
                             <td>
-                                <form action="{{ route('depreciaciones.destroy', $depre) }}" method="post">
-                                    <!--<a class="btn btn-warning btn-sm text-light" href="#">
-                                        <a class="btn btn-warning btn-sm text-light rounded-pill"
-                                            href="{{ route('depreciaciones.show', $depre->id) }}">
-                                            <i class="fas fa-eye"></i></a>
-    -->
-                                    <a href="{{ route('depreciaciones.edit', $depre) }}"
-                                        class="btn btn-primary btn-sm text-light rounded-pill">
-                                        <i class="fas fa-edit"></i><a>
-                                            @csrf
-                                            @method('delete')
-                                            @can('editar depreciacion')
-                                            @endcan
-                                            <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
-                                                value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
-                                                <i class="fas fa-trash-alt"></i></button>
-                                            @can('eliminar depreciacion')
-                                            @endcan
-                                </form>
-                            </td>
 
+                                <a href="{{ route('depreciaciones.show', $activo->id) }}"
+                                    class="btn btn-warning btn-sm text-light rounded-pill"><i class="fas fa-eye"></i><a>
+                                        <a href="{{ route('depreciaciones.edit', $activo) }}"
+                                            class="btn btn-primary btn-sm text-light rounded-pill"><i
+                                                class="fas fa-edit"></i><a>
+                                                @can('editar activo fijo')
+                                                @endcan
+
+
+
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

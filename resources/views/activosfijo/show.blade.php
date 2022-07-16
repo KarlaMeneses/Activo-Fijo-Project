@@ -94,6 +94,11 @@
                             </div>
 
                             <div class="col-md-3">
+                                <label>Responsable</label>
+                                <input class="form-control" value="{{ $activofijo->responsable }}" disabled>
+                            </div>
+
+                            <div class="col-md-3">
                                 <label for="d_anual">Depreciacion anual</label>
                                 <input type="text" name="d_anual" class="form-control" value="{{ $activofijo->d_anual }}" disabled>
                             </div>
@@ -197,7 +202,7 @@
 
             <center>
 
-                <a href="{{ route('activosfijo.calcular', $activofijo->id) }}" class="btn btn-warning btb-sm text-light">Calculo</a>
+                <a href="{{ route('activosfijo.calcular', $activofijo->id) }}" class="btn btn-warning btb-sm text-light">Calcular</a>
 
                 <a href="{{ route('activosfijo.index') }}" class="btn btn-warning btb-sm text-light">Volver</a>
                 <a href="{{ route('activosfijo.edit', $activofijo->id) }}" class="btn btn-primary btb-sm text-light">Editar </a>
