@@ -38,6 +38,7 @@
                         <th>Estimacion</th>
                         <th>Estado</th>
                         <th>Fecha solicitud</th>
+                        <th>Monto</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -55,6 +56,7 @@
                             
                             <td>{{ $revalorizacion->estado }}</td>
                             <td>{{ $revalorizacion->created_at }}</td>
+                            <td>{{ $revalorizacion->monto }}</td>
                             <td>
                                 <form action="{{ route('revalorizacion.destroy', $revalorizacion) }}" method="post">
                                     <!--<a class="btn btn-warning btn-sm text-light" href="#">-->
