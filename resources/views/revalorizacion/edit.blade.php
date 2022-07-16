@@ -86,15 +86,20 @@
                                 <div class="card-header form-group col-md-12">
                                     <h5 class="font-weight-bold px-2">DATOS DE REVALORIZACION</h5>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     <label for="tiempo_vida">TIEMPO DE VIDA ESTIMADO</label>
                                     <input type="text" name="tiempo_vida" class="form-control" value="{{ $revalorizacion->tiempo_vida }}" id="nombre">
             
                                 </div>
             
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     <label for="valor">COSTO ESTIMADO</label>
                                     <input type="text" name="valor" class="form-control" value="{{ $revalorizacion->valor }}" id="descripcion">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="valor">MONTO ESTIMADO</label>
+                                    <input type="decimal" name="monto" class="form-control" value="{{ $revalorizacion->monto }}" id="descripcion">
                                 </div>
                             </div>
                         </div>
