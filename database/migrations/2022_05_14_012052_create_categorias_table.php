@@ -15,11 +15,11 @@ class CreateCategoriasTable extends Migration
     {
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->nullable();; //bienes de cuenta contable nombre de la cuenta (contabilidad)
-            $table->string('descripcion')->nullable();; ////descripción de la cuenta terreno,edificio etc
-            $table->string('estado')->nullable(); //% de vida del activo fijo
-            $table->unsignedBigInteger('id_depreciacion');
-            $table->foreign('id_depreciacion')->on('depreciaciones')->references('id')->onDelete('cascade');
+            $table->string('nombre')->nullable(); //bienes de cuenta contable nombre de la cuenta (contabilidad)
+            $table->string('descripcion')->nullable(); ////descripción de la cuenta terreno,edificio etc
+            $table->string('tipo_activo')->nullable(); //tipo de activo tangible,inttangible y inversion
+            $table->integer('vida_util')->nullable(); //años de vida de un activo
+            $table->decimal('coeficiente')->nullable(); //% de vida del activo fijo
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ class CreateActivosfijoTable extends Migration
     {
         Schema::create('activosfijo', function (Blueprint $table) {
             $table->id();
-            $table->string('d_anual')->nullable();
+            $table->string('d_anual')->default("press calcular");
             $table->string('codigo')->nullable();
             $table->string('foto')->nullable(); //añadi imagen al activo atte:luishiño
             $table->string('nombre')->nullable();
@@ -26,6 +26,7 @@ class CreateActivosfijoTable extends Migration
             $table->decimal('costo')->nullable();
             $table->decimal('valor_residual')->nullable();
             $table->string('estado')->nullable();
+            $table->string('responsable')->default("No asignado");
             $table->unsignedBigInteger('id_ubicacion')->nullable();
             $table->foreign('id_ubicacion')->on('ubicacion')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('id_factura')->nullable();

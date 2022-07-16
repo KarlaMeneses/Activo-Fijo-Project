@@ -40,6 +40,7 @@ class RevalorizacionController extends Controller
     {
         $revalorizacion = new Revalorizacion();
         $revalorizacion->tiempo_vida=$request->tiempo_vida;
+        $revalorizacion->costo = $request->costo;
         $revalorizacion->valor=$request->valor;
         $revalorizacion->id_activo=$request->id_activo;
         $revalorizacion->save();
@@ -94,8 +95,13 @@ class RevalorizacionController extends Controller
         $revalorizacion = Revalorizacion::findOrFail($revalorizacion->id);
         $revalorizacion->valor = $request->input('valor');
         $revalorizacion->tiempo_vida = $request->input('tiempo_vida');
-        //return 'hola lu';
+        $revalorizacion->estado = $request->input('estado');
         $revalorizacion->save();
+        if ($request->input('estado') == "Aprobado") {
+            $activosfijo = Activofijo::find($revalorizacion->id_activo);
+            $activosfijo->valor_residual = $revalorizacion->valor;
+            $activosfijo->save();
+        }
         return redirect()->route('revalorizacion.index');
     }
 

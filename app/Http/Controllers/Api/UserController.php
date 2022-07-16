@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use CURLFile;
+use Illuminate\Support\Facades\Log;
+use Psy\Readline\Hoa\Console;
 
 class UserController extends Controller
 {
