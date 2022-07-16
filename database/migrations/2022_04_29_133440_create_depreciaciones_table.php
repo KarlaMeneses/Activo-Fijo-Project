@@ -20,6 +20,7 @@ class CreateDepreciacionesTable extends Migration
         Schema::create('depreciaciones', function (Blueprint $table) {
             $table->id();
             $table->integer('año')->nullable(); 
+            $table->integer('valor')->nullable(); 
             $table->integer('d_acumulada')->default("0");
             $table->unsignedBigInteger('id_activo')->nullable();
             $table->foreign('id_activo')->on('activosfijo')->references('id')->onDelete('cascade');
