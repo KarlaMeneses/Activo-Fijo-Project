@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activofijo;
+use App\Models\Categoria;
 use App\Models\Depreciacion;
 use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
@@ -75,7 +76,10 @@ class DepreciacionController extends Controller
     public function show($id)
     {
         $activofijo = Activofijo::find($id);
-        return view('depreciacion.show', compact('activofijo'));
+        $categoria = categoria::find($activofijo->id_categoria);
+        $depreciacion = Depreciacion::all($id);
+       
+        return view('depreciacion.show', compact('activofijo','categoria','depreciacion'));
     }
 
     /**

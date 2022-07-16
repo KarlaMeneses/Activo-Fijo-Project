@@ -48,4 +48,15 @@ class ActivoController extends Controller
             return response()->json(['mensaje' => $e->getMessage()], 500);
         }
     }
+
+    public function obtenerActivosA()
+    {
+        try {
+            //$paciente = auth('api')->user();
+            $activos = Activofijo::select('activosfijo.id', 'activosfijo.codigo', 'activosfijo.nombre')->get();
+            return response()->json(['mensaje' => 'Consulta exitosa', 'data' => $activos], 200);
+        } catch (\Exception $e) {
+            return response()->json(['mensaje' => $e->getMessage()], 500);
+        }
+    }
 }

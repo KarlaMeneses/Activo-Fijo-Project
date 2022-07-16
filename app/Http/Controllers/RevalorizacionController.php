@@ -40,6 +40,7 @@ class RevalorizacionController extends Controller
     {
         $revalorizacion = new Revalorizacion();
         $revalorizacion->tiempo_vida=$request->tiempo_vida;
+        $revalorizacion->costo = $request->costo;
         $revalorizacion->valor=$request->valor;
         $revalorizacion->id_activo=$request->id_activo;
         $revalorizacion->save();

@@ -312,12 +312,6 @@ return [
                     'route'        => 'categorias.index',
                 ],
                 [
-                    'text'       => 'Depreciacion',
-                    'icon' => 'fas fa-arrow-down',
-                    'route'        => 'depreciaciones.index',
-                ],
-
-                [
                     'text' => 'Revalorizacion',
                     'route'  => 'revalorizacion.index',
                     'icon' => 'fas fa-arrow-up',

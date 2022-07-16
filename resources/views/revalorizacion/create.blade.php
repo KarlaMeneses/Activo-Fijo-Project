@@ -25,6 +25,13 @@
                     <br><br>
                 @enderror
 
+                <label for="valor">costo</label>
+                <input type="decimal" name="monto" class="form-control"> <br>
+                @error('monto')
+                    <small class="text-danger">*{{ $message }}</small>
+                    <br><br>
+                @enderror
+
                 <label for="id_activo">id_activo</label>
                 <input type="text" name="id_activo" class="form-control"> <br>
                 @error('id_activo')

@@ -113,6 +113,11 @@
 
                                     </select>
                                 </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="valor">MONTO ESTIMADO</label>
+                                    <input type="decimal" name="monto" class="form-control" value="{{ $revalorizacion->monto }}" id="descripcion">
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -18,11 +18,11 @@ class CreateActivosfijoTable extends Migration
             $table->string('d_anual')->default("press calcular");
             $table->string('codigo')->nullable();
             $table->string('foto')->nullable(); //añadi imagen al activo atte:luishiño
-            $table->string('nombre')->nullable();
+            $table->string('nombre')->nullable(); //Suerte Karla
             $table->string('detalle')->nullable();
             $table->string('tipo')->nullable();
             $table->date('fecha_ingreso')->nullable();
-            $table->string('proveedor')->nullable();
+            $table->string('proveedor')->nullable(); //OK
             $table->decimal('costo')->nullable();
             $table->decimal('valor_residual')->nullable();
             $table->string('estado')->nullable();
@@ -30,11 +30,11 @@ class CreateActivosfijoTable extends Migration
             $table->unsignedBigInteger('id_ubicacion')->nullable();
             $table->foreign('id_ubicacion')->on('ubicacion')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('id_factura')->nullable();
+            $table->foreign('id_categoria')->on('categorias')->references('id')->onDelete('cascade');
+            $table->unsignedBigInteger('id_categoria')->nullable();
             $table->foreign('id_factura')->on('facturas')->references('id')->onDelete('cascade');
-            $table->unsignedBigInteger('id_depreciacion')->nullable();
-            $table->foreign('id_depreciacion')->on('depreciaciones')->references('id')->onDelete('cascade');
             $table->timestamps();
- });
+        });
     }
 
     /**
