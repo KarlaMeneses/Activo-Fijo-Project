@@ -256,8 +256,8 @@ return [
             //    'can' => 'Gestionar Usuario'
         ],
         [
-            'text' => 'Empresas',
-            'route'  => 'empresa.index',
+            'text' => 'Datos Empresa',
+            'route'  => 'empresa.edit',
             'icon' => 'fas fa-users',
         ],
         [

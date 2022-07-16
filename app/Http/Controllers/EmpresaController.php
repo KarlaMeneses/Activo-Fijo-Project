@@ -51,6 +51,7 @@ class EmpresaController extends Controller
 
         return redirect()->route('empresa.index');
     }
+
     public function reporte(Request $request)
     {
         $user_c = Auth::user()->id;
@@ -81,17 +82,19 @@ class EmpresaController extends Controller
 
     }
 
-    public function edit($id)
+    public function edit()
     {
-        $empresa = Empresa::find($id);
-      
+        $id = 1;
+        $empresa = Empresa::where('id', $id)->first();
+    
         return view('empresa.edit', compact('empresa'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $empresa = Empresa::findOrFail($id);
+        $id = 1;
+        $empresa = Empresa::where('id', $id)->first();
         $empresa->nombre = $request->input('nombre');
         $empresa->direccion = $request->input('direccion');
         $empresa->nit = $request->input('nit');
@@ -99,7 +102,7 @@ class EmpresaController extends Controller
         $empresa->email = $request->input('email');
         $empresa->foto = $request->input('foto');
         $empresa->save();
-        return redirect()->route('empresa.index');
+        return redirect()->route('home');
     }
 
     public function destroy($id)
