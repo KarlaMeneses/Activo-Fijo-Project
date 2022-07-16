@@ -55,6 +55,12 @@ class AyudaSeeder extends Seeder
         $user->descripcion = "Para registar un activo darc lick en el MÓDULO ACTIVO FIJO, luego en activo fijo; en esa vista se muestra una lista de los activos si ya hubieran registrados y si quiero registar otro dar click en Crear Activo Fijo ";
         $user->save();
 
+        $user = new Ayuda();
+        $user->foto = 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/ayuda%2FSubir%20foto%20activo.png?alt=media&token=0203c4c0-9873-44a6-a311-135f0278d540';
+        $user->descripcion ="Una vez realizado los pasos anteriores se habilida la vista donde podrá registrar un nuevo activo, Para subir la foto del activo presionar en 'Subir foto'
+        se podrá subir la foto desde el almacenamiento de su equipo o en el movil podrá tomar la foto directamente. Para guardar el activo dar click en >>Crear Activo<< de color rojo ";
+        $user->save();
+
 
         $user = new Ayuda();
         $user->foto = 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/ayuda%2FVer%20activo.png?alt=media&token=e4b3beea-b891-4f6a-8c40-2c04c700a746';
@@ -91,8 +97,9 @@ class AyudaSeeder extends Seeder
         $user->save();
 
         $user = new Ayuda();
-        $user->foto = '';
-        $user->descripcion ="";
+        $user->foto = 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/ayuda%2FSolicitar%20Activo.png?alt=media&token=020b54e2-c01b-484b-b5a1-b1c3a5734c56';
+        $user->descripcion ="En caso de que la empresa requiera nuevos activos se debe realizar una solicitud del mismo 
+        esto se registra en el >>MÓDULO SOLICITUD ";
         $user->save();
 
 
