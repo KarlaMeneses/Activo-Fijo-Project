@@ -136,6 +136,7 @@
 
             <button class="btn btn-danger btn-sm" type="submit">Crear Activo</button>
             <a class="btn btn-primary btn-sm" href="{{ route('activosfijo.index') }}">Volver</a>
+
         </form>
 
         <form action="{{ route('factura.store') }}" method="post">

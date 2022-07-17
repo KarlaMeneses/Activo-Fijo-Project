@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Contracts\Role;
 use App\Exports\UserExport;
+use App\Http\Controllers\ResponsableController;
+use App\Models\Responsable;
 use Maatwebsite\Excel\Facades\Excel;
 
 /*
@@ -102,6 +104,8 @@ Route::resource('ayudas', AyudaController::class)->names('ayudas');
 
 //UBICACIONES
 Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones');
+//RESPONSABLE
+Route::resource('responsables', ResponsableController::class)->names('responsables');
 
 //REVALORIZACION
 Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');
@@ -140,6 +144,7 @@ Route::get('baja/create', [App\Http\Controllers\BajaController::class, 'create']
 Route::get('baja/edit/{id}', [App\Http\Controllers\BajaController::class, 'edit'])->name('baja.edit');
 Route::post('baja/update/{id}', [App\Http\Controllers\BajaController::class, 'update'])->name('baja.update');
 Route::post('baja/{id}', [App\Http\Controllers\BajaController::class, 'destroy'])->name('baja.delete');
+
 
 
 // empresa

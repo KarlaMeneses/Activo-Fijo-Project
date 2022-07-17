@@ -41,6 +41,6 @@ class bitacoraSeeder extends Seeder
         $bita->ip = encrypt('127.0.0.1');
         $bita->save();
 
-        
+
     }
 }

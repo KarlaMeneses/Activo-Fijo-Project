@@ -265,7 +265,7 @@ return [
             'route'  => 'ayudas.index',
             'icon' => 'fas fa-user',
         ],
-       
+
         [
             'text'    => 'MÓDULO USUARIO',
             'icon'    => 'fas fa-solid fa-users',
@@ -395,7 +395,19 @@ return [
 
             ]
         ],
-        ['header' => 'MÓDULO TRASPASO'],
+        [
+            'text'    => 'MÓDULO TRASPASO',
+            'icon'    => 'fas fa-solid fa-users',
+            'submenu' =>
+            [
+                [
+                    'text'       => 'Responsables',
+                    'icon' => 'fas fa-file-alt',
+                    'route'        => 'responsables.index',
+                ],
+            ]
+        ],
+
         /* ['header' => 'labels'], */
     ],
 

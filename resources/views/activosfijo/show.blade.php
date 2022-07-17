@@ -197,10 +197,10 @@
                 </div>
             </div>
 
-            
+
             <h3> {{ $activofijo->d_anual}} </h3>
 
-            <table class="table table-striped"style="width:100%">
+            <table class="table table-striped" style="width:100%">
                 <div class="card-header form-group col-md-12">
                     <h5 class="font-weight-bold px-2">TABLA DE DEPRECIACION</h5>
                 </div>
@@ -215,13 +215,13 @@
                 <tbody>
 
                     @foreach ($depreciacion as $depreciacion)
-                        @if ($depreciacion->id_activo == $activofijo->id)
-                        <tr>
-                            <td>{{ $depreciacion->año}}</td>
-                            <td>{{ $activofijo->d_anual}}</td>
-                            <td>{{ $depreciacion->d_acumulada}}</td>
-                        </tr>
-                        @endif
+                    @if ($depreciacion->id_activo == $activofijo->id)
+                    <tr>
+                        <td>{{ $depreciacion->año}}</td>
+                        <td>{{ $activofijo->d_anual}}</td>
+                        <td>{{ $depreciacion->d_acumulada}}</td>
+                    </tr>
+                    @endif
                     @endforeach
                 </tbody>
             </table>
@@ -231,7 +231,7 @@
 
             <center>
                 <a href="{{ route('activosfijo.calcular', $activofijo->id) }}" class="btn btn-warning btb-sm text-light">Calcular</a>
-                <a href="{{ route('activosfijo.index') }}" class="btn btn-warning btb-sm text-light">Volver</a>
+                <button class="btn btn-warning btb-sm text-light" type="button" onclick="history.back()"></i> Volver</button>
                 <a href="{{ route('activosfijo.edit', $activofijo->id) }}" class="btn btn-primary btb-sm text-light">Editar </a>
                 <a href="{{ route('notas.show', $activofijo->id) }}" class="btn btn-danger btb-sm text-light">Ver
                     nota

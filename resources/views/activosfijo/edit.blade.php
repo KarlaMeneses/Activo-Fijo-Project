@@ -155,7 +155,9 @@
             <br>
 
             <button class="btn btn-primary" type="submit">Actualizar Usuario</button>
-            <a class="btn btn-danger" href="{{ route('activosfijo.index') }}">Volver</a>
+            {{-- <a class="btn btn-danger" href="{{ route('activosfijo.index') }}">Volver</a> --}}
+            <button class="btn btn-warning btb-sm text-light" type="button" onclick="history.back()"></i> Volver</button>
+
         </form>
 
     </div>

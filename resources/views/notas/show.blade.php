@@ -3,62 +3,62 @@
 @section('title', 'Activo Fijo')
 
 @section('content_header')
-    <div class="card-header text-center">
-        <h3><b>Ver Nota De Compra</b></h3>
-    </div>
+<div class="card-header text-center">
+    <h3><b>Ver Nota De Compra</b></h3>
+</div>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/descaga.css') }}">
+<link rel="stylesheet" href="{{ asset('css/descaga.css') }}">
 @stop
 
 @section('js')
-    <link rel="stylesheet" href="{{ asset('js/descaga.js') }}">
+<link rel="stylesheet" href="{{ asset('js/descaga.js') }}">
 @stop
 
 @section('content')
-    <div class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <!--body-->
-                        <div class="container">
-                            <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label>Proveedor: </label>
-                                        <input class="form-control" value="{{ $nota->proveedor }}" disabled>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <!--body-->
+                    <div class="container">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Proveedor: </label>
+                                <input class="form-control" value="{{ $nota->proveedor }}" disabled>
 
-                                        <label>Direccion: </label>
-                                        <input class="form-control" value="  {{ $nota->direccion }}" disabled>
+                                <label>Direccion: </label>
+                                <input class="form-control" value="  {{ $nota->direccion }}" disabled>
 
-                                        <label>Telefono: </label>
-                                        <input class="form-control" value="{{ $nota->telefono }}" disabled>
+                                <label>Telefono: </label>
+                                <input class="form-control" value="{{ $nota->telefono }}" disabled>
 
-                                        <label>Fecha entrega: </label>
-                                        <input class="form-control" value="{{ $nota->fecha_entrega }}" disabled>
+                                <label>Fecha entrega: </label>
+                                <input class="form-control" value="{{ $nota->fecha_entrega }}" disabled>
 
-                                        <label>Totales: </label>
-                                        <input class="form-control" value="{{ $nota->totales }}" disabled>
+                                <label>Totales: </label>
+                                <input class="form-control" value="{{ $nota->totales }}" disabled>
 
-                                    </div>
+                            </div>
 
                             <div class="form-group col-md-6">
                                 <center>
-                                     <h5>Comprobante - Nota de compra fisica</h5>
+                                    <h5>Comprobante - Nota de compra fisica</h5>
                                     <img src="{{ asset($nota->foto) }}" width="250" height="300" />
-                                        <!--Descagar imagen--->
+                                    <!--Descagar imagen--->
                                     <div class="download-wrap">
                                         <div class="download">
-                                        <a target="_blanck" href="{{($nota->foto) }}" class="button-download">
-                                        Descagar
-                                            <span class="icon-wrap">
-                                                 <i class="icon-download"></i>
-                                             </span>
-                                        </a>
-                                        <div class="meter">
-                                             <span class="meter-progress"></span>
-                                        </div>
+                                            <a target="_blanck" href="{{($nota->foto) }}" class="button-download">
+                                                Descagar
+                                                <span class="icon-wrap">
+                                                    <i class="icon-download"></i>
+                                                </span>
+                                            </a>
+                                            <div class="meter">
+                                                <span class="meter-progress"></span>
+                                            </div>
                                         </div>
                                     </div>
                                     <!--<button id="reset">Reset</button>
@@ -69,9 +69,9 @@
 
                         <div class="card-body">
                             @if (session('success'))
-                                <div class="alert alert-success" role="success">
-                                    {{ session('success') }}
-                                </div>
+                            <div class="alert alert-success" role="success">
+                                {{ session('success') }}
+                            </div>
                             @endif
 
                             <div class="row">
@@ -96,14 +96,14 @@
                                         <tbody>
 
                                             @foreach ($detallenotas as $detalle)
-                                                @if ($detalle->id_notas == $nota->id)
-                                                    <tr>
-                                                        <td>{{ $detalle->cantidad }}</td>
-                                                        <td>{{ $detalle->detalle }}</td>
-                                                        <td>{{ $detalle->precio_uni }}</td>
-                                                        <td>{{ $detalle->total }}</td>
-                                                    </tr>
-                                                @endif
+                                            @if ($detalle->id_notas == $nota->id)
+                                            <tr>
+                                                <td>{{ $detalle->cantidad }}</td>
+                                                <td>{{ $detalle->detalle }}</td>
+                                                <td>{{ $detalle->precio_uni }}</td>
+                                                <td>{{ $detalle->total }}</td>
+                                            </tr>
+                                            @endif
                                             @endforeach
                                         </tbody>
 
@@ -120,24 +120,24 @@
                                 </div>
                                 <!--end third-->
                             </div>
-            <center>
-                <a class="btn btn-warning btb-sm text-light" href="{{ route('notas.index') }}">Volver</a>
-                <a href="{{ route('notas.edit', $nota->id) }}" class="btn btn-primary btb-sm text-light">
-                    Editar </a>
-            </center>
+                            <center>
+                                <button class="btn btn-warning btb-sm text-light" type="button" onclick="history.back()"></i> Volver</button>
+                                <a href="{{ route('notas.edit', $nota->id) }}" class="btn btn-primary btb-sm text-light">
+                                    Editar </a>
+                            </center>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+    @endsection
 
-@section('css')
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-@stop
+    @section('css')
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    @stop
 
-@section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-@stop
+    @section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    @stop
