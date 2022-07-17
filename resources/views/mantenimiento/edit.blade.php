@@ -15,7 +15,7 @@
 
                 <div class="row" style="padding-bottom: 1rem">
                     <div class="col-md-12">
-                        <label for="id_activo">Seleccione el Activo Fijo para Mantenimiento</label>
+                        <label for="id_activo">Activo Fijo para Mantenimiento</label>
                         <select name="id_activo" class=" form-control">
                             @foreach ($activos as $activo)
                                 @if ($mante->id_activo == $activo->id)
@@ -50,7 +50,7 @@
                             required>
                     </div>
                     <div class="col-md-6">
-                        <label for="fecha_fin">Ingrese Fecha de Finalización</label>
+                        <label for="fecha_fin">Fecha de Finalización</label>
                         <input type="date" name="fecha_fin" class="form-control" value="{{ $mante->fecha_fin }}"
                             required>
                     </div>
@@ -58,7 +58,7 @@
 
                 <div class="row" style="padding-bottom: 1rem">
                     <div class="col-md-6">
-                        <label for="problema">Ingrese la Descripción del Mantenimiento</label>
+                        <label for="problema">Descripción del Mantenimiento</label>
                         <input type="text" name="problema" class="form-control" value="{{ $mante->problema }}" required>
                     </div>
                     <div class="col-md-6">
@@ -79,11 +79,11 @@
 
                 <div class="row" style="padding-bottom: 1rem">
                     <div class="col-md-6">
-                        <label for="solucion">Ingresar Solución</label>
+                        <label for="solucion">Solución</label>
                         <input type="text" name="solucion" class="form-control"value="{{ $mante->solucion }}" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="costo">Ingrese el Costo</label>
+                        <label for="costo">Costo</label>
                         <input type="number" name="costo" class="form-control" value="{{ $mante->costo }}" required>
                     </div>
                 </div>
