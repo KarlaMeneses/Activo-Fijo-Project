@@ -20,7 +20,6 @@ class CreateActivosfijoTable extends Migration
             $table->string('foto')->nullable(); //añadi imagen al activo atte:luishiño
             $table->string('nombre')->nullable(); //Suerte Karla
             $table->string('detalle')->nullable();
-            $table->string('tipo')->nullable();
             $table->date('fecha_ingreso')->nullable();
             $table->string('proveedor')->nullable(); //OK
             $table->decimal('costo')->nullable();
