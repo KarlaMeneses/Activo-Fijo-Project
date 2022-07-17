@@ -26,6 +26,7 @@
                     <th scope="col">Ciudad</th>
                     <th scope="col">Pais</th>
                     <th scope="col">Departamento</th>
+                    <th scope="col">Estado</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -43,6 +44,8 @@
                     <td>{{ $depa->nombre }}</td>
                     @endif
                     @endforeach
+
+                    <td>{{ $ubi->estado }}</td>
                     <td>
                         <form action="{{ route('ubicaciones.destroy', $ubi->id) }}" method="post">
                             <a href="{{ route('ubicaciones.edit', $ubi->id) }}" class="btn btn-primary btn-sm text-light rounded-pill">
@@ -54,7 +57,7 @@
                         </form>
                     </td>
 
-
+                    
 
                 </tr>
                 @endforeach

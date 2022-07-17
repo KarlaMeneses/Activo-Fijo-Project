@@ -60,7 +60,14 @@
                     </div>
                 </div>
             </div>
-
+            <div class="col-md-6">
+                <label for="estado">Ingrese el Estado de la Ubicación</label>
+                <input type="text" name="estado" class="form-control" value="{{ $ubi->estado }}" placeholder="Escriba el estado de la ubicación"> <br>
+                @error('estado')
+                    <small class="text-danger">*{{ $message }}</small>
+                    <br><br>
+                @enderror
+            </div>
 
             <center>
                 <button class="btn btn-primary btb-sm text-light" type="submit">Actualizar Ubicación</button>
