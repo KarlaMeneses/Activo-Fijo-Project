@@ -57,42 +57,22 @@
 
                     <div class="form-group col-md-6">
                         <label for="codigo">CODIGO DE ACTIVO</label>
-                        <input type="text" name="codigo" class="form-control" value="">
+                        <input type="text" name="codigo" class="form-control" value="" placeholder="Ingrese un codigo valido">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="nombre">NOMBRE DEL ACTIVO</label>
-                        <input type="text" name="nombre" class="form-control" value="">
+                        <input type="text" name="nombre" class="form-control" value="" placeholder="Nombre de identificacion">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="detalle">DESCRIPCION DEL ACTIVO</label>
-                        <input type="text" name="detalle" class="form-control" value="">
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="tipo">TIPO DE ACTIVO</label>
-                        <select name="tipo" id="tipo" class="form-control" required>
-                            <option hidden disabled selected> -- seleccionar-- </option>
-                            <option value="Tangible">Tangible</option>
-                            <option value="Intangible">Intangible</option>
-                            <option value="Inversion">Inversion</option>
-                        </select>
+                        <input type="text" name="detalle" class="form-control" value="" placeholder="Descripcion, Caracteristicas">
                     </div>
 
                     <div class="col-md-3">
                         <label for="fecha_ingreso">FECHA INGRESO</label>
                         <input type="date" name="fecha_ingreso" class="form-control" value="">
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="costo">COSTO ACTIVO</label>
-                        <input name="costo" type="decimal" class="form-control" value="">
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="vida_util">VIDA UTIL DEL ACTIVO (AÑOS)</label>
-                        <input name="vida_util" type="text" class="form-control" value="">
                     </div>
 
                     <div class="col-md-3">
@@ -107,11 +87,15 @@
 
                     </div>
 
+                    <div class="col-md-3">
+                        <label for="costo">COSTO ACTIVO</label>
+                        <input name="costo" type="decimal" class="form-control" value="" placeholder="Ingrese solo el costo">
+                    </div>
+
                     <div class="form-group col-md-6">
                         <label for="proveedor">PROVEEDOR DEL ACTIVO</label>
                         <input type="text" name="proveedor" class="form-control" value="">
                     </div>
-
 
                     <div class="col-md-3">
                         <label for="id_ubicacion">SELECCIONE LA UBICACION</label>
@@ -122,6 +106,22 @@
                             @endforeach
                         </select><br>
                     </div>
+
+                    <div class="col-md-3">
+                        <label for="id_categoria">CUENTA CONTABLE</label>
+                        <select name="id_categoria" class="focus border-dark  form-control">
+                            <option hidden disabled selected value> -- seleccionar-- </option>
+                            @foreach ($categoria as $categoria)
+                            <option value="{{ $categoria->nombre }}">{{ $categoria->nombre }}</option>
+                            @endforeach
+                        </select><br>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="valor_residual">VALOR RESIDUAL</label>
+                        <input type="text" name="valor_residual" class="form-control" value="">
+                    </div>
+
                     {{-- }}
                     <div class="col-md-6">
                         <label for="id_factura">FACTURA</label>
@@ -136,14 +136,15 @@
 
             <button class="btn btn-danger btn-sm" type="submit">Crear Activo</button>
             <a class="btn btn-primary btn-sm" href="{{ route('activosfijo.index') }}">Volver</a>
-        </form>
 
+        </form>
+{{--}}
         <form action="{{ route('factura.store') }}" method="post">
             @csrf
 
 
         </form>
-
+--}}
     </div>
 </div>
 
@@ -183,6 +184,7 @@
 @stop
 
 @section('js')
+{{--
 <script>
     window.addEventListener("load", () => {
         var qrc = new QRCode(document.getElementById("qrcode"), "{{ $activofijo->codigo }}");
@@ -190,7 +192,7 @@
     });
 
 </script>
-
+--}}
 <script>
     const activo = [{
         nombre: "activo"

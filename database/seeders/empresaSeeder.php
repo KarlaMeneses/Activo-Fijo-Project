@@ -15,6 +15,8 @@ class empresaSeeder extends Seeder
      */
     public function run()
     {
+
+        
         $empresa = new Empresa();
         $empresa->nombre = 'B&L Confecciones';
         $empresa->email = 'bylconfecciones@gmail.com';
@@ -23,9 +25,10 @@ class empresaSeeder extends Seeder
         $empresa->nit = '365987';
         $empresa->direccion = 'Calle Vallegrande  #341';
         $empresa->telefono = 75693698;
-        $empresa->save(); //save con  parentesis
+        $empresa->save(); //save con  parentesis 
 
         $empresa = new Empresa();
+        
         $empresa->nombre = 'YPFB Yacimientos Petrolíferos Fiscales Bolivianos';
         $empresa->email = 'ypfb@gmail.com';
         $empresa->foto = 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/empresa%2F1200px-YPFB_Logo.svg.jpg?alt=media&token=c777f33a-0d73-4ca8-b1b9-8925a1372708';

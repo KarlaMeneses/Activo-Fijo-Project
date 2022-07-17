@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Contracts\Role;
 use App\Exports\UserExport;
+use App\Http\Controllers\ResponsableController;
+use App\Models\Responsable;
 use Maatwebsite\Excel\Facades\Excel;
 
 /*
@@ -102,6 +104,8 @@ Route::resource('ayudas', AyudaController::class)->names('ayudas');
 
 //UBICACIONES
 Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones');
+//RESPONSABLE
+Route::resource('responsables', ResponsableController::class)->names('responsables');
 
 //REVALORIZACION
 Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');
@@ -142,13 +146,14 @@ Route::post('baja/update/{id}', [App\Http\Controllers\BajaController::class, 'up
 Route::post('baja/{id}', [App\Http\Controllers\BajaController::class, 'destroy'])->name('baja.delete');
 
 
+
 // empresa
 
 Route::get('empresa/index', [App\Http\Controllers\EmpresaController::class, 'index'])->name('empresa.index');
 Route::post('empresa/store', [App\Http\Controllers\EmpresaController::class, 'store'])->name('empresa.store');
 Route::get('empresa/create', [App\Http\Controllers\EmpresaController::class, 'create'])->name('empresa.create');
-Route::get('empresa/edit/{id}', [App\Http\Controllers\EmpresaController::class, 'edit'])->name('empresa.edit');
-Route::put('empresa/update/{id}', [App\Http\Controllers\EmpresaController::class, 'update'])->name('empresa.update');
+Route::get('empresa/edit', [App\Http\Controllers\EmpresaController::class, 'edit'])->name('empresa.edit');
+Route::put('empresa/update', [App\Http\Controllers\EmpresaController::class, 'update'])->name('empresa.update');
 Route::post('empresa/delete/{id}', [App\Http\Controllers\EmpresaController::class, 'destroy'])->name('empresa.delete');
 Route::get('empresa/show/{id}', [App\Http\Controllers\EmpresaController::class, 'show'])->name('empresa.show');
 Route::post('empresa/reporte', [App\Http\Controllers\EmpresaController::class, 'reporte'])->name('empresa.reporte');

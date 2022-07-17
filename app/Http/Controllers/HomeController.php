@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 use App\Models\User;
 class HomeController extends Controller
@@ -25,6 +26,9 @@ class HomeController extends Controller
     {
 
         $user = User::find(auth()->user()->id);
-        return view('home', compact('user'));
+        $id = 1;
+        $empresa = Empresa::where('id', $id)->first();
+        
+        return view('home', compact('user','empresa'));
     }
 }

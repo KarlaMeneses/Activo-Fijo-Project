@@ -53,7 +53,7 @@
 
                     @foreach ($activos as $activo)
                         @if ($mante->id_activo == $activo->id)
-                            <input type="text" name="costo" class="form-control" value="{{ $activo->detalle }}" readonly>
+                            <input type="text" name="costo" class="form-control" value="{{ $activo->nombre }}" readonly>
                         @endif
                     @endforeach
 

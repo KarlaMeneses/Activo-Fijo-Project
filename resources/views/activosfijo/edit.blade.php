@@ -91,11 +91,6 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label for="tipo">Tipo De Activo</label>
-                                <input name="tipo" type="text" class="form-control" value="{{ $activofijo->tipo }}">
-                            </div>
-
-                            <div class="col-md-3">
                                 <label for="fecha_ingreso">Fecha Ingreso</label>
                                 <input name="fecha_ingreso" type="date" class="form-control" value="{{ $activofijo->fecha_ingreso }}">
                             </div>
@@ -155,7 +150,9 @@
             <br>
 
             <button class="btn btn-primary" type="submit">Actualizar Usuario</button>
-            <a class="btn btn-danger" href="{{ route('activosfijo.index') }}">Volver</a>
+            {{-- <a class="btn btn-danger" href="{{ route('activosfijo.index') }}">Volver</a> --}}
+            <button class="btn btn-warning btb-sm text-light" type="button" onclick="history.back()"></i> Volver</button>
+
         </form>
 
     </div>

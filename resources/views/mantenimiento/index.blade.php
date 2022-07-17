@@ -13,8 +13,8 @@
         <div class="card-header">
             <a href="{{ route('mantenimientos.create') }}" class="btn btn-primary btb-sm">
                 <i class="fas fa-wrench"></i> Registrar Mantenimiento</a>
-                <a href="{{ route('mantenimiento.reporte_vista') }}" class="btn btn-primary btb-sm">
-                    <i class="fas fa-wrench"></i> Reporte</a>
+            <a href="{{ route('mantenimiento.reporte_vista') }}" class="btn btn-primary btb-sm">
+                <i class="fas fa-wrench"></i> Reporte</a>
         </div>
     </div>
     <div class="card">
@@ -44,7 +44,7 @@
 
                             @foreach ($activos as $activo)
                                 @if ($mante->id_activo == $activo->id)
-                                <td>{{ $activo->detalle }}</td>
+                                    <td>{{ $activo->nombre }}</td>
                                 @endif
                             @endforeach
 
@@ -59,17 +59,18 @@
 
                             <td>
 
-                                
+
                                 <form action="{{ route('mantenimientos.destroy', $mante->id) }}" method="post">
-                                <a href="{{ route('mantenimientos.edit', $mante->id) }}" class="btn btn-primary btn-sm text-light rounded-pill">
-                                    <i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('mantenimientos.edit', $mante->id) }}"
+                                        class="btn btn-primary btn-sm text-light rounded-pill">
+                                        <i class="fas fa-edit"></i></a>
 
                                     <a class="btn btn-warning btn-sm text-light rounded-pill"
-                                    href="{{ route('mantenimientos.show', $mante->id) }}">
-                                    <i class="fas fa-eye"></i></a>
-                                        @csrf
-                                        @method('delete')
-                                        <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
+                                        href="{{ route('mantenimientos.show', $mante->id) }}">
+                                        <i class="fas fa-eye"></i></a>
+                                    @csrf
+                                    @method('delete')
+                                    <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit"
                                         value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
                                         <i class="fas fa-trash-alt"></i></button>
                                 </form>

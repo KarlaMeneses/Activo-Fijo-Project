@@ -17,10 +17,11 @@ class solicitudSeeder extends Seeder
     {
         $soli = new Solicitud();
         $soli->persona_sol   = 'Fernando Herrera';
-        $soli->tipo_soli     = 'Productos - Inventario';
+        /* $soli->tipo_soli     = 'Productos - Inventario'; */
         $soli->clasificacion = 'No Urgente';
         $soli->concepto      = 'Articulo necesario para producción.';
         $soli->estado        = 'En Proceso';
+        $soli->estado_fin        = 'No Aprobado';
         $soli->fecha         = '2022-06-26';
         $soli->save();
 

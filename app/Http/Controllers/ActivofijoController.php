@@ -36,7 +36,8 @@ class ActivofijoController extends Controller
     {
         $depas = Departamento::all();
         $ubi = Ubicacion::all();
-        return view('activosfijo.create', compact('depas', 'ubi'));
+        $categoria = categoria::all();
+        return view('activosfijo.create', compact('depas', 'ubi', 'categoria'));
     }
 
     /**
@@ -48,15 +49,17 @@ class ActivofijoController extends Controller
     public function store(Request $request)
     {
         $activofijo = new Activofijo();
-        $activofijo->codigo = $request->codigo;
+
         $activofijo->foto = $request->foto;
+        $activofijo->codigo = $request->codigo;
         $activofijo->nombre = $request->nombre;
         $activofijo->detalle = $request->detalle;
-        $activofijo->tipo = $request->tipo;
+        $activofijo->id_categoria = $request->id_categoria;
         $activofijo->fecha_ingreso = $request->fecha_ingreso;
-        $activofijo->proveedor = $request->proveedor;
-        $activofijo->costo = $request->costo;
         $activofijo->estado = $request->estado;
+        $activofijo->costo = $request->costo;
+        $activofijo->proveedor = $request->proveedor;
+        $activofijo->valor_residual= $request->valor_residual;
 
         $ubicacion = Ubicacion::all();
         foreach ($ubicacion as $ubi) {
@@ -64,8 +67,37 @@ class ActivofijoController extends Controller
                 $activofijo->id_ubicacion = $ubi->id;
             }
         }
+
+        $categoria = categoria::all();
+        foreach ($categoria as $categoria) {
+            if ($categoria->nombre == $request->id_categoria) {
+                $activofijo->id_categoria = $categoria->id;
+            }
+        }
         $activofijo->id_factura = $request->id_factura;
         $activofijo->save();
+        $activofijo = Activofijo::latest('id')->first();
+
+        $cat = categoria::find($activofijo->id_categoria);
+        //
+        $anual = ($activofijo->costo - $activofijo->valor_residual) / $cat->vida_util;
+        $activofijo->d_anual = $anual;
+        //
+        $contador = 0;
+        $val = $activofijo->costo;
+        for ($i = 1; $i <= $cat->vida_util; $i++) {
+            $depreciacion = new Depreciacion();
+            $depreciacion->año = $i;
+            $val = $val - $anual;
+            $depreciacion->valor = $val;
+            $contador = $contador + $activofijo->d_anual; 
+            $depreciacion->d_acumulada = $contador;
+            $depreciacion->id_activo = $activofijo->id;
+            $depreciacion->save();
+        }
+       
+        $activofijo->save();
+
         return redirect()->route('activosfijo.index');
     }
 
@@ -83,7 +115,7 @@ class ActivofijoController extends Controller
         $departamentos = Departamento::all();
         $categoria = categoria::find($activofijo->id_categoria);
         $depreciacion = Depreciacion::all();
-        return view('activosfijo.show', compact('activofijo', 'facturas', 'ubicaciones', 'departamentos', 'categoria','depreciacion'));
+        return view('activosfijo.show', compact('activofijo', 'facturas', 'ubicaciones', 'departamentos', 'categoria', 'depreciacion'));
     }
 
     /**
@@ -163,12 +195,8 @@ class ActivofijoController extends Controller
 
         return redirect()->back();
         */
-        $id_de = $activofijo->id_categoria;
-        $categoria = categoria::find($id_de);
-        $categoria = ($activofijo->costo - $activofijo->valor_residual) / $categoria->vida_util;
-        // DB::insert('insert into activosfijo (id, d_anual) values (?, ?)', [$activofijo->id, $categoria]);
-        $activofijo->d_anual = $categoria;
-  
+
+        /*
        //CALCULANDO EL TIEMPO
        $fecha1 = new DateTime($activofijo->fecha_ingreso);
        $actualf = Carbon::now()->toDateString();
@@ -179,9 +207,9 @@ class ActivofijoController extends Controller
        $Tiempo = $tiempo_transcurrido->y; 
        //GET YEAR
        $activofijo->d_acumulada = $Tiempo * $activofijo->d_anual;
+
+       */
         $activofijo->save();
         return redirect()->back();
     }
-
-
 }

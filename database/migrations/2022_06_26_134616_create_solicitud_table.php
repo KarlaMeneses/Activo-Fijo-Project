@@ -16,11 +16,11 @@ class CreateSolicitudTable extends Migration
         Schema::create('solicitud', function (Blueprint $table) {
             $table->id();
             $table->string('persona_sol');
-            $table->string('tipo_soli');
             $table->string('clasificacion');
             $table->string('concepto');
-            $table->string('estado')->default('Sin Asignar');;
-            $table->string('estado_fin')->default('Sin Asignar');;
+            $table->string('estado')->default('Sin Asignar');
+            $table->string('estado_fin')->default('Sin Asignar');
+            $table->string('respuesta_fin')->default('Sin Asignar');
             $table->date('fecha');
             $table->timestamps();
         });
