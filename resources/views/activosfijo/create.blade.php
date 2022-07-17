@@ -122,13 +122,6 @@
                         <input type="text" name="valor_residual" class="form-control" value="">
                     </div>
 
-                    {{-- }}
-                    <div class="col-md-6">
-                        <label for="id_factura">FACTURA</label>
-                        <input type="text" name="id_factura" class="form-control" value="Automatico id al realizar la factura">
-                    </div> --}}
-
-
                 </div>
             </div>
             <br>

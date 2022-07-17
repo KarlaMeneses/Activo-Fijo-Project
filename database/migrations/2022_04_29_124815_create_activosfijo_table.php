@@ -24,6 +24,7 @@ class CreateActivosfijoTable extends Migration
             $table->date('fecha_ingreso')->nullable();
             $table->string('proveedor')->nullable(); //OK
             $table->decimal('costo')->nullable();
+            $table->decimal('v_actual')->nullable();
             $table->decimal('valor_residual')->nullable();
             $table->string('estado')->nullable();
             $table->string('responsable')->default("No asignado");
