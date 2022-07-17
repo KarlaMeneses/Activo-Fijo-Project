@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('mantenimientos.update', $mante->id) }}" method="post" >
+            <form action="{{ route('mantenimientos.update', $mante->id) }}" method="post">
                 @csrf
                 @method('put')
 
@@ -18,23 +18,24 @@
                         <label for="id_activo">Seleccione el Activo Fijo para Mantenimiento</label>
                         <select name="id_activo" class=" form-control">
                             @foreach ($activos as $activo)
-                                @if($mante->id_activo == $activo->id)
-                                <option value="{{ $activo->id }}">{{ $activo->detalle }}</option>
+                                @if ($mante->id_activo == $activo->id)
+                                    <option value="{{ $activo->id }}">{{ $activo->nombre }}</option>
                                 @endif
                             @endforeach
                             @foreach ($activos as $activo)
-                                @if(!($mante->id_activo == $activo->id))
-                                <option value="{{ $activo->id }}">{{ $activo->detalle }}</option>
+                                @if (!($mante->id_activo == $activo->id))
+                                    <option value="{{ $activo->id }}">{{ $activo->nombre }}</option>
                                 @endif
                             @endforeach
                         </select>
-                    </div>      
+                    </div>
                 </div>
 
                 <div class="row" style="padding-bottom: 1rem">
                     <div class="col-md-6">
                         <label for="proveedor">Proveedor</label>
-                        <input type="text" name="proveedor" value="{{ $mante->proveedor }}" class="form-control" required>
+                        <input type="text" name="proveedor" value="{{ $mante->proveedor }}" class="form-control"
+                            required>
                     </div>
                     <div class="col-md-6">
                         <label for="tiempo">Días Esperados</label>
@@ -45,31 +46,33 @@
                 <div class="row" style="padding-bottom: 1rem">
                     <div class="col-md-6">
                         <label for="fecha_ini">Ingrese Fecha de Inicio</label>
-                        <input type="date" name="fecha_ini" class="form-control" value="{{$mante->fecha_ini}}" required> 
+                        <input type="date" name="fecha_ini" class="form-control" value="{{ $mante->fecha_ini }}"
+                            required>
                     </div>
                     <div class="col-md-6">
                         <label for="fecha_fin">Ingrese Fecha de Finalización</label>
-                        <input type="date" name="fecha_fin" class="form-control" value="{{$mante->fecha_fin}}" required> 
+                        <input type="date" name="fecha_fin" class="form-control" value="{{ $mante->fecha_fin }}"
+                            required>
                     </div>
                 </div>
 
                 <div class="row" style="padding-bottom: 1rem">
                     <div class="col-md-6">
                         <label for="problema">Ingrese la Descripción del Mantenimiento</label>
-                        <input type="text" name="problema" class="form-control" value="{{$mante->problema}}" required>
+                        <input type="text" name="problema" class="form-control" value="{{ $mante->problema }}" required>
                     </div>
                     <div class="col-md-6">
                         <label for="estado">Seleccione el Estado</label>
                         <select name="estado" class=" form-control">
-                                                                                                 
-                                @if ($mante->estado == 'En Proceso')
+
+                            @if ($mante->estado == 'En Proceso')
                                 <option value="En Proceso">En Proceso</option>
                                 <option value="Finalizado">Finalizado</option>
-                                @else
+                            @else
                                 <option value="Finalizado">Finalizado</option>
                                 <option value="En Proceso">En Proceso</option>
-                                @endif
-                            
+                            @endif
+
                         </select>
                     </div>
                 </div>
@@ -77,15 +80,15 @@
                 <div class="row" style="padding-bottom: 1rem">
                     <div class="col-md-6">
                         <label for="solucion">Ingresar Solución</label>
-                        <input type="text" name="solucion" class="form-control"value="{{$mante->solucion}}" required> 
+                        <input type="text" name="solucion" class="form-control"value="{{ $mante->solucion }}" required>
                     </div>
                     <div class="col-md-6">
                         <label for="costo">Ingrese el Costo</label>
-                        <input type="number" name="costo" class="form-control" value="{{$mante->costo}}" required>
+                        <input type="number" name="costo" class="form-control" value="{{ $mante->costo }}" required>
                     </div>
                 </div>
 
-                
+
                 <br>
                 <button class="btn btn-danger btn-sm" type="submit">Actualizar</button>
                 <a class="btn btn-primary btn-sm" href="{{ route('mantenimientos.index') }}">Volver</a>

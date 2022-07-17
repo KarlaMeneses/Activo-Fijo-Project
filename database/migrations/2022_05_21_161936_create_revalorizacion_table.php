@@ -17,6 +17,7 @@ class CreateRevalorizacionTable extends Migration
             $table->id();
             $table->string('tiempo_vida')->nullable();
             $table->integer('valor')->nullable();
+            $table->decimal('monto')->nullable();
             $table->string('estado')->nullable()->default("En espera");
             $table->unsignedBigInteger('id_activo');
             $table->foreign('id_activo')->on('activosfijo')->references('id')->onDelete('cascade');

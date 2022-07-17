@@ -19,11 +19,11 @@ class CreateDepreciacionesTable extends Migration
     {
         Schema::create('depreciaciones', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->nullable(); //bienes de cuenta contable nombre de la cuenta (contabilidad)
-            $table->string('descripcion')->nullable(); ////descripción de la cuenta terreno,edificio etc
-            $table->string('tipo_activo')->nullable(); //tipo de activo tangible,inttangible y inversion
-            $table->integer('vida_util')->nullable(); //años de vida de un activo
-            $table->decimal('coeficiente')->nullable(); //% de vida del activo fijo
+            $table->integer('año')->nullable(); 
+            $table->integer('valor')->nullable(); 
+            $table->integer('d_acumulada')->default("0");
+            $table->unsignedBigInteger('id_activo')->nullable();
+            $table->foreign('id_activo')->on('activosfijo')->references('id')->onDelete('cascade');
             $table->timestamps();
         });
     }

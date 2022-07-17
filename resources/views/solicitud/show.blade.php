@@ -20,26 +20,38 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="persona_sol"> Persona Solicitante</label>
-                        <input type="text" name="persona_sol" value="{{ $soli->persona_sol }}" class="form-control" readonly>
+                        <input type="text" name="persona_sol" value="{{ $soli->persona_sol }}" class="form-control"
+                            readonly>
                         <br>
                     </div>
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <label for="tipo_soli">Tipo Solicitud</label>
-                        <input type="text" name="tipo_soli" value="{{ $soli->tipo_soli }}" class="form-control" readonly> <br>
+                        <input type="text" name="tipo_soli" value="{{ $soli->tipo_soli }}" class="form-control"
+                            readonly> <br>
+                    </div> --}}
+
+                    <div class="col-md-6">
+                        <label for="concepto">Concepto</label>
+                        <input type="text" name="concepto" value="{{ $soli->concepto }}" class="form-control" readonly>
+                        <br>
                     </div>
+
+                    
                 </div>
 
 
                 <div class="row">
                     <div class="col-md-6">
                         <label for="clasificacion">Clasificación</label>
-                        <input type="text" name="clasificacion" value="{{ $soli->clasificacion }}"
-                            class="form-control" readonly> <br>
+                        <input type="text" name="clasificacion" value="{{ $soli->clasificacion }}" class="form-control"
+                            readonly> <br>
                     </div>
                     <div class="col-md-6">
-                        <label for="concepto">Concepto</label>
-                        <input type="text" name="concepto" value="{{ $soli->concepto }}" class="form-control" readonly> <br>
+                        <label for="fecha">Fecha</label>
+                        <input type="date" name="fecha" value="{{ $soli->fecha }}" class="form-control" readonly>
+                        <br>
                     </div>
+                    
                 </div>
 
                 <div class="row">
@@ -47,11 +59,21 @@
                         <label for="estado">Seleccione el Estado</label>
                         <input type="text" name="estado" value="{{ $soli->estado }}" class="form-control" readonly>
                     </div>
-                    <div class="col-md-6">
-                        <label for="fecha">Fecha</label>
-                        <input type="date" name="fecha" value="{{ $soli->fecha }}" class="form-control" readonly> <br>
+                    
+                    <div class="col-md-6" id="estado_fin" >
+                        <label for="estado_fin">Aprobación Final</label>
+                        <input type="text" name="estado_fin" value="{{ $soli->estado_fin }}" class="form-control" readonly>
                     </div>
                 </div>
+
+                <br>
+                <div class="row" id="respuesta_fin" >
+                    <div class="col-md-12">
+                        <label for="respuesta_fin">Respuesta Solicitud</label>
+                        <textarea name="respuesta_fin" cols="10" rows="10" style="height: 5rem;width: 80rem;resize: none" disabled>{{ $soli->respuesta_fin }}</textarea>
+                    </div>
+                </div>
+
 
                 <br>
 
@@ -69,25 +91,27 @@
                         <th scope="col">Item</th>
                         <th scope="col">Unidad</th>
                         <th scope="col">Cantidad</th>
-                        
+
                     </tr>
                 </thead>
 
                 <tbody>
                     @foreach ($soli_acts as $soli_act)
-                        <tr>
-                            <td>{{ $soli_act->id }}</td>
-                            <td>{{ $soli_act->item }}</td>
-                            <td>{{ $soli_act->unidad }}</td>
-                            <td>{{ $soli_act->cantidad }}</td>
-                            
+                        @if ($soli_act->id_sol == $soli->id)
+                            <tr>
+                                <td>{{ $soli_act->id }}</td>
+                                <td>{{ $soli_act->item }}</td>
+                                <td>{{ $soli_act->unidad }}</td>
+                                <td>{{ $soli_act->cantidad }}</td>
 
-                        </tr>
+
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>
-           
-            
+
+
             <df-messenger intent="WELCOME" chat-title="bots" agent-id="86938b5f-1e37-43dc-9f38-1bd5322b1eb7"
                 language-code="es">
         </div>

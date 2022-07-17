@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bitacora extends Model
 {
     use HasFactory;
-    protected $table = 'bitacora'; //usa el nombre de la base de datos 
+    protected $table = 'bitacora'; //usa el nombre de la base de datos
     protected $fillable = [
         'accion',
         'apartado',

@@ -26,7 +26,7 @@
         </div>
         @enderror
 
-        <form action="{{ route('empresa.update', $empresa) }}" method="post" novalidate>
+        <form action="{{ route('empresa.update', $empresa->id) }}" method="post" novalidate>
             @csrf
             @method('put')
 

@@ -100,7 +100,7 @@ class BitacoraController extends Controller
             'Content-Length' => strlen($content)
         ]);
 
-        
+
     }
 
     public function auth()

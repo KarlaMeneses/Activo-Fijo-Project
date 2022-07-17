@@ -24,7 +24,7 @@ class userSeeder extends Seeder
         $user->cargo = 'Analista';
         $user->direccion = 'Av. Litoral  #341';
         $user->telefono = 6215215;
-        $user->idempresa = 2;
+        /* $user->idempresa = 2; */
         $user->save(); //save con  parentesis
         $user->assignRole('Analista');
 
@@ -38,7 +38,7 @@ class userSeeder extends Seeder
         $user->cargo = 'Administrador';
         $user->direccion = 'La Angostura. B Primavera';
         $user->telefono = 77169918;
-        $user->idempresa = 1;
+        /* $user->idempresa = 1; */
         $user->save(); //save con  parentesis
         $user->assignRole('Encargado');
 
@@ -53,7 +53,7 @@ class userSeeder extends Seeder
         $user->cargo = 'Administrador';
         $user->direccion = 'San Roque 3415';
         $user->telefono = 6215215;
-        $user->idempresa = 1;
+    /*     $user->idempresa = 1; */
         $user->save(); //save con  parentesis
         $user->assignRole('Administrador');
 
@@ -67,7 +67,7 @@ class userSeeder extends Seeder
         $user->cargo = 'Administrador';
         $user->direccion = 'Los Lotes';
         $user->telefono = 71005231;
-        $user->idempresa = 1;
+        /* $user->idempresa = 1; */
         $user->save(); //save con  parentesis
         $user->assignRole('Administrador');
 
@@ -81,7 +81,7 @@ class userSeeder extends Seeder
         $user->cargo = 'Auxiliar';
         $user->direccion = 'San Roque 3415';
         $user->telefono = 6215215;
-        $user->idempresa = 1;
+        /* $user->idempresa = 1; */
         $user->save(); //save con  parentesis
         $user->assignRole('Auxiliar');
     }

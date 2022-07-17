@@ -38,6 +38,7 @@
                         <th>Estimacion</th>
                         <th>Estado</th>
                         <th>Fecha solicitud</th>
+                        <th>Monto</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -47,14 +48,15 @@
                             <td>{{ $revalorizacion->id }}</td>
                             @foreach ($activosfijo as $activo)
                                 @if ($activo->id == $revalorizacion->id_activo)
-                                    <td>{{ $activo->detalle }}</td>
-                                    <td>{{ $activo->costo }}</td>
+                                    <td>{{ $activo->nombre }}</td>
+                                    <td>{{ $activo->valor_residual }}</td>
                                 @endif
                             @endforeach
                             <td>{{ $revalorizacion->tiempo_vida }}</td>
                             
                             <td>{{ $revalorizacion->estado }}</td>
                             <td>{{ $revalorizacion->created_at }}</td>
+                            <td>{{ $revalorizacion->monto }}</td>
                             <td>
                                 <form action="{{ route('revalorizacion.destroy', $revalorizacion) }}" method="post">
                                     <!--<a class="btn btn-warning btn-sm text-light" href="#">-->
@@ -79,6 +81,10 @@
 
                         </tr>
                     @endforeach
+                    <h3>
+                        FALTA ACOMODARLO, NO TOCAR!
+
+                    </h3>
                 </tbody>
             </table>
         </div>

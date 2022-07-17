@@ -27,6 +27,7 @@ Route::post('login', [UserController::class, 'login']);
 Route::group(['middleware' => ['jwt.verify']], function (){
     Route::get('obtenerUser', [UserController::class, 'obtenerUser']);
     Route::get('obtenerActivos', [ActivoController::class, 'obtenerActivos']);
+    Route::get('obtenerActivosA', [ActivoController::class, 'obtenerActivosA']);
     Route::get('obtenerActivo', [ActivoController::class, 'obtenerActivo']);
     Route::post('actualizarFoto', [UserController::class, 'actualizarFoto']);
     Route::get('obtenerFacturas', [FacturaController::class, 'obtenerFacturas']);

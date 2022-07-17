@@ -23,13 +23,16 @@ class SolicitudController extends Controller
     {
         $soli = new Solicitud();
         $soli->persona_sol   = $request->persona_sol;
-        $soli->tipo_soli     = $request->tipo_soli;
         $soli->clasificacion = $request->clasificacion;
         $soli->concepto      = $request->concepto;
         $soli->estado        = 'En Proceso';
+        $soli->estado_fin    = 'No Aprobado';
+        $soli->respuesta_fin = 'No Asignado';
         $soli->fecha         = $request->fecha;
         $soli->save();
         return redirect()->route('solicitud.edit', $soli->id);
+
+        
     }
 
     public function store_act(Request $request, $id)
@@ -64,10 +67,12 @@ class SolicitudController extends Controller
 
         $soli = Solicitud::find($id);
         $soli->persona_sol   = $request->persona_sol;
-        $soli->tipo_soli     = $request->tipo_soli;
+        /* $soli->tipo_soli     = $request->tipo_soli; */
         $soli->clasificacion = $request->clasificacion;
         $soli->concepto      = $request->concepto;
         $soli->estado        = $request->estado;
+        $soli->estado_fin    = $request->estado_fin;
+        $soli->respuesta_fin = $request->respuesta_fin;
         $soli->fecha         = $request->fecha;
         $soli->save();
 
