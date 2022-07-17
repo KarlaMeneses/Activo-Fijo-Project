@@ -10,5 +10,5 @@ class Responsable extends Model
 
     use HasFactory;
     protected $table = 'responsables';
-    protected $fillable = ['motivo', 'nombre2', 'firma1', 'firma1', 'fecha', 'id_user', 'id_ubicacion'];/*INVESTIGAR PARA QUE SIRVE ESTA LINEA */
+    protected $fillable = ['codigo', 'activo', 'cargo', 'estado', 'fecha', 'id_user', 'id_ubicacion'];
 }

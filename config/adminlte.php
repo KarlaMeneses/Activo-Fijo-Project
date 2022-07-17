@@ -400,11 +400,12 @@ return [
             'icon'    => 'fas fa-solid fa-users',
             'submenu' =>
             [
-                /*[
-                    'text'       => 'Responsables',
+                [
+                    'text'       => 'Responsable',
                     'icon' => 'fas fa-file-alt',
                     'route'        => 'responsables.index',
-                ],*/]
+                ],
+            ]
         ],
 
         /* ['header' => 'labels'], */

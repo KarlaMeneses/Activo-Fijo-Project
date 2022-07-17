@@ -4,15 +4,15 @@
 
 @section('content_header')
 <div class="card-header text-center">
-    <h3><b>Solicitudes</b></h3>
+    <h3><b>RESPONSABLE</b></h3>
 </div>
 @stop
 
 @section('content')
 <div class="card">
     <div class="card-header">
-        <a="#" class="btn btn-primary btb-sm">
-            <i class="fas fa-file-alt"></i> Crear Solicitud</a=>
+        <a href="#" class="btn btn-primary btb-sm">
+            <i class="fas fa-address-book"></i> Crear Responsable</a>
     </div>
 </div>
 <div class="card">
@@ -22,33 +22,33 @@
             <thead class="bg-dark">
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">empleado</th>
-                    <th scope="col">Activo</th>
-                    <th scope="col">responsable</th>
-                    <th scope="col">ubicación</th>
-                    <th scope="col">estado</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Acciones</th>
+                    <th scope="col">COD-ACTIVO</th>
+                    <th scope="col">RESPONSABLE</th>
+                    <th scope="col">CARGO</th>
+                    <th scope="col">ESTADO</th>
+                    <th scope="col">FECHA</th>
+                    <th scope="col">ACCIÓN</th>
+
                 </tr>
             </thead>
 
             <tbody>
-
+                @foreach ($resp as $respo)
                 <tr>
-                    <td> id </td>
-                    <td> nombre </td>
-                    <td> soli->concepto </td>
-                    <td> soli->estado</td>
-                    <td> soli->fecha </td>
+                    <td>{{ $respo->id }}</td>
+                    <td>{{ $respo->codigo }}</td>
+                    <td>{{ $respo->empleado }}</td>
+                    <td>{{ $respo->cargo }}</td>
+                    <td>{{ $respo->estado }}</td>
+                    <td>{{ $respo->fecha }}</td>
+
+
+
 
                     <td>
                         <form action="" method="post">
-                            <a href="#" class="btn btn-primary btn-sm text-light rounded-pill">
-
+                            <a href="" class="btn btn-primary btn-sm text-light rounded-pill">
                                 <i class="fas fa-edit"></i><a>
-
-                                    <a class="btn btn-warning btn-sm text-light rounded-pill" href="">
-                                        <i class="fas fa-eye"></i></a>
                                     @csrf
                                     @method('delete')
                                     <button onclick="return confirm('¿ESTÁ SEGURO DE BORRAR?')" type="submit" value="Borrar" class="btn btn-danger btn-sm text-light rounded-pill">
@@ -58,15 +58,17 @@
 
 
 
+
+
                 </tr>
-                endforeach
+                @endforeach
             </tbody>
         </table>
     </div>
     <df-messenger intent="WELCOME" chat-title="bots" agent-id="86938b5f-1e37-43dc-9f38-1bd5322b1eb7" language-code="es">
 </div>
 
-stop
+@stop
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/bot.css') }}">

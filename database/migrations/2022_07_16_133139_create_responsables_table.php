@@ -15,14 +15,10 @@ class CreateResponsablesTable extends Migration
     {
         Schema::create('responsables', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('ci');
+            $table->string('codigo');
+            $table->string('empleado');
             $table->string('cargo');
-
-            $table->string('motivo');
-            $table->string('nombre2');
-            $table->string('firma1')->default('Aprobado');;
-            $table->string('firma2')->default('Firmado');;
+            $table->string('estado')->default('Firmado');
             $table->date('fecha');
 
             $table->unsignedBigInteger('id_user')->nullable();
