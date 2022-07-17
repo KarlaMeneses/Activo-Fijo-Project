@@ -91,11 +91,6 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label for="tipo">Tipo De Activo</label>
-                                <input name="tipo" type="text" class="form-control" value="{{ $activofijo->tipo }}">
-                            </div>
-
-                            <div class="col-md-3">
                                 <label for="fecha_ingreso">Fecha Ingreso</label>
                                 <input name="fecha_ingreso" type="date" class="form-control" value="{{ $activofijo->fecha_ingreso }}">
                             </div>

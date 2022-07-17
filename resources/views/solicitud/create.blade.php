@@ -17,15 +17,20 @@
                         <label for="persona_sol"> Persona Solicitante</label>
                         <input type="text" name="persona_sol" class="form-control"> <br>
                     </div>
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <label for="tipo_soli">Tipo Solicitud</label>
                         <input type="text" name="tipo_soli" class="form-control"> <br>
+                    </div> --}}
+
+                    <div class="col-md-6">
+                        <label for="concepto">Concepto</label>
+                        <input type="text" name="concepto" class="form-control"> <br>
                     </div>
                 </div>
 
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="tipo_soli">Clasificación</label>
                         <select name="clasificacion" class=" form-control">
                             <option value="Urgente">Urgente</option>
@@ -35,14 +40,7 @@
                         <br>
                     </div>
                     <div class="col-md-4">
-                        <label for="concepto">Concepto</label>
-                        <input type="text" name="concepto" class="form-control"> <br>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="estado">Seleccione el Estado</label>
+                        <label for="estado">Estado</label>
                         <select name="estado" class=" form-control">
                             <option value="En Proceso">En Proceso</option>
                             {{-- <option value="Finalizado">Finalizado</option> --}}
@@ -52,7 +50,10 @@
                         <label for="fecha">Fecha</label>
                         <input type="date" name="fecha" class="form-control"> <br>
                     </div>
+                    
                 </div>
+
+               
 
 
 

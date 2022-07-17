@@ -69,11 +69,6 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label for="costo">Tipo De Activo</label>
-                                <input name="costo" type="tel" class="form-control" value="{{ $activofijo->tipo }}" disabled>
-                            </div>
-
-                            <div class="col-md-3">
                                 <label for="fecha_ingreso">Fecha Ingreso</label>
                                 <input name="fecha_ingreso" type="tel" class="form-control" value="{{ $activofijo->fecha_ingreso }}" disabled>
                             </div>
@@ -99,8 +94,8 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label for="d_anual">categoria anual</label>
-                                <input type="text" name="d_anual" class="form-control" value="{{ $activofijo->d_anual }}" disabled>
+                                <label for="d_anual">Depreciacion anual</label>
+                                <input type="text" name="d_anual" class="form-control" value="{{ $activofijo->d_anual }} Bs" disabled>
                             </div>
                         </div>
                     </div>
@@ -161,7 +156,7 @@
                                 <input name="nombre" type="tel" class="form-control" value="{{ $categoria->nombre }}" disabled>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="proveedor">Descripcion</label>
                                 <input name="proveedor" type="tel" class="form-control" value="{{ $categoria->descripcion }}" disabled>
                             </div>
@@ -197,17 +192,14 @@
                 </div>
             </div>
 
-
-            <h3> {{ $activofijo->d_anual}} </h3>
-
             <table class="table table-striped" style="width:100%">
                 <div class="card-header form-group col-md-12">
-                    <h5 class="font-weight-bold px-2">TABLA DE DEPRECIACION</h5>
+                    <h5 class="font-weight-bold px-2">TABLA DE DEPRECIACION DEL ACTIVO</h5>
                 </div>
                 <thead class="bg-dark">
                     <tr>
                         <th scope="col">AÑO</th>
-                        <th scope="col">VALOR</th>
+                        <th scope="col">VALOR CON DEPRECIACION</th>
                         <th scope="col">DEP. ANUAL</th>
                         <th scope="col">DEP. ACUMULADA</th>
                     </tr>
@@ -217,14 +209,16 @@
                     @foreach ($depreciacion as $depreciacion)
                     @if ($depreciacion->id_activo == $activofijo->id)
                     <tr>
-                        <td>{{ $depreciacion->año}}</td>
-                        <td>{{ $activofijo->d_anual}}</td>
-                        <td>{{ $depreciacion->d_acumulada}}</td>
+                        <td>{{ $depreciacion->año }}</td>
+                        <td>{{ $depreciacion->valor }}</td>
+                        <td>{{ $activofijo->d_anual }}</td>
+                        <td>{{ $depreciacion->d_acumulada }}</td>
                     </tr>
                     @endif
                     @endforeach
                 </tbody>
             </table>
+
 
             <br>
 
