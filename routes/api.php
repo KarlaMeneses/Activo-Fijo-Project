@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ActivoController;
 use App\Http\Controllers\Api\FacturaController;
+use App\Http\Controllers\Api\SolicitudController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::group(['middleware' => ['jwt.verify']], function (){
     Route::get('obtenerActivo', [ActivoController::class, 'obtenerActivo']);
     Route::post('actualizarFoto', [UserController::class, 'actualizarFoto']);
     Route::get('obtenerFacturas', [FacturaController::class, 'obtenerFacturas']);
+    Route::get('obtenerSolicitudes', [SolicitudController::class, 'obtenerSolicitudes']);
 });
 
 
