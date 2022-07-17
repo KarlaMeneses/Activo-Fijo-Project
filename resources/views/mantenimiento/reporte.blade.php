@@ -193,7 +193,7 @@
                                 <td>{{$mante->id}}</td>
                                 @foreach($activos as $activo )
                                     @if ($mante->id_activo == $activo->id)
-                                    <td>{{$activo->detalle}} </td>
+                                    <td>{{$activo->nombre}} </td>
                                     @endif
                                 
                                 @endforeach
