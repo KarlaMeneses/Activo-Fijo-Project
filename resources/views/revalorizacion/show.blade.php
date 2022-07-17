@@ -46,24 +46,24 @@
                                             value="{{ $activo->nombre }}" disabled>
                                     </div>
 
-
-                                    <div class="col-md-3">
-                                        <label for="costo">TIPO DE ACTIVO</label>
-                                        <input name="costo" type="tel" class="form-control"
-                                            value="{{ $activo->tipo }}" disabled>
-                                    </div>
-
                                     <div class="col-md-3">
                                         <label for="fecha_ingreso">FECHA DE INGRESO DEL ACTIVO</label>
-                                        <input name="fecha_ingreso" type="tel" class="form-control"
+                                        <input name="fecha_ingreso" type="date" class="form-control"
                                             value="{{ $activo->fecha_ingreso }}" disabled>
                                     </div>
 
                                     <div class="col-md-3">
-                                        <label for="costo">COSTO ACTUAL</label>
-                                        <input name="costo" type="tel" class="form-control"
+                                        <label for="costo">COSTO ACTIVO</label>
+                                        <input name="costo" type="text" class="form-control"
                                             value="{{ $activo->costo }}" disabled>
                                     </div>
+
+                                    <div class="col-md-3">
+                                        <label for="v_actual">VALOR ACTUAL</label>
+                                        <input name="v_actual" type="text" class="form-control"
+                                            value="{{ $activo->v_actual }}" disabled>
+                                    </div>
+
 
                                     <div class="col-md-3">
                                         <label for="estado">ESTADO</label>
@@ -88,15 +88,15 @@
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="descripcion">VALOR REVALUO</label>
+                                <label for="descripcion">VALOR REVALUADO</label>
                                 <input type="text" name="descripcion" class="form-control"
-                                    value="{{ $revalorizacion->valor }}" id="descripcion" disabled>
+                                    value="{{ $revalorizacion->valor }} Bs" id="descripcion" disabled>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="nombre">VIDA UTIL</label>
+                                <label for="nombre">VIDA UTIL REVALUADO</label>
                                 <input type="text" name="nombre" class="form-control"
-                                    value="{{ $revalorizacion->tiempo_vida }}" id="nombre" disabled>
+                                    value="{{ $revalorizacion->tiempo_vida }} años" id="nombre" disabled>
         
                             </div>
         
@@ -111,6 +111,12 @@
                                 <label for="estado">FECHA SOLICITUD</label>
                                 <input type="text" name="estado" class="form-control"
                                     value="{{ $revalorizacion->created_at }}" id="descripcion" disabled>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="costo_revaluo">COSTO DE LA REVALUACION</label>
+                                <input type="text" name="costo_revaluo" class="form-control"
+                                    value="{{ $revalorizacion->costo_revaluo }} Bs" id="descripcion" disabled>
                             </div>
                         </div>
                         <h3>SUBIR INFORME TECNICO </h3>

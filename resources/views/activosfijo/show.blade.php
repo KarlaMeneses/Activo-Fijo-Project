@@ -94,8 +94,8 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label for="d_anual">Depreciacion anual</label>
-                                <input type="text" name="d_anual" class="form-control" value="{{ $activofijo->d_anual }} Bs" disabled>
+                                <label for="v_actual">Valor Actual</label>
+                                <input type="text" name="v_actual" class="form-control" value="{{ $activofijo->v_actual }} Bs" disabled>
                             </div>
                         </div>
                     </div>

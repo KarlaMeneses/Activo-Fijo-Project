@@ -12,6 +12,25 @@
         <form action="{{ route('ubicaciones.store') }}" method="post" novalidate>
             @csrf
 
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="edificio">Ingrese el Edificio</label>
+                        <input type="text" name="edificio" class="form-control" placeholder="Escriba el nombre del edificio">  <br>
+                        @error('edificio')
+                            <small class="text-danger">*{{ $message }}</small>
+                            <br><br>
+                        @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ciudad">Ingrese la Ciudad</label>
+                        <input type="text" name="ciudad" class="form-control" placeholder="Escriba el nombre de la ciudad "> <br>
+                        @error('ciudad')
+                            <small class="text-danger">*{{ $message }}</small>
+                            <br><br>
+                        @enderror
+                    </div>
+
+                 
             <div class="row">
                 <div class="col-md-6">
                     <label for="edificio">Ingrese el Edificio</label>
@@ -30,6 +49,23 @@
                     @enderror
                 </div>
             </div>
+
+            <div class="col-md-6">
+                <label for="estado">Ingrese el Estado de la Ubicación</label>
+                <input type="text" name="estado" class="form-control" placeholder="Escriba el estado de la ubicación"> <br>
+                @error('estado')
+                    <small class="text-danger">*{{ $message }}</small>
+                    <br><br>
+                @enderror
+            </div>
+
+            <center>
+                <button class="btn btn-primary btb-sm text-light" type="submit">Crear Ubicación</button>
+                <a class="btn btn-warning btb-sm text-light" href="{{ route('ubicaciones.index') }}">Volver</a>
+            </center>
+
+
+        </form>
 
 
             <div class="row">

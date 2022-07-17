@@ -35,7 +35,7 @@
                         <label for="id_activo">Activo Fijo para Mantenimiento</label>
                         <select name="id_activo" class=" form-control">
                             @foreach ($activos as $activo)
-                                <option value={{ $activo->id }}>{{ $activo->detalle }}</option>
+                                <option value={{ $activo->id }}>{{ $activo->nombre }}</option>
                             @endforeach
                         </select>
                     </div>
