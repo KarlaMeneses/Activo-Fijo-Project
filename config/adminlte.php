@@ -397,6 +397,7 @@ return [
         ],
         [
             'text'    => 'MÓDULO TRASPASO',
+            
             'icon'    => 'fas fa-solid fa-users',
             'submenu' =>
             [
@@ -404,6 +405,11 @@ return [
                     'text'       => 'Responsable',
                     'icon' => 'fas fa-file-alt',
                     'route'        => 'responsables.index',
+                ],
+                [
+                    'text'       => 'Traspasos',
+                    'icon' => 'fas fa-file-alt',
+                    'route'        => 'traspasos.index',
                 ],
             ]
         ],

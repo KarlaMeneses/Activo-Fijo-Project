@@ -147,7 +147,7 @@ Route::post('baja/{id}', [App\Http\Controllers\BajaController::class, 'destroy']
 
 
 
-// empresa
+// EMPRESA
 
 Route::get('empresa/index', [App\Http\Controllers\EmpresaController::class, 'index'])->name('empresa.index');
 Route::post('empresa/store', [App\Http\Controllers\EmpresaController::class, 'store'])->name('empresa.store');
@@ -157,9 +157,9 @@ Route::put('empresa/update', [App\Http\Controllers\EmpresaController::class, 'up
 Route::post('empresa/delete/{id}', [App\Http\Controllers\EmpresaController::class, 'destroy'])->name('empresa.delete');
 Route::get('empresa/show/{id}', [App\Http\Controllers\EmpresaController::class, 'show'])->name('empresa.show');
 Route::post('empresa/reporte', [App\Http\Controllers\EmpresaController::class, 'reporte'])->name('empresa.reporte');
-// SOLICITUD
 
-//MANTENIMIENTO
+
+// SOLICITUD
 Route::get('solicitud/index', [App\Http\Controllers\SolicitudController::class, 'index'])->name('solicitud.index');
 Route::get('solicitud/create', [App\Http\Controllers\SolicitudController::class, 'create'])->name('solicitud.create');
 Route::post('solicitud/store', [App\Http\Controllers\SolicitudController::class, 'store'])->name('solicitud.store');
@@ -170,3 +170,14 @@ Route::get('solicitud/show/{id}', [App\Http\Controllers\SolicitudController::cla
 Route::delete('solicitud/{id}', [App\Http\Controllers\SolicitudController::class, 'destroy'])->name('solicitud.destroy');
 Route::delete('solicitud_act/{id}', [App\Http\Controllers\SolicitudController::class, 'destroy_act'])->name('solicitud.destroy_act');
 /* Route::get('solicitud/activo', [App\Http\Controllers\SolicitudController::class, 'reporte_vista'])->name('solicitud.activo'); */
+
+
+//TRASPASO
+Route::get('traspasos/index', [App\Http\Controllers\TraspasoController::class, 'index'])->name('traspasos.index');
+Route::get('traspasos/create', [App\Http\Controllers\TraspasoController::class, 'create'])->name('traspasos.create');
+Route::post('traspasos/store', [App\Http\Controllers\TraspasoController::class, 'store'])->name('traspasos.store');
+Route::get('traspasos/edit/{id}', [App\Http\Controllers\TraspasoController::class, 'edit'])->name('traspasos.edit');
+Route::put('traspasos/update/{id}', [App\Http\Controllers\TraspasoController::class, 'update'])->name('traspasos.update');
+/* Route::get('traspasos/show/{id}', [App\Http\Controllers\TraspasoController::class, 'show'])->name('traspasos.show'); */
+Route::delete('traspasos/{id}', [App\Http\Controllers\TraspasoController::class, 'destroy'])->name('traspasos.destroy');
+

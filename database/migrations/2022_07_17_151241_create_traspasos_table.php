@@ -15,6 +15,12 @@ class CreateTraspasosTable extends Migration
     {
         Schema::create('traspasos', function (Blueprint $table) {
             $table->id();
+            $table->string('anterior');
+            $table->string('nuevo');
+            $table->date('fecha');
+            $table->string('descripcion');
+            $table->unsignedBigInteger('id_activo')->nullable();
+            $table->foreign('id_activo')->on('activosfijo')->references('id')->onDelete('cascade');
             $table->timestamps();
         });
     }

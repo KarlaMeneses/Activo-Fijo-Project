@@ -13,7 +13,6 @@ class ResponsableController extends Controller
     public function index()
     {
         $res = Activofijo::all();
-
         return view('responsable.index', compact('res'));
     }
 }
