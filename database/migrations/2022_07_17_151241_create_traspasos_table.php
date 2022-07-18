@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRevalorizacionTable extends Migration
+class CreateTraspasosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateRevalorizacionTable extends Migration
      */
     public function up()
     {
-        Schema::create('revalorizacion', function (Blueprint $table) {
+        Schema::create('traspasos', function (Blueprint $table) {
             $table->id();
-            $table->string('tiempo_vida')->nullable();
-            $table->decimal('valor')->nullable();
-            $table->decimal('costo_revaluo')->nullable();
-            $table->string('estado')->nullable()->default("En espera");
-            $table->unsignedBigInteger('id_activo');
+            $table->string('anterior');
+            $table->string('nuevo');
+            $table->date('fecha');
+            $table->string('descripcion');
+            $table->unsignedBigInteger('id_activo')->nullable();
             $table->foreign('id_activo')->on('activosfijo')->references('id')->onDelete('cascade');
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class CreateRevalorizacionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('revalorizacion');
+        Schema::dropIfExists('traspasos');
     }
 }

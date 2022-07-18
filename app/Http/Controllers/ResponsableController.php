@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activofijo;
 use App\Models\Responsable;
 use App\Models\Ubicacion;
 use App\Models\User;
@@ -11,10 +12,7 @@ class ResponsableController extends Controller
 {
     public function index()
     {
-        $resp = Responsable::all();
-        $user = User::all();
-        $ubis = Ubicacion::all();
-
-        return view('responsable.index', compact('resp', 'user', 'ubis'));
+        $res = Activofijo::all();
+        return view('responsable.index', compact('res'));
     }
 }

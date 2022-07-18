@@ -3,9 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Nota;
+use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Database\Seeder;
 
-/* 
+/*
     por convension seguir el siguiente formato...
     PHP ARTISAN MAKE:SEEDER NombreSeeder
     PARA ACTUALIZAR USAR: php artisan migrate:fresh --seed
@@ -33,9 +34,8 @@ class DatabaseSeeder extends Seeder
         $this->call(depreciacionSeeder::class);
         $this->call(DetallenotaSeeder::class);
         $this->call(DetalleFacturaSeeder::class);
-     
-      
-        
+
+
         $this->call(revalorizacionSeeder::class);
         $this->call(mantenimientoSeeder::class);
         $this->call(bitacoraSeeder::class);
@@ -43,5 +43,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(solicitudSeeder::class);
         $this->call(AyudaSeeder::class);
+        $this->call(ResponsablesSeeder::class);
     }
 }

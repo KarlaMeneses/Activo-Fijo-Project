@@ -20,13 +20,14 @@ class CreateActivosfijoTable extends Migration
             $table->string('foto')->nullable(); //añadi imagen al activo atte:luishiño
             $table->string('nombre')->nullable(); //Suerte Karla
             $table->string('detalle')->nullable();
-            $table->string('tipo')->nullable();
             $table->date('fecha_ingreso')->nullable();
             $table->string('proveedor')->nullable(); //OK
             $table->decimal('costo')->nullable();
+            $table->decimal('v_actual')->nullable();
             $table->decimal('valor_residual')->nullable();
             $table->string('estado')->nullable();
             $table->string('responsable')->default("No asignado");
+            $table->string('fecha_res')->nullable();
             $table->unsignedBigInteger('id_ubicacion')->nullable();
             $table->foreign('id_ubicacion')->on('ubicacion')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('id_factura')->nullable();

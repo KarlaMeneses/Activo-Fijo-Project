@@ -17,37 +17,42 @@ class revalorizacionSeeder extends Seeder
         DB::table('revalorizacion')->insert([
             
             [
-                'tiempo_vida' => '5 años',
+                'tiempo_vida' => '5',
                 'valor' => 150,
                 'estado' => 'Aprobado',
+                'costo_revaluo' => 120,
                 'id_activo' => 1,
                 'created_at' => "2022-06-28 01:29:28"
             ],
             [
-                'tiempo_vida' => '6 años',
+                'tiempo_vida' => '6',
                 'valor' => 600,
                 'estado' => 'Aprobado',
+                'costo_revaluo' => 120,
                 'id_activo' => 2, 
                 'created_at' => "2022-06-28 01:29:28"
             ],
             [
-                'tiempo_vida' => '3 años',
+                'tiempo_vida' => '3',
                 'valor' => 200,
                 'estado' => 'Aprobado',
+                'costo_revaluo' => 120,
                 'id_activo' => 3,
                 'created_at' => "2022-06-28 01:29:28"
             ],
             [
-                'tiempo_vida' => '9 meses',
+                'tiempo_vida' => '9',
                 'valor' => 200,
                 'estado' => 'Aprobado',
+                'costo_revaluo' => 120,
                 'id_activo' => 4,
                 'created_at' => "2022-06-28 01:29:28"
             ],
             [
-                'tiempo_vida' => '2 años',
+                'tiempo_vida' => '2',
                 'valor' => 800,
                 'estado' => 'Aprobado',
+                'costo_revaluo' => 120,
                 'id_activo' => 5,
                 'created_at' => "2022-06-28 01:29:28"
             ],

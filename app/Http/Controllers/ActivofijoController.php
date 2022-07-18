@@ -60,7 +60,7 @@ class ActivofijoController extends Controller
         $activofijo->costo = $request->costo;
         $activofijo->proveedor = $request->proveedor;
         $activofijo->valor_residual= $request->valor_residual;
-
+        $activofijo->v_actual = $request->v_actual;
         $ubicacion = Ubicacion::all();
         foreach ($ubicacion as $ubi) {
             if ($ubi->edificio == $request->id_ubicacion) {
