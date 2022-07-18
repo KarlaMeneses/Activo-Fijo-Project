@@ -11,7 +11,7 @@ class Activofijo extends Model
     protected $table = 'activosfijo';
     protected $fillable = [
         'codigo', 'foto', 'nombre', 'detalle', 'tipo', 'fecha_ingreso', 'proveedor', 'costo','valor_residual', 'vida_util', 'v_residual', 'estado', 'id_factura',
-        'id_categoria', 'id_ubicacion', 'id_depreciacion', 'd_anual','d_acumulada'
+        'id_categoria', 'id_ubicacion', 'id_depreciacion', 'd_anual','d_acumulada','responsable','fecha_res'
     ];
 
     public function factura(){

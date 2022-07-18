@@ -27,6 +27,7 @@ class CreateActivosfijoTable extends Migration
             $table->decimal('valor_residual')->nullable();
             $table->string('estado')->nullable();
             $table->string('responsable')->default("No asignado");
+            $table->string('fecha_res')->nullable();
             $table->unsignedBigInteger('id_ubicacion')->nullable();
             $table->foreign('id_ubicacion')->on('ubicacion')->references('id')->onDelete('cascade');
             $table->unsignedBigInteger('id_factura')->nullable();

@@ -30,6 +30,8 @@ class activofijoSeeder extends Seeder
                 'id_ubicacion' => 1,
                 'id_factura' => 1,
                 'id_categoria' => 6,
+                'responsable' => 'Moises Leonardo Mogiano Gutierrez',
+                'fecha_res' => '2022-01-01',
             ],
 
             [
@@ -46,6 +48,8 @@ class activofijoSeeder extends Seeder
                 'id_ubicacion' => 2,
                 'id_factura' => 1,
                 'id_categoria' => 11,
+                'responsable' => 'Takeshi Kanashiro',
+                'fecha_res' => '2022-02-01',
             ],
             [
                 'codigo' => 'AB-03',
@@ -61,6 +65,8 @@ class activofijoSeeder extends Seeder
                 'id_ubicacion' => 3,
                 'id_factura' => 1,
                 'id_categoria' => 6,
+                'responsable' => 'Oscar Oros',
+                'fecha_res' => '2022-04-01',
             ],
             [
                 'codigo' => 'AB-04',
@@ -76,6 +82,8 @@ class activofijoSeeder extends Seeder
                 'id_ubicacion' => 4,
                 'id_factura' => 1,
                 'id_categoria' => 6,
+                'responsable' => 'Erick Lopez Virreira',
+                'fecha_res' => '2022-02-01',
             ],
             [
                 'codigo' => 'AB-05',
@@ -91,6 +99,8 @@ class activofijoSeeder extends Seeder
                 'id_ubicacion' => 5,
                 'id_factura' => 1,
                 'id_categoria' => 6,
+                'responsable' => 'Karla Meneses',
+                'fecha_res' => '2022-05-02',
             ],
             [
                 'codigo' => 'AB-06',
@@ -106,6 +116,8 @@ class activofijoSeeder extends Seeder
                 'id_ubicacion' => 6,
                 'id_factura' => 1,
                 'id_categoria' => 10,
+                'responsable' => 'Maria Angelica Miranda',
+                'fecha_res' => '2022-01-01',
             ],
 
         ]);
