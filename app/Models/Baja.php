@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Baja extends Model
 {
@@ -18,5 +19,11 @@ class Baja extends Model
     ];
     public function bajaa(){
         return $this->belongsTo(Activofijo::class,'idactivo');
+    }
+
+    public static function eliminarBaja(Request $request)
+    {
+        $banner = Baja::findOrFail($request->id);
+        $banner->delete();
     }
 }

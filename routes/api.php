@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ActivoController;
+use App\Http\Controllers\Api\BajaController;
 use App\Http\Controllers\Api\FacturaController;
 use App\Http\Controllers\Api\SolicitudController;
 use App\Http\Controllers\Api\UserController;
@@ -33,6 +34,10 @@ Route::group(['middleware' => ['jwt.verify']], function (){
     Route::post('actualizarFoto', [UserController::class, 'actualizarFoto']);
     Route::get('obtenerFacturas', [FacturaController::class, 'obtenerFacturas']);
     Route::get('obtenerSolicitudes', [SolicitudController::class, 'obtenerSolicitudes']);
+    Route::post('crearSolicitud', [SolicitudController::class, 'crearSolicitud']);
+    Route::post('eliminarSolicitud', [SolicitudController::class, 'eliminarSolicitud']);
+    Route::get('obtenerBajas', [BajaController::class, 'obtenerBajas']);
+    Route::post('eliminarBaja', [BajaController::class, 'eliminarBaja']);
 });
 
 
