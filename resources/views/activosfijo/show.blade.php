@@ -209,10 +209,10 @@
                     @foreach ($depreciacion as $depreciacion)
                     @if ($depreciacion->id_activo == $activofijo->id)
                     <tr>
-                        <td>{{ $depreciacion->año }}</td>
-                        <td>{{ $depreciacion->valor }}</td>
-                        <td>{{ $activofijo->d_anual }}</td>
-                        <td>{{ $depreciacion->d_acumulada }}</td>
+                        <td>{{ $depreciacion->año }} año</td>
+                        <td>{{ $depreciacion->valor }}Bs</td>
+                        <td>{{ $activofijo->d_anual }}Bs</td>
+                        <td>{{ $depreciacion->d_acumulada }}Bs</td>
                     </tr>
                     @endif
                     @endforeach

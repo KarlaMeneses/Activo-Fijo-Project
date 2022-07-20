@@ -39,37 +39,41 @@
                                 @foreach ($activosfijo as $activo)
                                     @if ($activo->id == $revalorizacion->id_activo)
                                         <div class="form-group col-md-6">
-                                            <label for="codigo">CODIGO</label>
+                                            <label for="codigo">CODIGO DE ACTIVO</label>
                                             <input type="text" name="codigo" class="form-control"
                                                 value="{{ $activo->codigo }}" disabled>
 
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="nombre">DESCRIPCION</label>
-                                            <input type="text" name="nombre" class="form-control"
-                                                value="{{ $activo->detalle }}" id="nombre" disabled>
-
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label for="nombre">COSTO ACTUAL</label>
-                                            <input type="text" name="nombre" class="form-control"
-                                                value="{{ $activo->costo }}" id="nombre" disabled>
-
+                                            <label for="detalle">NOMBRE DEL ACTIVO</label>
+                                            <input type="text" name="detalle" class="form-control"
+                                                value="{{ $activo->nombre }}" disabled>
                                         </div>
 
                                         <div class="col-md-3">
                                             <label for="fecha_ingreso">FECHA DE INGRESO DEL ACTIVO</label>
-                                            <input name="fecha_ingreso" type="tel" class="form-control"
+                                            <input name="fecha_ingreso" type="date" class="form-control"
                                                 value="{{ $activo->fecha_ingreso }}" disabled>
                                         </div>
+
+                                        <div class="col-md-3">
+                                            <label for="costo">COSTO ACTIVO</label>
+                                            <input name="costo" type="text" class="form-control"
+                                                value="{{ $activo->costo }}" disabled>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label for="v_actual">VALOR ACTUAL</label>
+                                            <input name="v_actual" type="text" class="form-control"
+                                                value="{{ $activo->v_actual }}" disabled>
+                                        </div>
+
 
                                         <div class="col-md-3">
                                             <label for="estado">ESTADO</label>
                                             <input type="tel" name="estado" class="form-control"
                                                 value="{{ $activo->estado }}" disabled>
-
                                         </div>
                                     @endif
                                 @endforeach
@@ -88,36 +92,52 @@
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="valor">VALOR REVALUO</label>
+                                    <label for="valor">VALOR REVALUADO</label>
                                     <input type="text" name="valor" class="form-control"
-                                        value="{{ $revalorizacion->valor }}" id="valor" >
+                                        value="{{ $revalorizacion->valor }}" id="valor">
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="tiempo_vida">VIDA UTIL</label>
+                                    <label for="tiempo_vida">VIDA UTIL REVALUADO</label>
                                     <input type="text" name="tiempo_vida" class="form-control"
-                                        value="{{ $revalorizacion->tiempo_vida }}" id="tiempo_vida" >
-
+                                        value="{{ $revalorizacion->tiempo_vida }}" id="tiempo_vida">
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label for="estado">ESTADO</label>
-                                    <select name="estado" class="form-control">
+                                    <select name="estado" class="form-control" disabled>
                                         @if ($revalorizacion->estado == 'Aprobado')
                                             <option selected value> {{ $revalorizacion->estado }}</option>
                                             <option value="En espera">En espera</option>
+                                            <option value="En proceso">En proceso</option>
                                         @else
-                                            <option selected value> {{ $revalorizacion->estado }}</option>
-                                            <option value="Aprobado">Aprobado</option>
+                                            @if ($revalorizacion->estado == 'En espera')
+                                                <option selected value> {{ $revalorizacion->estado }}</option>
+                                                <option value="Aprobado">Aprobado</option>
+                                                <option value="En proceso">En proceso</option>
+                                            @else
+                                                <option selected value> {{ $revalorizacion->estado }}</option>
+                                                <option value="Aprobado">Aprobado</option>
+                                                <option value="En espera">En espera</option>
+                                            @endif
                                         @endif
 
                                     </select>
                                 </div>
 
+
                                 <div class="form-group col-md-4">
-                                    <label for="valor">MONTO ESTIMADO</label>
-                                    <input type="decimal" name="monto" class="form-control" value="{{ $revalorizacion->monto }}" id="descripcion">
+                                    <label for="estado">FECHA SOLICITUD</label>
+                                    <input type="text" name="estado" class="form-control"
+                                        value="{{ $revalorizacion->created_at }}" id="descripcion" disabled>
                                 </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="costo_revaluo">COSTO DE LA REVALUACION</label>
+                                    <input type="text" name="costo_revaluo" class="form-control"
+                                        value="{{ $revalorizacion->costo_revaluo }}" id="costo_revaluo">
+                                </div>
+                                <h3>BOTON PARA EDITAR IMAGEN DEL INFORME TECNICO </h3>
                             </div>
                         </div>
                     </div>

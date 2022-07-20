@@ -14,15 +14,14 @@
 @stop
 
 @section('content')
-{{--}} NO ES NECESARIO CREARLO
+    {{-- }} NO ES NECESARIO CREARLO
     <div class="card">
         <div class="card-header">
             <a class="btn btn-primary" href="{{ route('revalorizacion.create') }}">
                 <i class="fas fa-bookmark"></i> Registrar
                 revalorizacion</a>
         </div>
-    </div>
---}}
+    </div> --}}
 
     <div class="card">
         <!--<div class="card-body">-->
@@ -74,14 +73,18 @@
                                             @can('eliminar revalorizacion')
                                             @endcan
                                 </form>
+                                <form action="{{ route('activosfijo.idactivo') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id_activo" class="form-control"
+                                        value="{{ $activo->id }}"> <br>
+                                    <button class="btn btn-danger btn-sm text-light rounded-pill"
+                                        type="submit">Revalorizacion</button>
+                                </form>
                             </td>
 
                         </tr>
                     @endforeach
-                    <h3>
-                        FALTA ACOMODARLO, NO TOCAR!
 
-                    </h3>
                 </tbody>
             </table>
         </div>

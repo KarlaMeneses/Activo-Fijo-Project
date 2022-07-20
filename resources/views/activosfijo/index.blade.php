@@ -54,7 +54,7 @@
                                     @endif
                                 @endif
                             </td>
-                       
+
                             <td>
                                 <form action="{{ route('activosfijo.destroy', $activo) }}" method="post">
                                     @csrf
