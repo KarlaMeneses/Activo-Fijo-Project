@@ -46,7 +46,7 @@ class AyudaSeeder extends Seeder
 
         $user = new Ayuda();
         $user->foto = 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/ayuda%2FBitacora.png?alt=media&token=7680d8e9-cbd1-4795-98a2-1549ea4b2d42';
-        $user->descripcion = "Para ver el registro de las acciones en el sistema ingresar a Bitacora,introducir la contraseña luego click en Auntenticar Kay y se procederá a la descraga de un documento en formato.log";
+        $user->descripcion = "Para ver el registro de las acciones en el sistema ingresar a Bitacora, introducir la contraseña luego click en Autenticar Kay y se procederá a la descarga de un documento en formato.log";
         $user->save();
 
 

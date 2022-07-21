@@ -29,14 +29,6 @@ class empresaSeeder extends Seeder
 
         $empresa = new Empresa();
         
-        $empresa->nombre = 'YPFB Yacimientos Petrolíferos Fiscales Bolivianos';
-        $empresa->email = 'ypfb@gmail.com';
-        $empresa->foto = 'https://firebasestorage.googleapis.com/v0/b/imagenes-972f4.appspot.com/o/empresa%2F1200px-YPFB_Logo.svg.jpg?alt=media&token=c777f33a-0d73-4ca8-b1b9-8925a1372708';
-        $empresa->juridica = 'S.R.L.';
-        $empresa->nit = '498496';
-        $empresa->direccion = 'En algun lugar';
-        $empresa->telefono = 65897456;
-        $empresa->save(); //save con  parentesis
 
     }
 }
