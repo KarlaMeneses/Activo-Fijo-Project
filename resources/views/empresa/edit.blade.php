@@ -103,9 +103,12 @@
                     <label for="sexo">Seleccione la estructura jurídica de la empresa</label>
        
                         <select name="juridica" id="juridica" class="form-control" onchange="habilitar()" placeholder="" required>
-                            <option value="S.L.">S.L. - Sociedad Limitada</option>
-                            <option value="S.A.">S.A. -Sociedad Anónima</option>
-                            <option value="S.R.L.">S.R.L. -Sociedad de Responsabilidad Limitada</option>
+                            <option value="S.C.">Sociedad Colectiva. (S.C.)</option>
+                            <option value="S.C.S">Sociedad en Comandita Simple. (S.C.S.)</option>
+                            <option value="S.R.L.">Sociedad de Responsabilidad Limitada. (S.R.L.)</option>
+                            <option value="S.A.">Sociedad Anónima. (S.A.)</option>
+                            <option value="S.C.A.">Sociedad en Comandita por Acciones. (S.C.A.)</option>
+                            <option value="As">Asociación Accidental o de Cuentas en Participación</option>
                         </select>
                    
                 </div>

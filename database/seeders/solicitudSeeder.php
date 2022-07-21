@@ -46,6 +46,44 @@ class solicitudSeeder extends Seeder
         $soli_act->cantidad = 10;
         $soli_act->save();
 
+
+        $soli = new Solicitud();
+        $soli->persona_sol   = 'Joel Sanchez García';
+        $soli->clasificacion = 'urgente';
+        $soli->concepto      = 'Nueva impresora para RR.HH ';
+        $soli->estado        = 'En Proceso';
+        $soli->estado_fin        = 'Revision';
+        $soli->fecha         = '2022-07-20';
+        $soli->save();
+
+        $soli = new Solicitud();
+        $soli->persona_sol   = 'Isabel Llanos Cabrera';
+        $soli->clasificacion = 'No urgente';
+        $soli->concepto      = 'máquina hiladora ';
+        $soli->estado        = 'En Proceso';
+        $soli->estado_fin        = 'solicitado';
+        $soli->fecha         = '2022-05-18';
+        $soli->save();
+ 
+        $soli = new Solicitud();
+        $soli->persona_sol   = 'Daniela Catro Park';
+        $soli->clasificacion = 'Urgente';
+        $soli->concepto      = 'mesa de corte';
+        $soli->estado        = 'En Proceso';
+        $soli->estado_fin        = 'solicitado';
+        $soli->fecha         = '2022-05-23';
+        $soli->save();
+
+
+        $soli = new Solicitud();
+        $soli->persona_sol   = 'Ricardo Morales Villegas';
+        $soli->clasificacion = 'Urgente';
+        $soli->concepto      = 'silla para oficina';
+        $soli->estado        = 'En Proceso';
+        $soli->estado_fin        = 'solicitado';
+        $soli->fecha         = '2022-05-04';
+        $soli->save();
+
 }
 
 }
