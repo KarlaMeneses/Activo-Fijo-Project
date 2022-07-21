@@ -28,7 +28,7 @@ class UbicacionController extends Controller
         $ubi->ciudad = $request->ciudad;
         $ubi->pais = $request->pais;
         $ubi->id_departamento = $request->id_departamento;
-        $ubi->estado = $request->estado;
+    
         $ubi->save();
        
         
@@ -49,7 +49,7 @@ class UbicacionController extends Controller
         $ubi->edificio = $request->edificio;
         $ubi->ciudad = $request->ciudad;
         $ubi->pais = $request->pais;
-        $ubi->estado = $request->estado;
+
         $ubi->id_departamento = $request->id_departamento;
         $ubi->save();
 
