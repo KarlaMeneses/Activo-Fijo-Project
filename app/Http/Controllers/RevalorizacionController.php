@@ -57,6 +57,14 @@ class RevalorizacionController extends Controller
         return redirect()->route('activosfijo.index');
     }
 
+    public function aprobado(Request $request)
+    {
+        $revalorizacion = Revalorizacion::find($request->id_revalorizacion);
+        $revalorizacion->estado = "Aprobado";
+        $revalorizacion->save();
+        return redirect()->route('revalorizacion.index');
+    }
+
     /**
      * Display the specified resource.
      *

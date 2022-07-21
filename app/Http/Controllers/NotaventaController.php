@@ -7,6 +7,7 @@ use App\Models\Nota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\App;
+use App\Models\Empresa;
 class NotaventaController extends Controller
 {
     /**
@@ -123,9 +124,11 @@ class NotaventaController extends Controller
 
     public function reporte(Request $request, $id)
     {
+        $id1 = 1;
+        $empresa = Empresa::where('id', $id1)->first();
         $nota = Nota::find($id);
         $detalles = Detallenota::select('*')->where('id_notas', $nota->id)->get();
-        $view = View::make('notasventa.reporte', compact('nota','detalles'))->render();
+        $view = View::make('notasventa.reporte', compact('nota','detalles','empresa'))->render();
          $pdf = App::make('dompdf.wrapper');
          
          $pdf->setOptions([
@@ -141,9 +144,11 @@ class NotaventaController extends Controller
     }
     public function reportehtml(Request $request, $id)
     {
+        $id1 = 1;
+        $empresa = Empresa::where('id', $id1)->first();
         $nota = Nota::find($id);
         $detalles = Detallenota::select('*')->where('id_notas', $nota->id)->get();
-        $view = View::make('notasventa.reporte', compact('nota','detalles'))->render();
+        $view = View::make('notasventa.reporte', compact('nota','detalles', 'empresa'))->render();
         return $view;           
             
     }

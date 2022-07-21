@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'SI-ActivoFijo')
+@section('title', 'ActivoFijo')
 @section('content_header')
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'SI-ActivoFijo')
+@section('title', 'Activo Fijo')
 
 @section('content_header')
     <div class="card-header text-center">
