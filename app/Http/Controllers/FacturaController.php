@@ -10,6 +10,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\App;
 Use Dompdf\Options;
+use App\Models\Empresa;
 class FacturaController extends Controller
 {
     // COMPRAAA
@@ -178,9 +179,12 @@ class FacturaController extends Controller
 
     public function reportec(Request $request, $id)
     {
+    
+        $id1 = 1;
+        $empresa = Empresa::where('id', $id1)->first();
         $factura = Factura::find($id);
         $detalles = DetalleFactura::select('*')->where('idfactura', $factura->id)->get();
-        $view = View::make('factura.facturacompra.reporte', compact('factura','detalles'))->render();
+        $view = View::make('factura.facturacompra.reporte', compact('factura','detalles', 'empresa'))->render();
         //return $view;
        
      
@@ -201,18 +205,22 @@ class FacturaController extends Controller
     }
     public function reportechtml(Request $request, $id)
     {
+        $id1 = 1;
+        $empresa = Empresa::where('id', $id1)->first();
         $factura = Factura::find($id);
         $detalles = DetalleFactura::select('*')->where('idfactura', $factura->id)->get();
-        $view = View::make('factura.facturacompra.reporte', compact('factura','detalles'))->render();
+        $view = View::make('factura.facturacompra.reporte', compact('factura','detalles', 'empresa'))->render();
         return $view;           
             
     }
 
     public function reportev(Request $request, $id)
     {
+        $id1 = 1;
+        $empresa = Empresa::where('id', $id1)->first();
         $factura = Factura::find($id);
         $detalles = DetalleFactura::select('*')->where('idfactura', $factura->id)->get();
-        $view = View::make('factura.facturaventa.reporte', compact('factura','detalles'))->render();
+        $view = View::make('factura.facturaventa.reporte', compact('factura','detalles', 'empresa'))->render();
         // return $view;
        
      
@@ -234,9 +242,11 @@ class FacturaController extends Controller
     }
     public function reportevhtml(Request $request, $id)
     {
+        $id1 = 1;
+        $empresa = Empresa::where('id', $id1)->first();
         $factura = Factura::find($id);
         $detalles = DetalleFactura::select('*')->where('idfactura', $factura->id)->get();
-        $view = View::make('factura.facturaventa.reporte', compact('factura','detalles'))->render();
+        $view = View::make('factura.facturaventa.reporte', compact('factura','detalles', 'empresa'))->render();
         return $view;           
             
     }
