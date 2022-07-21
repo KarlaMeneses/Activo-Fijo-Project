@@ -9,7 +9,7 @@ class Ubicacion extends Model
 {
     use HasFactory;
     protected $table = 'ubicacion'; //usa el nombre de la base de datos 
-    protected $fillable = ['edificio', 'ciudad','pais','id_departamento','estado'];
+    protected $fillable = ['edificio', 'ciudad','pais','id_departamento'];
     //atributos de la tabla
     public function activofijo()
     {

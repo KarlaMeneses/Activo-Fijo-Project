@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Activofijo;
 use App\Models\Baja;
-
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use App\Models\Empresa;
+use Illuminate\Support\Facades\Auth;
 class BajaController extends Controller
 {
     //
@@ -69,5 +72,31 @@ class BajaController extends Controller
         $baja = Baja::find($id);
         $baja->delete();
         return redirect()->back();
+    }
+
+    public function reporte(Request $request)
+    {
+        $user_c = Auth::user()->id;
+        $id = 1;
+        $empresa = Empresa::where('id', $id)->first();
+        $baja = Baja::find($id);
+        $activo = Activofijo::where('id', $baja->idactivo)->first();
+      
+        
+   
+
+            $view = View::make('baja.reporte', compact('baja','activo', 'empresa'))->render();
+
+            $pdf = App::make('dompdf.wrapper');
+            $pdf->setOptions([
+                'logOutputFile' => storage_path('logs/log.htm'),
+                'tempDir' => storage_path('logs/')
+            ]);
+    
+            $pdf->loadHTML($view);
+            return $pdf->stream();
+        
+
+     
     }
 }
