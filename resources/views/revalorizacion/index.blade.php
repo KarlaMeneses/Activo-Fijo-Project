@@ -7,7 +7,9 @@
         <h3><b>Listado de Revalorizacion</b></h3>
     </div>
 @stop
-
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+@stop
 @section('content')
     {{-- }} NO ES NECESARIO CREARLO
     <div class="card">
@@ -68,7 +70,7 @@
                                             @can('eliminar revalorizacion')
                                             @endcan
                                 </form>
-                              
+
                             </td>
 
                         </tr>
