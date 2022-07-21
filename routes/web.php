@@ -115,6 +115,7 @@ Route::resource('responsables', ResponsableController::class)->names('responsabl
 Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');
 Route::post('activosfijo/index', [RevalorizacionController::class, 'idactivo'])->name('activosfijo.idactivo');
 Route::post('revalorizacion/show', [RevalorizacionController::class, 'aprobado'])->name('revalorizacion.aprobado');
+Route::post('activosfijo/reportedina', [App\Http\Controllers\ActivofijoController::class, 'reportedina'])->name('activosfijo.reportedina');
 
 
 

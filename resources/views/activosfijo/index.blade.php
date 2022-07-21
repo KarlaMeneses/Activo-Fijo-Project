@@ -12,8 +12,14 @@
     <div class="card">
         <div class="card-header">
             <a href="{{ route('activosfijo.create') }}" class="btn btn-primary btb-sm">Crear Activo fijo</a>
-        </div>
+        
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+                Reporte
+            </button></div>
+      
     </div>
+    
+  
 
     <div class="card">
         <!--<div class="card-body">-->
@@ -143,7 +149,68 @@
     <df-messenger intent="WELCOME" chat-title="bots" agent-id="86938b5f-1e37-43dc-9f38-1bd5322b1eb7" language-code="es">
     </df-messenger>
 
-
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel"> Generar Reporte</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+    
+                <form action="{{route('activosfijo.reportedina')}}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="codigo">Fecha de Inicio</label>
+                            <div class="col-sm-10">
+                                <input type="date" name="inicio" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="fin">Fecha de Fin</label>
+                            <div class="col-sm-10">
+                                <input type="date" name="fin" class="form-control" required>
+                            </div>
+                        </div>
+    
+                       
+                        <div class="form-group">
+                            <label for="fin">Seleccione los Atributos para el reporte</label>
+                          <br>
+                          <div class="checkbox">
+                                <input type="checkbox" name="codigo" value="true" > Codigo <br>
+                                <input type="checkbox" name="nombre" value="true" > Nombre <br>
+                                <input type="checkbox" name="descripcio" value="true"> Descripcion <br>
+                                <input type="checkbox" name="proveedor" value="true"> Proveedor <br>
+                                <input type="checkbox" name="fechaingreso" value="true" > Fecha de Ingreso <br>
+                                <input type="checkbox" name="costo" value="true"> Costo <br>
+                                <input type="checkbox" name="valoractual" value="true"> Valos Actual <br>
+                                <input type="checkbox" name="responsable" value="true"> Responsable <br>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="fin">Seleccione el formato</label>
+                          <br>
+                          <div class="checkbox">
+                                <select name="tipo" id="">
+                                    <option value="pdf">PDF</option>
+                                    <option value="excel">EXCEL</option>
+                                    <option value="html">HTML</option>
+                                </select>
+                        </div>
+    
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Reporte</button>
+                    </div>
+                </form>
+    
+            </div>
+        </div>
+    </div>
    
 @stop
 
