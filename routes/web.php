@@ -117,7 +117,7 @@ Route::post('activosfijo/index', [RevalorizacionController::class, 'idactivo'])-
 //Route::post('activosfijo/{id}', [ActivofijoController::class, 'calcular'])->name('activosfijo.calcular');
 //Route::get('activosfijo.{id}', [ActivofijoController::class, 'calcular'])->name('activosfijo.calcular');
 Route::get('activosfijo/show/{id}', [ActivofijoController::class, 'calcular'])->name('activosfijo.calcular');
-
+Route::post('activosfijo/reporte/{id}', [App\Http\Controllers\ActivofijoController::class, 'reporte'])->name('activosfijo.reporte');
 //MANTENIMIENTO
 Route::get('mantenimientos/index', [App\Http\Controllers\MantenimientoController::class, 'index'])->name('mantenimientos.index');
 Route::get('mantenimientos/create', [App\Http\Controllers\MantenimientoController::class, 'create'])->name('mantenimientos.create');

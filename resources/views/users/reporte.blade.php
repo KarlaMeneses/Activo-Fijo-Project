@@ -54,7 +54,7 @@
     }
 
     th {
-        background-color: #009bdd;
+        background-color: #00a914;
         color: white;
         text-align: center;
         padding: 2px;
@@ -76,13 +76,14 @@
 <body>
     <header>
         <?php
-        $nombreImagen = 'img/SAAF-logo-con-tipografía.jpg';
+        $nombreImagen = $empresa->foto;
         $imagenBase64 = 'data:image/jpg;base64,' . base64_encode(file_get_contents($nombreImagen));
         ?>
 
         <div style="position: relative">
             <div style="position: absolute">
-                <img src="<?php echo $imagenBase64; ?>" style="height: 80px;width:auto;margin-top: 2.5em; ">
+                <img src="<?php echo $imagenBase64; ?>" style="height: 150px;width:auto;margin-top: 2.5em;"/>
+              
             </div>
             <div style="position: absolute;text-align: left">
                 {{-- <p style="font-size: 10px;margin-top: 3em;margin-left: 25em;vertical-align:middle;">Reporte de Usuarios:
@@ -112,7 +113,7 @@
     <div>
 
   
-        <h4 style="text-align: center;color:#009bdd"><strong> REPORTE DE USUARIOS</strong> </h4>
+        <h4 style="text-align: center;color:#00a914"><strong> REPORTE DE USUARIOS</strong> </h4>
         <p style="font-size: 12px;margin-top: 0.5em;padding: 0; margin: 0;"><strong>DATOS DEL USUARIO</strong>
             
         </p>

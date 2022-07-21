@@ -13,7 +13,11 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Psy\Readline\Hoa\Console;
-
+use App\Models\Empresa;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\View;
 class ActivofijoController extends Controller
 {
     /**
@@ -212,4 +216,34 @@ class ActivofijoController extends Controller
         $activofijo->save();
         return redirect()->back();
     }
+
+
+    public function reporte(Request $request, $id)
+    {
+        $user_c = Auth::user()->id;
+        $id1 = 1;
+        $empresa = Empresa::where('id', $id1)->first();
+        $user = User::find($user_c);
+        $activo = Activofijo::find($id);
+        $i =$request->inicio;
+        $f =$request->fin;
+         $lol = $request;
+         $ubicacion = Ubicacion::find($activo->id_ubicacion);
+         $departamento = Departamento::find($ubicacion->id);
+         $categoria = categoria::find($activo->id_categoria);
+
+            $view = View::make('activosfijo.reporte', compact('activo','categoria','ubicacion','departamento', 'lol', 'empresa'))->render();
+
+            $pdf = App::make('dompdf.wrapper');
+            $pdf->setOptions([
+                'logOutputFile' => storage_path('logs/log.htm'),
+                'tempDir' => storage_path('logs/')
+            ]);
+    
+            $pdf->loadHTML($view);
+            return $pdf->stream();
+    
+   
+    }
+
 }
