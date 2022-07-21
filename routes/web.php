@@ -149,6 +149,7 @@ Route::get('baja/create', [App\Http\Controllers\BajaController::class, 'create']
 Route::get('baja/edit/{id}', [App\Http\Controllers\BajaController::class, 'edit'])->name('baja.edit');
 Route::post('baja/update/{id}', [App\Http\Controllers\BajaController::class, 'update'])->name('baja.update');
 Route::post('baja/{id}', [App\Http\Controllers\BajaController::class, 'destroy'])->name('baja.delete');
+Route::get('baja/reporte/{id}', [App\Http\Controllers\BajaController::class, 'reporte'])->name('baja.reporte');
 
 
 

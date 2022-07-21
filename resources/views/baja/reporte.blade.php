@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Reporte Usuarios</title>
+    <title>Reporte Baja</title>
 </head>
 
 <style>
@@ -82,13 +82,14 @@
 
         <div style="position: relative">
             <div style="position: absolute">
-                <img src="<?php echo $imagenBase64; ?>" style="height: 150px;width:auto;margin-top: 2.5em;"/>
-              
+                <img src="<?php echo $imagenBase64; ?>" style="height: 100px;width:auto;margin-top: 4.0em; ">
             </div>
-            <div style="position: absolute;text-align: left">
-                {{-- <p style="font-size: 10px;margin-top: 3em;margin-left: 25em;vertical-align:middle;">Reporte de Usuarios:
-                    {{ \Carbon\Carbon::now() }}</p> --}}
-                 
+            
+            <div style="position: relative;text-align: middle">
+                <p style="font-size: 10px;margin-top: 3em;margin-left: 30em;vertical-align:middle;">Reporte de Factura:
+                    {{ \Carbon\Carbon::now() }}</p>
+            </div>
+            
         </div>
     </header>
     <footer>
@@ -112,19 +113,22 @@
 
   
         <h4 style="text-align: center;color:#00a914"><strong> SOLICITUD DE BAJA DE BIENES DE ACTIVO FIJO</strong> </h4>
-        <p style="font-size: 12px;margin-top: 0.5em;padding: 0; margin: 0;">Por el medio de la presente, solicito registre la baja del bien de activo fijo que a continuación se detallará:</p>
-        <p style="font-size: 12px;margin-top: 0.5em;padding: 0; margin: 0;"><strong>DATOS DEL ACTIVO</strong>
-            
+        <br><br><br>
+        <p style="font-size: 15px;margin-top: 0.5em;padding: 0; margin: 0;">Por el medio de la presente, solicito registre la baja del bien de activo fijo que a continuación se detallará:</p>
+        
+        <br><br>
+        <p style="font-size: 15px;margin-top: 0.5em;padding: 0; margin: 0;"><strong>DATOS DEL ACTIVO</strong>
+            <br> <br>
         </p>
 
-            <table class="table-borderless" style="font-size:12px;border-style:none">
+            <table class="table-borderless" style="font-size:15px;border-style:none">
                 <tr>
                    
                     <th style="text-align: left;background-color: #ffffff;
                     color: rgb(4, 4, 4);border-style:none;width:20px"><strong>Código: </strong></th>
                     <td style="text-align: left;background-color: #ffffff;
                     color: rgb(4, 4, 4);width:250px;border-style:none" >{{$activo->codigo}}</td>
-                    
+                    <br><br>
                 </tr>
                 
                 
@@ -133,7 +137,7 @@
                     color: rgb(4, 4, 4);border-style:none"><strong>Nombre: </strong></th>
                     <td style="text-align: left;background-color: #ffffff;
                     color: rgb(4, 4, 4);border-style:none">{{$activo->nombre}}</td>
-               
+               <br><br>
                 </tr>
                 
               
@@ -141,18 +145,33 @@
                     <th style="text-align: left;background-color: #ffffff;
                     color: rgb(4, 4, 4);border-style:none"><strong>Detalle: </strong></th>
                     <td style="text-align: left;background-color: #ffffff;
-                    color: rgb(4, 4, 4);border-style:none">{{$activo->detalle}}</td>      
+                    color: rgb(4, 4, 4);border-style:none">{{$activo->detalle}}</td>  
+                    <br><br>    
                 </tr>
-               
-                   
+                  
+                <tr>
+                    <th style="text-align: left;background-color: #ffffff;
+                    color: rgb(4, 4, 4);border-style:none"><strong>Proveedor: </strong></th>
+                    <td style="text-align: left;background-color: #ffffff;
+                    color: rgb(4, 4, 4);border-style:none">{{$activo->proveedor}}</td>  
+                    <br><br>    
+                </tr>
+                <tr>
+                    <th style="text-align: left;background-color: #ffffff;
+                    color: rgb(4, 4, 4);border-style:none"><strong>Fecha Adquisición: </strong></th>
+                    <td style="text-align: left;background-color: #ffffff;
+                    color: rgb(4, 4, 4);border-style:none">{{$activo->fecha_ingreso}}</td>  
+                    <br><br>    
+                </tr>
+                     
                
             
             </table>
             
-       
-            <p style="font-size: 12px;margin-top: 0.5em;padding: 0; margin: 0;">El artículo antes descrito aquirido y registrado como bien de activo fijo el día {{$activo->fecha_ingreso}} siendo el responsable el señor@ {{$activo->responsable}}. </p>
-            
-            <p style="font-size: 12px;margin-top: 0.5em;padding: 0; margin: 0;">La causa que originó la baja: {{$baja->cusadebaja}} el día {{$baja->fechasolicitada}} </p>
+       <br><br>
+            <p style="font-size: 15px;margin-top: 0.5em;padding: 0; margin: 0;">El artículo antes descrito aquirido y registrado como bien de activo fijo el día {{$activo->fecha_ingreso}} siendo el responsable el señor@ {{$activo->responsable}}. </p>
+            <br><br>
+            <p style="font-size: 15px;margin-top: 0.5em;padding: 0; margin: 0;">La causa que originó la baja: {{$baja->causadebaja}} el día {{$baja->fechasolicitada}} </p>
     </div>
 
     </div>

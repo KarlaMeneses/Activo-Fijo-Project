@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Activofijo;
 use App\Models\Baja;
-
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use App\Models\Empresa;
+use Illuminate\Support\Facades\Auth;
 class BajaController extends Controller
 {
     //
@@ -76,15 +79,13 @@ class BajaController extends Controller
         $user_c = Auth::user()->id;
         $id = 1;
         $empresa = Empresa::where('id', $id)->first();
-        $user = User::find($user_c);
-        $i =$request->inicio;
-        $f =$request->fin;
-         $lol = $request;
-        $users = User::whereBetween('created_at', [$request->inicio, $request->fin])->get();
+        $baja = Baja::find($id);
+        $activo = Activofijo::where('id', $baja->idactivo)->first();
+      
         
-        if($request->tipo == 'pdf'){
+   
 
-            $view = View::make('users.reporte', compact('users','user','i','f', 'lol', 'empresa'))->render();
+            $view = View::make('baja.reporte', compact('baja','activo', 'empresa'))->render();
 
             $pdf = App::make('dompdf.wrapper');
             $pdf->setOptions([
@@ -94,7 +95,7 @@ class BajaController extends Controller
     
             $pdf->loadHTML($view);
             return $pdf->stream();
-        }
+        
 
      
     }
