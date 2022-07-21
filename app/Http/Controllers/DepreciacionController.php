@@ -78,5 +78,8 @@ class DepreciacionController extends Controller
      */
     public function destroy($id)
     {
+        $depreciacion = Depreciacion::find($id);
+        $depreciacion->delete();
+        return redirect()->back();
     }
 }

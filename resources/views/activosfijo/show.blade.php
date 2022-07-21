@@ -209,10 +209,10 @@
                     @foreach ($depreciacion as $depreciacion)
                     @if ($depreciacion->id_activo == $activofijo->id)
                     <tr>
-                        <td>{{ $depreciacion->año }}</td>
-                        <td>{{ $depreciacion->valor }}</td>
-                        <td>{{ $activofijo->d_anual }}</td>
-                        <td>{{ $depreciacion->d_acumulada }}</td>
+                        <td>{{ $depreciacion->año }} año</td>
+                        <td>{{ $depreciacion->valor }}Bs</td>
+                        <td>{{ $activofijo->d_anual }}Bs</td>
+                        <td>{{ $depreciacion->d_acumulada }}Bs</td>
                     </tr>
                     @endif
                     @endforeach
@@ -224,7 +224,6 @@
 
 
             <center>
-                <a href="{{ route('activosfijo.calcular', $activofijo->id) }}" class="btn btn-warning btb-sm text-light">Calcular</a>
                 <button class="btn btn-warning btb-sm text-light" type="button" onclick="history.back()"></i> Volver</button>
                 <a href="{{ route('activosfijo.edit', $activofijo->id) }}" class="btn btn-primary btb-sm text-light">Editar </a>
                 <a href="{{ route('notas.show', $activofijo->id) }}" class="btn btn-danger btb-sm text-light">Ver

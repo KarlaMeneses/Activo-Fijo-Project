@@ -41,7 +41,7 @@
 
                                 <option value="{{$activo->id}}">
 
-                                   <spam>{{$activo->id}} - {{$activo->detalle}}</spam>
+                                   <spam>{{$activo->id}}. {{$activo->nombre}} {{$activo->detalle}}</spam>
 
                                 </option>
 

@@ -5,7 +5,6 @@
 @section('content_header')
 @stop
 
-
 @section('content')
     <div class="card">
         <div class="card-body">
@@ -22,7 +21,6 @@
                     </center>
                 </div>
             </div>
-
 
             <div class="card">
                 <div class="card-body">
@@ -64,7 +62,6 @@
                                             value="{{ $activo->v_actual }}" disabled>
                                     </div>
 
-
                                     <div class="col-md-3">
                                         <label for="estado">ESTADO</label>
                                         <input type="tel" name="estado" class="form-control"
@@ -77,14 +74,12 @@
                 </div>
             </div>
 
-
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="form-row">
                             <div class="card-header form-group col-md-12">
-                                <h5 class="font-weight-bold px-2">DATOS DEL
-                                    ACTIVO REVALORIZADO POR EL EXPERTO</h5>
+                                <h5 class="font-weight-bold px-2">DATOS DEL ACTIVO REVALORIZADO POR EL EXPERTO</h5>
                             </div>
 
                             <div class="form-group col-md-4">
@@ -97,10 +92,8 @@
                                 <label for="nombre">VIDA UTIL REVALUADO</label>
                                 <input type="text" name="nombre" class="form-control"
                                     value="{{ $revalorizacion->tiempo_vida }} años" id="nombre" disabled>
-        
                             </div>
-        
-                           
+
                             <div class="form-group col-md-4">
                                 <label for="estado">ESTADO</label>
                                 <input type="text" name="estado" class="form-control"
@@ -119,24 +112,26 @@
                                     value="{{ $revalorizacion->costo_revaluo }} Bs" id="descripcion" disabled>
                             </div>
                         </div>
-                        <h3>SUBIR INFORME TECNICO </h3>
+                        <h3>BOTON PARA MOSTRAR IMAGEN DEL INFORME TECNICO </h3>
                     </div>
                 </div>
             </div>
-    
-
-
             <br>
-
-
+         
             <center>
                 <a class="btn btn-warning btb-sm text-light" href="{{ route('revalorizacion.index') }}">Volver</a>
                 <a href="{{ route('revalorizacion.edit', $revalorizacion->id) }}"
                     class="btn btn-primary btb-sm text-light">
                     Editar </a>
+                    <form action="{{ route('revalorizacion.aprobado') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="id_revalorizacion" class="form-control"
+                            value="{{ $revalorizacion->id}}"> <br>
+                        <button class="btn btn-danger btn-sm text-light"
+                            type="submit">aprobar</button>
+                    </form>
             </center>
-
-
+            
         </div>
     </div>
 @stop

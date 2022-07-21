@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Contracts\Role;
 use App\Exports\UserExport;
+use App\Http\Controllers\PostNotificationController;
 use App\Http\Controllers\ResponsableController;
 use App\Models\Responsable;
 use Maatwebsite\Excel\Facades\Excel;
@@ -107,9 +108,13 @@ Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones')
 //RESPONSABLE
 Route::resource('responsables', ResponsableController::class)->names('responsables');
 
+//NOTIFICATION
+//Route::get('mantenimientos/index', [PostNotificationController::class, 'sendOfferNotification']);
+
 //REVALORIZACION
 Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');
 Route::post('activosfijo/index', [RevalorizacionController::class, 'idactivo'])->name('activosfijo.idactivo');
+Route::post('revalorizacion/show', [RevalorizacionController::class, 'aprobado'])->name('revalorizacion.aprobado');
 
 
 
@@ -180,4 +185,5 @@ Route::get('traspasos/edit/{id}', [App\Http\Controllers\TraspasoController::clas
 Route::put('traspasos/update/{id}', [App\Http\Controllers\TraspasoController::class, 'update'])->name('traspasos.update');
 /* Route::get('traspasos/show/{id}', [App\Http\Controllers\TraspasoController::class, 'show'])->name('traspasos.show'); */
 Route::delete('traspasos/{id}', [App\Http\Controllers\TraspasoController::class, 'destroy'])->name('traspasos.destroy');
+
 
