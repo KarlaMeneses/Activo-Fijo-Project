@@ -70,4 +70,32 @@ class BajaController extends Controller
         $baja->delete();
         return redirect()->back();
     }
+
+    public function reporte(Request $request)
+    {
+        $user_c = Auth::user()->id;
+        $id = 1;
+        $empresa = Empresa::where('id', $id)->first();
+        $user = User::find($user_c);
+        $i =$request->inicio;
+        $f =$request->fin;
+         $lol = $request;
+        $users = User::whereBetween('created_at', [$request->inicio, $request->fin])->get();
+        
+        if($request->tipo == 'pdf'){
+
+            $view = View::make('users.reporte', compact('users','user','i','f', 'lol', 'empresa'))->render();
+
+            $pdf = App::make('dompdf.wrapper');
+            $pdf->setOptions([
+                'logOutputFile' => storage_path('logs/log.htm'),
+                'tempDir' => storage_path('logs/')
+            ]);
+    
+            $pdf->loadHTML($view);
+            return $pdf->stream();
+        }
+
+     
+    }
 }
