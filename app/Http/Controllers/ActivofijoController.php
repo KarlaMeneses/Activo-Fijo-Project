@@ -245,4 +245,29 @@ class ActivofijoController extends Controller
    
     }
 
+    public function reportedina(Request $request)
+    {
+        $user_c = Auth::user()->id;
+        $id1 = 1;
+        $empresa = Empresa::where('id', $id1)->first();
+        $user = User::find($user_c);
+        $activos = Activofijo::whereBetween('fecha_ingreso', [$request->inicio, $request->fin])->get();
+        $i =$request->inicio;
+        $f =$request->fin;
+         $lol = $request;
+        
+            $view = View::make('activosfijo.reportedina', compact('activos','user', 'lol', 'empresa'))->render();
+
+            $pdf = App::make('dompdf.wrapper');
+            $pdf->setOptions([
+                'logOutputFile' => storage_path('logs/log.htm'),
+                'tempDir' => storage_path('logs/')
+            ]);
+    
+            $pdf->loadHTML($view);
+            return $pdf->stream();
+    
+   
+    }
+
 }
