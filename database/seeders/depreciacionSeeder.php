@@ -62,42 +62,42 @@ class depreciacionSeeder extends Seeder
             ],
 
             [
-                'año' => 4,
+                'año' => 5,
                 'valor' => 270,
                 'd_acumulada' => 180,
                 'id_activo' => 2,
             ],
 
             [
-                'año' => 4,
+                'año' => 6,
                 'valor' => 234,
                 'd_acumulada' => 216,
                 'id_activo' => 2,
             ],
 
             [
-                'año' => 4,
+                'año' => 7,
                 'valor' => 198,
                 'd_acumulada' => 252,
                 'id_activo' => 2,
             ],
 
             [
-                'año' => 4,
+                'año' => 8,
                 'valor' => 162,
                 'd_acumulada' => 288,
                 'id_activo' => 2,
             ],
 
             [
-                'año' => 4,
+                'año' => 9,
                 'valor' => 126,
                 'd_acumulada' => 324,
                 'id_activo' => 2,
             ],
 
             [
-                'año' => 4,
+                'año' => 10,
                 'valor' => 90,
                 'd_acumulada' => 360,
                 'id_activo' => 2,
