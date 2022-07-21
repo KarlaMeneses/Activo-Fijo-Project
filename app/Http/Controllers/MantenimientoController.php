@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activofijo;
+use App\Models\Bitacora;
 use App\Models\Mantenimiento;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -47,7 +48,20 @@ class MantenimientoController extends Controller
         $activo = Activofijo::find($mante->id_activo);
         $activo->estado = 'En Mantenimiento';
         $activo->save();
-
+        
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Registró');
+        $bita->apartado = encrypt('Mantenimiento');
+        $afectado = $mante->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
         return redirect()->route('mantenimientos.index'); // Se redirige a la vista categoria.index
     }
 
@@ -82,6 +96,20 @@ class MantenimientoController extends Controller
         }    
 
         $activo->save(); 
+
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Editó');
+        $bita->apartado = encrypt('Mantenimiento');
+        $afectado = $mante->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
         return redirect()->route('mantenimientos.index');
     }
 
@@ -93,9 +121,22 @@ class MantenimientoController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $mante = Mantenimiento::find($id);
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Eliminó');
+        $bita->apartado = encrypt('Mantenimiento');
+        $afectado = $mante->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
         $mante->delete();
         return redirect()->back();
     }

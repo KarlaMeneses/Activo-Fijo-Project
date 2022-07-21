@@ -29,7 +29,8 @@ class ActivofijoController extends Controller
     public function index()
     {
         $activosfijo = Activofijo::all();
-        return view('activosfijo.index', compact('activosfijo'));
+        $categorias = categoria::all();
+        return view('activosfijo.index', compact('activosfijo','categorias'));
     }
 
     /**

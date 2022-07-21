@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bitacora;
 use App\Models\SoliActivo;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SolicitudController extends Controller
 {
@@ -30,6 +32,19 @@ class SolicitudController extends Controller
         $soli->respuesta_fin = 'No Asignado';
         $soli->fecha         = $request->fecha;
         $soli->save();
+
+         /* ------------BITACORA----------------- */
+         $bita = new Bitacora();
+         $bita->accion = encrypt('Registró');
+         $bita->apartado = encrypt('Solicitudes');
+         $afectado = $soli->id;
+         $bita->afectado = encrypt($afectado);
+         $fecha_hora = date('m-d-Y h:i:s a', time());
+         $bita->fecha_h = encrypt($fecha_hora);
+         $bita->id_user = Auth::user()->id;
+         $ip = $request->ip();
+         $bita->ip = encrypt($ip);
+         $bita->save();
         return redirect()->route('solicitud.edit', $soli->id);
 
         
@@ -76,13 +91,38 @@ class SolicitudController extends Controller
         $soli->fecha         = $request->fecha;
         $soli->save();
 
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Editó');
+        $bita->apartado = encrypt('Solicitudes');
+        $afectado = $soli->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+
         return redirect()->route('solicitud.index');
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $soli = Solicitud::find($id);
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Eliminó');
+        $bita->apartado = encrypt('Solicitudes');
+        $afectado = $soli->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
         $soli->delete();
         return redirect()->back();
     }

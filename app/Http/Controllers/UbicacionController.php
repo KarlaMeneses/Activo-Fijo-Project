@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Bitacora;
 use App\Models\Ubicacion;
 use App\Models\Departamento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UbicacionController extends Controller
 {
@@ -30,6 +33,19 @@ class UbicacionController extends Controller
         $ubi->id_departamento = $request->id_departamento;
     
         $ubi->save();
+
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Registró');
+        $bita->apartado = encrypt('Ubicaciones');
+        $afectado = $ubi->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
        
         
         return redirect()->route('ubicaciones.index'); // Se redirige a la vista ubicaiones.index
@@ -53,12 +69,37 @@ class UbicacionController extends Controller
         $ubi->id_departamento = $request->id_departamento;
         $ubi->save();
 
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Editó');
+        $bita->apartado = encrypt('Ubicaciones');
+        $afectado = $ubi->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+
         return redirect()->route('ubicaciones.index');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $ubi = Ubicacion::find($id);
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Eliminó');
+        $bita->apartado = encrypt('Ubicaciones');
+        $afectado = $ubi->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
         $ubi->delete();
         return redirect()->back();
     }

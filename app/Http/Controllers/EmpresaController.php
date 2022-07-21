@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\EmpresaExport;
+use App\Models\Bitacora;
 use App\Models\Empresa;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -47,6 +48,20 @@ class EmpresaController extends Controller
                 'foto'=>request('foto'),
                 'email'=>request('email'),
             ]); 
+
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Registró');
+        $bita->apartado = encrypt('Empresa');
+        $afectado = $empresa->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
        
 
         return redirect()->route('empresa.index');
@@ -102,17 +117,44 @@ class EmpresaController extends Controller
         $empresa->email = $request->input('email');
         $empresa->foto = $request->input('foto');
         $empresa->save();
+
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Editó');
+        $bita->apartado = encrypt('Empresa');
+        $afectado = $empresa->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
         return redirect()->route('home');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $empresa = Empresa::find($id);
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Eliminó');
+        $bita->apartado = encrypt('Empresa');
+        $afectado = $empresa->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
         $empresa->delete();
         return redirect()->back();
     }
 
-    public function show($id)
+    public function show( $id)
     {
         $empresa = Empresa::find($id);
 

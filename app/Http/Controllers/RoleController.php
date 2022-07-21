@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Bitacora;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
@@ -45,6 +48,19 @@ class RoleController extends Controller
         $rol->name=$request->name;
         $rol->save();
         $rol->syncPermissions($request->permisos);
+
+         /* ------------BITACORA----------------- */
+         $bita = new Bitacora();
+         $bita->accion = encrypt('Registró');
+         $bita->apartado = encrypt('Roles');
+         $afectado = $rol->id;
+         $bita->afectado = encrypt($afectado);
+         $fecha_hora = date('m-d-Y h:i:s a', time());
+         $bita->fecha_h = encrypt($fecha_hora);
+         $bita->id_user = Auth::user()->id;
+         $ip = $request->ip();
+         $bita->ip = encrypt($ip);
+         $bita->save();
         return redirect()->route('roles.index');
     }
 
@@ -98,6 +114,19 @@ class RoleController extends Controller
         $role->name = $request->name;
         $role->syncPermissions($request->permisos);
 
+         /* ------------BITACORA----------------- */
+         $bita = new Bitacora();
+         $bita->accion = encrypt('Editó');
+         $bita->apartado = encrypt('Roles');
+         $afectado = $role->id;
+         $bita->afectado = encrypt($afectado);
+         $fecha_hora = date('m-d-Y h:i:s a', time());
+         $bita->fecha_h = encrypt($fecha_hora);
+         $bita->id_user = Auth::user()->id;
+         $ip = $request->ip();
+         $bita->ip = encrypt($ip);
+         $bita->save();
+
         $role->save();
         return redirect()->route('roles.index');
     }
@@ -108,9 +137,21 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy(Request $request,Role $role)
     {
         Role::destroy($role->id);
+         /* ------------BITACORA----------------- */
+         $bita = new Bitacora();
+         $bita->accion = encrypt('Eliminó');
+         $bita->apartado = encrypt('Roles');
+         $afectado = $role->id;
+         $bita->afectado = encrypt($afectado);
+         $fecha_hora = date('m-d-Y h:i:s a', time());
+         $bita->fecha_h = encrypt($fecha_hora);
+         $bita->id_user = Auth::user()->id;
+         $ip = $request->ip();
+         $bita->ip = encrypt($ip);
+         $bita->save();
         return redirect('roles');
     }
 }

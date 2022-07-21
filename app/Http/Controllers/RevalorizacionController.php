@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activofijo;
+use App\Models\Bitacora;
 use App\Models\Revalorizacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RevalorizacionController extends Controller
 {
@@ -45,6 +47,20 @@ class RevalorizacionController extends Controller
         $revalorizacion->foto = $request->foto;
         $revalorizacion->id_activo = $request->id_activo;
         $revalorizacion->save();
+
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Registró');
+        $bita->apartado = encrypt('Revalorización');
+        $afectado = $revalorizacion->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+
         return redirect()->route('revalorizacion.index');
     }
 
@@ -113,6 +129,19 @@ class RevalorizacionController extends Controller
             $activosfijo->valor_residual = $revalorizacion->valor;
             $activosfijo->save();
         }
+
+         /* ------------BITACORA----------------- */
+         $bita = new Bitacora();
+         $bita->accion = encrypt('Editó');
+         $bita->apartado = encrypt('Revalorización');
+         $afectado = $revalorizacion->id;
+         $bita->afectado = encrypt($afectado);
+         $fecha_hora = date('m-d-Y h:i:s a', time());
+         $bita->fecha_h = encrypt($fecha_hora);
+         $bita->id_user = Auth::user()->id;
+         $ip = $request->ip();
+         $bita->ip = encrypt($ip);
+         $bita->save();
         return redirect()->route('revalorizacion.index');
     }
 
@@ -122,9 +151,21 @@ class RevalorizacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $revalorizacion = Revalorizacion::find($id);
+         /* ------------BITACORA----------------- */
+         $bita = new Bitacora();
+         $bita->accion = encrypt('Eliminó');
+         $bita->apartado = encrypt('Revalorización');
+         $afectado = $revalorizacion->id;
+         $bita->afectado = encrypt($afectado);
+         $fecha_hora = date('m-d-Y h:i:s a', time());
+         $bita->fecha_h = encrypt($fecha_hora);
+         $bita->id_user = Auth::user()->id;
+         $ip = $request->ip();
+         $bita->ip = encrypt($ip);
+         $bita->save();
         $revalorizacion->delete();
         return redirect()->back();
     }

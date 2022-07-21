@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bitacora;
 use App\Models\Detallenota;
 use App\Models\Nota;
 use Dompdf\FrameDecorator\Text;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Log;
 use JeroenNoten\LaravelAdminLte\View\Components\Widget\Alert;
 use PHPUnit\TextUI\XmlConfiguration\Php;
 use App\Models\Empresa;
+use Illuminate\Support\Facades\Auth;
 
 class NotaController extends Controller
 {
@@ -100,6 +102,20 @@ class NotaController extends Controller
         DB::table('notas')->where('id', $nota->id)->update(['codigo' => 'Book_'.$code->ayuda]);
 */
         $detallenotas = Detallenota::all();
+
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Registró');
+        $bita->apartado = encrypt('Nota_Compra');
+        $afectado = $nota->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
         return redirect()->route('notas.edit', compact('nota', 'detallenotas'));
     }
 
@@ -153,6 +169,19 @@ class NotaController extends Controller
         if ($sindetalle == '[]') {
             return back();
         }
+
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Editó');
+        $bita->apartado = encrypt('Nota_Compra');
+        $afectado = $nota->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
         return redirect()->route('notas.index');
     }
 
@@ -162,9 +191,21 @@ class NotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $nota = Nota::find($id);
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Eliminó');
+        $bita->apartado = encrypt('Nota_Compra');
+        $afectado = $nota->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
         $nota->delete();
         return redirect()->back();
     }
