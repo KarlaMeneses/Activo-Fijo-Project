@@ -3,37 +3,37 @@
 @section('title', 'Activo Fijo')
 
 @section('content_header')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
-<div class="card-header  text-center">
-    <h3><b>Actualizar Activo Fijo</b></h3>
-</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+    <div class="card-header  text-center">
+        <h3><b>Actualizar Activo Fijo</b></h3>
+    </div>
 @stop
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-<link rel="stylesheet" href="{{ asset('css/subir.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/subir.css') }}">
 @stop
 
 
 @section('content')
-<div class="card">
-    <div class="card-body">
-        @error('name')
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>¡Error!</strong> Este usuario ya está registrado.
-        </div>
-        @enderror
-        <form action="{{ route('activosfijo.update', $activofijo) }}" method="post" novalidate>
-            @csrf
-            @method('put')
-            <div class="row">
-                <label for="name">Vista detallada de {{ $activofijo->detalle }} </label>
+    <div class="card">
+        <div class="card-body">
+            @error('name')
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>¡Error!</strong> Este usuario ya está registrado.
+                </div>
+            @enderror
+            <form action="{{ route('activosfijo.update', $activofijo) }}" method="post" novalidate>
+                @csrf
+                @method('put')
+                <div class="row">
+                    <label for="name">Vista detallada de {{ $activofijo->detalle }} </label>
 
-                <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
                         @section('js')
-                        <script src="{{ asset('js/activo.js') }}"></script>
+                            <script src="{{ asset('js/activo.js') }}"></script>
                         @endsection
                         <img width="350" height="300" src="{{ old('foto', $activofijo->foto) }}">
                         <div class="custom-input-file">
@@ -41,28 +41,28 @@
                             <i class="fas fa-file-upload"></i> Subir Foto...
                         </div>
                         @error('foto')
-                        <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                         <progress id="progress_bar" value="0" max="100"></progress>
-                        <input type="hidden" value="{{ old('foto', $activofijo->foto) }}" name="foto" id="fotov" title="foto" placeholder="https://example.com" list="defaultURLs" class="focus border-dark form-control" required oninvalid="this.setCustomValidity('Please match the requested format')">
+                        <input type="hidden" value="{{ old('foto', $activofijo->foto) }}" name="foto" id="fotov"
+                            title="foto" placeholder="https://example.com" list="defaultURLs"
+                            class="focus border-dark form-control" required
+                            oninvalid="this.setCustomValidity('Please match the requested format')">
                         <img height=0 width=0 id="foto" src="">
                         @error('foto')
-                        <span class="text-danger">{{ $message }}</span>
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
                     <div class="form-group col-md-6">
-                        <div id="qrcode">
-                            <a href="{{ $activofijo->id }}">descagar</a>
-                        </div>
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <br>
                         <center>
-                            <img height=120 width=200 data-value="{{ $activofijo->codigo }}" class="codigo" id="contenedor" />
+                            <label for="name">Vista detallada de {{ $activofijo->detalle }} </label>
+                            <div id="qrcode">
+                                <a href="{{ $activofijo->id }}">descagar</a>
+                            </div>
                         </center>
                     </div>
+
                 </div>
             </div>
 
@@ -76,38 +76,45 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="codigo">Codigo De Activo</label>
-                                <input type="text" name="codigo" class="form-control" value="{{ $activofijo->codigo }}">
+                                <input type="text" name="codigo" class="form-control"
+                                    value="{{ $activofijo->codigo }}">
 
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="nombre">Nombre Del Activo</label>
-                                <input type="text" name="nombre" class="form-control" value="{{ $activofijo->nombre }}">
+                                <input type="text" name="nombre" class="form-control"
+                                    value="{{ $activofijo->nombre }}">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="detalle">Descripcion Del Activo</label>
-                                <input type="text" name="detalle" class="form-control" value="{{ $activofijo->detalle }}">
+                                <input type="text" name="detalle" class="form-control"
+                                    value="{{ $activofijo->detalle }}">
                             </div>
 
                             <div class="col-md-3">
                                 <label for="fecha_ingreso">Fecha Ingreso</label>
-                                <input name="fecha_ingreso" type="date" class="form-control" value="{{ $activofijo->fecha_ingreso }}">
+                                <input name="fecha_ingreso" type="date" class="form-control"
+                                    value="{{ $activofijo->fecha_ingreso }}">
                             </div>
 
                             <div class="col-md-3">
                                 <label for="costo">Costo Activo</label>
-                                <input name="costo" type="text" class="form-control" value="{{ $activofijo->costo }}">
+                                <input name="costo" type="text" class="form-control"
+                                    value="{{ $activofijo->costo }}">
                             </div>
 
                             <div class="col-md-3">
                                 <label for="estado">Estado</label>
-                                <input type="text" name="estado" class="form-control" value="{{ $activofijo->estado }}">
+                                <input type="text" name="estado" class="form-control"
+                                    value="{{ $activofijo->estado }}">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="proveedor">Proveedor Del Activo</label>
-                                <input type="text" name="proveedor" class="form-control" value="{{ $activofijo->proveedor }}">
+                                <input type="text" name="proveedor" class="form-control"
+                                    value="{{ $activofijo->proveedor }}">
                             </div>
 
                         </div>
@@ -128,13 +135,13 @@
                                     <option hidden disabled selected value> -- {{ $ubicaci->edificio }} /
                                         {{ $depa->nombre }} / {{ $ubicaci->ciudad }} -- </option>
                                     @foreach ($ubicaciones as $ubi)
-                                    @foreach ($departamentos as $departamento)
-                                    @if ($departamento->id == $ubi->id_departamento)
-                                    <option value="{{ $ubi->edificio }}">
-                                        {{ $ubi->edificio }} / {{ $departamento->nombre }} /
-                                        {{ $ubi->ciudad }}</option>
-                                    @endif
-                                    @endforeach
+                                        @foreach ($departamentos as $departamento)
+                                            @if ($departamento->id == $ubi->id_departamento)
+                                                <option value="{{ $ubi->edificio }}">
+                                                    {{ $ubi->edificio }} / {{ $departamento->nombre }} /
+                                                    {{ $ubi->ciudad }}</option>
+                                            @endif
+                                        @endforeach
                                     @endforeach
 
                                 </select><br>
@@ -146,12 +153,24 @@
                 </div>
             </div>
 
+            <div class="card-body" style="background-color: #E6E6E6;">
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <br>
+                        <center>
+                            <img height=120 width=200 data-value="{{ $activofijo->codigo }}" class="codigo"
+                                id="contenedor" />
+                        </center>
+                    </div>
+                </div>
+            </div>
             <br>
             <br>
 
             <button class="btn btn-primary" type="submit">Actualizar Usuario</button>
             {{-- <a class="btn btn-danger" href="{{ route('activosfijo.index') }}">Volver</a> --}}
-            <button class="btn btn-warning btb-sm text-light" type="button" onclick="history.back()"></i> Volver</button>
+            <button class="btn btn-warning btb-sm text-light" type="button" onclick="history.back()"></i>
+                Volver</button>
 
         </form>
 
@@ -195,7 +214,6 @@
             odontologos. = false
         }
     } */
-
 </script>
 @stop
 
@@ -208,15 +226,14 @@
     window.addEventListener("load", () => {
         var qrc = new QRCode(document.getElementById("qrcode"), "{{ $activofijo->id }}");
     });
-
 </script>
 
 <script>
     const activo = [{
-        nombre: "activo"
-        , precio: 20
-        , codigo: "123"
-    , }];
+        nombre: "activo",
+        precio: 20,
+        codigo: "123",
+    }];
     const $contenedor = document.querySelector("#contenedor");
     // Por cada producto, crear un SVG y adjuntarlo
     activo.forEach(activo => {
@@ -229,7 +246,6 @@
     });
     // Al final, inicializamos
     JsBarcode(".codigo").init();
-
 </script>
 
 @stop

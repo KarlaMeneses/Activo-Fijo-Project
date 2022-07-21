@@ -152,10 +152,11 @@ class ActivofijoController extends Controller
         $activofi->foto = $request->foto;
         $activofi->nombre = $request->nombre;
         $activofi->detalle = $request->detalle;
-        $activofi->tipo = $request->tipo;
         $activofi->fecha_ingreso = $request->fecha_ingreso;
         $activofi->proveedor = $request->proveedor;
         $activofi->costo = $request->costo;
+        $activofi->v_actual = $request->costo;
+        $activofi->valor_residual = $request->valor_residual;
         $activofi->estado = $request->estado;
 
         if ($request->id_ubicacion != null) {
