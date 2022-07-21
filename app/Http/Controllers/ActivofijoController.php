@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activofijo;
+use App\Models\Bitacora;
 use App\Models\Departamento;
 use App\Models\categoria;
 use App\Models\Depreciacion;
@@ -101,6 +102,20 @@ class ActivofijoController extends Controller
        
         $activofijo->save();
 
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Registró');
+        $bita->apartado = encrypt('Activo Fijo');
+        $afectado = $activofijo->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
+
         return redirect()->route('activosfijo.index');
     }
 
@@ -168,6 +183,20 @@ class ActivofijoController extends Controller
             }
         }
         $activofi->save();
+
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Editó');
+        $bita->apartado = encrypt('Activo Fijo');
+        $afectado = $activofi->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
         return redirect()->route('activosfijo.index');
     }
 
@@ -177,9 +206,22 @@ class ActivofijoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $activofijo = Activofijo::find($id);
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Eliminó');
+        $bita->apartado = encrypt('Activo Fijo');
+        $afectado = $activofijo->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
         $activofijo->delete();
         return redirect()->back();
     }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bitacora;
 use App\Models\Categoria;
 use App\Models\Depreciacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Activitylog\Models\Activity;
 
 class CategoriaController extends Controller
@@ -44,11 +46,20 @@ class CategoriaController extends Controller
         $cate->vida_util = $request->vida_util;
         $cate->coeficiente = $request->coeficiente;
         $cate->save();
-        //bitacora
-        activity()->useLog('gestionar depreciaciones')->log('Registro')->subject();
-        $lastActivity = Activity::all()->last();
-        $lastActivity->subject_id = $cate->id;
-        $lastActivity->save();
+
+         /* ------------BITACORA----------------- */
+         $bita = new Bitacora();
+         $bita->accion = encrypt('Registró');
+         $bita->apartado = encrypt('Categoria');
+         $afectado = $cate->id;
+         $bita->afectado = encrypt($afectado);
+         $fecha_hora = date('m-d-Y h:i:s a', time());
+         $bita->fecha_h = encrypt($fecha_hora);
+         $bita->id_user = Auth::user()->id;
+         $ip = $request->ip();
+         $bita->ip = encrypt($ip);
+         $bita->save();
+         /* ----------------------------------------- */
 
         return redirect()->route('categorias.index'); // Se redirige a la vista ubicaiones.index
     }
@@ -68,12 +79,39 @@ class CategoriaController extends Controller
         $cate->vida_util = $request->vida_util;
         $cate->coeficiente = $request->coeficiente;
         $cate->save();
+
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Editó');
+        $bita->apartado = encrypt('Categoria');
+        $afectado = $cate->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
         return redirect()->route('categorias.index');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $cate = Categoria::find($id);
+        /* ------------BITACORA----------------- */
+        $bita = new Bitacora();
+        $bita->accion = encrypt('Eliminó');
+        $bita->apartado = encrypt('Categoria');
+        $afectado = $cate->id;
+        $bita->afectado = encrypt($afectado);
+        $fecha_hora = date('m-d-Y h:i:s a', time());
+        $bita->fecha_h = encrypt($fecha_hora);
+        $bita->id_user = Auth::user()->id;
+        $ip = $request->ip();
+        $bita->ip = encrypt($ip);
+        $bita->save();
+        /* ----------------------------------------- */
         $cate->delete();
         return redirect()->back();
     }
