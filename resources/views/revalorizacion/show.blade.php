@@ -117,12 +117,21 @@
                 </div>
             </div>
             <br>
+         
             <center>
                 <a class="btn btn-warning btb-sm text-light" href="{{ route('revalorizacion.index') }}">Volver</a>
                 <a href="{{ route('revalorizacion.edit', $revalorizacion->id) }}"
                     class="btn btn-primary btb-sm text-light">
                     Editar </a>
+                    <form action="{{ route('revalorizacion.aprobado') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="id_revalorizacion" class="form-control"
+                            value="{{ $revalorizacion->id}}"> <br>
+                        <button class="btn btn-danger btn-sm text-light"
+                            type="submit">aprobar</button>
+                    </form>
             </center>
+            
         </div>
     </div>
 @stop

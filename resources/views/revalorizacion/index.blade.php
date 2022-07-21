@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-
 @section('title', 'Activo Fijo')
 
 @section('content_header')
@@ -7,10 +6,6 @@
     <div class="card-header  text-center">
         <h3><b>Listado de Revalorizacion</b></h3>
     </div>
-
-@stop
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop
 
 @section('content')
@@ -73,13 +68,7 @@
                                             @can('eliminar revalorizacion')
                                             @endcan
                                 </form>
-                                <form action="{{ route('activosfijo.idactivo') }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="id_activo" class="form-control"
-                                        value="{{ $activo->id }}"> <br>
-                                    <button class="btn btn-danger btn-sm text-light rounded-pill"
-                                        type="submit">Revalorizacion</button>
-                                </form>
+                              
                             </td>
 
                         </tr>

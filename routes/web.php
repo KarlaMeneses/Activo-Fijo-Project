@@ -114,6 +114,7 @@ Route::resource('responsables', ResponsableController::class)->names('responsabl
 //REVALORIZACION
 Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');
 Route::post('activosfijo/index', [RevalorizacionController::class, 'idactivo'])->name('activosfijo.idactivo');
+Route::post('revalorizacion/show', [RevalorizacionController::class, 'aprobado'])->name('revalorizacion.aprobado');
 
 
 
