@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'ActivoFijo')
+@section('title', 'Activo Fijo')
 
 @section('content_header')
 

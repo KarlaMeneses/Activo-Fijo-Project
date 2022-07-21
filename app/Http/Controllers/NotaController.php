@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 use JeroenNoten\LaravelAdminLte\View\Components\Widget\Alert;
 use PHPUnit\TextUI\XmlConfiguration\Php;
+use App\Models\Empresa;
 
 class NotaController extends Controller
 {
@@ -169,9 +170,11 @@ class NotaController extends Controller
     }
     public function reporte(Request $request, $id)
     {
+        $id1 = 1;
+        $empresa = Empresa::where('id', $id1)->first();
         $nota = Nota::find($id);
         $detalles = Detallenota::select('*')->where('id_notas', $nota->id)->get();
-        $view = View::make('notas.reporte', compact('nota', 'detalles'))->render();
+        $view = View::make('notas.reporte', compact('nota', 'detalles','empresa'))->render();
         // return $view;
 
 
@@ -190,9 +193,11 @@ class NotaController extends Controller
     }
     public function reportehtml(Request $request, $id)
     {
+        $id1 = 1;
+        $empresa = Empresa::where('id', $id1)->first();
         $nota = Nota::find($id);
         $detalles = Detallenota::select('*')->where('id_notas', $nota->id)->get();
-        $view = View::make('notas.reporte', compact('nota', 'detalles'))->render();
+        $view = View::make('notas.reporte', compact('nota', 'detalles', 'empresa'))->render();
         return $view;
     }
 }

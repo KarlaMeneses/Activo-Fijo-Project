@@ -78,13 +78,13 @@
 <body>
     <header>
         <?php
-        $nombreImagen = 'img/SAAF-logo-con-tipografía.jpg';
+        $nombreImagen = $empresa->foto;
         $imagenBase64 = 'data:image/jpg;base64,' . base64_encode(file_get_contents($nombreImagen));
         ?>
 
         <div style="position: relative">
             <div style="position: absolute">
-                <img src="<?php echo $imagenBase64; ?>" style="height: 70px;width:auto;margin-top: 4.0em; ">
+                <img src="<?php echo $imagenBase64; ?>" style="height: 100px;width:auto;margin-top: 4.0em; ">
             </div>
             <div style="position: relative;text-align: left">
                 <p style="font-size: 10px;margin-top: 3em;margin-left: 25em;vertical-align:middle;">Reporte de Nota:

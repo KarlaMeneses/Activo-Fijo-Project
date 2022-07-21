@@ -39,21 +39,30 @@ class RevalorizacionController extends Controller
     public function store(Request $request)
     {
         $revalorizacion = new Revalorizacion();
-        $revalorizacion->tiempo_vida=$request->tiempo_vida;
+        $revalorizacion->tiempo_vida = $request->tiempo_vida;
         $revalorizacion->costo = $request->costo;
-        $revalorizacion->valor=$request->valor;
-        $revalorizacion->id_activo=$request->id_activo;
+        $revalorizacion->valor = $request->valor;
+        $revalorizacion->foto = $request->foto;
+        $revalorizacion->id_activo = $request->id_activo;
         $revalorizacion->save();
         return redirect()->route('revalorizacion.index');
     }
 
-    
+
     public function idactivo(Request $request)
     {
         $revalorizacion = new Revalorizacion();
-        $revalorizacion->id_activo=$request->id_activo;
+        $revalorizacion->id_activo = $request->id_activo;
         $revalorizacion->save();
         return redirect()->route('activosfijo.index');
+    }
+
+    public function aprobado(Request $request)
+    {
+        $revalorizacion = Revalorizacion::find($request->id_revalorizacion);
+        $revalorizacion->estado = "Aprobado";
+        $revalorizacion->save();
+        return redirect()->route('revalorizacion.index');
     }
 
     /**
@@ -89,12 +98,13 @@ class RevalorizacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Revalorizacion $revalorizacion)
+    public function update(Request $request, Revalorizacion $revalorizacion)
     {
-        
+
         $revalorizacion = Revalorizacion::findOrFail($revalorizacion->id);
         $revalorizacion->tiempo_vida = $request->input('tiempo_vida');
         $revalorizacion->valor = $request->input('valor');
+        $revalorizacion->foto = $request->input('foto');
         $revalorizacion->costo_revaluo = $request->input('costo_revaluo');
         $revalorizacion->estado = "En proceso";
         $revalorizacion->save();

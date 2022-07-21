@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'SI-ActivoFijo')
+@section('title', 'Activo Fijo')
 
 @section('content_header')
     <h1>Crear Departamento</h1>

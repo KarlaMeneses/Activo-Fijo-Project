@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Contracts\Role;
 use App\Exports\UserExport;
+use App\Http\Controllers\PostNotificationController;
 use App\Http\Controllers\ResponsableController;
 use App\Models\Responsable;
 use Maatwebsite\Excel\Facades\Excel;
@@ -107,9 +108,13 @@ Route::resource('ubicaciones', UbicacionController::class)->names('ubicaciones')
 //RESPONSABLE
 Route::resource('responsables', ResponsableController::class)->names('responsables');
 
+//NOTIFICATION
+//Route::get('mantenimientos/index', [PostNotificationController::class, 'sendOfferNotification']);
+
 //REVALORIZACION
 Route::resource('revalorizacion', RevalorizacionController::class)->names('revalorizacion');
 Route::post('activosfijo/index', [RevalorizacionController::class, 'idactivo'])->name('activosfijo.idactivo');
+Route::post('revalorizacion/show', [RevalorizacionController::class, 'aprobado'])->name('revalorizacion.aprobado');
 
 
 
@@ -117,7 +122,7 @@ Route::post('activosfijo/index', [RevalorizacionController::class, 'idactivo'])-
 //Route::post('activosfijo/{id}', [ActivofijoController::class, 'calcular'])->name('activosfijo.calcular');
 //Route::get('activosfijo.{id}', [ActivofijoController::class, 'calcular'])->name('activosfijo.calcular');
 Route::get('activosfijo/show/{id}', [ActivofijoController::class, 'calcular'])->name('activosfijo.calcular');
-
+Route::post('activosfijo/reporte/{id}', [App\Http\Controllers\ActivofijoController::class, 'reporte'])->name('activosfijo.reporte');
 //MANTENIMIENTO
 Route::get('mantenimientos/index', [App\Http\Controllers\MantenimientoController::class, 'index'])->name('mantenimientos.index');
 Route::get('mantenimientos/create', [App\Http\Controllers\MantenimientoController::class, 'create'])->name('mantenimientos.create');
@@ -144,6 +149,7 @@ Route::get('baja/create', [App\Http\Controllers\BajaController::class, 'create']
 Route::get('baja/edit/{id}', [App\Http\Controllers\BajaController::class, 'edit'])->name('baja.edit');
 Route::post('baja/update/{id}', [App\Http\Controllers\BajaController::class, 'update'])->name('baja.update');
 Route::post('baja/{id}', [App\Http\Controllers\BajaController::class, 'destroy'])->name('baja.delete');
+Route::get('baja/reporte/{id}', [App\Http\Controllers\BajaController::class, 'reporte'])->name('baja.reporte');
 
 
 
@@ -180,4 +186,5 @@ Route::get('traspasos/edit/{id}', [App\Http\Controllers\TraspasoController::clas
 Route::put('traspasos/update/{id}', [App\Http\Controllers\TraspasoController::class, 'update'])->name('traspasos.update');
 /* Route::get('traspasos/show/{id}', [App\Http\Controllers\TraspasoController::class, 'show'])->name('traspasos.show'); */
 Route::delete('traspasos/{id}', [App\Http\Controllers\TraspasoController::class, 'destroy'])->name('traspasos.destroy');
+
 

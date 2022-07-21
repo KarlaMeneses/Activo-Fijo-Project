@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\App;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use App\Exports\UserExport;
+use App\Models\Empresa;
 use Maatwebsite\Excel\Facades\Excel;
 class UserController extends Controller
 {
@@ -257,7 +257,8 @@ class UserController extends Controller
     public function reporte(Request $request)
     {
         $user_c = Auth::user()->id;
-      
+        $id = 1;
+        $empresa = Empresa::where('id', $id)->first();
         $user = User::find($user_c);
         $i =$request->inicio;
         $f =$request->fin;
@@ -265,7 +266,8 @@ class UserController extends Controller
         $users = User::whereBetween('created_at', [$request->inicio, $request->fin])->get();
         
         if($request->tipo == 'pdf'){
-            $view = View::make('users.reporte', compact('users','user','i','f', 'lol'))->render();
+
+            $view = View::make('users.reporte', compact('users','user','i','f', 'lol', 'empresa'))->render();
 
             $pdf = App::make('dompdf.wrapper');
             $pdf->setOptions([
